@@ -12,6 +12,7 @@ find_package(OpenCV REQUIRED)
 find_package(GTest REQUIRED)
 find_package(Boost REQUIRED COMPONENTS serialization system)
 find_package(Python3 COMPONENTS Development NumPy REQUIRED)
+find_package(OpenMP REQUIRED)
 
 
 # Chercher les headers Python

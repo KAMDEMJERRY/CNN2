@@ -1,4 +1,5 @@
 #include "CNN.hpp"
+#include "Layer.hpp"
 
 class DimensionCalculator {
 public:

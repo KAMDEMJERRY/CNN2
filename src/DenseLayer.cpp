@@ -1,168 +1,133 @@
-// DenseLayer.cpp
-# include "DenseLayer.hpp"
-# include <cmath>
-# include <random>
-# include <stdexcept>
-# include <iostream>
+#include "DenseLayer.hpp"
+#include <cmath>
+#include <random>
+#include <stdexcept>
 
+// ─────────────────────────────────────────────────────────────────────────────
 // Constructeur
+// ─────────────────────────────────────────────────────────────────────────────
 DenseLayer::DenseLayer(int input_size, int output_size)
-    : input_size(input_size), output_size(output_size) {
-
+    : input_size(input_size), output_size(output_size)
+    , weights    (Eigen::MatrixXf(output_size, input_size))
+    , bias       (Eigen::VectorXf::Zero(output_size))
+    , grad_weights(Eigen::MatrixXf::Zero(output_size, input_size))
+    , grad_bias  (Eigen::VectorXf::Zero(output_size))
+{
     isTrainable = true;
-    // Initialiser les matrices
-    weights = Eigen::MatrixXf(output_size, input_size);
-    bias = Eigen::VectorXf(output_size);
-
-    initializeWeights("he");
+    initializeWeights("xavier");
 }
 
-// Initialisation des poids
+// ─────────────────────────────────────────────────────────────────────────────
+// initializeWeights — identique à votre version, random_device comme ConvLayer
+// ─────────────────────────────────────────────────────────────────────────────
 void DenseLayer::initializeWeights(const std::string& method) {
     std::random_device rd;
     std::mt19937 gen(rd());
 
     float scale;
     if (method == "xavier") {
-        // Xavier/Glorot initialization
-        scale = std::sqrt(2.0f / (input_size + output_size)) ;
-    }
-    else if (method == "he") {
-        // He initialization (bon pour ReLU)
-        scale = std::sqrt(2.0f / input_size) ;
-    }
-    else {
-        // Uniform initialization
+        scale = std::sqrt(2.0f / (input_size + output_size));
+    } else if (method == "he") {
+        scale = std::sqrt(2.0f / input_size);
+    } else {
         scale = 0.1f;
     }
 
     std::normal_distribution<float> dist(0.0f, scale);
 
-    // Initialiser les poids
-    for (int i = 0; i < weights.rows(); ++i) {
-        for (int j = 0; j < weights.cols(); ++j) {
+    for (int i = 0; i < weights.rows(); ++i)
+        for (int j = 0; j < weights.cols(); ++j)
             weights(i, j) = dist(gen);
-        }
-    }
 
-    // Initialiser les biais à 0
     bias.setZero();
+    grad_weights.setZero();
+    grad_bias.setZero();
 }
 
-// Convertir Tensor en Eigen Matrix
-Eigen::MatrixXf DenseLayer::tensorToMatrix(const Tensor& tensor) const {
-    int batch_size = tensor.dim(0);
-
-    // Flatten le tensor en une matrice [batch_size x (total_elements)]
-    int total_elements = 1;
-    for (int i = 1; i < 4; ++i) {  // Ignorer la dimension batch
-        if (tensor.dim(i) > 0) {
-            total_elements *= tensor.dim(i);
-        }
-    }
-
-    // Vérifier que le flatten donne la bonne taille
-    // if (total_elements != input_size) {
-    //     throw std::runtime_error("Taille d'entrée incompatible avec input_size de DenseLayer");
-    // }
-
-    // Créer une vue sur les données
-    Eigen::Map<const Eigen::MatrixXf> tensor_map(
-        tensor.getData(),
-        total_elements,
-        batch_size
-    );
-
-    return tensor_map.transpose();  // [batch_size x input_size]
-}
-
-// Convertir Eigen Matrix en Tensor
-Tensor DenseLayer::matrixToTensor(const Eigen::MatrixXf& matrix, bool is_output_size) const {
-    int batch_size = matrix.rows();
-    // Créer un tensor avec la shape [batch_size, size, 1, 1]
-    // Conversion en tenseur de taille outpout(forward)
-    // ou en tenseur de taille input(backward)
-    int size = is_output_size ? output_size : input_size;
-    Tensor tensor(batch_size, size, 1, 1);
-
-    // Copier les données
-    Eigen::Map<Eigen::MatrixXf> tensor_map(
-        tensor.getData(),
-        size,
-        batch_size
-    );
-
-    tensor_map = matrix.transpose();
-
-    return tensor;
-}
-
-// Forward pass
+// ─────────────────────────────────────────────────────────────────────────────
+// Forward
+//
+// 1. toMatrix() : aplatit (B, C, [D,] H, W) → (B, input_size)
+//                 fonctionne en 4D et 5D grâce au Tensor unifié
+// 2. GEMM      : (B, input_size) × (input_size, output_size) → (B, output_size)
+// 3. Bias      : rowwise()
+// 4. Sortie    : (B, output_size, 1, 1) ou (B, output_size, 1, 1, 1)
+//                selon le rang logique de l'entrée
+// ─────────────────────────────────────────────────────────────────────────────
 Tensor DenseLayer::forward(const Tensor& input) {
-    // Convertir l'entrée en matrice
-    Eigen::MatrixXf input_matrix = input.toMatrix();
-
-    // Verifier les dimensions
-    if (input_matrix.cols() != input_size) {
-        throw std::runtime_error("Input size mismatch");
-    }
-
-    // Sauvegarder pour la backpropagation
+    // Conserver le rang logique pour reconstruire la sortie et le grad_input
+    cached_rank = input.ndim();
     input_cache = input;
 
-    // Calcul: output = input * weights^T + bias
+    // Flatten → (B, input_size)
+    // toMatrix() du Tensor unifié gère 4D et 5D
+    Eigen::MatrixXf input_matrix = input.toMatrix();
+
+    if (input_matrix.cols() != input_size)
+        throw std::runtime_error(
+            "[DenseLayer] forward: input_size mismatch — "
+            "attendu " + std::to_string(input_size) +
+            ", reçu "  + std::to_string(input_matrix.cols()) +
+            ". Vérifiez GlobalAvgPool ou Flatten avant DenseLayer.");
+
+    // GEMM : (B, input_size) × (input_size, output_size)
     Eigen::MatrixXf output_matrix = input_matrix * weights.transpose();
 
-    // Ajouter le biais à chaque ligne
+    // Biais
     output_matrix.rowwise() += bias.transpose();
 
-    // Convertir en tensor de sortie
-    return Tensor::fromMatrix(output_matrix, input.dim(0), output_size, 1, 1);
+    // Reconstruire dans le bon rang
+    return buildOutput(output_matrix, static_cast<int>(input_matrix.rows()));
 }
 
-// Backward pass
-// Backward pass CORRIGÉE
+// ─────────────────────────────────────────────────────────────────────────────
+// Backward
+//
+// grad_output : (B, output_size, 1, 1) ou (B, output_size, 1, 1, 1)
+//
+// 1. Flatten grad_output    → (B, output_size)
+// 2. grad_weights = (input^T × grad_output)^T / B   → (output_size, input_size)
+// 3. grad_bias    = sum(grad_output, axis=0) / B     → (output_size)
+// 4. grad_input   = grad_output × weights            → (B, input_size)
+//                   reshapé dans la shape originale de l'entrée
+// ─────────────────────────────────────────────────────────────────────────────
 Tensor DenseLayer::backward(const Tensor& grad_output) {
-    // Convertir en matrices
-    Eigen::MatrixXf grad_output_matrix = grad_output.toMatrix();
-    Eigen::MatrixXf input_matrix = input_cache.toMatrix();
+    Eigen::MatrixXf dO = grad_output.toMatrix();   // (B, output_size)
+    Eigen::MatrixXf X  = input_cache.toMatrix();   // (B, input_size)
 
-    int batch_size = grad_output_matrix.rows();
+    int B = static_cast<int>(dO.rows());
 
-    // ✅ 1. Gradient des poids - CORRIGÉ
-    grad_weights = (input_matrix.transpose() * grad_output_matrix).transpose();
-    grad_weights /= static_cast<float>(batch_size);
+    // 1. Gradient des poids — même normalisation que ConvLayer : / batch_size
+    grad_weights = (X.transpose() * dO).transpose();
+    grad_weights /= static_cast<float>(B);
 
-    // ✅ 2. Gradient des biais
-    grad_bias = grad_output_matrix.colwise().sum();
-    grad_bias /= static_cast<float>(batch_size);
+    // 2. Gradient des biais
+    grad_bias = dO.colwise().sum().transpose();
+    grad_bias /= static_cast<float>(B);
 
-    // ✅ 3. Gradient de l'entrée
-    Eigen::MatrixXf grad_input_matrix = grad_output_matrix * weights;
+    // 3. Gradient vers l'entrée : (B, output_size) × (output_size, input_size)
+    Eigen::MatrixXf dX = dO * weights;   // (B, input_size)
 
-    // ✅ 4. DEBUG - Vérifier les dimensions
-    // std::cout << "DenseLayer backward - weights grad shape: "
-    //     << grad_weights.rows() << "x" << grad_weights.cols()
-    //     << " (should be " << output_size << "x" << input_size << ")" << std::endl;
-
-    return Tensor::fromMatrix(grad_input_matrix, input_cache.shape());
+    // 4. Reconstruire dans la shape et le rang de l'entrée originale
+    return buildGradInput(dX);
 }
 
+// ─────────────────────────────────────────────────────────────────────────────
 // Setters
+// ─────────────────────────────────────────────────────────────────────────────
 void DenseLayer::setWeights(const Eigen::MatrixXf& new_weights) {
-    if (new_weights.rows() == output_size && new_weights.cols() == input_size) {
-        weights = new_weights;
-    }
-    else {
-        throw std::runtime_error("Dimensions des poids incorrectes");
-    }
+    if (new_weights.rows() != output_size || new_weights.cols() != input_size)
+        throw std::runtime_error(
+            "[DenseLayer] setWeights: dimensions incorrectes — "
+            "attendu (" + std::to_string(output_size) + ", " +
+            std::to_string(input_size) + ")");
+    weights = new_weights;
 }
 
 void DenseLayer::setBias(const Eigen::VectorXf& new_bias) {
-    if (new_bias.size() == output_size) {
-        bias = new_bias;
-    }
-    else {
-        throw std::runtime_error("Dimension du biais incorrecte");
-    }
+    if (new_bias.size() != output_size)
+        throw std::runtime_error(
+            "[DenseLayer] setBias: taille incorrecte — "
+            "attendu " + std::to_string(output_size));
+    bias = new_bias;
 }

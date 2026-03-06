@@ -116,6 +116,512 @@ depend:
 	cd "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build" && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
+# Convenience name for target.
+test/CMakeFiles/test_Tensor.dir/rule:
+	cd "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build" && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/CMakeFiles/test_Tensor.dir/rule
+.PHONY : test/CMakeFiles/test_Tensor.dir/rule
+
+# Convenience name for target.
+test_Tensor: test/CMakeFiles/test_Tensor.dir/rule
+.PHONY : test_Tensor
+
+# fast build rule for target.
+test_Tensor/fast:
+	cd "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build" && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_Tensor.dir/build.make test/CMakeFiles/test_Tensor.dir/build
+.PHONY : test_Tensor/fast
+
+# Convenience name for target.
+test/CMakeFiles/test_ConvLayer.dir/rule:
+	cd "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build" && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/CMakeFiles/test_ConvLayer.dir/rule
+.PHONY : test/CMakeFiles/test_ConvLayer.dir/rule
+
+# Convenience name for target.
+test_ConvLayer: test/CMakeFiles/test_ConvLayer.dir/rule
+.PHONY : test_ConvLayer
+
+# fast build rule for target.
+test_ConvLayer/fast:
+	cd "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build" && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_ConvLayer.dir/build.make test/CMakeFiles/test_ConvLayer.dir/build
+.PHONY : test_ConvLayer/fast
+
+# Convenience name for target.
+test/CMakeFiles/test_DenseLayer.dir/rule:
+	cd "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build" && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/CMakeFiles/test_DenseLayer.dir/rule
+.PHONY : test/CMakeFiles/test_DenseLayer.dir/rule
+
+# Convenience name for target.
+test_DenseLayer: test/CMakeFiles/test_DenseLayer.dir/rule
+.PHONY : test_DenseLayer
+
+# fast build rule for target.
+test_DenseLayer/fast:
+	cd "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build" && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_DenseLayer.dir/build.make test/CMakeFiles/test_DenseLayer.dir/build
+.PHONY : test_DenseLayer/fast
+
+# Convenience name for target.
+test/CMakeFiles/test_ActivationLayer.dir/rule:
+	cd "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build" && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/CMakeFiles/test_ActivationLayer.dir/rule
+.PHONY : test/CMakeFiles/test_ActivationLayer.dir/rule
+
+# Convenience name for target.
+test_ActivationLayer: test/CMakeFiles/test_ActivationLayer.dir/rule
+.PHONY : test_ActivationLayer
+
+# fast build rule for target.
+test_ActivationLayer/fast:
+	cd "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build" && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_ActivationLayer.dir/build.make test/CMakeFiles/test_ActivationLayer.dir/build
+.PHONY : test_ActivationLayer/fast
+
+# Convenience name for target.
+test/CMakeFiles/test_PoolLayer.dir/rule:
+	cd "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build" && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/CMakeFiles/test_PoolLayer.dir/rule
+.PHONY : test/CMakeFiles/test_PoolLayer.dir/rule
+
+# Convenience name for target.
+test_PoolLayer: test/CMakeFiles/test_PoolLayer.dir/rule
+.PHONY : test_PoolLayer
+
+# fast build rule for target.
+test_PoolLayer/fast:
+	cd "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build" && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_PoolLayer.dir/build.make test/CMakeFiles/test_PoolLayer.dir/build
+.PHONY : test_PoolLayer/fast
+
+# Convenience name for target.
+test/CMakeFiles/test_LossLayer.dir/rule:
+	cd "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build" && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/CMakeFiles/test_LossLayer.dir/rule
+.PHONY : test/CMakeFiles/test_LossLayer.dir/rule
+
+# Convenience name for target.
+test_LossLayer: test/CMakeFiles/test_LossLayer.dir/rule
+.PHONY : test_LossLayer
+
+# fast build rule for target.
+test_LossLayer/fast:
+	cd "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build" && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_LossLayer.dir/build.make test/CMakeFiles/test_LossLayer.dir/build
+.PHONY : test_LossLayer/fast
+
+# Convenience name for target.
+test/CMakeFiles/test_Optimizer.dir/rule:
+	cd "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build" && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/CMakeFiles/test_Optimizer.dir/rule
+.PHONY : test/CMakeFiles/test_Optimizer.dir/rule
+
+# Convenience name for target.
+test_Optimizer: test/CMakeFiles/test_Optimizer.dir/rule
+.PHONY : test_Optimizer
+
+# fast build rule for target.
+test_Optimizer/fast:
+	cd "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build" && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_Optimizer.dir/build.make test/CMakeFiles/test_Optimizer.dir/build
+.PHONY : test_Optimizer/fast
+
+# Convenience name for target.
+test/CMakeFiles/test_DropoutLayer.dir/rule:
+	cd "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build" && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/CMakeFiles/test_DropoutLayer.dir/rule
+.PHONY : test/CMakeFiles/test_DropoutLayer.dir/rule
+
+# Convenience name for target.
+test_DropoutLayer: test/CMakeFiles/test_DropoutLayer.dir/rule
+.PHONY : test_DropoutLayer
+
+# fast build rule for target.
+test_DropoutLayer/fast:
+	cd "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build" && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_DropoutLayer.dir/build.make test/CMakeFiles/test_DropoutLayer.dir/build
+.PHONY : test_DropoutLayer/fast
+
+# Convenience name for target.
+test/CMakeFiles/test_Dimensions.dir/rule:
+	cd "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build" && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/CMakeFiles/test_Dimensions.dir/rule
+.PHONY : test/CMakeFiles/test_Dimensions.dir/rule
+
+# Convenience name for target.
+test_Dimensions: test/CMakeFiles/test_Dimensions.dir/rule
+.PHONY : test_Dimensions
+
+# fast build rule for target.
+test_Dimensions/fast:
+	cd "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build" && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_Dimensions.dir/build.make test/CMakeFiles/test_Dimensions.dir/build
+.PHONY : test_Dimensions/fast
+
+# Convenience name for target.
+test/CMakeFiles/test_CNN.dir/rule:
+	cd "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build" && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/CMakeFiles/test_CNN.dir/rule
+.PHONY : test/CMakeFiles/test_CNN.dir/rule
+
+# Convenience name for target.
+test_CNN: test/CMakeFiles/test_CNN.dir/rule
+.PHONY : test_CNN
+
+# fast build rule for target.
+test_CNN/fast:
+	cd "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build" && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_CNN.dir/build.make test/CMakeFiles/test_CNN.dir/build
+.PHONY : test_CNN/fast
+
+__/src/CNN.o: __/src/CNN.cpp.o
+.PHONY : __/src/CNN.o
+
+# target to build an object file
+__/src/CNN.cpp.o:
+	cd "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build" && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_CNN.dir/build.make test/CMakeFiles/test_CNN.dir/__/src/CNN.cpp.o
+.PHONY : __/src/CNN.cpp.o
+
+__/src/CNN.i: __/src/CNN.cpp.i
+.PHONY : __/src/CNN.i
+
+# target to preprocess a source file
+__/src/CNN.cpp.i:
+	cd "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build" && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_CNN.dir/build.make test/CMakeFiles/test_CNN.dir/__/src/CNN.cpp.i
+.PHONY : __/src/CNN.cpp.i
+
+__/src/CNN.s: __/src/CNN.cpp.s
+.PHONY : __/src/CNN.s
+
+# target to generate assembly for a file
+__/src/CNN.cpp.s:
+	cd "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build" && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_CNN.dir/build.make test/CMakeFiles/test_CNN.dir/__/src/CNN.cpp.s
+.PHONY : __/src/CNN.cpp.s
+
+__/src/ConvLayer.o: __/src/ConvLayer.cpp.o
+.PHONY : __/src/ConvLayer.o
+
+# target to build an object file
+__/src/ConvLayer.cpp.o:
+	cd "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build" && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_ConvLayer.dir/build.make test/CMakeFiles/test_ConvLayer.dir/__/src/ConvLayer.cpp.o
+	cd "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build" && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_CNN.dir/build.make test/CMakeFiles/test_CNN.dir/__/src/ConvLayer.cpp.o
+.PHONY : __/src/ConvLayer.cpp.o
+
+__/src/ConvLayer.i: __/src/ConvLayer.cpp.i
+.PHONY : __/src/ConvLayer.i
+
+# target to preprocess a source file
+__/src/ConvLayer.cpp.i:
+	cd "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build" && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_ConvLayer.dir/build.make test/CMakeFiles/test_ConvLayer.dir/__/src/ConvLayer.cpp.i
+	cd "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build" && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_CNN.dir/build.make test/CMakeFiles/test_CNN.dir/__/src/ConvLayer.cpp.i
+.PHONY : __/src/ConvLayer.cpp.i
+
+__/src/ConvLayer.s: __/src/ConvLayer.cpp.s
+.PHONY : __/src/ConvLayer.s
+
+# target to generate assembly for a file
+__/src/ConvLayer.cpp.s:
+	cd "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build" && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_ConvLayer.dir/build.make test/CMakeFiles/test_ConvLayer.dir/__/src/ConvLayer.cpp.s
+	cd "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build" && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_CNN.dir/build.make test/CMakeFiles/test_CNN.dir/__/src/ConvLayer.cpp.s
+.PHONY : __/src/ConvLayer.cpp.s
+
+__/src/ConvLayer3D.o: __/src/ConvLayer3D.cpp.o
+.PHONY : __/src/ConvLayer3D.o
+
+# target to build an object file
+__/src/ConvLayer3D.cpp.o:
+	cd "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build" && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_CNN.dir/build.make test/CMakeFiles/test_CNN.dir/__/src/ConvLayer3D.cpp.o
+.PHONY : __/src/ConvLayer3D.cpp.o
+
+__/src/ConvLayer3D.i: __/src/ConvLayer3D.cpp.i
+.PHONY : __/src/ConvLayer3D.i
+
+# target to preprocess a source file
+__/src/ConvLayer3D.cpp.i:
+	cd "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build" && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_CNN.dir/build.make test/CMakeFiles/test_CNN.dir/__/src/ConvLayer3D.cpp.i
+.PHONY : __/src/ConvLayer3D.cpp.i
+
+__/src/ConvLayer3D.s: __/src/ConvLayer3D.cpp.s
+.PHONY : __/src/ConvLayer3D.s
+
+# target to generate assembly for a file
+__/src/ConvLayer3D.cpp.s:
+	cd "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build" && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_CNN.dir/build.make test/CMakeFiles/test_CNN.dir/__/src/ConvLayer3D.cpp.s
+.PHONY : __/src/ConvLayer3D.cpp.s
+
+__/src/DenseLayer.o: __/src/DenseLayer.cpp.o
+.PHONY : __/src/DenseLayer.o
+
+# target to build an object file
+__/src/DenseLayer.cpp.o:
+	cd "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build" && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_DenseLayer.dir/build.make test/CMakeFiles/test_DenseLayer.dir/__/src/DenseLayer.cpp.o
+	cd "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build" && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_CNN.dir/build.make test/CMakeFiles/test_CNN.dir/__/src/DenseLayer.cpp.o
+.PHONY : __/src/DenseLayer.cpp.o
+
+__/src/DenseLayer.i: __/src/DenseLayer.cpp.i
+.PHONY : __/src/DenseLayer.i
+
+# target to preprocess a source file
+__/src/DenseLayer.cpp.i:
+	cd "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build" && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_DenseLayer.dir/build.make test/CMakeFiles/test_DenseLayer.dir/__/src/DenseLayer.cpp.i
+	cd "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build" && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_CNN.dir/build.make test/CMakeFiles/test_CNN.dir/__/src/DenseLayer.cpp.i
+.PHONY : __/src/DenseLayer.cpp.i
+
+__/src/DenseLayer.s: __/src/DenseLayer.cpp.s
+.PHONY : __/src/DenseLayer.s
+
+# target to generate assembly for a file
+__/src/DenseLayer.cpp.s:
+	cd "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build" && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_DenseLayer.dir/build.make test/CMakeFiles/test_DenseLayer.dir/__/src/DenseLayer.cpp.s
+	cd "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build" && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_CNN.dir/build.make test/CMakeFiles/test_CNN.dir/__/src/DenseLayer.cpp.s
+.PHONY : __/src/DenseLayer.cpp.s
+
+__/src/dimensions.o: __/src/dimensions.cpp.o
+.PHONY : __/src/dimensions.o
+
+# target to build an object file
+__/src/dimensions.cpp.o:
+	cd "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build" && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_Dimensions.dir/build.make test/CMakeFiles/test_Dimensions.dir/__/src/dimensions.cpp.o
+.PHONY : __/src/dimensions.cpp.o
+
+__/src/dimensions.i: __/src/dimensions.cpp.i
+.PHONY : __/src/dimensions.i
+
+# target to preprocess a source file
+__/src/dimensions.cpp.i:
+	cd "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build" && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_Dimensions.dir/build.make test/CMakeFiles/test_Dimensions.dir/__/src/dimensions.cpp.i
+.PHONY : __/src/dimensions.cpp.i
+
+__/src/dimensions.s: __/src/dimensions.cpp.s
+.PHONY : __/src/dimensions.s
+
+# target to generate assembly for a file
+__/src/dimensions.cpp.s:
+	cd "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build" && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_Dimensions.dir/build.make test/CMakeFiles/test_Dimensions.dir/__/src/dimensions.cpp.s
+.PHONY : __/src/dimensions.cpp.s
+
+test_ActivationLayer.o: test_ActivationLayer.cpp.o
+.PHONY : test_ActivationLayer.o
+
+# target to build an object file
+test_ActivationLayer.cpp.o:
+	cd "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build" && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_ActivationLayer.dir/build.make test/CMakeFiles/test_ActivationLayer.dir/test_ActivationLayer.cpp.o
+.PHONY : test_ActivationLayer.cpp.o
+
+test_ActivationLayer.i: test_ActivationLayer.cpp.i
+.PHONY : test_ActivationLayer.i
+
+# target to preprocess a source file
+test_ActivationLayer.cpp.i:
+	cd "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build" && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_ActivationLayer.dir/build.make test/CMakeFiles/test_ActivationLayer.dir/test_ActivationLayer.cpp.i
+.PHONY : test_ActivationLayer.cpp.i
+
+test_ActivationLayer.s: test_ActivationLayer.cpp.s
+.PHONY : test_ActivationLayer.s
+
+# target to generate assembly for a file
+test_ActivationLayer.cpp.s:
+	cd "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build" && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_ActivationLayer.dir/build.make test/CMakeFiles/test_ActivationLayer.dir/test_ActivationLayer.cpp.s
+.PHONY : test_ActivationLayer.cpp.s
+
+test_CNN.o: test_CNN.cpp.o
+.PHONY : test_CNN.o
+
+# target to build an object file
+test_CNN.cpp.o:
+	cd "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build" && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_CNN.dir/build.make test/CMakeFiles/test_CNN.dir/test_CNN.cpp.o
+.PHONY : test_CNN.cpp.o
+
+test_CNN.i: test_CNN.cpp.i
+.PHONY : test_CNN.i
+
+# target to preprocess a source file
+test_CNN.cpp.i:
+	cd "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build" && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_CNN.dir/build.make test/CMakeFiles/test_CNN.dir/test_CNN.cpp.i
+.PHONY : test_CNN.cpp.i
+
+test_CNN.s: test_CNN.cpp.s
+.PHONY : test_CNN.s
+
+# target to generate assembly for a file
+test_CNN.cpp.s:
+	cd "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build" && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_CNN.dir/build.make test/CMakeFiles/test_CNN.dir/test_CNN.cpp.s
+.PHONY : test_CNN.cpp.s
+
+test_ConvLayer.o: test_ConvLayer.cpp.o
+.PHONY : test_ConvLayer.o
+
+# target to build an object file
+test_ConvLayer.cpp.o:
+	cd "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build" && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_ConvLayer.dir/build.make test/CMakeFiles/test_ConvLayer.dir/test_ConvLayer.cpp.o
+.PHONY : test_ConvLayer.cpp.o
+
+test_ConvLayer.i: test_ConvLayer.cpp.i
+.PHONY : test_ConvLayer.i
+
+# target to preprocess a source file
+test_ConvLayer.cpp.i:
+	cd "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build" && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_ConvLayer.dir/build.make test/CMakeFiles/test_ConvLayer.dir/test_ConvLayer.cpp.i
+.PHONY : test_ConvLayer.cpp.i
+
+test_ConvLayer.s: test_ConvLayer.cpp.s
+.PHONY : test_ConvLayer.s
+
+# target to generate assembly for a file
+test_ConvLayer.cpp.s:
+	cd "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build" && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_ConvLayer.dir/build.make test/CMakeFiles/test_ConvLayer.dir/test_ConvLayer.cpp.s
+.PHONY : test_ConvLayer.cpp.s
+
+test_DenseLayer.o: test_DenseLayer.cpp.o
+.PHONY : test_DenseLayer.o
+
+# target to build an object file
+test_DenseLayer.cpp.o:
+	cd "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build" && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_DenseLayer.dir/build.make test/CMakeFiles/test_DenseLayer.dir/test_DenseLayer.cpp.o
+.PHONY : test_DenseLayer.cpp.o
+
+test_DenseLayer.i: test_DenseLayer.cpp.i
+.PHONY : test_DenseLayer.i
+
+# target to preprocess a source file
+test_DenseLayer.cpp.i:
+	cd "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build" && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_DenseLayer.dir/build.make test/CMakeFiles/test_DenseLayer.dir/test_DenseLayer.cpp.i
+.PHONY : test_DenseLayer.cpp.i
+
+test_DenseLayer.s: test_DenseLayer.cpp.s
+.PHONY : test_DenseLayer.s
+
+# target to generate assembly for a file
+test_DenseLayer.cpp.s:
+	cd "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build" && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_DenseLayer.dir/build.make test/CMakeFiles/test_DenseLayer.dir/test_DenseLayer.cpp.s
+.PHONY : test_DenseLayer.cpp.s
+
+test_Dimensions.o: test_Dimensions.cpp.o
+.PHONY : test_Dimensions.o
+
+# target to build an object file
+test_Dimensions.cpp.o:
+	cd "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build" && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_Dimensions.dir/build.make test/CMakeFiles/test_Dimensions.dir/test_Dimensions.cpp.o
+.PHONY : test_Dimensions.cpp.o
+
+test_Dimensions.i: test_Dimensions.cpp.i
+.PHONY : test_Dimensions.i
+
+# target to preprocess a source file
+test_Dimensions.cpp.i:
+	cd "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build" && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_Dimensions.dir/build.make test/CMakeFiles/test_Dimensions.dir/test_Dimensions.cpp.i
+.PHONY : test_Dimensions.cpp.i
+
+test_Dimensions.s: test_Dimensions.cpp.s
+.PHONY : test_Dimensions.s
+
+# target to generate assembly for a file
+test_Dimensions.cpp.s:
+	cd "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build" && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_Dimensions.dir/build.make test/CMakeFiles/test_Dimensions.dir/test_Dimensions.cpp.s
+.PHONY : test_Dimensions.cpp.s
+
+test_DropoutLayer.o: test_DropoutLayer.cpp.o
+.PHONY : test_DropoutLayer.o
+
+# target to build an object file
+test_DropoutLayer.cpp.o:
+	cd "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build" && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_DropoutLayer.dir/build.make test/CMakeFiles/test_DropoutLayer.dir/test_DropoutLayer.cpp.o
+.PHONY : test_DropoutLayer.cpp.o
+
+test_DropoutLayer.i: test_DropoutLayer.cpp.i
+.PHONY : test_DropoutLayer.i
+
+# target to preprocess a source file
+test_DropoutLayer.cpp.i:
+	cd "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build" && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_DropoutLayer.dir/build.make test/CMakeFiles/test_DropoutLayer.dir/test_DropoutLayer.cpp.i
+.PHONY : test_DropoutLayer.cpp.i
+
+test_DropoutLayer.s: test_DropoutLayer.cpp.s
+.PHONY : test_DropoutLayer.s
+
+# target to generate assembly for a file
+test_DropoutLayer.cpp.s:
+	cd "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build" && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_DropoutLayer.dir/build.make test/CMakeFiles/test_DropoutLayer.dir/test_DropoutLayer.cpp.s
+.PHONY : test_DropoutLayer.cpp.s
+
+test_LossLayer.o: test_LossLayer.cpp.o
+.PHONY : test_LossLayer.o
+
+# target to build an object file
+test_LossLayer.cpp.o:
+	cd "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build" && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_LossLayer.dir/build.make test/CMakeFiles/test_LossLayer.dir/test_LossLayer.cpp.o
+.PHONY : test_LossLayer.cpp.o
+
+test_LossLayer.i: test_LossLayer.cpp.i
+.PHONY : test_LossLayer.i
+
+# target to preprocess a source file
+test_LossLayer.cpp.i:
+	cd "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build" && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_LossLayer.dir/build.make test/CMakeFiles/test_LossLayer.dir/test_LossLayer.cpp.i
+.PHONY : test_LossLayer.cpp.i
+
+test_LossLayer.s: test_LossLayer.cpp.s
+.PHONY : test_LossLayer.s
+
+# target to generate assembly for a file
+test_LossLayer.cpp.s:
+	cd "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build" && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_LossLayer.dir/build.make test/CMakeFiles/test_LossLayer.dir/test_LossLayer.cpp.s
+.PHONY : test_LossLayer.cpp.s
+
+test_Optimizer.o: test_Optimizer.cpp.o
+.PHONY : test_Optimizer.o
+
+# target to build an object file
+test_Optimizer.cpp.o:
+	cd "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build" && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_Optimizer.dir/build.make test/CMakeFiles/test_Optimizer.dir/test_Optimizer.cpp.o
+.PHONY : test_Optimizer.cpp.o
+
+test_Optimizer.i: test_Optimizer.cpp.i
+.PHONY : test_Optimizer.i
+
+# target to preprocess a source file
+test_Optimizer.cpp.i:
+	cd "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build" && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_Optimizer.dir/build.make test/CMakeFiles/test_Optimizer.dir/test_Optimizer.cpp.i
+.PHONY : test_Optimizer.cpp.i
+
+test_Optimizer.s: test_Optimizer.cpp.s
+.PHONY : test_Optimizer.s
+
+# target to generate assembly for a file
+test_Optimizer.cpp.s:
+	cd "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build" && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_Optimizer.dir/build.make test/CMakeFiles/test_Optimizer.dir/test_Optimizer.cpp.s
+.PHONY : test_Optimizer.cpp.s
+
+test_PoolLayer.o: test_PoolLayer.cpp.o
+.PHONY : test_PoolLayer.o
+
+# target to build an object file
+test_PoolLayer.cpp.o:
+	cd "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build" && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_PoolLayer.dir/build.make test/CMakeFiles/test_PoolLayer.dir/test_PoolLayer.cpp.o
+.PHONY : test_PoolLayer.cpp.o
+
+test_PoolLayer.i: test_PoolLayer.cpp.i
+.PHONY : test_PoolLayer.i
+
+# target to preprocess a source file
+test_PoolLayer.cpp.i:
+	cd "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build" && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_PoolLayer.dir/build.make test/CMakeFiles/test_PoolLayer.dir/test_PoolLayer.cpp.i
+.PHONY : test_PoolLayer.cpp.i
+
+test_PoolLayer.s: test_PoolLayer.cpp.s
+.PHONY : test_PoolLayer.s
+
+# target to generate assembly for a file
+test_PoolLayer.cpp.s:
+	cd "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build" && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_PoolLayer.dir/build.make test/CMakeFiles/test_PoolLayer.dir/test_PoolLayer.cpp.s
+.PHONY : test_PoolLayer.cpp.s
+
+test_Tensor.o: test_Tensor.cpp.o
+.PHONY : test_Tensor.o
+
+# target to build an object file
+test_Tensor.cpp.o:
+	cd "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build" && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_Tensor.dir/build.make test/CMakeFiles/test_Tensor.dir/test_Tensor.cpp.o
+.PHONY : test_Tensor.cpp.o
+
+test_Tensor.i: test_Tensor.cpp.i
+.PHONY : test_Tensor.i
+
+# target to preprocess a source file
+test_Tensor.cpp.i:
+	cd "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build" && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_Tensor.dir/build.make test/CMakeFiles/test_Tensor.dir/test_Tensor.cpp.i
+.PHONY : test_Tensor.cpp.i
+
+test_Tensor.s: test_Tensor.cpp.s
+.PHONY : test_Tensor.s
+
+# target to generate assembly for a file
+test_Tensor.cpp.s:
+	cd "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build" && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_Tensor.dir/build.make test/CMakeFiles/test_Tensor.dir/test_Tensor.cpp.s
+.PHONY : test_Tensor.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -124,6 +630,61 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
+	@echo "... test_ActivationLayer"
+	@echo "... test_CNN"
+	@echo "... test_ConvLayer"
+	@echo "... test_DenseLayer"
+	@echo "... test_Dimensions"
+	@echo "... test_DropoutLayer"
+	@echo "... test_LossLayer"
+	@echo "... test_Optimizer"
+	@echo "... test_PoolLayer"
+	@echo "... test_Tensor"
+	@echo "... __/src/CNN.o"
+	@echo "... __/src/CNN.i"
+	@echo "... __/src/CNN.s"
+	@echo "... __/src/ConvLayer.o"
+	@echo "... __/src/ConvLayer.i"
+	@echo "... __/src/ConvLayer.s"
+	@echo "... __/src/ConvLayer3D.o"
+	@echo "... __/src/ConvLayer3D.i"
+	@echo "... __/src/ConvLayer3D.s"
+	@echo "... __/src/DenseLayer.o"
+	@echo "... __/src/DenseLayer.i"
+	@echo "... __/src/DenseLayer.s"
+	@echo "... __/src/dimensions.o"
+	@echo "... __/src/dimensions.i"
+	@echo "... __/src/dimensions.s"
+	@echo "... test_ActivationLayer.o"
+	@echo "... test_ActivationLayer.i"
+	@echo "... test_ActivationLayer.s"
+	@echo "... test_CNN.o"
+	@echo "... test_CNN.i"
+	@echo "... test_CNN.s"
+	@echo "... test_ConvLayer.o"
+	@echo "... test_ConvLayer.i"
+	@echo "... test_ConvLayer.s"
+	@echo "... test_DenseLayer.o"
+	@echo "... test_DenseLayer.i"
+	@echo "... test_DenseLayer.s"
+	@echo "... test_Dimensions.o"
+	@echo "... test_Dimensions.i"
+	@echo "... test_Dimensions.s"
+	@echo "... test_DropoutLayer.o"
+	@echo "... test_DropoutLayer.i"
+	@echo "... test_DropoutLayer.s"
+	@echo "... test_LossLayer.o"
+	@echo "... test_LossLayer.i"
+	@echo "... test_LossLayer.s"
+	@echo "... test_Optimizer.o"
+	@echo "... test_Optimizer.i"
+	@echo "... test_Optimizer.s"
+	@echo "... test_PoolLayer.o"
+	@echo "... test_PoolLayer.i"
+	@echo "... test_PoolLayer.s"
+	@echo "... test_Tensor.o"
+	@echo "... test_Tensor.i"
+	@echo "... test_Tensor.s"
 .PHONY : help
 
 

@@ -1,7 +1,7 @@
 add_library(cnn_lib
     ConvLayer.cpp
+    ConvLayer3D.cpp
     DenseLayer.cpp
-    MaxPoolLayer.cpp
     CNN.cpp
 )
 
@@ -23,15 +23,6 @@ target_link_libraries(CNN
     cnn_lib
 )
 
-# ======================================
-
-add_executable(EVAL
-    eval.cpp
-)
-
-target_link_libraries(EVAL
-    cnn_lib
-)
 
 # ======================================
 

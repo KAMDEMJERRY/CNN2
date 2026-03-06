@@ -1,85 +1,92 @@
-# pragma once
-# include <vector>
-# include <memory>
-# include <iostream>
-# include <chrono>
-# include <iomanip>
-# include <limits>
+#pragma once
+#include <vector>
+#include <memory>
+#include <iostream>
+#include <chrono>
+#include <iomanip>
+#include <limits>
+#include <stdexcept>
 
-// Forward declarations pour éviter les inclusions circulaires
 class Layer;
-class DenseLayer;
-class ConvLayer;
 class LossLayer;
 class SoftmaxCrossEntropyLayer;
 class Optimizer;
-class DataLoader;
+class IDataLoader;   // ← interface commune DataLoader / DataLoader3D
 class Tensor;
 
+// =============================================================================
+// Métriques d'une epoch
+// =============================================================================
+struct EpochMetrics {
+    float loss     = 0.0f;
+    float accuracy = 0.0f;
+    long  ms       = 0;
+};
 
+// =============================================================================
+// CNN
+// =============================================================================
 class CNN {
-private:
-    std::vector<std::shared_ptr<Layer>> layers;
-    std::shared_ptr<LossLayer> loss_layer;
-    std::shared_ptr<Optimizer> optimizer;
-
 public:
     CNN() = default;
 
-    Layer* getLayer(int idx);
+    // --- Construction ---
+    void addLayer(std::shared_ptr<Layer> layer);
+    void setLossLayer(std::shared_ptr<LossLayer> loss);
+    void setOptimizer(std::shared_ptr<Optimizer> opt);
 
-    void addLayer(const std::shared_ptr<Layer>& layer);
+    // --- Accesseurs ---
+    Layer*                                     getLayer(int idx) const;
+    std::shared_ptr<LossLayer>                 getLossLayer()    const;
+    const std::vector<std::shared_ptr<Layer>>& getLayers()       const;
 
-    void setLossLayer(const std::shared_ptr<LossLayer>& loss);
-
-    std::shared_ptr<LossLayer> getLossLayer();
-
-    std::vector<std::shared_ptr<Layer>> getLayers();
-
-    void setOptimizer(const std::shared_ptr<Optimizer>& opt);
-
+    // --- Passes ---
     Tensor forward(const Tensor& input);
+    Tensor backward(const Tensor& grad_output);
+    void   updateWeights();
 
-    Tensor backward(const Tensor& gradOutput);
+    // --- Entraînement (DataLoader ou DataLoader3D via IDataLoader) ---
+    void fit(IDataLoader& dataloader,
+             int epochs     = 10,
+             int batch_size = 32);
 
-    // Entraînement simple
-    void fit(DataLoader& dataloader, int epochs = 10, int batch_size = 32);
+    void fit(const Tensor& inputs,
+             const Tensor& targets,
+             int epochs     = 10,
+             int batch_size = 32);
 
-    void fit(const Tensor& inputs, const Tensor& targets,
-        int epochs = 10, int batch_size = 32);
+    void fitWithValidation(IDataLoader& train_loader,
+                           IDataLoader& val_loader,
+                           int epochs,
+                           int batch_size);
 
-    // Entraînement avec validation
-    void fitWithValidation(DataLoader& train_loader, DataLoader& val_loader,
-        int epochs, int batch_size);
-
-    // Fonction pour evaluer le modele
-    float evaluate(const Tensor& inputs, const Tensor& targets);
-
+    // --- Évaluation / Inférence ---
+    float  evaluate(const Tensor& inputs, const Tensor& targets);
     Tensor predict(const Tensor& inputs);
 
-    // Benchmarking
+    // --- Benchmarking ---
     double benchmarkForward(const Tensor& input, int iterations = 100);
 
-    void updateWeights();
-
 private:
+    std::vector<std::shared_ptr<Layer>> layers_;
+    std::shared_ptr<LossLayer>          loss_layer_;
+    std::shared_ptr<Optimizer>          optimizer_;
 
-    // Pour gerer SoftmaxCrossEntropyLayer integre
-    SoftmaxCrossEntropyLayer* findSoftmaxCELayer();
+    SoftmaxCrossEntropyLayer* findSoftmaxCELayer() const;
 
-    void fitWithSeparateLoss(DataLoader& dataloader,
-        int epochs, int batch_size);
+    // Boucle d'epoch commune aux deux types de DataLoader
+    EpochMetrics runEpoch(IDataLoader& loader, bool train);
 
-    void fitWithIntegratedLoss(DataLoader& dataloader,
-        int epochs, int batch_size,
-        SoftmaxCrossEntropyLayer* softmax_ce_layer);
+    // Boucle d'epoch sur Tensor
+    EpochMetrics runEpoch(const Tensor& inputs, const Tensor& targets,
+                          int batch_size, bool train);
 
-    void fitWithSeparateLoss(const Tensor& inputs, const Tensor& targets,
-        int epochs, int batch_size);
+    static Tensor extractBatch(const Tensor& data, int batch_idx, int batch_size);
 
-    void fitWithIntegratedLoss(const Tensor& inputs, const Tensor& targets,
-        int epochs, int batch_size,
-        SoftmaxCrossEntropyLayer* softmax_ce_layer);
+    static void printEpochStats(int epoch, int total_epochs,
+                                const EpochMetrics& train,
+                                const EpochMetrics* val = nullptr);
 
-    Tensor extractBatch(const Tensor& data, int batch_idx, int batch_size);
+    void requireOptimizer() const;
+    void requireLoss()      const;
 };

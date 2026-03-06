@@ -145,20 +145,6 @@ CNN/fast:
 .PHONY : CNN/fast
 
 # Convenience name for target.
-src/CMakeFiles/EVAL.dir/rule:
-	cd "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build" && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/CMakeFiles/EVAL.dir/rule
-.PHONY : src/CMakeFiles/EVAL.dir/rule
-
-# Convenience name for target.
-EVAL: src/CMakeFiles/EVAL.dir/rule
-.PHONY : EVAL
-
-# fast build rule for target.
-EVAL/fast:
-	cd "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build" && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/EVAL.dir/build.make src/CMakeFiles/EVAL.dir/build
-.PHONY : EVAL/fast
-
-# Convenience name for target.
 src/CMakeFiles/DIMS.dir/rule:
 	cd "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build" && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/CMakeFiles/DIMS.dir/rule
 .PHONY : src/CMakeFiles/DIMS.dir/rule
@@ -234,6 +220,30 @@ ConvLayer.cpp.s:
 	cd "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build" && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/cnn_lib.dir/build.make src/CMakeFiles/cnn_lib.dir/ConvLayer.cpp.s
 .PHONY : ConvLayer.cpp.s
 
+ConvLayer3D.o: ConvLayer3D.cpp.o
+.PHONY : ConvLayer3D.o
+
+# target to build an object file
+ConvLayer3D.cpp.o:
+	cd "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build" && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/cnn_lib.dir/build.make src/CMakeFiles/cnn_lib.dir/ConvLayer3D.cpp.o
+.PHONY : ConvLayer3D.cpp.o
+
+ConvLayer3D.i: ConvLayer3D.cpp.i
+.PHONY : ConvLayer3D.i
+
+# target to preprocess a source file
+ConvLayer3D.cpp.i:
+	cd "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build" && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/cnn_lib.dir/build.make src/CMakeFiles/cnn_lib.dir/ConvLayer3D.cpp.i
+.PHONY : ConvLayer3D.cpp.i
+
+ConvLayer3D.s: ConvLayer3D.cpp.s
+.PHONY : ConvLayer3D.s
+
+# target to generate assembly for a file
+ConvLayer3D.cpp.s:
+	cd "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build" && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/cnn_lib.dir/build.make src/CMakeFiles/cnn_lib.dir/ConvLayer3D.cpp.s
+.PHONY : ConvLayer3D.cpp.s
+
 DenseLayer.o: DenseLayer.cpp.o
 .PHONY : DenseLayer.o
 
@@ -258,30 +268,6 @@ DenseLayer.cpp.s:
 	cd "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build" && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/cnn_lib.dir/build.make src/CMakeFiles/cnn_lib.dir/DenseLayer.cpp.s
 .PHONY : DenseLayer.cpp.s
 
-MaxPoolLayer.o: MaxPoolLayer.cpp.o
-.PHONY : MaxPoolLayer.o
-
-# target to build an object file
-MaxPoolLayer.cpp.o:
-	cd "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build" && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/cnn_lib.dir/build.make src/CMakeFiles/cnn_lib.dir/MaxPoolLayer.cpp.o
-.PHONY : MaxPoolLayer.cpp.o
-
-MaxPoolLayer.i: MaxPoolLayer.cpp.i
-.PHONY : MaxPoolLayer.i
-
-# target to preprocess a source file
-MaxPoolLayer.cpp.i:
-	cd "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build" && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/cnn_lib.dir/build.make src/CMakeFiles/cnn_lib.dir/MaxPoolLayer.cpp.i
-.PHONY : MaxPoolLayer.cpp.i
-
-MaxPoolLayer.s: MaxPoolLayer.cpp.s
-.PHONY : MaxPoolLayer.s
-
-# target to generate assembly for a file
-MaxPoolLayer.cpp.s:
-	cd "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build" && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/cnn_lib.dir/build.make src/CMakeFiles/cnn_lib.dir/MaxPoolLayer.cpp.s
-.PHONY : MaxPoolLayer.cpp.s
-
 dimensions.o: dimensions.cpp.o
 .PHONY : dimensions.o
 
@@ -305,30 +291,6 @@ dimensions.s: dimensions.cpp.s
 dimensions.cpp.s:
 	cd "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build" && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/DIMS.dir/build.make src/CMakeFiles/DIMS.dir/dimensions.cpp.s
 .PHONY : dimensions.cpp.s
-
-eval.o: eval.cpp.o
-.PHONY : eval.o
-
-# target to build an object file
-eval.cpp.o:
-	cd "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build" && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/EVAL.dir/build.make src/CMakeFiles/EVAL.dir/eval.cpp.o
-.PHONY : eval.cpp.o
-
-eval.i: eval.cpp.i
-.PHONY : eval.i
-
-# target to preprocess a source file
-eval.cpp.i:
-	cd "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build" && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/EVAL.dir/build.make src/CMakeFiles/EVAL.dir/eval.cpp.i
-.PHONY : eval.cpp.i
-
-eval.s: eval.cpp.s
-.PHONY : eval.s
-
-# target to generate assembly for a file
-eval.cpp.s:
-	cd "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build" && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/EVAL.dir/build.make src/CMakeFiles/EVAL.dir/eval.cpp.s
-.PHONY : eval.cpp.s
 
 main.o: main.cpp.o
 .PHONY : main.o
@@ -388,7 +350,6 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... CNN"
 	@echo "... DIMS"
-	@echo "... EVAL"
 	@echo "... PLAY"
 	@echo "... cnn_lib"
 	@echo "... CNN.o"
@@ -397,18 +358,15 @@ help:
 	@echo "... ConvLayer.o"
 	@echo "... ConvLayer.i"
 	@echo "... ConvLayer.s"
+	@echo "... ConvLayer3D.o"
+	@echo "... ConvLayer3D.i"
+	@echo "... ConvLayer3D.s"
 	@echo "... DenseLayer.o"
 	@echo "... DenseLayer.i"
 	@echo "... DenseLayer.s"
-	@echo "... MaxPoolLayer.o"
-	@echo "... MaxPoolLayer.i"
-	@echo "... MaxPoolLayer.s"
 	@echo "... dimensions.o"
 	@echo "... dimensions.i"
 	@echo "... dimensions.s"
-	@echo "... eval.o"
-	@echo "... eval.i"
-	@echo "... eval.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

@@ -1,253 +1,278 @@
-// Optimizer.hpp
-# pragma once
-# include "Tensor.hpp"
-# include <Eigen/Dense>
-# include <memory>
+#pragma once
+#include "Tensor.hpp"
+#include <Eigen/Dense>
+#include <memory>
+#include <unordered_map>
+#include <cmath>
+#include <stdexcept>
 
+// =============================================================================
+// Utilitaires : gradient clipping
+// =============================================================================
+namespace GradientUtils {
+
+inline void clipByNorm(Tensor& gradients, float max_norm) {
+    if (max_norm <= 0.0f) return;
+
+    float norm = 0.0f;
+    for (int i = 0; i < gradients.size(); ++i) {
+        norm += gradients[i] * gradients[i];
+    }
+    norm = std::sqrt(norm);
+
+    if (norm > max_norm) {
+        const float scale = max_norm / norm;
+        for (int i = 0; i < gradients.size(); ++i) {
+            gradients[i] *= scale;
+        }
+    }
+}
+
+inline void clipByNorm(Eigen::MatrixXf& gradients, float max_norm) {
+    if (max_norm <= 0.0f) return;
+    const float norm = gradients.norm();
+    if (norm > max_norm) gradients *= (max_norm / norm);
+}
+
+inline void clipByNorm(Eigen::VectorXf& gradients, float max_norm) {
+    if (max_norm <= 0.0f) return;
+    const float norm = gradients.norm();
+    if (norm > max_norm) gradients *= (max_norm / norm);
+}
+
+} // namespace GradientUtils
+
+
+// =============================================================================
+// Classe de base abstraite
+// =============================================================================
 class Optimizer {
 protected:
     float learning_rate;
-    float clip_norm = 0.0f;  // 0 = pas de clipping
-
+    float clip_norm = 0.0f; // 0 = désactivé
 
 public:
-    Optimizer(float lr = 0.01f) : learning_rate(lr) {}
+    explicit Optimizer(float lr = 0.01f) : learning_rate(lr) {}
     virtual ~Optimizer() = default;
 
-    // Pour les couches convolutives
+    // Couches convolutives (Tensor)
     virtual void updateWeights(Tensor& weights, const Tensor& gradients) = 0;
+
+    // Couches denses (Eigen)
+    virtual void updateWeights(Eigen::MatrixXf& weights, const Eigen::MatrixXf& gradients) = 0;
     virtual void updateBias(Eigen::VectorXf& bias, const Eigen::VectorXf& gradients) = 0;
 
-    // Pour les couches denses
-    virtual void updateWeights(Eigen::MatrixXf& weights, const Eigen::MatrixXf& gradients) = 0;
+    void  setLearningRate(float lr) { learning_rate = lr; }
+    float getLearningRate() const   { return learning_rate; }
+    void  setGradientClipping(float norm) { clip_norm = norm; }
 
-    void setLearningRate(float lr) { learning_rate = lr; }
-    float getLearningRate() const { return learning_rate; }
-
-
-    void setGradientClipping(float norm) { clip_norm = norm; }
-
-    void clipGradients(Tensor& gradients) {
-        if (clip_norm <= 0.0f) return;
-
-        // Calculer la norme L2
-        float norm = 0.0f;
-        for (int i = 0; i < gradients.size(); ++i) {
-            norm += gradients[i] * gradients[i];
-        }
-        norm = std::sqrt(norm);
-
-        // Si la norme dépasse le seuil, on scale
-        if (norm > clip_norm) {
-            float scale = clip_norm / norm;
-            for (int i = 0; i < gradients.size(); ++i) {
-                gradients[i] *= scale;
-            }
-        }
-    }
+protected:
+    template<typename T>
+    void clip(T& g) const { GradientUtils::clipByNorm(g, clip_norm); }
 };
 
+
+// =============================================================================
+// SGD avec momentum
+// =============================================================================
 class SGD : public Optimizer {
-private:
-    float momentum;
-    Tensor velocity_w_tensor;
-    Eigen::MatrixXf velocity_w_matrix;
-    Eigen::VectorXf velocity_b;
-    
 public:
-    SGD(float lr = 0.01f, float momentum = 0.9f)
-        : Optimizer(lr), momentum(momentum) {}
-    
-    // Pour Tensor (ConvLayer)
-    void updateWeights(Tensor& weights, const Tensor& gradients) override {
-        if (velocity_w_tensor.size() == 0) {
-            velocity_w_tensor = Tensor(weights.shape());
-            velocity_w_tensor.setZero();
-        }
-        
-        // Vérifier les dimensions
-        if (velocity_w_tensor.shape() != weights.shape()) {
-            velocity_w_tensor = Tensor(weights.shape());
-            velocity_w_tensor.setZero();
-        }
-        
-        #pragma omp parallel for
-        for (int i = 0; i < weights.size(); ++i) {
-            velocity_w_tensor[i] = momentum * velocity_w_tensor[i] - learning_rate * gradients[i];
-            weights[i] += velocity_w_tensor[i];
-        }
-    }
-    
-    // Pour Eigen::MatrixXf (DenseLayer) - VERSION CORRIGÉE
-    void updateWeights(Eigen::MatrixXf& weights, const Eigen::MatrixXf& gradients) override {
-        // ✅ Vérification robuste des dimensions
-        if (weights.rows() != gradients.rows() || weights.cols() != gradients.cols()) {
-            // Essayer de transposer
-            if (weights.rows() == gradients.cols() && weights.cols() == gradients.rows()) {
-                std::cout << "SGD: Transposing gradients from " 
-                         << gradients.rows() << "x" << gradients.cols() 
-                         << " to " << gradients.cols() << "x" << gradients.rows() << std::endl;
-                updateWeights(weights, gradients.transpose());
-                return;
-            }
-            else {
-                std::cerr << "❌ SGD: Dimension mismatch!" << std::endl;
-                std::cerr << "  weights: " << weights.rows() << "x" << weights.cols() << std::endl;
-                std::cerr << "  gradients: " << gradients.rows() << "x" << gradients.cols() << std::endl;
-                throw std::runtime_error("SGD: Cannot align weights and gradients dimensions");
-            }
-        }
-        
-        // ✅ Initialisation avec les bonnes dimensions
-        if (velocity_w_matrix.rows() != weights.rows() || 
-            velocity_w_matrix.cols() != weights.cols()) {
-            velocity_w_matrix = Eigen::MatrixXf::Zero(weights.rows(), weights.cols());
-        }
-        
-        // ✅ Mise à jour
-        velocity_w_matrix = momentum * velocity_w_matrix - learning_rate * gradients;
-        weights += velocity_w_matrix;
-    }
-    
-    void updateBias(Eigen::VectorXf& bias, const Eigen::VectorXf& gradients) override {
-        // ✅ Vérification des dimensions
-        if (bias.size() != gradients.size()) {
-            std::cerr << "SGD: Bias dimension mismatch!" << std::endl;
-            std::cerr << "  bias: " << bias.size() << std::endl;
-            std::cerr << "  gradients: " << gradients.size() << std::endl;
-            throw std::runtime_error("SGD: Bias size mismatch");
-        }
-        
-        if (velocity_b.size() != bias.size()) {
-            velocity_b = Eigen::VectorXf::Zero(bias.size());
-        }
-        
-        velocity_b = momentum * velocity_b - learning_rate * gradients;
-        bias += velocity_b;
-    }
-};
-class Adam : public Optimizer {
-private:
-    float beta1 = 0.9f;
-    float beta2 = 0.999f;
-    float epsilon = 1e-8f;
-
-    // Structure pour stocker l'état d'Adam pour chaque paramètre
-    struct AdamState {
-        Tensor m_tensor;
-        Tensor v_tensor;
-        Eigen::MatrixXf m_matrix;
-        Eigen::MatrixXf v_matrix;
-        Eigen::VectorXf m_b;
-        Eigen::VectorXf v_b;
-        int t = 0;  // Compteur INDIVIDUEL pour chaque paramètre
-    };
-
-    // Map pour associer un état à chaque pointeur de poids
-    std::unordered_map<void*, AdamState> states;
-
-public:
-    Adam(float lr = 0.001f) : Optimizer(lr) {}
+    explicit SGD(float lr = 0.01f, float momentum = 0.9f)
+        : Optimizer(lr), momentum_(momentum) {}
 
     void updateWeights(Tensor& weights, const Tensor& gradients) override {
-        Tensor grads = gradients;
-        clipGradients(grads);
-        // Obtenir ou créer l'état pour ces poids
-        AdamState& state = states[&weights];
-        state.t++;
-
-        if (state.m_tensor.size() == 0) {
-            state.m_tensor = Tensor(weights.shape());
-            state.v_tensor = Tensor(weights.shape());
-            state.m_tensor.setZero();
-            state.v_tensor.setZero();
-        }
-
-        // Vérifier les tailles
-        if (state.m_tensor.size() != weights.size()) {
-            state.m_tensor = Tensor(weights.shape());
-            state.v_tensor = Tensor(weights.shape());
-            state.m_tensor.setZero();
-            state.v_tensor.setZero();
-        }
+        Tensor g = gradients;
+        clip(g);
+        ensureShape(vel_tensor_, weights);
 
 #pragma omp parallel for
         for (int i = 0; i < weights.size(); ++i) {
-            float g = gradients[i];
-            state.m_tensor[i] = beta1 * state.m_tensor[i] + (1.0f - beta1) * g;
-            state.v_tensor[i] = beta2 * state.v_tensor[i] + (1.0f - beta2) * g * g;
-
-            // Bias correction avec le t INDIVIDUEL
-            float m_hat = state.m_tensor[i] / (1.0f - std::pow(beta1, state.t));
-            float v_hat = state.v_tensor[i] / (1.0f - std::pow(beta2, state.t));
-
-            weights[i] -= learning_rate * m_hat / (std::sqrt(v_hat) + epsilon);
+            vel_tensor_[i] = momentum_ * vel_tensor_[i] - learning_rate * g[i];
+            weights[i]    += vel_tensor_[i];
         }
     }
 
     void updateWeights(Eigen::MatrixXf& weights, const Eigen::MatrixXf& gradients) override {
-        AdamState& state = states[&weights];
-        state.t++;
+        Eigen::MatrixXf g = resolveShape(weights, gradients);
+        clip(g);
+        ensureShape(vel_matrix_, weights);
 
-        if (state.m_matrix.size() == 0) {
-            state.m_matrix = Eigen::MatrixXf::Zero(weights.rows(), weights.cols());
-            state.v_matrix = Eigen::MatrixXf::Zero(weights.rows(), weights.cols());
-        }
-
-        // Vérifier les tailles
-        if (state.m_matrix.rows() != weights.rows() || state.m_matrix.cols() != weights.cols()) {
-            state.m_matrix = Eigen::MatrixXf::Zero(weights.rows(), weights.cols());
-            state.v_matrix = Eigen::MatrixXf::Zero(weights.rows(), weights.cols());
-        }
-
-        state.m_matrix = beta1 * state.m_matrix + (1.0f - beta1) * gradients;
-        state.v_matrix = beta2 * state.v_matrix + (1.0f - beta2) * gradients.array().square().matrix();
-
-        Eigen::ArrayXXf m_hat = state.m_matrix.array() / (1.0f - std::pow(beta1, state.t));
-        Eigen::ArrayXXf v_hat = state.v_matrix.array() / (1.0f - std::pow(beta2, state.t));
-
-        weights.array() -= learning_rate * m_hat / (v_hat.sqrt() + epsilon);
+        vel_matrix_  = momentum_ * vel_matrix_ - learning_rate * g;
+        weights     += vel_matrix_;
     }
 
     void updateBias(Eigen::VectorXf& bias, const Eigen::VectorXf& gradients) override {
-        AdamState& state = states[&bias];
-        state.t++;
-
-        if (state.m_b.size() == 0) {
-            state.m_b = Eigen::VectorXf::Zero(bias.size());
-            state.v_b = Eigen::VectorXf::Zero(bias.size());
+        if (bias.size() != gradients.size()) {
+            throw std::runtime_error("SGD::updateBias: taille biais/gradient incompatible ("
+                + std::to_string(bias.size()) + " vs " + std::to_string(gradients.size()) + ")");
         }
+        Eigen::VectorXf g = gradients;
+        clip(g);
+        ensureShape(vel_bias_, bias);
 
-        // Vérifier les tailles
-        if (state.m_b.size() != bias.size()) {
-            state.m_b = Eigen::VectorXf::Zero(bias.size());
-            state.v_b = Eigen::VectorXf::Zero(bias.size());
-        }
-
-        state.m_b = beta1 * state.m_b + (1.0f - beta1) * gradients;
-        state.v_b = beta2 * state.v_b + (1.0f - beta2) * gradients.array().square().matrix();
-
-        Eigen::ArrayXf m_hat = state.m_b.array() / (1.0f - std::pow(beta1, state.t));
-        Eigen::ArrayXf v_hat = state.v_b.array() / (1.0f - std::pow(beta2, state.t));
-
-        bias.array() -= learning_rate * m_hat / (v_hat.sqrt() + epsilon);
+        vel_bias_  = momentum_ * vel_bias_ - learning_rate * g;
+        bias      += vel_bias_;
     }
-};
 
-
-class StepDecay {
 private:
-    float initial_lr;
-    float drop_rate;
-    int epochs_drop;
+    float            momentum_;
+    Tensor           vel_tensor_;
+    Eigen::MatrixXf  vel_matrix_;
+    Eigen::VectorXf  vel_bias_;
 
-public:
-    StepDecay(float init_lr = 0.001f, float drop = 0.5f, int step = 5)
-        : initial_lr(init_lr), drop_rate(drop), epochs_drop(step) {
+    // Réinitialise la vélocité si la forme a changé
+    static void ensureShape(Tensor& vel, const Tensor& ref) {
+        if (vel.size() == 0 || vel.shape() != ref.shape()) {
+            vel = Tensor(ref.shape());
+            vel.setZero();
+        }
+    }
+    static void ensureShape(Eigen::MatrixXf& vel, const Eigen::MatrixXf& ref) {
+        if (vel.rows() != ref.rows() || vel.cols() != ref.cols()) {
+            vel = Eigen::MatrixXf::Zero(ref.rows(), ref.cols());
+        }
+    }
+    static void ensureShape(Eigen::VectorXf& vel, const Eigen::VectorXf& ref) {
+        if (vel.size() != ref.size()) {
+            vel = Eigen::VectorXf::Zero(ref.size());
+        }
     }
 
-    float getLR(int epoch) {
-        return initial_lr * std::pow(drop_rate, std::floor(epoch / epochs_drop));
+    // Résout les incompatibilités de forme (transpose si possible)
+    static Eigen::MatrixXf resolveShape(const Eigen::MatrixXf& weights,
+                                        const Eigen::MatrixXf& gradients) {
+        if (weights.rows() == gradients.rows() && weights.cols() == gradients.cols()) {
+            return gradients;
+        }
+        if (weights.rows() == gradients.cols() && weights.cols() == gradients.rows()) {
+            return gradients.transpose();
+        }
+        throw std::runtime_error("SGD::updateWeights: formes incompatibles ("
+            + std::to_string(weights.rows()) + "x" + std::to_string(weights.cols())
+            + " vs " + std::to_string(gradients.rows()) + "x" + std::to_string(gradients.cols()) + ")");
     }
 };
 
+
+// =============================================================================
+// Adam
+// =============================================================================
+class Adam : public Optimizer {
+public:
+    explicit Adam(float lr = 0.001f, float beta1 = 0.9f, float beta2 = 0.999f, float epsilon = 1e-8f)
+        : Optimizer(lr), beta1_(beta1), beta2_(beta2), epsilon_(epsilon) {}
+
+    void updateWeights(Tensor& weights, const Tensor& gradients) override {
+        Tensor g = gradients;
+        clip(g);
+
+        TensorState& s = tensorStates_[&weights];
+        s.t++;
+        ensureShape(s.m, s.v, weights);
+
+        const float bc1 = 1.0f - std::pow(beta1_, s.t);
+        const float bc2 = 1.0f - std::pow(beta2_, s.t);
+
+#pragma omp parallel for
+        for (int i = 0; i < weights.size(); ++i) {
+            s.m[i] = beta1_ * s.m[i] + (1.0f - beta1_) * g[i];
+            s.v[i] = beta2_ * s.v[i] + (1.0f - beta2_) * g[i] * g[i];
+            const float m_hat = s.m[i] / bc1;
+            const float v_hat = s.v[i] / bc2;
+            weights[i] -= learning_rate * m_hat / (std::sqrt(v_hat) + epsilon_);
+        }
+    }
+
+    void updateWeights(Eigen::MatrixXf& weights, const Eigen::MatrixXf& gradients) override {
+        Eigen::MatrixXf g = gradients;
+        clip(g);
+
+        MatrixState& s = matrixStates_[&weights];
+        s.t++;
+        ensureShape(s.m, s.v, weights);
+
+        s.m = beta1_ * s.m + (1.0f - beta1_) * g;
+        s.v = beta2_ * s.v + (1.0f - beta2_) * g.array().square().matrix();
+
+        const float bc1 = 1.0f - std::pow(beta1_, s.t);
+        const float bc2 = 1.0f - std::pow(beta2_, s.t);
+
+        weights.array() -= learning_rate
+            * (s.m.array() / bc1)
+            / (s.v.array().sqrt() / std::sqrt(bc2) + epsilon_);
+    }
+
+    void updateBias(Eigen::VectorXf& bias, const Eigen::VectorXf& gradients) override {
+        Eigen::VectorXf g = gradients;
+        clip(g);
+
+        VectorState& s = vectorStates_[&bias];
+        s.t++;
+        ensureShape(s.m, s.v, bias);
+
+        s.m = beta1_ * s.m + (1.0f - beta1_) * g;
+        s.v = beta2_ * s.v + (1.0f - beta2_) * g.array().square().matrix();
+
+        const float bc1 = 1.0f - std::pow(beta1_, s.t);
+        const float bc2 = 1.0f - std::pow(beta2_, s.t);
+
+        bias.array() -= learning_rate
+            * (s.m.array() / bc1)
+            / (s.v.array().sqrt() / std::sqrt(bc2) + epsilon_);
+    }
+
+private:
+    float beta1_, beta2_, epsilon_;
+
+    // États par pointeur de paramètre (un compteur de pas par tenseur)
+    struct TensorState { Tensor m, v; int t = 0; };
+    struct MatrixState { Eigen::MatrixXf m, v; int t = 0; };
+    struct VectorState { Eigen::VectorXf m, v; int t = 0; };
+
+    std::unordered_map<void*, TensorState> tensorStates_;
+    std::unordered_map<void*, MatrixState> matrixStates_;
+    std::unordered_map<void*, VectorState> vectorStates_;
+
+    static void ensureShape(Tensor& m, Tensor& v, const Tensor& ref) {
+        if (m.size() == 0 || m.shape() != ref.shape()) {
+            m = Tensor(ref.shape()); m.setZero();
+            v = Tensor(ref.shape()); v.setZero();
+        }
+    }
+    static void ensureShape(Eigen::MatrixXf& m, Eigen::MatrixXf& v, const Eigen::MatrixXf& ref) {
+        if (m.rows() != ref.rows() || m.cols() != ref.cols()) {
+            m = Eigen::MatrixXf::Zero(ref.rows(), ref.cols());
+            v = Eigen::MatrixXf::Zero(ref.rows(), ref.cols());
+        }
+    }
+    static void ensureShape(Eigen::VectorXf& m, Eigen::VectorXf& v, const Eigen::VectorXf& ref) {
+        if (m.size() != ref.size()) {
+            m = Eigen::VectorXf::Zero(ref.size());
+            v = Eigen::VectorXf::Zero(ref.size());
+        }
+    }
+};
+
+
+// =============================================================================
+// Scheduler : Step Decay
+// =============================================================================
+class StepDecay {
+public:
+    StepDecay(float initial_lr = 0.001f, float drop_rate = 0.5f, int epochs_per_drop = 5)
+        : initial_lr_(initial_lr), drop_rate_(drop_rate), epochs_per_drop_(epochs_per_drop) {}
+
+    float getLR(int epoch) const {
+        return initial_lr_ * std::pow(drop_rate_, std::floor(static_cast<float>(epoch) / epochs_per_drop_));
+    }
+
+    // Applique directement le decay à un optimizer
+    void apply(Optimizer& optimizer, int epoch) const {
+        optimizer.setLearningRate(getLR(epoch));
+    }
+
+private:
+    float initial_lr_;
+    float drop_rate_;
+    int   epochs_per_drop_;
+};

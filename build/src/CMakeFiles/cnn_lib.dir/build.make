@@ -83,10 +83,24 @@ src/CMakeFiles/cnn_lib.dir/ConvLayer.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/cnn_lib.dir/ConvLayer.cpp.s"
 	cd "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build/src" && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/src/ConvLayer.cpp" -o CMakeFiles/cnn_lib.dir/ConvLayer.cpp.s
 
+src/CMakeFiles/cnn_lib.dir/ConvLayer3D.cpp.o: src/CMakeFiles/cnn_lib.dir/flags.make
+src/CMakeFiles/cnn_lib.dir/ConvLayer3D.cpp.o: ../src/ConvLayer3D.cpp
+src/CMakeFiles/cnn_lib.dir/ConvLayer3D.cpp.o: src/CMakeFiles/cnn_lib.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object src/CMakeFiles/cnn_lib.dir/ConvLayer3D.cpp.o"
+	cd "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build/src" && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/CMakeFiles/cnn_lib.dir/ConvLayer3D.cpp.o -MF CMakeFiles/cnn_lib.dir/ConvLayer3D.cpp.o.d -o CMakeFiles/cnn_lib.dir/ConvLayer3D.cpp.o -c "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/src/ConvLayer3D.cpp"
+
+src/CMakeFiles/cnn_lib.dir/ConvLayer3D.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/cnn_lib.dir/ConvLayer3D.cpp.i"
+	cd "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build/src" && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/src/ConvLayer3D.cpp" > CMakeFiles/cnn_lib.dir/ConvLayer3D.cpp.i
+
+src/CMakeFiles/cnn_lib.dir/ConvLayer3D.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/cnn_lib.dir/ConvLayer3D.cpp.s"
+	cd "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build/src" && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/src/ConvLayer3D.cpp" -o CMakeFiles/cnn_lib.dir/ConvLayer3D.cpp.s
+
 src/CMakeFiles/cnn_lib.dir/DenseLayer.cpp.o: src/CMakeFiles/cnn_lib.dir/flags.make
 src/CMakeFiles/cnn_lib.dir/DenseLayer.cpp.o: ../src/DenseLayer.cpp
 src/CMakeFiles/cnn_lib.dir/DenseLayer.cpp.o: src/CMakeFiles/cnn_lib.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object src/CMakeFiles/cnn_lib.dir/DenseLayer.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object src/CMakeFiles/cnn_lib.dir/DenseLayer.cpp.o"
 	cd "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build/src" && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/CMakeFiles/cnn_lib.dir/DenseLayer.cpp.o -MF CMakeFiles/cnn_lib.dir/DenseLayer.cpp.o.d -o CMakeFiles/cnn_lib.dir/DenseLayer.cpp.o -c "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/src/DenseLayer.cpp"
 
 src/CMakeFiles/cnn_lib.dir/DenseLayer.cpp.i: cmake_force
@@ -96,20 +110,6 @@ src/CMakeFiles/cnn_lib.dir/DenseLayer.cpp.i: cmake_force
 src/CMakeFiles/cnn_lib.dir/DenseLayer.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/cnn_lib.dir/DenseLayer.cpp.s"
 	cd "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build/src" && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/src/DenseLayer.cpp" -o CMakeFiles/cnn_lib.dir/DenseLayer.cpp.s
-
-src/CMakeFiles/cnn_lib.dir/MaxPoolLayer.cpp.o: src/CMakeFiles/cnn_lib.dir/flags.make
-src/CMakeFiles/cnn_lib.dir/MaxPoolLayer.cpp.o: ../src/MaxPoolLayer.cpp
-src/CMakeFiles/cnn_lib.dir/MaxPoolLayer.cpp.o: src/CMakeFiles/cnn_lib.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object src/CMakeFiles/cnn_lib.dir/MaxPoolLayer.cpp.o"
-	cd "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build/src" && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/CMakeFiles/cnn_lib.dir/MaxPoolLayer.cpp.o -MF CMakeFiles/cnn_lib.dir/MaxPoolLayer.cpp.o.d -o CMakeFiles/cnn_lib.dir/MaxPoolLayer.cpp.o -c "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/src/MaxPoolLayer.cpp"
-
-src/CMakeFiles/cnn_lib.dir/MaxPoolLayer.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/cnn_lib.dir/MaxPoolLayer.cpp.i"
-	cd "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build/src" && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/src/MaxPoolLayer.cpp" > CMakeFiles/cnn_lib.dir/MaxPoolLayer.cpp.i
-
-src/CMakeFiles/cnn_lib.dir/MaxPoolLayer.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/cnn_lib.dir/MaxPoolLayer.cpp.s"
-	cd "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build/src" && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/src/MaxPoolLayer.cpp" -o CMakeFiles/cnn_lib.dir/MaxPoolLayer.cpp.s
 
 src/CMakeFiles/cnn_lib.dir/CNN.cpp.o: src/CMakeFiles/cnn_lib.dir/flags.make
 src/CMakeFiles/cnn_lib.dir/CNN.cpp.o: ../src/CNN.cpp
@@ -128,16 +128,16 @@ src/CMakeFiles/cnn_lib.dir/CNN.cpp.s: cmake_force
 # Object files for target cnn_lib
 cnn_lib_OBJECTS = \
 "CMakeFiles/cnn_lib.dir/ConvLayer.cpp.o" \
+"CMakeFiles/cnn_lib.dir/ConvLayer3D.cpp.o" \
 "CMakeFiles/cnn_lib.dir/DenseLayer.cpp.o" \
-"CMakeFiles/cnn_lib.dir/MaxPoolLayer.cpp.o" \
 "CMakeFiles/cnn_lib.dir/CNN.cpp.o"
 
 # External object files for target cnn_lib
 cnn_lib_EXTERNAL_OBJECTS =
 
 src/libcnn_lib.a: src/CMakeFiles/cnn_lib.dir/ConvLayer.cpp.o
+src/libcnn_lib.a: src/CMakeFiles/cnn_lib.dir/ConvLayer3D.cpp.o
 src/libcnn_lib.a: src/CMakeFiles/cnn_lib.dir/DenseLayer.cpp.o
-src/libcnn_lib.a: src/CMakeFiles/cnn_lib.dir/MaxPoolLayer.cpp.o
 src/libcnn_lib.a: src/CMakeFiles/cnn_lib.dir/CNN.cpp.o
 src/libcnn_lib.a: src/CMakeFiles/cnn_lib.dir/build.make
 src/libcnn_lib.a: src/CMakeFiles/cnn_lib.dir/link.txt

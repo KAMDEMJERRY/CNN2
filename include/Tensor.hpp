@@ -3,492 +3,88 @@
 #include <unsupported/Eigen/CXX11/Tensor>
 #include <vector>
 #include <iostream>
-#include <memory>
 #include <iomanip>
 #include <limits>
-#include <type_traits>
+#include <stdexcept>
+#include <cmath>
+#include <cstring>
 
-// ============================================================================
-// Classe de base pour les fonctionnalités communes aux tenseurs
-// ============================================================================
-
-/**
- * Classe abstraite contenant les utilitaires d'affichage et de statistiques
- * Partagée par Tensor et Tensor3D pour éviter la duplication de code
- */
-class TensorUtils {
-protected:
-    // Structure pour stocker les statistiques d'un tenseur
-    struct Statistics {
-        float min_val;
-        float max_val;
-        float mean;
-        float l2_norm;
-        size_t size;
-        
-        Statistics() : min_val(std::numeric_limits<float>::max()),
-                      max_val(std::numeric_limits<float>::lowest()),
-                      mean(0.0f), l2_norm(0.0f), size(0) {}
-    };
-    
-    // Structure pour les paramètres d'affichage
-    struct PrintConfig {
-        int max_batch = 1;
-        int max_channel = -1;
-        int max_depth = 2;
-        int max_height = 10;
-        int max_width = 10;
-        bool show_values = true;
-        int precision = 4;
-        bool use_colors = true;
-        
-        PrintConfig() = default;
-        
-        PrintConfig withMaxBatch(int b) const { 
-            PrintConfig c = *this; c.max_batch = b; return c; 
-        }
-        PrintConfig withMaxChannel(int c) const { 
-            PrintConfig cfg = *this; cfg.max_channel = c; return cfg; 
-        }
-        PrintConfig withMaxDepth(int d) const { 
-            PrintConfig cfg = *this; cfg.max_depth = d; return cfg; 
-        }
-        PrintConfig withMaxHeight(int h) const { 
-            PrintConfig cfg = *this; cfg.max_height = h; return cfg; 
-        }
-        PrintConfig withMaxWidth(int w) const { 
-            PrintConfig cfg = *this; cfg.max_width = w; return cfg; 
-        }
-        PrintConfig withShowValues(bool show) const { 
-            PrintConfig cfg = *this; cfg.show_values = show; return cfg; 
-        }
-        PrintConfig withPrecision(int p) const { 
-            PrintConfig cfg = *this; cfg.precision = p; return cfg; 
-        }
-        PrintConfig withColors(bool colors) const { 
-            PrintConfig cfg = *this; cfg.use_colors = colors; return cfg; 
-        }
-    };
-    
-    // Calcule les statistiques sur un range de valeurs
-    template<typename Iterator>
-    static Statistics computeStatistics(Iterator begin, Iterator end, size_t total_size) {
-        Statistics stats;
-        stats.size = total_size;
-        
-        if (total_size == 0) return stats;
-        
-        float sum = 0.0f;
-        float sum_squares = 0.0f;
-        
-        for (auto it = begin; it != end; ++it) {
-            float val = static_cast<float>(*it);
-            stats.min_val = std::min(stats.min_val, val);
-            stats.max_val = std::max(stats.max_val, val);
-            sum += val;
-            sum_squares += val * val;
-        }
-        
-        stats.mean = sum / total_size;
-        stats.l2_norm = std::sqrt(sum_squares);
-        
-        return stats;
-    }
-    
-    // Affiche une ligne de séparation
-    static void printSeparator(char c = '=', int length = 63) {
-        std::cout << std::string(length, c) << std::endl;
-    }
-    
-    // Affiche une valeur avec couleur optionnelle
-    static void printColoredValue(float val, bool use_colors, int precision, int width = 8) {
-        if (use_colors) {
-            if (val > 0) std::cout << "\033[32m";  // Vert pour positif
-            else if (val < 0) std::cout << "\033[31m";  // Rouge pour négatif
-            else std::cout << "\033[37m";  // Blanc pour zéro
-        }
-        
-        std::cout << std::fixed << std::setprecision(precision) 
-                  << std::setw(width) << val;
-        
-        if (use_colors) std::cout << "\033[0m";
-    }
-    
-    // Affiche l'en-tête d'un tenseur
-    static void printHeader(const std::string& title, const std::vector<int>& shape) {
-        printSeparator();
-        std::cout << "📊 " << title << ": ";
-        for (size_t i = 0; i < shape.size(); ++i) {
-            std::cout << shape[i];
-            if (i < shape.size() - 1) std::cout << "x";
-        }
-        std::cout << std::endl;
-        printSeparator();
-    }
-    
-    // Affiche les statistiques globales
-    static void printGlobalStats(const Statistics& stats) {
-        std::cout << "📈 Statistiques globales:" << std::endl;
-        std::cout << "   Min: " << std::fixed << std::setprecision(4) << stats.min_val << std::endl;
-        std::cout << "   Max: " << stats.max_val << std::endl;
-        std::cout << "   Mean: " << stats.mean << std::endl;
-        std::cout << "   Norm L2: " << stats.l2_norm << std::endl;
-        std::cout << "───────────────────────────────────────────────────────────────" << std::endl;
-    }
-    
-    // Affiche le pied de page avec les éléments tronqués
-    static void printTruncationNotice(int batch_left, int channel_left, int depth_left) {
-        if (batch_left > 0) {
-            std::cout << "🔄 ... et " << batch_left << " batch(es) de plus" << std::endl;
-        }
-        if (channel_left > 0) {
-            std::cout << "📌 ... et " << channel_left << " canal(aux) de plus" << std::endl;
-        }
-        if (depth_left > 0) {
-            std::cout << "🧊 ... et " << depth_left << " slice(s) de plus" << std::endl;
-        }
-        printSeparator();
-    }
-};
-
-// ============================================================================
-// Classe Tensor (4D)
-// ============================================================================
-
-class Tensor : public TensorUtils {
+// ─────────────────────────────────────────────────────────────────────────────
+// Tensor — classe unifiée 2D/3D
+//
+// Stockage interne : Eigen::Tensor<float, 5, RowMajor>
+//                   dimensions : (d0, d1, d2, d3, d4)
+//
+// Mode 4D (couches 2D) : (B, C, H, W)  → stocké comme (B, C, 1, H, W)
+// Mode 5D (couches 3D) : (B, C, D, H, W) → stocké nativement
+//
+// L'interface Layer::forward(const Tensor&) fonctionne pour les deux cas
+// sans aucune modification de la hiérarchie Layer.
+// ─────────────────────────────────────────────────────────────────────────────
+class Tensor {
 private:
-    using EigenTensor = Eigen::Tensor<float, 4, Eigen::RowMajor>;
+    using EigenTensor = Eigen::Tensor<float, 5, Eigen::RowMajor>;
     EigenTensor data;
 
+    // Rang logique : 4 pour les tenseurs 2D, 5 pour les tenseurs 3D
+    // Déterminé à la construction, conservé pour l'affichage et les validations
+    int logical_rank = 5;
+
 public:
+
+    // ─────────────────────────────────────────────────────────────────────────
     // Constructeurs
-    Tensor() = default;
-    Tensor(int batch, int channels, int height, int width) 
-        : data(batch, channels, height, width) {}
-    Tensor(const std::vector<int>& shape) 
-        : data(shape[0], shape[1], shape[2], shape[3]) {
-        if (shape.size() != 4) {
-            throw std::runtime_error("Tensor shape must have 4 dimensions");
+    // ─────────────────────────────────────────────────────────────────────────
+
+    Tensor() : data(0, 0, 1, 0, 0), logical_rank(4) {}
+
+    // ── Mode 4D : (B, C, H, W) → stocké comme (B, C, 1, H, W) ──────────────
+    Tensor(int batch, int channels, int height, int width)
+        : data(batch, channels, 1, height, width), logical_rank(4) {}
+
+    // ── Mode 5D : (B, C, D, H, W) ───────────────────────────────────────────
+    Tensor(int batch, int channels, int depth, int height, int width)
+        : data(batch, channels, depth, height, width), logical_rank(5) {}
+
+    // ── Construction depuis shape vector ─────────────────────────────────────
+    explicit Tensor(const std::vector<int>& shape) {
+        if (shape.size() == 4) {
+            data = EigenTensor(shape[0], shape[1], 1, shape[2], shape[3]);
+            logical_rank = 4;
+        } else if (shape.size() == 5) {
+            data = EigenTensor(shape[0], shape[1], shape[2], shape[3], shape[4]);
+            logical_rank = 5;
+        } else {
+            throw std::runtime_error(
+                "[Tensor] shape doit avoir 4 ou 5 dimensions, reçu: "
+                + std::to_string(shape.size()));
         }
     }
 
-    // Constructeur par copie
-    Tensor(const Tensor& other) : data(other.data.dimensions()) {
+    // ── Copie / déplacement ──────────────────────────────────────────────────
+    Tensor(const Tensor& other) : data(other.data.dimensions()), logical_rank(other.logical_rank) {
         data = other.data;
     }
 
     Tensor& operator=(const Tensor& other) {
         if (this != &other) {
-            if (data.dimensions() != other.data.dimensions()) {
+            if (data.dimensions() != other.data.dimensions())
                 data.resize(other.data.dimensions());
-            }
             data = other.data;
+            logical_rank = other.logical_rank;
         }
         return *this;
     }
 
-    // Constructeur de déplacement
     Tensor(Tensor&& other) noexcept = default;
     Tensor& operator=(Tensor&& other) noexcept = default;
     ~Tensor() = default;
 
+    // ─────────────────────────────────────────────────────────────────────────
     // Accès aux données
-    float& operator()(int b, int c, int h, int w) { 
-        return data(b, c, h, w); 
-    }
-    const float& operator()(int b, int c, int h, int w) const { 
-        return data(b, c, h, w); 
-    }
+    // ─────────────────────────────────────────────────────────────────────────
 
-    float& operator[](size_t index) { return data.data()[index]; }
-    const float& operator[](size_t index) const { return data.data()[index]; }
-
-    // Conversion vers Eigen::Matrix
-    Eigen::MatrixXf toMatrix() const {
-        int batch_size = dim(0);
-        int flattened_size = 1;
-        for (int i = 1; i < 4; ++i) flattened_size *= dim(i);
-
-        Eigen::Map<const Eigen::MatrixXf> tensor_map(
-            getData(), flattened_size, batch_size
-        );
-        return tensor_map.transpose();
-    }
-
-    Eigen::Map<Eigen::MatrixXf> toMatrix(int rows, int cols) {
-        if (rows * cols != size()) {
-            throw std::runtime_error("Rows * cols must equal tensor size");
-        }
-        return Eigen::Map<Eigen::MatrixXf>(data.data(), rows, cols);
-    }
-
-    Eigen::Map<const Eigen::MatrixXf> toMatrix(int rows, int cols) const {
-        if (rows * cols != size()) {
-            throw std::runtime_error("Rows * cols must equal tensor size");
-        }
-        return Eigen::Map<const Eigen::MatrixXf>(data.data(), rows, cols);
-    }
-
-    // Conversion depuis Eigen::Matrix
-    static Tensor fromMatrix(const Eigen::MatrixXf& matrix, const std::vector<int>& shape) {
-        if (shape.size() != 4) {
-            throw std::runtime_error("Shape must have 4 dimensions");
-        }
-
-        int batch_size = shape[0];
-        int flattened_size = 1;
-        for (int i = 1; i < 4; ++i) flattened_size *= shape[i];
-
-        if (matrix.rows() != batch_size || matrix.cols() != flattened_size) {
-            throw std::runtime_error("Matrix dimensions don't match shape");
-        }
-
-        Tensor tensor(shape);
-        Eigen::Map<Eigen::MatrixXf> tensor_map(
-            tensor.getData(), flattened_size, batch_size
-        );
-        tensor_map = matrix.transpose();
-        return tensor;
-    }
-
-    static Tensor fromMatrix(const Eigen::MatrixXf& matrix, int d0, int d1, int d2, int d3) {
-        return fromMatrix(matrix, {d0, d1, d2, d3});
-    }
-
-    // Reshape
-    Tensor reshape(const std::vector<int>& newShape) const {
-        if (newShape.size() != 4) {
-            throw std::runtime_error("New shape must have 4 dimensions");
-        }
-        Tensor reshaped;
-        reshaped.data = data.reshape(Eigen::array<Eigen::Index, 4>{
-            newShape[0], newShape[1], newShape[2], newShape[3]
-        });
-        return reshaped;
-    }
-
-    // Métadonnées
-    int dim(int index) const { return static_cast<int>(data.dimension(index)); }
-    
-    std::vector<int> shape() const {
-        return {dim(0), dim(1), dim(2), dim(3)};
-    }
-    
-    int size() const { return static_cast<int>(data.size()); }
-    
-    void setRandom() { data.setRandom(); }
-    void setZero() { data.setZero(); }
-    void setConstant(float value) { data.setConstant(value); }
-
-    // Getters Eigen
-    EigenTensor& eigen() { return data; }
-    const EigenTensor& eigen() const { return data; }
-
-    float* getData() { return data.data(); }
-    const float* getData() const { return data.data(); }
-
-    // Affichage
-    void printShape() const {
-        std::cout << "Tensor shape: (" 
-                  << dim(0) << ", " << dim(1) << ", " 
-                  << dim(2) << ", " << dim(3) << ")" << std::endl;
-    }
-
-    void printByChannel(const PrintConfig& config = PrintConfig()) const {
-        if (size() == 0) {
-            std::cout << "⚠️  Tenseur vide !" << std::endl;
-            return;
-        }
-
-        // Statistiques globales
-        Statistics global_stats = computeStatistics(
-            data.data(), data.data() + size(), size()
-        );
-        
-        printHeader("TENSEUR", shape());
-        printGlobalStats(global_stats);
-
-        int batch_size = dim(0);
-        int channels = dim(1);
-        int height = dim(2);
-        int width = dim(3);
-
-        int display_batch = std::min(config.max_batch, batch_size);
-        int display_channels = (config.max_channel == -1) ? channels : 
-                                std::min(config.max_channel, channels);
-
-        for (int b = 0; b < display_batch; ++b) {
-            if (batch_size > 1) {
-                std::cout << "🔄 BATCH " << b << " / " << batch_size - 1 << std::endl;
-                std::cout << "───────────────────────────────────────────────────────────────" << std::endl;
-            }
-
-            for (int c = 0; c < display_channels; ++c) {
-                std::cout << "📌 CANAL " << c;
-                if (channels > display_channels) {
-                    std::cout << " (premier " << display_channels << "/" << channels << ")";
-                }
-                std::cout << std::endl;
-
-                // Statistiques du canal
-                float ch_min = std::numeric_limits<float>::max();
-                float ch_max = std::numeric_limits<float>::lowest();
-                float ch_sum = 0.0f;
-
-                for (int h = 0; h < height; ++h) {
-                    for (int w = 0; w < width; ++w) {
-                        float val = (*this)(b, c, h, w);
-                        ch_min = std::min(ch_min, val);
-                        ch_max = std::max(ch_max, val);
-                        ch_sum += val;
-                    }
-                }
-                float ch_mean = ch_sum / (height * width);
-
-                std::cout << "   Min: " << std::setprecision(config.precision) << ch_min;
-                std::cout << " | Max: " << ch_max;
-                std::cout << " | Mean: " << ch_mean << std::endl;
-
-                if (config.show_values) {
-                    int display_height = std::min(config.max_height, height);
-                    int display_width = std::min(config.max_width, width);
-
-                    for (int h = 0; h < display_height; ++h) {
-                        std::cout << "   ";
-                        for (int w = 0; w < display_width; ++w) {
-                            float val = (*this)(b, c, h, w);
-                            printColoredValue(val, config.use_colors, config.precision, 8);
-                            std::cout << " ";
-                        }
-                        if (height > display_height && h == display_height - 1) {
-                            std::cout << "... (" << height - display_height << " lignes de plus)";
-                        }
-                        std::cout << std::endl;
-                    }
-
-                    if (width > display_width) {
-                        std::cout << "   ... (" << width - display_width << " colonnes de plus)" << std::endl;
-                    }
-                }
-                std::cout << "───────────────────────────────────────────────────────────────" << std::endl;
-            }
-        }
-
-        printTruncationNotice(
-            batch_size - display_batch,
-            channels - display_channels,
-            0
-        );
-    }
-
-    void quickPrint(const std::string& name = "") const {
-        if (!name.empty()) std::cout << name << " ";
-        printShape();
-
-        int h = std::min(5, dim(2));
-        int w = std::min(5, dim(3));
-
-        std::cout << "Premier canal (5x5):" << std::endl;
-        for (int i = 0; i < h; ++i) {
-            for (int j = 0; j < w; ++j) {
-                std::cout << std::setw(8) << std::setprecision(2) 
-                          << (*this)(0, 0, i, j) << " ";
-            }
-            std::cout << std::endl;
-        }
-    }
-
-    void printChannel(int batch_idx, int channel_idx, int max_h = 10, int max_w = 10) const {
-        std::cout << "Canal " << channel_idx << " du batch " << batch_idx << ":" << std::endl;
-
-        int height = std::min(max_h, dim(2));
-        int width = std::min(max_w, dim(3));
-
-        for (int h = 0; h < height; ++h) {
-            for (int w = 0; w < width; ++w) {
-                std::cout << std::setw(8) << std::setprecision(4)
-                          << (*this)(batch_idx, channel_idx, h, w) << " ";
-            }
-            if (dim(2) > max_h && h == height - 1) std::cout << "...";
-            std::cout << std::endl;
-        }
-    }
-
-    // Comparaison de tenseurs
-    static void compareTensors(const Tensor& t1, const Tensor& t2,
-                               const std::string& name1 = "T1",
-                               const std::string& name2 = "T2") {
-        printHeader("COMPARAISON: " + name1 + " vs " + name2, {});
-        
-        t1.printShape();
-        t2.printShape();
-
-        if (t1.shape() != t2.shape()) {
-            std::cout << "❌ Shapes différentes !" << std::endl;
-            return;
-        }
-
-        float max_diff = 0.0f;
-        float sum_diff = 0.0f;
-        int n_diff = 0;
-
-        for (int i = 0; i < t1.size(); ++i) {
-            float diff = std::abs(t1[i] - t2[i]);
-            max_diff = std::max(max_diff, diff);
-            sum_diff += diff;
-            if (diff > 1e-5f) n_diff++;
-        }
-
-        std::cout << "📊 Différence moyenne: " << sum_diff / t1.size() << std::endl;
-        std::cout << "📊 Différence maximale: " << max_diff << std::endl;
-        std::cout << "📊 Éléments différents: " << n_diff << "/" << t1.size()
-                  << " (" << (100.0f * n_diff / t1.size()) << "%)" << std::endl;
-        printSeparator();
-    }
-};
-
-// ============================================================================
-// Classe Tensor3D (5D)
-// ============================================================================
-
-class Tensor3D : public TensorUtils {
-private:
-    using EigenTensor3D = Eigen::Tensor<float, 5, Eigen::RowMajor>;
-    EigenTensor3D data;
-
-public:
-    // Constructeurs
-    Tensor3D() = default;
-    Tensor3D(int batch, int channels, int depth, int height, int width)
-        : data(batch, channels, depth, height, width) {}
-    Tensor3D(const std::vector<int>& shape)
-        : data(shape[0], shape[1], shape[2], shape[3], shape[4]) {
-        if (shape.size() != 5) {
-            throw std::runtime_error("Tensor3D shape must have 5 dimensions");
-        }
-    }
-
-    // Constructeur par copie
-    Tensor3D(const Tensor3D& other) : data(other.data.dimensions()) {
-        data = other.data;
-    }
-
-    Tensor3D& operator=(const Tensor3D& other) {
-        if (this != &other) {
-            if (data.dimensions() != other.data.dimensions()) {
-                data.resize(other.data.dimensions());
-            }
-            data = other.data;
-        }
-        return *this;
-    }
-
-    // Constructeur de déplacement
-    Tensor3D(Tensor3D&& other) noexcept = default;
-    Tensor3D& operator=(Tensor3D&& other) noexcept = default;
-    ~Tensor3D() = default;
-
-    // Accès aux données
+    // ── Accès 5D natif (couches 3D) ──────────────────────────────────────────
     float& operator()(int b, int c, int d, int h, int w) {
         return data(b, c, d, h, w);
     }
@@ -496,242 +92,376 @@ public:
         return data(b, c, d, h, w);
     }
 
+    // ── Accès 4D — alias sur d=0 (couches 2D existantes, sans modification) ──
+    float& operator()(int b, int c, int h, int w) {
+        return data(b, c, 0, h, w);
+    }
+    const float& operator()(int b, int c, int h, int w) const {
+        return data(b, c, 0, h, w);
+    }
+
+    // ── Accès plat ───────────────────────────────────────────────────────────
     float& operator[](size_t index) { return data.data()[index]; }
     const float& operator[](size_t index) const { return data.data()[index]; }
 
-    // Conversion vers Eigen::Matrix
-    Eigen::MatrixXf toMatrix() const {
-        int batch_size = dim(0);
-        int flattened_size = 1;
-        for (int i = 1; i < 5; ++i) flattened_size *= dim(i);
+    // ─────────────────────────────────────────────────────────────────────────
+    // Métadonnées
+    // ─────────────────────────────────────────────────────────────────────────
 
-        Eigen::Map<const Eigen::MatrixXf> tensor_map(
-            getData(), flattened_size, batch_size
-        );
-        return tensor_map.transpose();
+    // ndim() : rang logique (4 ou 5)
+    int ndim() const { return logical_rank; }
+
+    // dim(i) : dimension selon le rang logique
+    // Mode 4D : dim(0)=B  dim(1)=C  dim(2)=H  dim(3)=W
+    // Mode 5D : dim(0)=B  dim(1)=C  dim(2)=D  dim(3)=H  dim(4)=W
+    int dim(int index) const {
+        if (logical_rank == 4) {
+            // Mapping 4D → indices internes 5D
+            // dim(0)→d0  dim(1)→d1  dim(2)→d3  dim(3)→d4  (d2=1 ignoré)
+            const int map4[4] = {0, 1, 3, 4};
+            if (index < 0 || index >= 4)
+                throw std::out_of_range("[Tensor] dim index hors limites (mode 4D: 0-3)");
+            return static_cast<int>(data.dimension(map4[index]));
+        } else {
+            if (index < 0 || index >= 5)
+                throw std::out_of_range("[Tensor] dim index hors limites (mode 5D: 0-4)");
+            return static_cast<int>(data.dimension(index));
+        }
+    }
+
+    // shape() : vecteur selon le rang logique
+    std::vector<int> shape() const {
+        if (logical_rank == 4) {
+            return { static_cast<int>(data.dimension(0)),
+                     static_cast<int>(data.dimension(1)),
+                     static_cast<int>(data.dimension(3)),
+                     static_cast<int>(data.dimension(4)) };
+        } else {
+            return { static_cast<int>(data.dimension(0)),
+                     static_cast<int>(data.dimension(1)),
+                     static_cast<int>(data.dimension(2)),
+                     static_cast<int>(data.dimension(3)),
+                     static_cast<int>(data.dimension(4)) };
+        }
+    }
+
+    // Accès direct aux dimensions internes (toujours 5D)
+    int dim5(int index) const {
+        if (index < 0 || index >= 5)
+            throw std::out_of_range("[Tensor] dim5 index hors limites");
+        return static_cast<int>(data.dimension(index));
+    }
+
+    int size() const { return static_cast<int>(data.size()); }
+
+    // ─────────────────────────────────────────────────────────────────────────
+    // Initialisation
+    // ─────────────────────────────────────────────────────────────────────────
+
+    void setRandom()               { data.setRandom(); }
+    void setZero()                 { data.setZero();   }
+    void setConstant(float value)  { data.setConstant(value); }
+
+    // ─────────────────────────────────────────────────────────────────────────
+    // Données brutes
+    // ─────────────────────────────────────────────────────────────────────────
+
+    float*       getData()       { return data.data(); }
+    const float* getData() const { return data.data(); }
+
+    EigenTensor&       eigen()       { return data; }
+    const EigenTensor& eigen() const { return data; }
+
+    // ─────────────────────────────────────────────────────────────────────────
+    // Conversion Eigen::Matrix ↔ Tensor
+    // ─────────────────────────────────────────────────────────────────────────
+
+    // Aplatit toutes les dimensions sauf le batch → (B, C*[D]*H*W)
+    Eigen::MatrixXf toMatrix() const {
+        int B = static_cast<int>(data.dimension(0));
+        int flat = size() / B;
+        Eigen::Map<const Eigen::MatrixXf> m(getData(), flat, B);
+        return m.transpose();
     }
 
     Eigen::Map<Eigen::MatrixXf> toMatrix(int rows, int cols) {
-        if (rows * cols != size()) {
-            throw std::runtime_error("Rows * cols must equal tensor size");
-        }
-        return Eigen::Map<Eigen::MatrixXf>(data.data(), rows, cols);
+        if (rows * cols != size())
+            throw std::runtime_error("[Tensor] toMatrix: rows*cols != size");
+        return Eigen::Map<Eigen::MatrixXf>(getData(), rows, cols);
     }
 
     Eigen::Map<const Eigen::MatrixXf> toMatrix(int rows, int cols) const {
-        if (rows * cols != size()) {
-            throw std::runtime_error("Rows * cols must equal tensor size");
-        }
-        return Eigen::Map<const Eigen::MatrixXf>(data.data(), rows, cols);
+        if (rows * cols != size())
+            throw std::runtime_error("[Tensor] toMatrix: rows*cols != size");
+        return Eigen::Map<const Eigen::MatrixXf>(getData(), rows, cols);
     }
 
-    // Conversion depuis Eigen::Matrixf
-    static Tensor3D fromMatrix(const Eigen::MatrixXf& matrix, const std::vector<int>& shape) {
-        if (shape.size() != 5) {
-            throw std::runtime_error("Shape must have 5 dimensions");
-        }
-
-        int batch_size = shape[0];
-        int flattened_size = 1;
-        for (int i = 1; i < 5; ++i) flattened_size *= shape[i];
-
-        if (matrix.rows() != batch_size || matrix.cols() != flattened_size) {
-            throw std::runtime_error("Matrix dimensions don't match shape");
-        }
-
-        Tensor3D tensor(shape);
-        Eigen::Map<Eigen::MatrixXf> tensor_map(
-            tensor.getData(), flattened_size, batch_size
-        );
-        tensor_map = matrix.transpose();
-        return tensor;
+    // ── fromMatrix 4D ────────────────────────────────────────────────────────
+    static Tensor fromMatrix(const Eigen::MatrixXf& matrix,
+                             const std::vector<int>& shape) {
+        Tensor t(shape);
+        int B    = shape[0];
+        int flat = t.size() / B;
+        if (matrix.rows() != B || matrix.cols() != flat)
+            throw std::runtime_error("[Tensor] fromMatrix: dimensions incompatibles");
+        Eigen::Map<Eigen::MatrixXf> m(t.getData(), flat, B);
+        m = matrix.transpose();
+        return t;
     }
 
-    static Tensor3D fromMatrix(const Eigen::MatrixXf& matrix, 
-                               int d0, int d1, int d2, int d3, int d4) {
-        return fromMatrix(matrix, {d0, d1, d2, d3, d4});
+    // Surcharges pratiques
+    static Tensor fromMatrix(const Eigen::MatrixXf& m,
+                             int d0, int d1, int d2, int d3) {
+        return fromMatrix(m, {d0, d1, d2, d3});
+    }
+    static Tensor fromMatrix(const Eigen::MatrixXf& m,
+                             int d0, int d1, int d2, int d3, int d4) {
+        return fromMatrix(m, {d0, d1, d2, d3, d4});
     }
 
+    // ─────────────────────────────────────────────────────────────────────────
     // Reshape
-    Tensor3D reshape(const std::vector<int>& newShape) const {
-        if (newShape.size() != 5) {
-            throw std::runtime_error("New shape must have 5 dimensions");
-        }
-        Tensor3D reshaped;
-        reshaped.data = data.reshape(Eigen::array<Eigen::Index, 5>{
-            newShape[0], newShape[1], newShape[2], newShape[3], newShape[4]
-        });
+    // ─────────────────────────────────────────────────────────────────────────
+
+    Tensor reshape(const std::vector<int>& newShape) const {
+        Tensor reshaped(newShape);
+        if (reshaped.size() != size())
+            throw std::runtime_error("[Tensor] reshape: taille incompatible");
+        std::memcpy(reshaped.getData(), getData(), size() * sizeof(float));
         return reshaped;
     }
 
-    // Métadonnées
-    int dim(int index) const { return static_cast<int>(data.dimension(index)); }
-    
-    std::vector<int> shape() const {
-        return {dim(0), dim(1), dim(2), dim(3), dim(4)};
+    // ─────────────────────────────────────────────────────────────────────────
+    // Conversion de rang logique
+    // ─────────────────────────────────────────────────────────────────────────
+
+    // Réinterprète un Tensor 4D comme 5D avec D=1
+    // Utile à la frontière 2D → 3D
+    Tensor as5D() const {
+        if (logical_rank == 5) return *this;
+        Tensor t5;
+        t5.data = data;
+        t5.logical_rank = 5;
+        return t5;
     }
-    
-    int size() const { return static_cast<int>(data.size()); }
-    
-    void setRandom() { data.setRandom(); }
-    void setZero() { data.setZero(); }
-    void setConstant(float value) { data.setConstant(value); }
 
-    // Getters Eigen
-    EigenTensor3D& eigen() { return data; }
-    const EigenTensor3D& eigen() const { return data; }
+    // Réinterprète un Tensor 5D avec D=1 comme 4D
+    Tensor as4D() const {
+        if (logical_rank == 4) return *this;
+        if (static_cast<int>(data.dimension(2)) != 1)
+            throw std::runtime_error(
+                "[Tensor] as4D: dimension D=" +
+                std::to_string(data.dimension(2)) + " != 1");
+        Tensor t4;
+        t4.data = data;
+        t4.logical_rank = 4;
+        return t4;
+    }
 
-    float* getData() { return data.data(); }
-    const float* getData() const { return data.data(); }
-
+    // ─────────────────────────────────────────────────────────────────────────
     // Affichage
+    // ─────────────────────────────────────────────────────────────────────────
+
     void printShape() const {
-        std::cout << "Tensor3D shape: (" 
-                  << dim(0) << ", " << dim(1) << ", " << dim(2) << ", "
-                  << dim(3) << ", " << dim(4) << ")" << std::endl;
+        std::cout << "Tensor shape: (";
+        auto s = shape();
+        for (size_t i = 0; i < s.size(); ++i) {
+            std::cout << s[i];
+            if (i + 1 < s.size()) std::cout << ", ";
+        }
+        std::cout << ")  [" << logical_rank << "D]" << std::endl;
     }
 
-    void printByChannel(const PrintConfig& config = PrintConfig()) const {
-        if (size() == 0) {
-            std::cout << "⚠️  Tenseur vide !" << std::endl;
-            return;
+    // Affichage détaillé — adapté automatiquement au rang logique
+    void printByChannel(int max_batch   = 1,
+                        int max_channel = -1,
+                        int max_depth   = 2,   // ignoré en mode 4D
+                        int max_height  = 10,
+                        int max_width   = 10,
+                        bool show_values = true,
+                        int  precision   = 4) const {
+
+        if (size() == 0) { std::cout << "⚠️  Tenseur vide !" << std::endl; return; }
+
+        // Dimensions selon le rang logique
+        int B = dim(0);
+        int C = dim(1);
+        int D = (logical_rank == 5) ? dim(2) : 1;
+        int H = (logical_rank == 5) ? dim(3) : dim(2);
+        int W = (logical_rank == 5) ? dim(4) : dim(3);
+
+        int dB = std::min(max_batch,   B);
+        int dC = (max_channel == -1) ? C : std::min(max_channel, C);
+        int dD = std::min(max_depth,   D);
+        int dH = std::min(max_height,  H);
+        int dW = std::min(max_width,   W);
+
+        // En-tête
+        std::cout << "═══════════════════════════════════════════════════════════════" << std::endl;
+        if (logical_rank == 4) {
+            std::cout << "📊 TENSEUR 4D: "
+                      << B << "x" << C << "x" << H << "x" << W << std::endl;
+        } else {
+            std::cout << "📊 TENSEUR 5D: "
+                      << B << "x" << C << "x" << D << "x" << H << "x" << W << std::endl;
         }
+        std::cout << "═══════════════════════════════════════════════════════════════" << std::endl;
 
-        // Statistiques globales
-        Statistics global_stats = computeStatistics(
-            data.data(), data.data() + size(), size()
-        );
-        
-        printHeader("TENSEUR 3D", shape());
-        printGlobalStats(global_stats);
+        // Stats globales
+        float gmin = std::numeric_limits<float>::max();
+        float gmax = std::numeric_limits<float>::lowest();
+        float gsum = 0.f, gsumsq = 0.f;
+        for (int i = 0; i < size(); ++i) {
+            float v = (*this)[i];
+            gmin = std::min(gmin, v);
+            gmax = std::max(gmax, v);
+            gsum += v;
+            gsumsq += v * v;
+        }
+        std::cout << "📈 Statistiques globales:" << std::endl;
+        std::cout << std::fixed << std::setprecision(precision);
+        std::cout << "   Min: "    << gmin << std::endl;
+        std::cout << "   Max: "    << gmax << std::endl;
+        std::cout << "   Mean: "   << gsum / size() << std::endl;
+        std::cout << "   Norm L2: "<< std::sqrt(gsumsq) << std::endl;
+        std::cout << "───────────────────────────────────────────────────────────────" << std::endl;
 
-        int batch_size = dim(0);
-        int channels = dim(1);
-        int depth = dim(2);
-        int height = dim(3);
-        int width = dim(4);
-
-        int display_batch = std::min(config.max_batch, batch_size);
-        int display_channels = (config.max_channel == -1) ? channels : 
-                                std::min(config.max_channel, channels);
-        int display_depth = std::min(config.max_depth, depth);
-        int display_height = std::min(config.max_height, height);
-        int display_width = std::min(config.max_width, width);
-
-        for (int b = 0; b < display_batch; ++b) {
-            if (batch_size > 1) {
-                std::cout << "🔄 BATCH " << b << " / " << batch_size - 1 << std::endl;
+        for (int b = 0; b < dB; ++b) {
+            if (B > 1) {
+                std::cout << "🔄 BATCH " << b << " / " << B - 1 << std::endl;
                 std::cout << "───────────────────────────────────────────────────────────────" << std::endl;
             }
 
-            for (int c = 0; c < display_channels; ++c) {
+            for (int c = 0; c < dC; ++c) {
                 std::cout << "📌 CANAL " << c;
-                if (channels > display_channels) {
-                    std::cout << " (premier " << display_channels << "/" << channels << ")";
-                }
+                if (C > dC) std::cout << " (" << dC << "/" << C << ")";
                 std::cout << std::endl;
 
-                // Statistiques du canal
-                float ch_min = std::numeric_limits<float>::max();
-                float ch_max = std::numeric_limits<float>::lowest();
-                float ch_sum = 0.0f;
-
-                for (int d = 0; d < depth; ++d) {
-                    for (int h = 0; h < height; ++h) {
-                        for (int w = 0; w < width; ++w) {
-                            float val = (*this)(b, c, d, h, w);
-                            ch_min = std::min(ch_min, val);
-                            ch_max = std::max(ch_max, val);
-                            ch_sum += val;
-                        }
-                    }
+                // Stats du canal
+                float cmin = std::numeric_limits<float>::max();
+                float cmax = std::numeric_limits<float>::lowest();
+                float csum = 0.f;
+                for (int d = 0; d < D; ++d)
+                for (int h = 0; h < H; ++h)
+                for (int w = 0; w < W; ++w) {
+                    float v = (logical_rank == 5)
+                              ? (*this)(b, c, d, h, w)
+                              : (*this)(b, c, h, w);
+                    cmin = std::min(cmin, v);
+                    cmax = std::max(cmax, v);
+                    csum += v;
                 }
-                float ch_mean = ch_sum / (depth * height * width);
-
-                std::cout << "   Min: " << std::setprecision(config.precision) << ch_min;
-                std::cout << " | Max: " << ch_max;
-                std::cout << " | Mean: " << ch_mean << std::endl;
+                std::cout << "   Min: " << cmin
+                          << " | Max: " << cmax
+                          << " | Mean: " << csum / (D * H * W) << std::endl;
                 std::cout << "───────────────────────────────────────────────────────────────" << std::endl;
 
-                if (config.show_values) {
-                    for (int d = 0; d < display_depth; ++d) {
-                        std::cout << "  🧊 Profondeur (slice) " << d << "/" << depth - 1 << ":" << std::endl;
+                if (!show_values) continue;
 
-                        for (int h = 0; h < display_height; ++h) {
-                            std::cout << "   ";
-                            for (int w = 0; w < display_width; ++w) {
-                                float val = (*this)(b, c, d, h, w);
-                                printColoredValue(val, config.use_colors, config.precision, 8);
-                                std::cout << " ";
-                            }
-                            if (width > display_width && h == display_height - 1) {
-                                std::cout << "... (" << width - display_width << " col. de plus)";
-                            }
-                            std::cout << std::endl;
+                // Affichage des valeurs
+                for (int d = 0; d < dD; ++d) {
+                    if (logical_rank == 5)
+                        std::cout << "  🧊 Slice " << d << "/" << D - 1 << ":" << std::endl;
+
+                    for (int h = 0; h < dH; ++h) {
+                        std::cout << "   ";
+                        for (int w = 0; w < dW; ++w) {
+                            float v = (logical_rank == 5)
+                                      ? (*this)(b, c, d, h, w)
+                                      : (*this)(b, c, h, w);
+                            if      (v > 0) std::cout << "\033[32m";
+                            else if (v < 0) std::cout << "\033[31m";
+                            else            std::cout << "\033[37m";
+                            std::cout << std::setw(8) << v << "\033[0m ";
                         }
-
-                        if (height > display_height) {
-                            std::cout << "   ... (" << height - display_height << " lignes de plus)" << std::endl;
-                        }
+                        if (W > dW) std::cout << "... (" << W - dW << " col. de plus)";
+                        std::cout << std::endl;
                     }
-
-                    if (depth > display_depth) {
-                        std::cout << "  🧊 ... et " << depth - display_depth << " slice(s) de plus" << std::endl;
-                    }
+                    if (H > dH)
+                        std::cout << "   ... (" << H - dH << " lignes de plus)" << std::endl;
                 }
+                if (logical_rank == 5 && D > dD)
+                    std::cout << "  🧊 ... et " << D - dD << " slice(s) de plus" << std::endl;
+
                 std::cout << "───────────────────────────────────────────────────────────────" << std::endl;
             }
+
+            if (C > dC)
+                std::cout << "📌 ... et " << C - dC << " canal(aux) de plus" << std::endl;
         }
 
-        printTruncationNotice(
-            batch_size - display_batch,
-            channels - display_channels,
-            depth - display_depth
-        );
+        if (B > dB)
+            std::cout << "🔄 ... et " << B - dB << " batch(es) de plus" << std::endl;
+        std::cout << "═══════════════════════════════════════════════════════════════" << std::endl;
     }
 
+    // Affichage rapide
     void quickPrint(const std::string& name = "") const {
         if (!name.empty()) std::cout << name << " ";
         printShape();
 
-        int h = std::min(5, dim(3));
-        int w = std::min(5, dim(4));
-
-        std::cout << "Première slice du canal 0 (5x5):" << std::endl;
-        for (int i = 0; i < h; ++i) {
-            for (int j = 0; j < w; ++j) {
-                std::cout << std::setw(8) << std::setprecision(2)
-                          << (*this)(0, 0, 0, i, j) << " ";
+        if (logical_rank == 4) {
+            int h = std::min(5, dim(2));
+            int w = std::min(5, dim(3));
+            std::cout << "Premier canal (max 5x5):" << std::endl;
+            for (int i = 0; i < h; ++i) {
+                for (int j = 0; j < w; ++j)
+                    std::cout << std::setw(8) << std::setprecision(2)
+                              << (*this)(0, 0, i, j) << " ";
+                std::cout << std::endl;
             }
-            std::cout << std::endl;
+        } else {
+            int h = std::min(5, dim(3));
+            int w = std::min(5, dim(4));
+            std::cout << "Première slice du canal 0 (max 5x5):" << std::endl;
+            for (int i = 0; i < h; ++i) {
+                for (int j = 0; j < w; ++j)
+                    std::cout << std::setw(8) << std::setprecision(2)
+                              << (*this)(0, 0, 0, i, j) << " ";
+                std::cout << std::endl;
+            }
         }
     }
 
-    void printSlice(int batch_idx, int channel_idx, int depth_idx,
-                    int max_h = 10, int max_w = 10) const {
-        std::cout << "Canal " << channel_idx
-                  << ", slice " << depth_idx
-                  << ", batch " << batch_idx << ":" << std::endl;
-
-        int height = std::min(max_h, dim(3));
-        int width = std::min(max_w, dim(4));
-
-        for (int h = 0; h < height; ++h) {
-            for (int w = 0; w < width; ++w) {
-                std::cout << std::setw(8) << std::setprecision(4)
-                          << (*this)(batch_idx, channel_idx, depth_idx, h, w) << " ";
+    // Affiche un canal 2D (mode 4D) ou une slice (mode 5D)
+    void printChannel(int batch_idx, int channel_idx,
+                      int depth_idx = 0,
+                      int max_h = 10, int max_w = 10) const {
+        if (logical_rank == 4) {
+            std::cout << "Canal " << channel_idx << ", batch " << batch_idx << ":" << std::endl;
+            int H = std::min(max_h, dim(2));
+            int W = std::min(max_w, dim(3));
+            for (int h = 0; h < H; ++h) {
+                for (int w = 0; w < W; ++w)
+                    std::cout << std::setw(8) << std::setprecision(4)
+                              << (*this)(batch_idx, channel_idx, h, w) << " ";
+                std::cout << std::endl;
             }
-            if (dim(3) > max_h && h == height - 1) std::cout << "...";
-            std::cout << std::endl;
+        } else {
+            std::cout << "Canal " << channel_idx
+                      << ", slice " << depth_idx
+                      << ", batch " << batch_idx << ":" << std::endl;
+            int H = std::min(max_h, dim(3));
+            int W = std::min(max_w, dim(4));
+            for (int h = 0; h < H; ++h) {
+                for (int w = 0; w < W; ++w)
+                    std::cout << std::setw(8) << std::setprecision(4)
+                              << (*this)(batch_idx, channel_idx, depth_idx, h, w) << " ";
+                std::cout << std::endl;
+            }
         }
     }
 
-    // Comparaison de tenseurs 3D
-    static void compareTensor3Ds(const Tensor3D& t1, const Tensor3D& t2,
-                                 const std::string& name1 = "T1",
-                                 const std::string& name2 = "T2") {
-        printHeader("COMPARAISON 3D: " + name1 + " vs " + name2, {});
-        
+    // ─────────────────────────────────────────────────────────────────────────
+    // Comparaison
+    // ─────────────────────────────────────────────────────────────────────────
+
+    static void compare(const Tensor& t1, const Tensor& t2,
+                        const std::string& name1 = "T1",
+                        const std::string& name2 = "T2") {
+        std::cout << "═══════════════════════════════════════════════════════════════" << std::endl;
+        std::cout << "🔍 COMPARAISON: " << name1 << " vs " << name2 << std::endl;
+        std::cout << "═══════════════════════════════════════════════════════════════" << std::endl;
         t1.printShape();
         t2.printShape();
 
@@ -740,35 +470,33 @@ public:
             return;
         }
 
-        float max_diff = 0.0f;
-        float sum_diff = 0.0f;
-        int n_diff = 0;
-
+        float max_diff = 0.f, sum_diff = 0.f;
+        int   n_diff   = 0;
         for (int i = 0; i < t1.size(); ++i) {
-            float diff = std::abs(t1[i] - t2[i]);
-            max_diff = std::max(max_diff, diff);
-            sum_diff += diff;
-            if (diff > 1e-5f) n_diff++;
+            float d = std::abs(t1[i] - t2[i]);
+            max_diff  = std::max(max_diff, d);
+            sum_diff += d;
+            if (d > 1e-5f) n_diff++;
         }
-
-        std::cout << "📊 Différence moyenne: " << sum_diff / t1.size() << std::endl;
+        std::cout << "📊 Différence moyenne:  " << sum_diff / t1.size() << std::endl;
         std::cout << "📊 Différence maximale: " << max_diff << std::endl;
         std::cout << "📊 Éléments différents: " << n_diff << "/" << t1.size()
-                  << " (" << (100.0f * n_diff / t1.size()) << "%)" << std::endl;
-        printSeparator();
+                  << " (" << 100.f * n_diff / t1.size() << "%)" << std::endl;
+        std::cout << "═══════════════════════════════════════════════════════════════" << std::endl;
+    }
+
+    // Alias pour compatibilité avec votre ancien code
+    void compareTensors(const Tensor& t1, const Tensor& t2,
+                        const std::string& n1 = "T1",
+                        const std::string& n2 = "T2") {
+        compare(t1, t2, n1, n2);
     }
 };
 
-// ============================================================================
-// Surcharge d'opérateurs pour faciliter l'utilisation
-// ============================================================================
-
-inline std::ostream& operator<<(std::ostream& os, const Tensor& tensor) {
-    tensor.quickPrint();
-    return os;
-}
-
-inline std::ostream& operator<<(std::ostream& os, const Tensor3D& tensor) {
-    tensor.quickPrint();
+// ─────────────────────────────────────────────────────────────────────────────
+// Surcharge stream
+// ─────────────────────────────────────────────────────────────────────────────
+inline std::ostream& operator<<(std::ostream& os, const Tensor& t) {
+    t.quickPrint();
     return os;
 }

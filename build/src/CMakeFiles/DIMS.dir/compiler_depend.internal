@@ -568,14 +568,4 @@ src/CMakeFiles/DIMS.dir/dimensions.cpp.o
  /usr/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorRef.h
  /usr/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorIO.h
  /usr/include/eigen3/Eigen/src/Core/util/ReenableStupidWarnings.h
- /usr/include/c++/11/memory
- /usr/include/c++/11/bits/stl_raw_storage_iter.h
- /usr/include/c++/11/bits/align.h
- /usr/include/c++/11/bits/shared_ptr.h
- /usr/include/c++/11/bits/shared_ptr_base.h
- /usr/include/c++/11/bits/allocated_ptr.h
- /usr/include/c++/11/ext/concurrence.h
- /usr/include/c++/11/bits/shared_ptr_atomic.h
- /usr/include/c++/11/backward/auto_ptr.h
- /usr/include/c++/11/pstl/glue_memory_defs.h
 

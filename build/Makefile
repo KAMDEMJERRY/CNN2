@@ -143,19 +143,6 @@ CNN/fast:
 .PHONY : CNN/fast
 
 #=============================================================================
-# Target rules for targets named EVAL
-
-# Build rule for target.
-EVAL: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 EVAL
-.PHONY : EVAL
-
-# fast build rule for target.
-EVAL/fast:
-	$(MAKE) $(MAKESILENT) -f src/CMakeFiles/EVAL.dir/build.make src/CMakeFiles/EVAL.dir/build
-.PHONY : EVAL/fast
-
-#=============================================================================
 # Target rules for targets named DIMS
 
 # Build rule for target.
@@ -181,6 +168,136 @@ PLAY/fast:
 	$(MAKE) $(MAKESILENT) -f src/CMakeFiles/PLAY.dir/build.make src/CMakeFiles/PLAY.dir/build
 .PHONY : PLAY/fast
 
+#=============================================================================
+# Target rules for targets named test_Tensor
+
+# Build rule for target.
+test_Tensor: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test_Tensor
+.PHONY : test_Tensor
+
+# fast build rule for target.
+test_Tensor/fast:
+	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_Tensor.dir/build.make test/CMakeFiles/test_Tensor.dir/build
+.PHONY : test_Tensor/fast
+
+#=============================================================================
+# Target rules for targets named test_ConvLayer
+
+# Build rule for target.
+test_ConvLayer: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test_ConvLayer
+.PHONY : test_ConvLayer
+
+# fast build rule for target.
+test_ConvLayer/fast:
+	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_ConvLayer.dir/build.make test/CMakeFiles/test_ConvLayer.dir/build
+.PHONY : test_ConvLayer/fast
+
+#=============================================================================
+# Target rules for targets named test_DenseLayer
+
+# Build rule for target.
+test_DenseLayer: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test_DenseLayer
+.PHONY : test_DenseLayer
+
+# fast build rule for target.
+test_DenseLayer/fast:
+	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_DenseLayer.dir/build.make test/CMakeFiles/test_DenseLayer.dir/build
+.PHONY : test_DenseLayer/fast
+
+#=============================================================================
+# Target rules for targets named test_ActivationLayer
+
+# Build rule for target.
+test_ActivationLayer: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test_ActivationLayer
+.PHONY : test_ActivationLayer
+
+# fast build rule for target.
+test_ActivationLayer/fast:
+	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_ActivationLayer.dir/build.make test/CMakeFiles/test_ActivationLayer.dir/build
+.PHONY : test_ActivationLayer/fast
+
+#=============================================================================
+# Target rules for targets named test_PoolLayer
+
+# Build rule for target.
+test_PoolLayer: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test_PoolLayer
+.PHONY : test_PoolLayer
+
+# fast build rule for target.
+test_PoolLayer/fast:
+	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_PoolLayer.dir/build.make test/CMakeFiles/test_PoolLayer.dir/build
+.PHONY : test_PoolLayer/fast
+
+#=============================================================================
+# Target rules for targets named test_LossLayer
+
+# Build rule for target.
+test_LossLayer: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test_LossLayer
+.PHONY : test_LossLayer
+
+# fast build rule for target.
+test_LossLayer/fast:
+	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_LossLayer.dir/build.make test/CMakeFiles/test_LossLayer.dir/build
+.PHONY : test_LossLayer/fast
+
+#=============================================================================
+# Target rules for targets named test_Optimizer
+
+# Build rule for target.
+test_Optimizer: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test_Optimizer
+.PHONY : test_Optimizer
+
+# fast build rule for target.
+test_Optimizer/fast:
+	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_Optimizer.dir/build.make test/CMakeFiles/test_Optimizer.dir/build
+.PHONY : test_Optimizer/fast
+
+#=============================================================================
+# Target rules for targets named test_DropoutLayer
+
+# Build rule for target.
+test_DropoutLayer: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test_DropoutLayer
+.PHONY : test_DropoutLayer
+
+# fast build rule for target.
+test_DropoutLayer/fast:
+	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_DropoutLayer.dir/build.make test/CMakeFiles/test_DropoutLayer.dir/build
+.PHONY : test_DropoutLayer/fast
+
+#=============================================================================
+# Target rules for targets named test_Dimensions
+
+# Build rule for target.
+test_Dimensions: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test_Dimensions
+.PHONY : test_Dimensions
+
+# fast build rule for target.
+test_Dimensions/fast:
+	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_Dimensions.dir/build.make test/CMakeFiles/test_Dimensions.dir/build
+.PHONY : test_Dimensions/fast
+
+#=============================================================================
+# Target rules for targets named test_CNN
+
+# Build rule for target.
+test_CNN: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test_CNN
+.PHONY : test_CNN
+
+# fast build rule for target.
+test_CNN/fast:
+	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_CNN.dir/build.make test/CMakeFiles/test_CNN.dir/build
+.PHONY : test_CNN/fast
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -191,9 +308,18 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... CNN"
 	@echo "... DIMS"
-	@echo "... EVAL"
 	@echo "... PLAY"
 	@echo "... cnn_lib"
+	@echo "... test_ActivationLayer"
+	@echo "... test_CNN"
+	@echo "... test_ConvLayer"
+	@echo "... test_DenseLayer"
+	@echo "... test_Dimensions"
+	@echo "... test_DropoutLayer"
+	@echo "... test_LossLayer"
+	@echo "... test_Optimizer"
+	@echo "... test_PoolLayer"
+	@echo "... test_Tensor"
 .PHONY : help
 
 

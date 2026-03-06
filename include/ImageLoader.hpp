@@ -447,6 +447,8 @@ public:
 
 
 
+
+
 class ImageFolderDataset {
 private:
     struct Sample {
@@ -744,3 +746,5 @@ public:
         return static_cast<float>(correct) / batch_size;
     }
 };
+
+

@@ -1,8 +1,7 @@
 # CNN
-Parallelisation d'un CNN
+Flash spatio-temporal attention based sparce CNN for 3D medical images classification
 
-Ce depot retrace mes travaux sur la parallelisation d'un CNN pour la classification d'images medicales
-- step 1 : CNN sequentiel 
+Ce depot retrace mes travaux sur les CNN3D eparse avec attention flash pour la classification d'images medicale
 
 
 ## System

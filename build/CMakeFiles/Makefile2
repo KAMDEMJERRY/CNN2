@@ -83,7 +83,6 @@ clean: test/clean
 # Recursive "all" directory target.
 src/all: src/CMakeFiles/cnn_lib.dir/all
 src/all: src/CMakeFiles/CNN.dir/all
-src/all: src/CMakeFiles/EVAL.dir/all
 src/all: src/CMakeFiles/DIMS.dir/all
 src/all: src/CMakeFiles/PLAY.dir/all
 .PHONY : src/all
@@ -95,7 +94,6 @@ src/preinstall:
 # Recursive "clean" directory target.
 src/clean: src/CMakeFiles/cnn_lib.dir/clean
 src/clean: src/CMakeFiles/CNN.dir/clean
-src/clean: src/CMakeFiles/EVAL.dir/clean
 src/clean: src/CMakeFiles/DIMS.dir/clean
 src/clean: src/CMakeFiles/PLAY.dir/clean
 .PHONY : src/clean
@@ -104,7 +102,16 @@ src/clean: src/CMakeFiles/PLAY.dir/clean
 # Directory level rules for directory test
 
 # Recursive "all" directory target.
-test/all:
+test/all: test/CMakeFiles/test_Tensor.dir/all
+test/all: test/CMakeFiles/test_ConvLayer.dir/all
+test/all: test/CMakeFiles/test_DenseLayer.dir/all
+test/all: test/CMakeFiles/test_ActivationLayer.dir/all
+test/all: test/CMakeFiles/test_PoolLayer.dir/all
+test/all: test/CMakeFiles/test_LossLayer.dir/all
+test/all: test/CMakeFiles/test_Optimizer.dir/all
+test/all: test/CMakeFiles/test_DropoutLayer.dir/all
+test/all: test/CMakeFiles/test_Dimensions.dir/all
+test/all: test/CMakeFiles/test_CNN.dir/all
 .PHONY : test/all
 
 # Recursive "preinstall" directory target.
@@ -112,7 +119,16 @@ test/preinstall:
 .PHONY : test/preinstall
 
 # Recursive "clean" directory target.
-test/clean:
+test/clean: test/CMakeFiles/test_Tensor.dir/clean
+test/clean: test/CMakeFiles/test_ConvLayer.dir/clean
+test/clean: test/CMakeFiles/test_DenseLayer.dir/clean
+test/clean: test/CMakeFiles/test_ActivationLayer.dir/clean
+test/clean: test/CMakeFiles/test_PoolLayer.dir/clean
+test/clean: test/CMakeFiles/test_LossLayer.dir/clean
+test/clean: test/CMakeFiles/test_Optimizer.dir/clean
+test/clean: test/CMakeFiles/test_DropoutLayer.dir/clean
+test/clean: test/CMakeFiles/test_Dimensions.dir/clean
+test/clean: test/CMakeFiles/test_CNN.dir/clean
 .PHONY : test/clean
 
 #=============================================================================
@@ -122,7 +138,7 @@ test/clean:
 src/CMakeFiles/cnn_lib.dir/all:
 	$(MAKE) $(MAKESILENT) -f src/CMakeFiles/cnn_lib.dir/build.make src/CMakeFiles/cnn_lib.dir/depend
 	$(MAKE) $(MAKESILENT) -f src/CMakeFiles/cnn_lib.dir/build.make src/CMakeFiles/cnn_lib.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build/CMakeFiles" --progress-num=9,10,11,12,13 "Built target cnn_lib"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build/CMakeFiles" --progress-num=7,8,9,10,11 "Built target cnn_lib"
 .PHONY : src/CMakeFiles/cnn_lib.dir/all
 
 # Build rule for subdir invocation for target.
@@ -168,32 +184,6 @@ src/CMakeFiles/CNN.dir/clean:
 .PHONY : src/CMakeFiles/CNN.dir/clean
 
 #=============================================================================
-# Target rules for target src/CMakeFiles/EVAL.dir
-
-# All Build rule for target.
-src/CMakeFiles/EVAL.dir/all: src/CMakeFiles/cnn_lib.dir/all
-	$(MAKE) $(MAKESILENT) -f src/CMakeFiles/EVAL.dir/build.make src/CMakeFiles/EVAL.dir/depend
-	$(MAKE) $(MAKESILENT) -f src/CMakeFiles/EVAL.dir/build.make src/CMakeFiles/EVAL.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build/CMakeFiles" --progress-num=5,6 "Built target EVAL"
-.PHONY : src/CMakeFiles/EVAL.dir/all
-
-# Build rule for subdir invocation for target.
-src/CMakeFiles/EVAL.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build/CMakeFiles" 7
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/CMakeFiles/EVAL.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build/CMakeFiles" 0
-.PHONY : src/CMakeFiles/EVAL.dir/rule
-
-# Convenience name for target.
-EVAL: src/CMakeFiles/EVAL.dir/rule
-.PHONY : EVAL
-
-# clean rule for target.
-src/CMakeFiles/EVAL.dir/clean:
-	$(MAKE) $(MAKESILENT) -f src/CMakeFiles/EVAL.dir/build.make src/CMakeFiles/EVAL.dir/clean
-.PHONY : src/CMakeFiles/EVAL.dir/clean
-
-#=============================================================================
 # Target rules for target src/CMakeFiles/DIMS.dir
 
 # All Build rule for target.
@@ -226,7 +216,7 @@ src/CMakeFiles/DIMS.dir/clean:
 src/CMakeFiles/PLAY.dir/all: src/CMakeFiles/cnn_lib.dir/all
 	$(MAKE) $(MAKESILENT) -f src/CMakeFiles/PLAY.dir/build.make src/CMakeFiles/PLAY.dir/depend
 	$(MAKE) $(MAKESILENT) -f src/CMakeFiles/PLAY.dir/build.make src/CMakeFiles/PLAY.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build/CMakeFiles" --progress-num=7,8 "Built target PLAY"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build/CMakeFiles" --progress-num=5,6 "Built target PLAY"
 .PHONY : src/CMakeFiles/PLAY.dir/all
 
 # Build rule for subdir invocation for target.
@@ -244,6 +234,266 @@ PLAY: src/CMakeFiles/PLAY.dir/rule
 src/CMakeFiles/PLAY.dir/clean:
 	$(MAKE) $(MAKESILENT) -f src/CMakeFiles/PLAY.dir/build.make src/CMakeFiles/PLAY.dir/clean
 .PHONY : src/CMakeFiles/PLAY.dir/clean
+
+#=============================================================================
+# Target rules for target test/CMakeFiles/test_Tensor.dir
+
+# All Build rule for target.
+test/CMakeFiles/test_Tensor.dir/all:
+	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_Tensor.dir/build.make test/CMakeFiles/test_Tensor.dir/depend
+	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_Tensor.dir/build.make test/CMakeFiles/test_Tensor.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build/CMakeFiles" --progress-num=37,38 "Built target test_Tensor"
+.PHONY : test/CMakeFiles/test_Tensor.dir/all
+
+# Build rule for subdir invocation for target.
+test/CMakeFiles/test_Tensor.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build/CMakeFiles" 2
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/CMakeFiles/test_Tensor.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build/CMakeFiles" 0
+.PHONY : test/CMakeFiles/test_Tensor.dir/rule
+
+# Convenience name for target.
+test_Tensor: test/CMakeFiles/test_Tensor.dir/rule
+.PHONY : test_Tensor
+
+# clean rule for target.
+test/CMakeFiles/test_Tensor.dir/clean:
+	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_Tensor.dir/build.make test/CMakeFiles/test_Tensor.dir/clean
+.PHONY : test/CMakeFiles/test_Tensor.dir/clean
+
+#=============================================================================
+# Target rules for target test/CMakeFiles/test_ConvLayer.dir
+
+# All Build rule for target.
+test/CMakeFiles/test_ConvLayer.dir/all:
+	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_ConvLayer.dir/build.make test/CMakeFiles/test_ConvLayer.dir/depend
+	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_ConvLayer.dir/build.make test/CMakeFiles/test_ConvLayer.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build/CMakeFiles" --progress-num=20,21,22 "Built target test_ConvLayer"
+.PHONY : test/CMakeFiles/test_ConvLayer.dir/all
+
+# Build rule for subdir invocation for target.
+test/CMakeFiles/test_ConvLayer.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build/CMakeFiles" 3
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/CMakeFiles/test_ConvLayer.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build/CMakeFiles" 0
+.PHONY : test/CMakeFiles/test_ConvLayer.dir/rule
+
+# Convenience name for target.
+test_ConvLayer: test/CMakeFiles/test_ConvLayer.dir/rule
+.PHONY : test_ConvLayer
+
+# clean rule for target.
+test/CMakeFiles/test_ConvLayer.dir/clean:
+	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_ConvLayer.dir/build.make test/CMakeFiles/test_ConvLayer.dir/clean
+.PHONY : test/CMakeFiles/test_ConvLayer.dir/clean
+
+#=============================================================================
+# Target rules for target test/CMakeFiles/test_DenseLayer.dir
+
+# All Build rule for target.
+test/CMakeFiles/test_DenseLayer.dir/all:
+	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_DenseLayer.dir/build.make test/CMakeFiles/test_DenseLayer.dir/depend
+	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_DenseLayer.dir/build.make test/CMakeFiles/test_DenseLayer.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build/CMakeFiles" --progress-num=23,24,25 "Built target test_DenseLayer"
+.PHONY : test/CMakeFiles/test_DenseLayer.dir/all
+
+# Build rule for subdir invocation for target.
+test/CMakeFiles/test_DenseLayer.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build/CMakeFiles" 3
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/CMakeFiles/test_DenseLayer.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build/CMakeFiles" 0
+.PHONY : test/CMakeFiles/test_DenseLayer.dir/rule
+
+# Convenience name for target.
+test_DenseLayer: test/CMakeFiles/test_DenseLayer.dir/rule
+.PHONY : test_DenseLayer
+
+# clean rule for target.
+test/CMakeFiles/test_DenseLayer.dir/clean:
+	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_DenseLayer.dir/build.make test/CMakeFiles/test_DenseLayer.dir/clean
+.PHONY : test/CMakeFiles/test_DenseLayer.dir/clean
+
+#=============================================================================
+# Target rules for target test/CMakeFiles/test_ActivationLayer.dir
+
+# All Build rule for target.
+test/CMakeFiles/test_ActivationLayer.dir/all:
+	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_ActivationLayer.dir/build.make test/CMakeFiles/test_ActivationLayer.dir/depend
+	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_ActivationLayer.dir/build.make test/CMakeFiles/test_ActivationLayer.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build/CMakeFiles" --progress-num=12,13 "Built target test_ActivationLayer"
+.PHONY : test/CMakeFiles/test_ActivationLayer.dir/all
+
+# Build rule for subdir invocation for target.
+test/CMakeFiles/test_ActivationLayer.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build/CMakeFiles" 2
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/CMakeFiles/test_ActivationLayer.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build/CMakeFiles" 0
+.PHONY : test/CMakeFiles/test_ActivationLayer.dir/rule
+
+# Convenience name for target.
+test_ActivationLayer: test/CMakeFiles/test_ActivationLayer.dir/rule
+.PHONY : test_ActivationLayer
+
+# clean rule for target.
+test/CMakeFiles/test_ActivationLayer.dir/clean:
+	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_ActivationLayer.dir/build.make test/CMakeFiles/test_ActivationLayer.dir/clean
+.PHONY : test/CMakeFiles/test_ActivationLayer.dir/clean
+
+#=============================================================================
+# Target rules for target test/CMakeFiles/test_PoolLayer.dir
+
+# All Build rule for target.
+test/CMakeFiles/test_PoolLayer.dir/all:
+	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_PoolLayer.dir/build.make test/CMakeFiles/test_PoolLayer.dir/depend
+	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_PoolLayer.dir/build.make test/CMakeFiles/test_PoolLayer.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build/CMakeFiles" --progress-num=35,36 "Built target test_PoolLayer"
+.PHONY : test/CMakeFiles/test_PoolLayer.dir/all
+
+# Build rule for subdir invocation for target.
+test/CMakeFiles/test_PoolLayer.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build/CMakeFiles" 2
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/CMakeFiles/test_PoolLayer.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build/CMakeFiles" 0
+.PHONY : test/CMakeFiles/test_PoolLayer.dir/rule
+
+# Convenience name for target.
+test_PoolLayer: test/CMakeFiles/test_PoolLayer.dir/rule
+.PHONY : test_PoolLayer
+
+# clean rule for target.
+test/CMakeFiles/test_PoolLayer.dir/clean:
+	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_PoolLayer.dir/build.make test/CMakeFiles/test_PoolLayer.dir/clean
+.PHONY : test/CMakeFiles/test_PoolLayer.dir/clean
+
+#=============================================================================
+# Target rules for target test/CMakeFiles/test_LossLayer.dir
+
+# All Build rule for target.
+test/CMakeFiles/test_LossLayer.dir/all:
+	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_LossLayer.dir/build.make test/CMakeFiles/test_LossLayer.dir/depend
+	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_LossLayer.dir/build.make test/CMakeFiles/test_LossLayer.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build/CMakeFiles" --progress-num=31,32 "Built target test_LossLayer"
+.PHONY : test/CMakeFiles/test_LossLayer.dir/all
+
+# Build rule for subdir invocation for target.
+test/CMakeFiles/test_LossLayer.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build/CMakeFiles" 2
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/CMakeFiles/test_LossLayer.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build/CMakeFiles" 0
+.PHONY : test/CMakeFiles/test_LossLayer.dir/rule
+
+# Convenience name for target.
+test_LossLayer: test/CMakeFiles/test_LossLayer.dir/rule
+.PHONY : test_LossLayer
+
+# clean rule for target.
+test/CMakeFiles/test_LossLayer.dir/clean:
+	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_LossLayer.dir/build.make test/CMakeFiles/test_LossLayer.dir/clean
+.PHONY : test/CMakeFiles/test_LossLayer.dir/clean
+
+#=============================================================================
+# Target rules for target test/CMakeFiles/test_Optimizer.dir
+
+# All Build rule for target.
+test/CMakeFiles/test_Optimizer.dir/all:
+	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_Optimizer.dir/build.make test/CMakeFiles/test_Optimizer.dir/depend
+	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_Optimizer.dir/build.make test/CMakeFiles/test_Optimizer.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build/CMakeFiles" --progress-num=33,34 "Built target test_Optimizer"
+.PHONY : test/CMakeFiles/test_Optimizer.dir/all
+
+# Build rule for subdir invocation for target.
+test/CMakeFiles/test_Optimizer.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build/CMakeFiles" 2
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/CMakeFiles/test_Optimizer.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build/CMakeFiles" 0
+.PHONY : test/CMakeFiles/test_Optimizer.dir/rule
+
+# Convenience name for target.
+test_Optimizer: test/CMakeFiles/test_Optimizer.dir/rule
+.PHONY : test_Optimizer
+
+# clean rule for target.
+test/CMakeFiles/test_Optimizer.dir/clean:
+	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_Optimizer.dir/build.make test/CMakeFiles/test_Optimizer.dir/clean
+.PHONY : test/CMakeFiles/test_Optimizer.dir/clean
+
+#=============================================================================
+# Target rules for target test/CMakeFiles/test_DropoutLayer.dir
+
+# All Build rule for target.
+test/CMakeFiles/test_DropoutLayer.dir/all:
+	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_DropoutLayer.dir/build.make test/CMakeFiles/test_DropoutLayer.dir/depend
+	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_DropoutLayer.dir/build.make test/CMakeFiles/test_DropoutLayer.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build/CMakeFiles" --progress-num=29,30 "Built target test_DropoutLayer"
+.PHONY : test/CMakeFiles/test_DropoutLayer.dir/all
+
+# Build rule for subdir invocation for target.
+test/CMakeFiles/test_DropoutLayer.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build/CMakeFiles" 2
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/CMakeFiles/test_DropoutLayer.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build/CMakeFiles" 0
+.PHONY : test/CMakeFiles/test_DropoutLayer.dir/rule
+
+# Convenience name for target.
+test_DropoutLayer: test/CMakeFiles/test_DropoutLayer.dir/rule
+.PHONY : test_DropoutLayer
+
+# clean rule for target.
+test/CMakeFiles/test_DropoutLayer.dir/clean:
+	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_DropoutLayer.dir/build.make test/CMakeFiles/test_DropoutLayer.dir/clean
+.PHONY : test/CMakeFiles/test_DropoutLayer.dir/clean
+
+#=============================================================================
+# Target rules for target test/CMakeFiles/test_Dimensions.dir
+
+# All Build rule for target.
+test/CMakeFiles/test_Dimensions.dir/all:
+	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_Dimensions.dir/build.make test/CMakeFiles/test_Dimensions.dir/depend
+	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_Dimensions.dir/build.make test/CMakeFiles/test_Dimensions.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build/CMakeFiles" --progress-num=26,27,28 "Built target test_Dimensions"
+.PHONY : test/CMakeFiles/test_Dimensions.dir/all
+
+# Build rule for subdir invocation for target.
+test/CMakeFiles/test_Dimensions.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build/CMakeFiles" 3
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/CMakeFiles/test_Dimensions.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build/CMakeFiles" 0
+.PHONY : test/CMakeFiles/test_Dimensions.dir/rule
+
+# Convenience name for target.
+test_Dimensions: test/CMakeFiles/test_Dimensions.dir/rule
+.PHONY : test_Dimensions
+
+# clean rule for target.
+test/CMakeFiles/test_Dimensions.dir/clean:
+	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_Dimensions.dir/build.make test/CMakeFiles/test_Dimensions.dir/clean
+.PHONY : test/CMakeFiles/test_Dimensions.dir/clean
+
+#=============================================================================
+# Target rules for target test/CMakeFiles/test_CNN.dir
+
+# All Build rule for target.
+test/CMakeFiles/test_CNN.dir/all:
+	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_CNN.dir/build.make test/CMakeFiles/test_CNN.dir/depend
+	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_CNN.dir/build.make test/CMakeFiles/test_CNN.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build/CMakeFiles" --progress-num=14,15,16,17,18,19 "Built target test_CNN"
+.PHONY : test/CMakeFiles/test_CNN.dir/all
+
+# Build rule for subdir invocation for target.
+test/CMakeFiles/test_CNN.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build/CMakeFiles" 6
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/CMakeFiles/test_CNN.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build/CMakeFiles" 0
+.PHONY : test/CMakeFiles/test_CNN.dir/rule
+
+# Convenience name for target.
+test_CNN: test/CMakeFiles/test_CNN.dir/rule
+.PHONY : test_CNN
+
+# clean rule for target.
+test/CMakeFiles/test_CNN.dir/clean:
+	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_CNN.dir/build.make test/CMakeFiles/test_CNN.dir/clean
+.PHONY : test/CMakeFiles/test_CNN.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.
