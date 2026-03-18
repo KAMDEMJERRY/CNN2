@@ -1,0 +1,118 @@
+==================================================
+Epoch   1/15 | Loss: 1.6641 | Acc: 39.42% | Val Loss: 1.3799 | Val Acc: 32.14%
+Epoch   2/15 | Loss: 0.8587 | Acc: 62.98% | Val Loss: 1.3967 | Val Acc: 50.00%
+Epoch   3/15 | Loss: 0.5773 | Acc: 77.40% | Val Loss: 1.2411 | Val Acc: 41.96%
+Epoch   4/15 | Loss: 0.3908 | Acc: 87.98% | Val Loss: 1.4441 | Val Acc: 43.75%
+Epoch   5/15 | Loss: 0.3124 | Acc: 90.87% | Val Loss: 1.5929 | Val Acc: 40.18%
+Epoch   6/15 | Loss: 0.2252 | Acc: 93.75% | Val Loss: 1.5305 | Val Acc: 35.71%
+Epoch   7/15 | Loss: 0.1735 | Acc: 96.63% | Val Loss: 1.8110 | Val Acc: 43.75%
+Epoch   8/15 | Loss: 0.1028 | Acc: 98.08% | Val Loss: 1.5924 | Val Acc: 43.75%
+Epoch   9/15 | Loss: 0.0780 | Acc: 99.04% | Val Loss: 1.7207 | Val Acc: 41.96%
+Epoch  10/15 | Loss: 0.0619 | Acc: 99.04% | Val Loss: 1.4976 | Val Acc: 44.64%
+Epoch  11/15 | Loss: 0.0460 | Acc: 99.52% | Val Loss: 1.7813 | Val Acc: 40.18%
+Epoch  12/15 | Loss: 0.0430 | Acc: 100.00% | Val Loss: 1.8344 | Val Acc: 49.11%
+Epoch  13/15 | Loss: 0.0484 | Acc: 99.52%  | Val Loss: 2.1215 | Val Acc: 44.64%
+Epoch  14/15 | Loss: 0.0324 | Acc: 100.00%  | Val Loss: 1.9435 | Val Acc: 48.21%
+Epoch  15/15 | Loss: 0.0391 | Acc: 99.52%  | Val Loss: 2.1138 | Val Acc: 42.86%
+==================================================
+Epoch   1/15 | Loss: 1.6188 | Acc: 45.67%  | Val Loss: 1.5546 | Val Acc: 44.64%
+Epoch   2/15 | Loss: 0.8154 | Acc: 63.94%  | Val Loss: 1.9321 | Val Acc: 38.39%
+Epoch   3/15 | Loss: 0.3922 | Acc: 84.13%  | Val Loss: 1.6031 | Val Acc: 40.18%
+Epoch   4/15 | Loss: 0.2259 | Acc: 91.35%  | Val Loss: 1.4860 | Val Acc: 48.21%
+Epoch   5/15 | Loss: 0.1495 | Acc: 96.63%  | Val Loss: 1.9273 | Val Acc: 41.07%
+Epoch   6/15 | Loss: 0.1030 | Acc: 97.12% | Val Loss: 2.0471 | Val Acc: 37.50%
+Epoch   7/15 | Loss: 0.0862 | Acc: 99.04%  | Val Loss: 2.1204 | Val Acc: 43.75%
+Epoch   8/15 | Loss: 0.0861 | Acc: 97.12%  | Val Loss: 2.0608 | Val Acc: 43.75%
+Epoch   9/15 | Loss: 0.0749 | Acc: 97.60%  | Val Loss: 2.0791 | Val Acc: 44.64%
+Epoch  10/15 | Loss: 0.0302 | Acc: 100.00%  | Val Loss: 2.0275 | Val Acc: 42.86%
+Epoch  11/15 | Loss: 0.0330 | Acc: 99.52%  | Val Loss: 2.2978 | Val Acc: 41.96%
+Epoch  12/15 | Loss: 0.0265 | Acc: 100.00% | Val Loss: 2.2731 | Val Acc: 43.75%
+Epoch  13/15 | Loss: 0.0301 | Acc: 99.52%  | Val Loss: 1.9773 | Val Acc: 50.00%
+Epoch  14/15 | Loss: 0.0160 | Acc: 100.00%  | Val Loss: 1.8576 | Val Acc: 47.32%
+Epoch  15/15 | Loss: 0.0114 | Acc: 100.00%  | Val Loss: 2.1000 | Val Acc: 49.11%
+==================================================
+Epoch   1/15 | Loss: 1.6848 | Acc: 46.15%  | Val Loss: 1.4374 | Val Acc: 47.32%
+Epoch   2/15 | Loss: 0.8687 | Acc: 59.13%  | Val Loss: 1.1213 | Val Acc: 50.89%
+Epoch   3/15 | Loss: 0.6456 | Acc: 72.12%  | Val Loss: 1.1375 | Val Acc: 57.14%
+Epoch   4/15 | Loss: 0.4514 | Acc: 84.13%  | Val Loss: 1.1556 | Val Acc: 51.79%
+Epoch   5/15 | Loss: 0.3518 | Acc: 88.94%  | Val Loss: 1.3147 | Val Acc: 45.54%
+Epoch   6/15 | Loss: 0.2654 | Acc: 94.23%  | Val Loss: 1.2884 | Val Acc: 46.43%
+Epoch   7/15 | Loss: 0.2280 | Acc: 93.75%  | Val Loss: 1.6598 | Val Acc: 46.43%
+Epoch   8/15 | Loss: 0.1286 | Acc: 98.08%  | Val Loss: 1.3644 | Val Acc: 52.68%
+Epoch   9/15 | Loss: 0.1053 | Acc: 97.60%  | Val Loss: 1.5961 | Val Acc: 46.43%
+Epoch  10/15 | Loss: 0.0980 | Acc: 98.08%  | Val Loss: 1.6281 | Val Acc: 47.32%
+Epoch  11/15 | Loss: 0.0877 | Acc: 98.56%  | Val Loss: 1.7056 | Val Acc: 45.54%
+Epoch  12/15 | Loss: 0.0488 | Acc: 99.04%  | Val Loss: 1.7088 | Val Acc: 44.64%
+Epoch  13/15 | Loss: 0.0401 | Acc: 100.00% | Val Loss: 1.9276 | Val Acc: 43.75%
+Epoch  14/15 | Loss: 0.0465 | Acc: 99.52%  | Val Loss: 1.7523 | Val Acc: 49.11%
+Epoch  15/15 | Loss: 0.0477 | Acc: 98.08%  | Val Loss: 1.9450 | Val Acc: 48.21%
+==================================================
+Epoch   1/15 | Loss: 1.6193 | Acc: 45.67%  | Val Loss: 1.6129 | Val Acc: 37.50%
+Epoch   2/15 | Loss: 0.8662 | Acc: 64.42%  | Val Loss: 1.4506 | Val Acc: 40.18%
+Epoch   3/15 | Loss: 0.4916 | Acc: 82.69%  | Val Loss: 1.2663 | Val Acc: 46.43%
+Epoch   4/15 | Loss: 0.3094 | Acc: 93.27%  | Val Loss: 1.5523 | Val Acc: 32.14%
+Epoch   5/15 | Loss: 0.2493 | Acc: 91.83% | Val Loss: 1.3722 | Val Acc: 43.75%
+Epoch   6/15 | Loss: 0.1846 | Acc: 96.63%  | Val Loss: 1.3972 | Val Acc: 40.18%
+Epoch   7/15 | Loss: 0.1152 | Acc: 99.52%  | Val Loss: 1.6034 | Val Acc: 41.07%
+Epoch   8/15 | Loss: 0.0998 | Acc: 98.08%  | Val Loss: 1.6258 | Val Acc: 42.86%
+Epoch   9/15 | Loss: 0.0728 | Acc: 99.52%  | Val Loss: 1.8511 | Val Acc: 37.50%
+Epoch  10/15 | Loss: 0.0513 | Acc: 99.52%  | Val Loss: 1.8479 | Val Acc: 39.29%
+Epoch  11/15 | Loss: 0.0476 | Acc: 99.04%  | Val Loss: 2.0809 | Val Acc: 32.14%
+Epoch  12/15 | Loss: 0.0368 | Acc: 100.00%  | Val Loss: 2.0092 | Val Acc: 47.32%
+Epoch  13/15 | Loss: 0.0307 | Acc: 100.00%  | Val Loss: 2.0539 | Val Acc: 38.39%
+Epoch  14/15 | Loss: 0.0277 | Acc: 100.00%  | Val Loss: 1.7473 | Val Acc: 42.86%
+Epoch  15/15 | Loss: 0.0206 | Acc: 100.00%  | Val Loss: 2.0798 | Val Acc: 37.50%
+==================================================
+Epoch   1/15 | Loss: 2.2583 | Acc: 41.83% | Val Loss: 1.7702 | Val Acc: 35.71%
+Epoch   2/15 | Loss: 0.9040 | Acc: 63.46% | Val Loss: 1.9195 | Val Acc: 33.04%
+Epoch   3/15 | Loss: 0.4965 | Acc: 82.21% | Val Loss: 1.5072 | Val Acc: 41.96%
+Epoch   4/15 | Loss: 0.3384 | Acc: 90.38% | Val Loss: 1.7356 | Val Acc: 36.61%
+Epoch   5/15 | Loss: 0.2672 | Acc: 89.90% | Val Loss: 1.7587 | Val Acc: 41.96%
+Epoch   6/15 | Loss: 0.1451 | Acc: 96.15% | Val Loss: 1.8363 | Val Acc: 46.43%
+Epoch   7/15 | Loss: 0.1185 | Acc: 97.12% | Val Loss: 1.6257 | Val Acc: 38.39%
+Epoch   8/15 | Loss: 0.0863 | Acc: 97.60% | Val Loss: 1.9657 | Val Acc: 38.39%
+Epoch   9/15 | Loss: 0.0507 | Acc: 99.52% | Val Loss: 1.7760 | Val Acc: 48.21%
+Epoch  10/15 | Loss: 0.0496 | Acc: 99.04% | Val Loss: 2.4035 | Val Acc: 39.29%
+Epoch  11/15 | Loss: 0.0381 | Acc: 100.00% | Val Loss: 2.0746 | Val Acc: 36.61%
+Epoch  12/15 | Loss: 0.0469 | Acc: 99.52% | Val Loss: 2.2795 | Val Acc: 45.54%
+Epoch  13/15 | Loss: 0.0439 | Acc: 99.04% | Val Loss: 1.8162 | Val Acc: 46.43%
+Epoch  14/15 | Loss: 0.0267 | Acc: 100.00% | Val Loss: 1.9613 | Val Acc: 49.11%
+Epoch  15/15 | Loss: 0.0263 | Acc: 99.52% | Val Loss: 2.1414 | Val Acc: 39.29%
+==================================================
+Epoch   1/15 | Loss: 1.9509 | Acc: 40.38% | Val Loss: 1.4094 | Val Acc: 41.96%
+Epoch   2/15 | Loss: 0.7137 | Acc: 69.71% | Val Loss: 1.4377 | Val Acc: 43.75%
+Epoch   3/15 | Loss: 0.5336 | Acc: 78.85% | Val Loss: 1.4543 | Val Acc: 41.96%
+Epoch   4/15 | Loss: 0.3069 | Acc: 91.35% | Val Loss: 1.5366 | Val Acc: 39.29%
+Epoch   5/15 | Loss: 0.2349 | Acc: 92.31% | Val Loss: 1.3722 | Val Acc: 40.18%
+Epoch   6/15 | Loss: 0.1604 | Acc: 98.08%  | Val Loss: 1.5390 | Val Acc: 37.50%
+Epoch   7/15 | Loss: 0.1426 | Acc: 95.67%  | Val Loss: 1.5739 | Val Acc: 50.00%
+Epoch   8/15 | Loss: 0.0906 | Acc: 98.56% | Val Loss: 1.6435 | Val Acc: 51.79%
+Epoch   9/15 | Loss: 0.0919 | Acc: 97.60% | Val Loss: 1.5813 | Val Acc: 39.29%
+Epoch  10/15 | Loss: 0.0611 | Acc: 99.52% | Val Loss: 1.5096 | Val Acc: 46.43%
+Epoch  11/15 | Loss: 0.0680 | Acc: 98.08% | Val Loss: 1.9366 | Val Acc: 38.39%
+Epoch  12/15 | Loss: 0.0510 | Acc: 99.52% | Val Loss: 1.8225 | Val Acc: 35.71%
+Epoch  13/15 | Loss: 0.0427 | Acc: 99.52% | Val Loss: 1.9136 | Val Acc: 41.07%
+Epoch  14/15 | Loss: 0.0310 | Acc: 100.00% | Val Loss: 1.8473 | Val Acc: 40.18%
+Epoch  15/15 | Loss: 0.0303 | Acc: 100.00% | Val Loss: 1.7721 | Val Acc: 45.54%
+==================================================
+Epoch   1/15 | Loss: 1.3759 | Acc: 38.97% | Time: 1956615ms | Val Loss: 1.0899 | Val Acc: 48.60%
+Epoch   2/15 | Loss: 0.8551 | Acc: 59.39% | Time: 1596974ms | Val Loss: 1.1364 | Val Acc: 45.66%
+Epoch   3/15 | Loss: 0.7023 | Acc: 69.97% | Time: 1558690ms | Val Loss: 1.0892 | Val Acc: 45.92%
+Epoch   4/15 | Loss: 0.5459 | Acc: 78.14% | Time: 1562307ms | Val Loss: 1.1730 | Val Acc: 47.45%
+Epoch   5/15 | Loss: 0.4230 | Acc: 85.64% | Time: 1612318ms | Val Loss: 1.2623 | Val Acc: 42.73%
+Epoch   6/15 | Loss: 0.2798 | Acc: 92.21% | Time: 1885418ms | Val Loss: 1.3555 | Val Acc: 49.49%
+Epoch   7/15 | Loss: 0.1930 | Acc: 94.90% | Time: 1513791ms | Val Loss: 1.3326 | Val Acc: 50.13%
+Epoch   8/15 | Loss: 0.1537 | Acc: 96.54% | Time: 1581122ms | Val Loss: 1.4857 | Val Acc: 45.66%
+Epoch   9/15 | Loss: 0.1059 | Acc: 97.98% | Time: 1617525ms | Val Loss: 1.8109 | Val Acc: 45.41%
+Epoch  10/15 | Loss: 0.0864 | Acc: 98.17% | Time: 1698714ms | Val Loss: 1.7343 | Val Acc: 41.20%
+Epoch  11/15 | Loss: 0.0554 | Acc: 99.42% | Time: 1627715ms | Val Loss: 1.6812 | Val Acc: 50.38%
+Epoch  12/15 | Loss: 0.0556 | Acc: 98.65% | Time: 1695669ms | Val Loss: 1.5698 | Val Acc: 52.17%
+Epoch  13/15 | Loss: 0.0359 | Acc: 99.52% | Time: 1664134ms | Val Loss: 1.5964 | Val Acc: 49.23%
+Epoch  14/15 | Loss: 0.0413 | Acc: 99.04% | Time: 1774443ms | Val Loss: 1.7986 | Val Acc: 42.47%
+Epoch  15/15 | Loss: 0.0327 | Acc: 99.62% | Time: 1648254ms | Val Loss: 2.2887 | Val Acc: 47.19%
+==================================================
+Epoch   1/15 | Loss: 1.4999 | Acc: 42.76% | Val Loss: 1.0901 | Val Acc: 41.45%
+Epoch   2/15 | Loss: 0.9357 | Acc: 53.24% | Val Loss: 1.0638 | Val Acc: 44.26%
+Epoch   3/15 | Loss: 0.8419 | Acc: 60.83% | Val Loss: 1.0683 | Val Acc: 43.62%
+Epoch   4/15 | Loss: 0.7643 | Acc: 66.25% | Val Loss: 1.0914 | Val Acc: 48.09%
+Epoch   5/15 | Loss: 0.6304 | Acc: 73.85% | Val Loss: 1.1178 | Val Acc: 42.47%

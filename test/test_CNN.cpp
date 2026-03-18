@@ -80,10 +80,12 @@ TEST_F(CNNTestFixture, BackwardRunsWithoutError) {
     target(0, 0, 0, 0) = 1.0f; // Vraie classe = 0
     
     model.getLossLayer()->setTargets(target);
-    model.forward(input);
+    Tensor out = model.forward(input);
+    model.getLossLayer()->forward(out);
     
     // Le backward retourne un tenseur (gradient par rapport à l'entrée)
-    Tensor grad_in = model.backward(Tensor()); // Dummy pour déclencher le pipeline
+    Tensor grad_out = model.getLossLayer()->backward(Tensor());
+    Tensor grad_in = model.backward(grad_out);
     
     EXPECT_EQ(grad_in.size(), input.size());
 }
@@ -100,8 +102,11 @@ TEST_F(CNNTestFixture, UpdateWeights_AltersParameters) {
     target(0, 1, 0, 0) = 1.0f; 
     
     model.getLossLayer()->setTargets(target);
-    model.forward(input);
-    model.backward(Tensor());
+    Tensor out = model.forward(input);
+    model.getLossLayer()->forward(out);
+    
+    Tensor grad_out = model.getLossLayer()->backward(Tensor());
+    model.backward(grad_out);
     model.updateWeights();
     
     EXPECT_GT((dense->getWeights() - W_before).norm(), 0.0f);
@@ -113,7 +118,7 @@ TEST_F(CNNTestFixture, PredictReturnsTensor) {
     Tensor preds = model.predict(input);
     
     EXPECT_EQ(preds.dim(0), 1);  // Batch size
-    EXPECT_EQ(preds.dim(1), 1);  // Un seul entier (indice de classe)
+    EXPECT_EQ(preds.dim(1), 2);  // Classes
 }
 
 TEST_F(CNNTestFixture, Evaluate_ReturnsAccuracy) {

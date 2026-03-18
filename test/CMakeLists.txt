@@ -43,3 +43,11 @@ gtest_discover_tests(test_Dimensions)
 add_executable(test_CNN test_CNN.cpp ../src/CNN.cpp ../src/ConvLayer.cpp ../src/ConvLayer3D.cpp ../src/DenseLayer.cpp)
 target_link_libraries(test_CNN PRIVATE GTest::GTest GTest::Main Eigen3::Eigen OpenMP::OpenMP_CXX)
 gtest_discover_tests(test_CNN)
+
+add_executable(test_Sparse test_Sparse.cpp)
+target_link_libraries(test_Sparse PRIVATE GTest::GTest GTest::Main Eigen3::Eigen OpenMP::OpenMP_CXX)
+gtest_discover_tests(test_Sparse)
+
+add_executable(test_Attention test_Attention.cpp)
+target_link_libraries(test_Attention PRIVATE GTest::GTest GTest::Main Eigen3::Eigen OpenMP::OpenMP_CXX)
+gtest_discover_tests(test_Attention)

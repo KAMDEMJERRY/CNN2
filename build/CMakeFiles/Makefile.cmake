@@ -100,4 +100,6 @@ set(CMAKE_DEPEND_INFO_FILES
   "test/CMakeFiles/test_DropoutLayer.dir/DependInfo.cmake"
   "test/CMakeFiles/test_Dimensions.dir/DependInfo.cmake"
   "test/CMakeFiles/test_CNN.dir/DependInfo.cmake"
+  "test/CMakeFiles/test_Sparse.dir/DependInfo.cmake"
+  "test/CMakeFiles/test_Attention.dir/DependInfo.cmake"
   )

@@ -1,23 +1,27 @@
 #include "CNN.hpp"
+#include "shared.hpp"
 #include "IDataLoader.hpp"
 #include "Layer.hpp"
 #include "LossLayer.hpp"
 #include "Optimizer.hpp"
 #include "Tensor.hpp"
+#include <iostream>
+#include <fstream>
+#include <string>
 
 // =============================================================================
 // Construction
 // =============================================================================
 
-void CNN::addLayer(std::shared_ptr<Layer> layer)       { layers_.push_back(std::move(layer)); }
+void CNN::addLayer(std::shared_ptr<Layer> layer) { layers_.push_back(std::move(layer)); }
 void CNN::setLossLayer(std::shared_ptr<LossLayer> loss) { loss_layer_ = std::move(loss); }
-void CNN::setOptimizer(std::shared_ptr<Optimizer> opt)  { optimizer_  = std::move(opt);  }
+void CNN::setOptimizer(std::shared_ptr<Optimizer> opt) { optimizer_ = std::move(opt); }
 
 // =============================================================================
 // Accesseurs
 // =============================================================================
 
-Layer*                                     CNN::getLayer(int idx) const { return layers_.at(idx).get(); }
+Layer* CNN::getLayer(int idx) const { return layers_.at(idx).get(); }
 std::shared_ptr<LossLayer>                 CNN::getLossLayer()    const { return loss_layer_; }
 const std::vector<std::shared_ptr<Layer>>& CNN::getLayers()       const { return layers_; }
 
@@ -57,17 +61,18 @@ void CNN::fit(IDataLoader& dataloader, int epochs, int /*batch_size*/) {
 }
 
 void CNN::fitWithValidation(IDataLoader& train_loader, IDataLoader& val_loader,
-                            int epochs, int /*batch_size*/) {
+    int epochs, int /*batch_size*/) {
     requireLoss();
     float best_val_loss = std::numeric_limits<float>::max();
 
     for (int epoch = 0; epoch < epochs; ++epoch) {
         EpochMetrics train_m = runEpoch(train_loader, /*train=*/true);
-        EpochMetrics val_m   = runEpoch(val_loader,   /*train=*/false);
+        EpochMetrics val_m = runEpoch(val_loader,   /*train=*/false);
 
         if (val_m.loss < best_val_loss) best_val_loss = val_m.loss;
 
         printEpochStats(epoch, epochs, train_m, &val_m);
+        logEpochStats(epoch, epochs, train_m, &val_m);
     }
 }
 
@@ -117,15 +122,14 @@ EpochMetrics CNN::runEpoch(IDataLoader& loader, bool train) {
     loader.reset();
 
     float total_loss = 0.0f;
-    float total_acc  = 0.0f;
-    int   batches    = 0;
-    auto  t_start    = std::chrono::high_resolution_clock::now();
+    float total_acc = 0.0f;
+    int   batches = 0;
+    auto  t_start = std::chrono::high_resolution_clock::now();
 
     while (loader.hasNext()) {
         auto [images, targets] = loader.nextBatch();
-        Tensor predictions     = forward(images);
-        float  loss            = 0.0f;
-
+        Tensor predictions = forward(images);
+        float  loss = 0.0f;
         if (softmax_ce) {
             softmax_ce->setTargets(targets);
             loss = softmax_ce->getCurrentLoss();
@@ -133,7 +137,8 @@ EpochMetrics CNN::runEpoch(IDataLoader& loader, bool train) {
                 backward(softmax_ce->backward(Tensor()));
                 updateWeights();
             }
-        } else {
+        }
+        else {
             loss_layer_->setTargets(targets);
             loss_layer_->forward(predictions);
             loss = loss_layer_->getCurrentLoss();
@@ -144,13 +149,13 @@ EpochMetrics CNN::runEpoch(IDataLoader& loader, bool train) {
         }
 
         total_loss += loss;
-        total_acc  += loader.computeAccuracy(predictions, targets);
+        total_acc += loader.computeAccuracy(predictions, targets);
         ++batches;
     }
 
     auto t_end = std::chrono::high_resolution_clock::now();
     return { total_loss / batches,
-             total_acc  / batches,
+             total_acc / batches,
              std::chrono::duration_cast<std::chrono::milliseconds>(t_end - t_start).count() };
 }
 
@@ -159,38 +164,39 @@ EpochMetrics CNN::runEpoch(IDataLoader& loader, bool train) {
 // =============================================================================
 
 EpochMetrics CNN::runEpoch(const Tensor& inputs, const Tensor& targets,
-                           int batch_size, bool train) {
+    int batch_size, bool train) {
     SoftmaxCrossEntropyLayer* softmax_ce = findSoftmaxCELayer();
 
     const int num_samples = inputs.dim(0);
     const int num_batches = (num_samples + batch_size - 1) / batch_size;
 
-    float total_loss    = 0.0f;
+    float total_loss = 0.0f;
     int   total_correct = 0;
-    auto  t_start       = std::chrono::high_resolution_clock::now();
+    auto  t_start = std::chrono::high_resolution_clock::now();
 
     for (int b = 0; b < num_batches; ++b) {
-        Tensor batch_in  = extractBatch(inputs,  b, batch_size);
+        Tensor batch_in = extractBatch(inputs, b, batch_size);
         Tensor batch_tgt = extractBatch(targets, b, batch_size);
-        const int n      = batch_in.dim(0);
+        const int n = batch_in.dim(0);
 
         Tensor output = forward(batch_in);
-        float  loss   = 0.0f;
-        float  acc    = 0.0f;
+        float  loss = 0.0f;
+        float  acc = 0.0f;
 
         if (softmax_ce) {
             softmax_ce->setTargets(batch_tgt);
             loss = softmax_ce->getCurrentLoss();
-            acc  = softmax_ce->computeAccuracy();
+            acc = softmax_ce->computeAccuracy();
             if (train) { backward(softmax_ce->backward(Tensor())); updateWeights(); }
-        } else {
+        }
+        else {
             loss_layer_->setTargets(batch_tgt);
             loss_layer_->forward(output);
             loss = loss_layer_->getCurrentLoss();
             if (train) { backward(loss_layer_->backward(Tensor())); updateWeights(); }
         }
 
-        total_loss    += loss * n;
+        total_loss += loss * n;
         total_correct += static_cast<int>(acc * n);
     }
 
@@ -212,39 +218,58 @@ SoftmaxCrossEntropyLayer* CNN::findSoftmaxCELayer() const {
 
 Tensor CNN::extractBatch(const Tensor& data, int batch_idx, int batch_size) {
     const int start = batch_idx * batch_size;
-    const int end   = std::min(start + batch_size, data.dim(0));
-    const int n     = end - start;
+    const int end = std::min(start + batch_size, data.dim(0));
+    const int n = end - start;
 
     if (data.ndim() == 4) {
         Tensor batch(n, data.dim(1), data.dim(2), data.dim(3));
         for (int i = 0; i < n; ++i)
-        for (int c = 0; c < data.dim(1); ++c)
-        for (int h = 0; h < data.dim(2); ++h)
-        for (int w = 0; w < data.dim(3); ++w)
-            batch(i, c, h, w) = data(start + i, c, h, w);
+            for (int c = 0; c < data.dim(1); ++c)
+                for (int h = 0; h < data.dim(2); ++h)
+                    for (int w = 0; w < data.dim(3); ++w)
+                        batch(i, c, h, w) = data(start + i, c, h, w);
         return batch;
     }
 
     Tensor batch(n, data.dim(1), data.dim(2), data.dim(3), data.dim(4));
     for (int i = 0; i < n; ++i)
-    for (int c = 0; c < data.dim(1); ++c)
-    for (int d = 0; d < data.dim(2); ++d)
-    for (int h = 0; h < data.dim(3); ++h)
-    for (int w = 0; w < data.dim(4); ++w)
-        batch(i, c, d, h, w) = data(start + i, c, d, h, w);
+        for (int c = 0; c < data.dim(1); ++c)
+            for (int d = 0; d < data.dim(2); ++d)
+                for (int h = 0; h < data.dim(3); ++h)
+                    for (int w = 0; w < data.dim(4); ++w)
+                        batch(i, c, d, h, w) = data(start + i, c, d, h, w);
     return batch;
 }
 
 void CNN::printEpochStats(int epoch, int total_epochs,
-                          const EpochMetrics& train, const EpochMetrics* val) {
+    const EpochMetrics& train, const EpochMetrics* val) {
     std::cout << "Epoch " << std::setw(3) << epoch + 1 << "/" << total_epochs
-              << " | Loss: "  << std::fixed << std::setprecision(4) << train.loss
-              << " | Acc: "   << std::setprecision(2) << train.accuracy * 100.0f << "%"
-              << " | Time: "  << train.ms << "ms";
+        << " | Loss: " << std::fixed << std::setprecision(4) << train.loss
+        << " | Acc: " << std::setprecision(2) << train.accuracy * 100.0f << "%"
+        << " | Time: " << train.ms << "ms";
     if (val)
         std::cout << " | Val Loss: " << std::setprecision(4) << val->loss
-                  << " | Val Acc: "  << std::setprecision(2) << val->accuracy * 100.0f << "%";
+        << " | Val Acc: " << std::setprecision(2) << val->accuracy * 100.0f << "%";
     std::cout << "\n";
+
+
+
+}
+
+static void logEpochStats(int epoch, int total_epochs, const EpochMetrics& train, const EpochMetrics* val) {
+    std::string logfile = relativePath("/logs/training_log.txt");
+    std::ofstream log_file(logfile, std::ios::app);
+    if (epoch == 0) log_file << std::string(50, '=') << std::endl;
+    log_file << "Epoch " << std::setw(3) << epoch + 1 << "/" << total_epochs
+        << " | Loss: " << std::fixed << std::setprecision(4) << train.loss
+        << " | Acc: " << std::setprecision(2) << train.accuracy * 100.0f << "%";
+    log_file << " | Time: " << train.ms << "ms";
+    if (val)log_file << " | Val Loss: " << std::setprecision(4) << val->loss
+        << " | Val Acc: " << std::setprecision(2) << val->accuracy * 100.0f << "%";
+    log_file << "\n";
+
+    log_file.close();
+
 }
 
 void CNN::requireOptimizer() const {

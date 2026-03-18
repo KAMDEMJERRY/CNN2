@@ -65,6 +65,16 @@ CMAKE_BINARY_DIR = "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build"
 #=============================================================================
 # Targets provided globally by CMake.
 
+# Special rule for the target test
+test:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
+	/usr/bin/ctest --force-new-ctest-process $(ARGS)
+.PHONY : test
+
+# Special rule for the target test
+test/fast: test
+.PHONY : test/fast
+
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
@@ -298,6 +308,32 @@ test_CNN/fast:
 	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_CNN.dir/build.make test/CMakeFiles/test_CNN.dir/build
 .PHONY : test_CNN/fast
 
+#=============================================================================
+# Target rules for targets named test_Sparse
+
+# Build rule for target.
+test_Sparse: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test_Sparse
+.PHONY : test_Sparse
+
+# fast build rule for target.
+test_Sparse/fast:
+	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_Sparse.dir/build.make test/CMakeFiles/test_Sparse.dir/build
+.PHONY : test_Sparse/fast
+
+#=============================================================================
+# Target rules for targets named test_Attention
+
+# Build rule for target.
+test_Attention: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test_Attention
+.PHONY : test_Attention
+
+# fast build rule for target.
+test_Attention/fast:
+	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_Attention.dir/build.make test/CMakeFiles/test_Attention.dir/build
+.PHONY : test_Attention/fast
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -306,11 +342,13 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
+	@echo "... test"
 	@echo "... CNN"
 	@echo "... DIMS"
 	@echo "... PLAY"
 	@echo "... cnn_lib"
 	@echo "... test_ActivationLayer"
+	@echo "... test_Attention"
 	@echo "... test_CNN"
 	@echo "... test_ConvLayer"
 	@echo "... test_DenseLayer"
@@ -319,6 +357,7 @@ help:
 	@echo "... test_LossLayer"
 	@echo "... test_Optimizer"
 	@echo "... test_PoolLayer"
+	@echo "... test_Sparse"
 	@echo "... test_Tensor"
 .PHONY : help
 

@@ -12,7 +12,12 @@
 #include "DataLoader.hpp"
 #include "DataLoader3D.hpp"
 #include "MedMNIST3DDataset.hpp"
+#include "SparseTensor.hpp"
+#include "SparseConvLayer3D.hpp"
+#include "SparseConvAdapterLayer.hpp"
+#include "WindowAttention3DLayer.hpp"    // ← nouveau
 #include <iostream>
+#include <iomanip>
 #include <chrono>
 #include <filesystem>
 
@@ -20,30 +25,41 @@
 // Configuration globale
 // =============================================================================
 
-// Pipeline sélectionné au lancement
-enum class Pipeline { CNN2D, CNN3D };
-static constexpr Pipeline ACTIVE_PIPELINE = Pipeline::CNN3D;
+enum class Pipeline { CNN2D, CNN3D, CNN3D_SPARSE, CNN3D_ATTN, CNN3D_SPARSE_ATTN };
+static constexpr Pipeline ACTIVE_PIPELINE = Pipeline::CNN3D_SPARSE_ATTN;
 
-// --- 2D (MNIST / BloodCells) ---
+// --- 2D ---
 #define MNIST_TRAIN_PATH      "../../../dataset/mnist_img/trainingSample/trainingSample/"
 #define MNIST_TEST_PATH       "../../../dataset/mnist_img/trainingSample/trainingSample/"
 #define BLOODCELLS_TRAIN_PATH "../../../dataset/bloodcell/images/TRAIN/"
 #define BLOODCELLS_TEST_PATH  "../../../dataset/bloodcell/images/TEST/"
 
-static constexpr bool  USE_BLOODCELLS   = false;
-static constexpr int   IMAGE_SIZE_2D    = 28;
-static constexpr int   BATCH_SIZE_2D    = 100;
-static constexpr int   EPOCHS_2D        = 50;
-static constexpr float LR_2D            = 0.0001f;
+static constexpr bool  USE_BLOODCELLS = false;
+static constexpr int   IMAGE_SIZE_2D  = 28;
+static constexpr int   BATCH_SIZE_2D  = 100;
+static constexpr int   EPOCHS_2D      = 50;
+static constexpr float LR_2D          = 0.0001f;
 
-// --- 3D (MedMNIST3D) ---
-#define FRACTURE_PATH  "../../../dataset/fracturemnist3d"
-#define ADRENAL_PATH   "../../../dataset/adrenalmnist3d"
+// --- 3D dense ---
+#define FRACTURE_PATH "../../../dataset/fracturemnist3d"
 
-static constexpr int   BATCH_SIZE_3D    = 16;
-static constexpr int   EPOCHS_3D        = 30;
-static constexpr float LR_3D            = 0.0001f;
-static constexpr int   VOL_SIZE         = 28; // 28x28x28
+static constexpr int   BATCH_SIZE_3D = 16;
+static constexpr int   EPOCHS_3D     = 30;
+static constexpr float LR_3D         = 0.0001f;
+static constexpr int   VOL_SIZE      = 28;
+
+// --- 3D sparse ---
+static constexpr float SPARSE_THRESHOLD  = 0.02f;
+static constexpr int   BATCH_SIZE_SPARSE = 8;
+static constexpr int   EPOCHS_SPARSE     = 30;
+static constexpr float LR_SPARSE         = 0.0001f;
+
+// --- Attention ---
+// Taille de fenêtre : 7 couvre tout le volume 7×7×7 après deux strides
+// Pour les volumes 14×14×14 (après bloc 1), fenêtre de 4 → 4 fenêtres par axe
+static constexpr int   ATTN_WIN_LARGE = 7;   // utilisé sur volume 7³
+static constexpr int   ATTN_WIN_SMALL = 4;   // utilisé sur volume 14³
+static constexpr int   ATTN_HEADS     = 4;   // têtes d'attention
 
 // =============================================================================
 // Utilitaires
@@ -60,150 +76,347 @@ static void requireDir(const std::string& path) {
 }
 
 // =============================================================================
-// Pipeline 2D — MNIST ou BloodCells
+// Pipeline 2D — inchangé
 // =============================================================================
 
 static CNN buildModel2D(int num_classes) {
     CNN model;
-
-    // --- Feature extraction ---
     model.addLayer(std::make_shared<ConvLayer>(1, 32, 3, 3, 1, 1, 1, 1));
     model.addLayer(std::make_shared<ReLULayer>());
     model.addLayer(std::make_shared<ConvLayer>(32, 32, 3, 3, 1, 1, 1, 1));
     model.addLayer(std::make_shared<ReLULayer>());
-    model.addLayer(std::make_shared<MaxPoolLayer>(2, 2));          // 28→14
-
+    model.addLayer(std::make_shared<MaxPoolLayer>(2, 2));
     model.addLayer(std::make_shared<ConvLayer>(32, 64, 3, 3, 1, 1, 1, 1));
     model.addLayer(std::make_shared<ReLULayer>());
     model.addLayer(std::make_shared<ConvLayer>(64, 64, 3, 3, 1, 1, 1, 1));
     model.addLayer(std::make_shared<ReLULayer>());
-    model.addLayer(std::make_shared<MaxPoolLayer>(2, 2));          // 14→7
-
-    // --- Classification ---
+    model.addLayer(std::make_shared<MaxPoolLayer>(2, 2));
     model.addLayer(std::make_shared<DenseLayer>(7 * 7 * 64, 128));
     model.addLayer(std::make_shared<ReLULayer>());
     model.addLayer(std::make_shared<DropoutLayer>(0.5f));
     model.addLayer(std::make_shared<DenseLayer>(128, num_classes));
     model.setLossLayer(std::make_shared<SoftmaxCrossEntropyLayer>());
-
     model.setOptimizer(std::make_shared<Adam>(LR_2D));
     return model;
 }
 
 static int run2D() {
-    section("Pipeline 2D — " + std::string(USE_BLOODCELLS ? "BloodCells" : "MNIST"));
-
+    section("Pipeline 2D");
     const std::string train_dir = USE_BLOODCELLS ? BLOODCELLS_TRAIN_PATH : MNIST_TRAIN_PATH;
     const std::string test_dir  = USE_BLOODCELLS ? BLOODCELLS_TEST_PATH  : MNIST_TEST_PATH;
-
-    requireDir(train_dir);
-    requireDir(test_dir);
-
-    // --- Datasets ---
-    ImageFolderDataset train_dataset(train_dir, IMAGE_SIZE_2D, IMAGE_SIZE_2D, true,  true);
-    ImageFolderDataset val_dataset  (test_dir,  IMAGE_SIZE_2D, IMAGE_SIZE_2D, false, true);
-
-    const int num_classes       = train_dataset.getNumClasses();
-    const int num_train_samples = train_dataset.getNumSamples();
-    const int num_val_samples   = val_dataset.getNumSamples();
-
-    std::cout << "Classes    : " << num_classes       << "\n"
-              << "Train      : " << num_train_samples << "\n"
-              << "Validation : " << num_val_samples   << "\n";
-
-    if (num_train_samples == 0 || num_val_samples == 0)
-        throw std::runtime_error("Dataset vide !");
-
-    // --- Modèle ---
-    section("Architecture 2D");
-    CNN model = buildModel2D(num_classes);
-
-    {
-        Tensor probe(1, 1, IMAGE_SIZE_2D, IMAGE_SIZE_2D);
-        DimensionCalculator::debugArchitecture(model, probe);
-    }
-
-    // --- DataLoaders ---
-    DataLoader train_loader(train_dataset, BATCH_SIZE_2D, /*shuffle=*/true);
-    DataLoader val_loader  (val_dataset,   BATCH_SIZE_2D, /*shuffle=*/false);
-
-    // [TEST RAPIDE] Limiter le nombre d'échantillons
-    train_loader.setMaxSamples(100);
-    val_loader.setMaxSamples(20);
-
-    // --- Entraînement ---
-    section("Entraînement 2D");
+    requireDir(train_dir); requireDir(test_dir);
+    ImageFolderDataset train_ds(train_dir, IMAGE_SIZE_2D, IMAGE_SIZE_2D, true,  true);
+    ImageFolderDataset val_ds  (test_dir,  IMAGE_SIZE_2D, IMAGE_SIZE_2D, false, true);
+    CNN model = buildModel2D(train_ds.getNumClasses());
+    DataLoader train_loader(train_ds, BATCH_SIZE_2D, true);
+    DataLoader val_loader  (val_ds,   BATCH_SIZE_2D, false);
+    train_loader.setMaxSamples(100); val_loader.setMaxSamples(20);
     model.fitWithValidation(train_loader, val_loader, EPOCHS_2D, BATCH_SIZE_2D);
-
     return 0;
 }
 
 // =============================================================================
-// Pipeline 3D — MedMNIST3D (FractureMNIST3D par défaut)
+// Pipeline 3D dense — inchangé
 // =============================================================================
 
 static CNN buildModel3D(int num_classes) {
     CNN model;
-
-    // --- Feature extraction 3D ---
-    // Bloc 1 : 1 → 16,  stride 1, pad 1  → (B, 16, 28, 28, 28)
-    model.addLayer(std::make_shared<ConvLayer3D>(1,  16, 3, 3, 3, 1, 1, 1, 1, 1, 1));
+    model.addLayer(std::make_shared<ConvLayer3D>(1,  16, 3,3,3, 1,1,1, 1,1,1));
     model.addLayer(std::make_shared<ReLULayer>());
-    // Bloc 2 : 16 → 32, stride 2, pad 1  → (B, 32, 14, 14, 14)
-    model.addLayer(std::make_shared<ConvLayer3D>(16, 32, 3, 3, 3, 2, 2, 2, 1, 1, 1));
+    model.addLayer(std::make_shared<ConvLayer3D>(16, 32, 3,3,3, 2,2,2, 1,1,1));
     model.addLayer(std::make_shared<ReLULayer>());
-    // Bloc 3 : 32 → 64, stride 2, pad 1  → (B, 64,  7,  7,  7)
-    model.addLayer(std::make_shared<ConvLayer3D>(32, 64, 3, 3, 3, 2, 2, 2, 1, 1, 1));
+    model.addLayer(std::make_shared<ConvLayer3D>(32, 64, 3,3,3, 2,2,2, 1,1,1));
     model.addLayer(std::make_shared<ReLULayer>());
-
-    // --- Classification ---
-    model.addLayer(std::make_shared<DenseLayer>(7 * 7 * 7 * 64, 256));
+    model.addLayer(std::make_shared<DenseLayer>(7*7*7*64, 256));
     model.addLayer(std::make_shared<ReLULayer>());
     model.addLayer(std::make_shared<DropoutLayer>(0.5f));
     model.addLayer(std::make_shared<DenseLayer>(256, num_classes));
     model.setLossLayer(std::make_shared<SoftmaxCrossEntropyLayer>());
-
     model.setOptimizer(std::make_shared<Adam>(LR_3D));
     return model;
 }
 
 static int run3D() {
-    section("Pipeline 3D — FractureMNIST3D");
+    section("Pipeline 3D dense");
+    requireDir(FRACTURE_PATH);
+    MedMNIST3DDataset train_ds(FRACTURE_PATH, Split::TRAIN, 3, "FractureMNIST3D", true);
+    MedMNIST3DDataset val_ds  (FRACTURE_PATH, Split::VAL,   3, "FractureMNIST3D", true);
+    CNN model = buildModel3D(3);
+    DataLoader3D train_loader(train_ds, BATCH_SIZE_3D, true);
+    DataLoader3D val_loader  (val_ds,   BATCH_SIZE_3D, false);
+    train_loader.setMaxSamples(32); val_loader.setMaxSamples(16);
+    model.fitWithValidation(train_loader, val_loader, EPOCHS_3D, BATCH_SIZE_3D);
+    return 0;
+}
 
+// =============================================================================
+// Pipeline 3D sparse — sans attention (référence)
+// =============================================================================
+
+static CNN buildModel3DSparse(int num_classes) {
+    CNN model;
+    model.addLayer(std::make_shared<SparseConvAdapterLayer>(
+        1, 16, 3,3,3, 1,1,1, 1,1,1, true, SPARSE_THRESHOLD));
+    model.addLayer(std::make_shared<ReLULayer>());
+    model.addLayer(std::make_shared<SparseConvAdapterLayer>(
+        16, 32, 3,3,3, 2,2,2, 1,1,1, false, 0.0f));
+    model.addLayer(std::make_shared<ReLULayer>());
+    model.addLayer(std::make_shared<SparseConvAdapterLayer>(
+        32, 64, 3,3,3, 2,2,2, 1,1,1, false, 0.0f));
+    model.addLayer(std::make_shared<ReLULayer>());
+    model.addLayer(std::make_shared<SparseGlobalAvgPoolLayer>(0.0f));
+    model.addLayer(std::make_shared<DenseLayer>(64, 256));
+    model.addLayer(std::make_shared<ReLULayer>());
+    model.addLayer(std::make_shared<DropoutLayer>(0.5f));
+    model.addLayer(std::make_shared<DenseLayer>(256, num_classes));
+    model.setLossLayer(std::make_shared<SoftmaxCrossEntropyLayer>());
+    model.setOptimizer(std::make_shared<Adam>(LR_SPARSE));
+    return model;
+}
+
+static int run3DSparse() {
+    section("Pipeline 3D sparse (sans attention)");
+    requireDir(FRACTURE_PATH);
+    MedMNIST3DDataset train_ds(FRACTURE_PATH, Split::TRAIN, 3, "FractureMNIST3D", true);
+    MedMNIST3DDataset val_ds  (FRACTURE_PATH, Split::VAL,   3, "FractureMNIST3D", true);
+    CNN model = buildModel3DSparse(3);
+    DataLoader3D train_loader(train_ds, BATCH_SIZE_SPARSE, true);
+    DataLoader3D val_loader  (val_ds,   BATCH_SIZE_SPARSE, false);
+    train_loader.setMaxSamples(32); val_loader.setMaxSamples(16);
+    model.fitWithValidation(train_loader, val_loader, EPOCHS_SPARSE, BATCH_SIZE_SPARSE);
+    return 0;
+}
+
+// =============================================================================
+// Pipeline 3D dense + WindowAttention
+// =============================================================================
+//
+// Architecture :
+//
+//   ConvLayer3D 1→16  s=1   (B, 16, 28, 28, 28)
+//   ReLU
+//   ConvLayer3D 16→32 s=2   (B, 32, 14, 14, 14)
+//   ReLU
+//   WindowAttention3D C=32, win=4×4×4, 4 têtes   ← après bloc 2
+//     Découpe 14³ en fenêtres 4³ → 4×4×4 = 8 fenêtres
+//     Matrice attention : 64×64 par fenêtre      (légère)
+//     Captule les relations spatiales à l'échelle 14³
+//   ConvLayer3D 32→64 s=2   (B, 64, 7, 7, 7)
+//   ReLU
+//   WindowAttention3D C=64, win=7×7×7, 4 têtes   ← après bloc 3
+//     Une seule fenêtre couvre tout le volume 7³
+//     Matrice attention : 343×343                (raisonnable)
+//     Attention globale sur la représentation finale
+//   GlobalAvgPool3D             (B, 64, 1, 1, 1)
+//   Dense 64→256 + ReLU + Dropout + Dense 256→3
+//   SoftmaxCE
+//
+// =============================================================================
+
+static CNN buildModel3DAttn(int num_classes) {
+    CNN model;
+
+    // ── Bloc 1 — Extraction locale ────────────────────────────────────────────
+    model.addLayer(std::make_shared<ConvLayer3D>(1, 16, 3,3,3, 1,1,1, 1,1,1));
+    model.addLayer(std::make_shared<ReLULayer>());
+
+    // ── Bloc 2 — Réduction ×2 ────────────────────────────────────────────────
+    model.addLayer(std::make_shared<ConvLayer3D>(16, 32, 3,3,3, 2,2,2, 1,1,1));
+    model.addLayer(std::make_shared<ReLULayer>());
+
+    // ── Attention sur volume 14³ (fenêtres 4³) ────────────────────────────────
+    // win=4 → 8 fenêtres par axe, matrice 64×64
+    // Capture les dépendances à moyenne portée (entre régions osseuses à 14³)
+    model.addLayer(std::make_shared<WindowAttention3DLayer>(
+        32,                // channels
+        ATTN_WIN_SMALL,    // window_d = 4
+        ATTN_WIN_SMALL,    // window_h = 4
+        ATTN_WIN_SMALL,    // window_w = 4
+        ATTN_HEADS,        // num_heads = 4
+        true,              // use_residual
+        true));            // use_norm
+
+    // ── Bloc 3 — Réduction ×2 ────────────────────────────────────────────────
+    model.addLayer(std::make_shared<ConvLayer3D>(32, 64, 3,3,3, 2,2,2, 1,1,1));
+    model.addLayer(std::make_shared<ReLULayer>());
+
+    // ── Attention sur volume 7³ (fenêtre globale 7³) ──────────────────────────
+    // win=7 → 1 seule fenêtre = attention globale sur toute la représentation
+    // Matrice 343×343 : ~117k entrées — acceptable à ce stade
+    // Capture les dépendances à longue portée (entre régions éloignées du volume)
+    model.addLayer(std::make_shared<WindowAttention3DLayer>(
+        64,                // channels
+        ATTN_WIN_LARGE,    // window_d = 7
+        ATTN_WIN_LARGE,    // window_h = 7
+        ATTN_WIN_LARGE,    // window_w = 7
+        ATTN_HEADS,        // num_heads = 4
+        true,
+        true));
+
+    // ── Classifieur ───────────────────────────────────────────────────────────
+    model.addLayer(std::make_shared<GlobalAvgPool3DLayer>());
+    model.addLayer(std::make_shared<DenseLayer>(64, 256));
+    model.addLayer(std::make_shared<ReLULayer>());
+    model.addLayer(std::make_shared<DropoutLayer>(0.5f));
+    model.addLayer(std::make_shared<DenseLayer>(256, num_classes));
+    model.setLossLayer(std::make_shared<SoftmaxCrossEntropyLayer>());
+    model.setOptimizer(std::make_shared<Adam>(LR_3D));
+    return model;
+}
+
+static int run3DAttn() {
+    section("Pipeline 3D dense + WindowAttention");
+    requireDir(FRACTURE_PATH);
+    MedMNIST3DDataset train_ds(FRACTURE_PATH, Split::TRAIN, 3, "FractureMNIST3D", true);
+    MedMNIST3DDataset val_ds  (FRACTURE_PATH, Split::VAL,   3, "FractureMNIST3D", true);
+    std::cout << "Train : " << train_ds.getNumSamples()
+              << "  Val : " << val_ds.getNumSamples() << "\n";
+    section("Architecture 3D dense + attention");
+    CNN model = buildModel3DAttn(3);
+    {
+        Tensor probe(1, 1, VOL_SIZE, VOL_SIZE, VOL_SIZE);
+        DimensionCalculator::debugArchitecture(model, probe);
+    }
+    DataLoader3D train_loader(train_ds, BATCH_SIZE_3D, true);
+    DataLoader3D val_loader  (val_ds,   BATCH_SIZE_3D, false);
+    train_loader.setMaxSamples(32); val_loader.setMaxSamples(16);
+    section("Entraînement 3D + attention");
+    model.fitWithValidation(train_loader, val_loader, EPOCHS_3D, BATCH_SIZE_3D);
+    return 0;
+}
+
+// =============================================================================
+// Pipeline 3D sparse + WindowAttention  ← pipeline principal
+// =============================================================================
+//
+// Architecture :
+//
+//   SparseConvAdapter 1→16  SubManifold s=1    (B, 16, 28, 28, 28)
+//   ReLU
+//   SparseConvAdapter 16→32 Standard   s=2    (B, 32, 14, 14, 14)
+//   ReLU
+//   WindowAttention3D C=32, win=4, heads=4    ← attention sur 14³
+//     Opère sur Tensor dense produit par to_dense()
+//     Captule les dépendances spatiales entre voxels osseux à 14³
+//   SparseConvAdapter 32→64 Standard   s=2    (B, 64, 7, 7, 7)
+//   ReLU
+//   WindowAttention3D C=64, win=7, heads=4    ← attention globale sur 7³
+//     Fenêtre unique = attention sur toute la représentation finale
+//     343 tokens × 64 canaux : représentation très compacte
+//   SparseGlobalAvgPool                       (B, 64, 1, 1, 1)
+//   Dense 64→256 + ReLU + Dropout + Dense 256→3
+//   SoftmaxCE
+//
+// Paramètres totaux :
+//   SparseConv : 448 + 13 856 + 55 360          =  69 664
+//   Attention  : 2×(4×32²) + 2×(4×64²) + norms =  50 432
+//   Classif.   : 16 640 + 771                   =  17 411
+//   TOTAL                                       = 137 507
+//
+// =============================================================================
+
+static CNN buildModel3DSparseAttn(int num_classes) {
+    CNN model;
+
+    // ── Bloc 1 — SubManifold sparse ───────────────────────────────────────────
+    model.addLayer(std::make_shared<SparseConvAdapterLayer>(
+        1, 16, 3,3,3, 1,1,1, 1,1,1, true, SPARSE_THRESHOLD));
+    model.addLayer(std::make_shared<ReLULayer>());
+
+    // ── Bloc 2 — Standard sparse stride=2 ────────────────────────────────────
+    model.addLayer(std::make_shared<SparseConvAdapterLayer>(
+        16, 32, 3,3,3, 2,2,2, 1,1,1, false, 0.0f));
+    model.addLayer(std::make_shared<ReLULayer>());
+
+    // ── Attention spatio-temporelle sur volume 14³ ────────────────────────────
+    // Positionné après to_dense() de l'adaptateur sparse — opère sur Tensor dense.
+    // Fenêtres 4×4×4 : 4 fenêtres par axe sur 14³ → matrices 64×64.
+    // L'attention capte les relations entre les régions osseuses à échelle moyenne.
+    // La connexion résiduelle et LayerNorm stabilisent l'entraînement.
+    model.addLayer(std::make_shared<WindowAttention3DLayer>(
+        32,             // C = 32 canaux
+        ATTN_WIN_SMALL, // fenêtre 4×4×4
+        ATTN_WIN_SMALL,
+        ATTN_WIN_SMALL,
+        ATTN_HEADS,     // 4 têtes
+        true,           // residual
+        true));         // norm
+
+    // ── Bloc 3 — Standard sparse stride=2 ────────────────────────────────────
+    // L'attention a enrichi la représentation → la conv apprenante bénéficie
+    // de features contextualisées pour effectuer le sous-échantillonnage
+    model.addLayer(std::make_shared<SparseConvAdapterLayer>(
+        32, 64, 3,3,3, 2,2,2, 1,1,1, false, 0.0f));
+    model.addLayer(std::make_shared<ReLULayer>());
+
+    // ── Attention spatio-temporelle globale sur volume 7³ ─────────────────────
+    // win=7 = une seule fenêtre couvre tout le volume 7×7×7 = 343 tokens.
+    // Attention globale : chaque voxel peut interagir avec tous les autres.
+    // C'est l'implémentation de la "Flash Spatio-Temporal Attention" du README.
+    // Pour 343 tokens : matrice 343×343 ≈ 117k valeurs — léger à ce stade.
+    model.addLayer(std::make_shared<WindowAttention3DLayer>(
+        64,             // C = 64 canaux
+        ATTN_WIN_LARGE, // fenêtre 7×7×7 = volume entier
+        ATTN_WIN_LARGE,
+        ATTN_WIN_LARGE,
+        ATTN_HEADS,
+        true,
+        true));
+
+    // ── Transition sparse → dense ─────────────────────────────────────────────
+    // SparseGlobalAvgPool reçoit le Tensor dense produit par l'attention,
+    // le re-seuille avec threshold=0 et calcule la moyenne sur les voxels actifs
+    model.addLayer(std::make_shared<SparseGlobalAvgPoolLayer>(0.0f));
+
+    // ── Classifieur ───────────────────────────────────────────────────────────
+    model.addLayer(std::make_shared<DenseLayer>(64, 256));
+    model.addLayer(std::make_shared<ReLULayer>());
+    model.addLayer(std::make_shared<DropoutLayer>(0.5f));
+    model.addLayer(std::make_shared<DenseLayer>(256, num_classes));
+    model.setLossLayer(std::make_shared<SoftmaxCrossEntropyLayer>());
+    model.setOptimizer(std::make_shared<Adam>(LR_SPARSE));
+    return model;
+}
+
+static int run3DSparseAttn() {
+    section("Pipeline 3D sparse + WindowAttention (Flash ST-Attention)");
     requireDir(FRACTURE_PATH);
 
-    // --- Datasets ---
-    MedMNIST3DDataset train_dataset(FRACTURE_PATH, Split::TRAIN, 3, "FractureMNIST3D", true);
-    MedMNIST3DDataset val_dataset  (FRACTURE_PATH, Split::VAL,   3, "FractureMNIST3D", true);
+    MedMNIST3DDataset train_ds(FRACTURE_PATH, Split::TRAIN, 3, "FractureMNIST3D", true);
+    MedMNIST3DDataset val_ds  (FRACTURE_PATH, Split::VAL,   3, "FractureMNIST3D", true);
 
-    std::cout << "Classes    : 3\n"
-              << "Train      : " << train_dataset.getNumSamples() << "\n"
-              << "Validation : " << val_dataset.getNumSamples()   << "\n";
+    std::cout << "Classes   : 3\n"
+              << "Train     : " << train_ds.getNumSamples() << "\n"
+              << "Val       : " << val_ds.getNumSamples()   << "\n"
+              << "Threshold : " << SPARSE_THRESHOLD         << "\n";
 
-    if (train_dataset.getNumSamples() == 0)
-        throw std::runtime_error("Dataset 3D vide !");
+    section("Architecture 3D sparse + attention");
+    CNN model = buildModel3DSparseAttn(3);
 
-    // --- Modèle ---
-    section("Architecture 3D");
-    CNN model = buildModel3D(/*num_classes=*/3);
-
+    // debugArchitecture fonctionne car WindowAttention3DLayer hérite de Layer
     {
-        // Probe 5D : (1, 1, 28, 28, 28)
         Tensor probe(1, 1, VOL_SIZE, VOL_SIZE, VOL_SIZE);
         DimensionCalculator::debugArchitecture(model, probe);
     }
 
-    // --- DataLoaders ---
-    DataLoader3D train_loader(train_dataset, BATCH_SIZE_3D, /*shuffle=*/true);
-    DataLoader3D val_loader  (val_dataset,   BATCH_SIZE_3D, /*shuffle=*/false);
+    // Affichage du nombre de paramètres des couches d'attention
+    std::cout << "\nParamètres attention :\n";
+    for (int i = 0; i < static_cast<int>(model.getLayers().size()); ++i) {
+        auto* attn = dynamic_cast<WindowAttention3DLayer*>(model.getLayer(i));
+        if (attn) {
+            std::cout << "  Layer " << std::setw(2) << i
+                      << " [" << attn->getName() << "]"
+                      << "  params=" << attn->numParams() << "\n";
+        }
+    }
 
-    // [TEST RAPIDE] Limiter le nombre d'échantillons
+    DataLoader3D train_loader(train_ds, BATCH_SIZE_SPARSE, true);
+    DataLoader3D val_loader  (val_ds,   BATCH_SIZE_SPARSE, false);
     train_loader.setMaxSamples(32);
     val_loader.setMaxSamples(16);
 
-    // --- Entraînement ---
-    section("Entraînement 3D");
-    model.fitWithValidation(train_loader, val_loader, EPOCHS_3D, BATCH_SIZE_3D);
+    section("Entraînement 3D sparse + attention");
+    model.fitWithValidation(train_loader, val_loader, EPOCHS_SPARSE, BATCH_SIZE_SPARSE);
 
     return 0;
 }
@@ -220,10 +433,17 @@ int main() {
         auto t0 = std::chrono::high_resolution_clock::now();
 
         int ret = 0;
-        if constexpr (ACTIVE_PIPELINE == Pipeline::CNN2D) {
-            ret = run2D();
-        } else {
-            ret = run3D();
+        switch (ACTIVE_PIPELINE) {
+            case Pipeline::CNN2D:
+                ret = run2D();           break;
+            case Pipeline::CNN3D:
+                ret = run3D();           break;
+            case Pipeline::CNN3D_SPARSE:
+                ret = run3DSparse();     break;
+            case Pipeline::CNN3D_ATTN:
+                ret = run3DAttn();       break;
+            case Pipeline::CNN3D_SPARSE_ATTN:
+                ret = run3DSparseAttn(); break;
         }
 
         auto t1  = std::chrono::high_resolution_clock::now();
@@ -232,7 +452,6 @@ int main() {
 
         section("Terminé");
         std::cout << "Durée totale : " << min << "m " << sec << "s\n";
-
         return ret;
 
     } catch (const std::exception& e) {

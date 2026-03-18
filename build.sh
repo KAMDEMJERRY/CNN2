@@ -4,6 +4,7 @@ sudo apt install libopencv-dev
 sudo apt install libgtest-dev
 sudo apt install libboost-all-dev
 
+
 rm -r build/
 mkdir build
 cd build

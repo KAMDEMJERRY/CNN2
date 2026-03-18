@@ -1,5 +1,4 @@
 cmake_minimum_required(VERSION 3.22.1)
-
 project(CNN)
 
 set(CMAKE_CXX_STANDARD 17)
@@ -14,6 +13,25 @@ find_package(Boost REQUIRED COMPONENTS serialization system)
 find_package(Python3 COMPONENTS Development NumPy REQUIRED)
 find_package(OpenMP REQUIRED)
 
+# # --- Installation de CPM ---
+# set(CPM_DOWNLOAD_LOCATION "${CMAKE_BINARY_DIR}/cmake/CPM.cmake")
+# if(NOT EXISTS "${CPM_DOWNLOAD_LOCATION}")
+#     message(STATUS "Downloading CPM.cmake...")
+#     file(DOWNLOAD 
+#          https://github.com 
+#          ${CPM_DOWNLOAD_LOCATION}
+#          SHOW_PROGRESS
+#          FOLLOWREDIRECTS # Très important pour éviter le HTML
+#     )
+# endif()
+# include(${CPM_DOWNLOAD_LOCATION})
+
+# # --- Ajout de dotenv-cpp ---
+# CPMAddPackage(
+#     NAME dotenv-cpp
+#     GITHUB_REPOSITORY laserpants/dotenv-cpp
+#     GIT_TAG master
+# )
 
 # Chercher les headers Python
 execute_process(
@@ -33,4 +51,6 @@ include_directories(
 )
 
 add_subdirectory(src)
+
+enable_testing()
 add_subdirectory(test)

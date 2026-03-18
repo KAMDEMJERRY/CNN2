@@ -90,3 +90,5 @@ private:
     void requireOptimizer() const;
     void requireLoss()      const;
 };
+
+static void logEpochStats(int epoch, int total_epochs, const EpochMetrics& train, const EpochMetrics* val);

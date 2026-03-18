@@ -11,6 +11,7 @@ target_link_libraries(cnn_lib
     ${OPENMP_LIBRARIES}
     ${Boost_LIBRARIES}
     ${Python3_LIBRARIES}
+    # PRIVATE dotenv-cpp
 )
 
 # ======================================

@@ -745,8 +745,16 @@ src/CMakeFiles/CNN.dir/main.cpp.o: ../src/main.cpp \
   /usr/include/c++/11/bits/regex.h \
   /usr/include/c++/11/bits/regex.tcc \
   /usr/include/c++/11/bits/regex_executor.h \
-  /usr/include/c++/11/bits/regex_executor.tcc
+  /usr/include/c++/11/bits/regex_executor.tcc \
+  ../include/SparseTensor.hpp \
+  ../include/SparseConvLayer3D.hpp \
+  ../include/SparseConvAdapterLayer.hpp \
+  ../include/WindowAttention3DLayer.hpp
 
+
+../include/WindowAttention3DLayer.hpp:
+
+../include/SparseConvAdapterLayer.hpp:
 
 /usr/include/c++/11/bits/regex.tcc:
 
@@ -1798,6 +1806,8 @@ src/CMakeFiles/CNN.dir/main.cpp.o: ../src/main.cpp \
 
 /usr/include/eigen3/Eigen/src/Core/functors/UnaryFunctors.h:
 
+../include/SparseConvLayer3D.hpp:
+
 /usr/include/eigen3/Eigen/src/Core/functors/NullaryFunctors.h:
 
 /usr/include/eigen3/Eigen/src/Core/functors/StlFunctors.h:
@@ -1949,6 +1959,8 @@ src/CMakeFiles/CNN.dir/main.cpp.o: ../src/main.cpp \
 /usr/include/eigen3/Eigen/src/Core/products/GeneralMatrixMatrixTriangular.h:
 
 /usr/include/eigen3/Eigen/src/Core/products/SelfadjointMatrixVector.h:
+
+../include/SparseTensor.hpp:
 
 /usr/include/c++/11/bits/regex_executor.tcc:
 

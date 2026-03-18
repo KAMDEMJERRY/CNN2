@@ -65,6 +65,16 @@ CMAKE_BINARY_DIR = "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build"
 #=============================================================================
 # Targets provided globally by CMake.
 
+# Special rule for the target test
+test:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
+	/usr/bin/ctest --force-new-ctest-process $(ARGS)
+.PHONY : test
+
+# Special rule for the target test
+test/fast: test
+.PHONY : test/fast
+
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
@@ -256,6 +266,34 @@ test_CNN/fast:
 	cd "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build" && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_CNN.dir/build.make test/CMakeFiles/test_CNN.dir/build
 .PHONY : test_CNN/fast
 
+# Convenience name for target.
+test/CMakeFiles/test_Sparse.dir/rule:
+	cd "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build" && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/CMakeFiles/test_Sparse.dir/rule
+.PHONY : test/CMakeFiles/test_Sparse.dir/rule
+
+# Convenience name for target.
+test_Sparse: test/CMakeFiles/test_Sparse.dir/rule
+.PHONY : test_Sparse
+
+# fast build rule for target.
+test_Sparse/fast:
+	cd "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build" && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_Sparse.dir/build.make test/CMakeFiles/test_Sparse.dir/build
+.PHONY : test_Sparse/fast
+
+# Convenience name for target.
+test/CMakeFiles/test_Attention.dir/rule:
+	cd "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build" && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/CMakeFiles/test_Attention.dir/rule
+.PHONY : test/CMakeFiles/test_Attention.dir/rule
+
+# Convenience name for target.
+test_Attention: test/CMakeFiles/test_Attention.dir/rule
+.PHONY : test_Attention
+
+# fast build rule for target.
+test_Attention/fast:
+	cd "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build" && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_Attention.dir/build.make test/CMakeFiles/test_Attention.dir/build
+.PHONY : test_Attention/fast
+
 __/src/CNN.o: __/src/CNN.cpp.o
 .PHONY : __/src/CNN.o
 
@@ -405,6 +443,30 @@ test_ActivationLayer.s: test_ActivationLayer.cpp.s
 test_ActivationLayer.cpp.s:
 	cd "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build" && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_ActivationLayer.dir/build.make test/CMakeFiles/test_ActivationLayer.dir/test_ActivationLayer.cpp.s
 .PHONY : test_ActivationLayer.cpp.s
+
+test_Attention.o: test_Attention.cpp.o
+.PHONY : test_Attention.o
+
+# target to build an object file
+test_Attention.cpp.o:
+	cd "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build" && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_Attention.dir/build.make test/CMakeFiles/test_Attention.dir/test_Attention.cpp.o
+.PHONY : test_Attention.cpp.o
+
+test_Attention.i: test_Attention.cpp.i
+.PHONY : test_Attention.i
+
+# target to preprocess a source file
+test_Attention.cpp.i:
+	cd "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build" && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_Attention.dir/build.make test/CMakeFiles/test_Attention.dir/test_Attention.cpp.i
+.PHONY : test_Attention.cpp.i
+
+test_Attention.s: test_Attention.cpp.s
+.PHONY : test_Attention.s
+
+# target to generate assembly for a file
+test_Attention.cpp.s:
+	cd "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build" && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_Attention.dir/build.make test/CMakeFiles/test_Attention.dir/test_Attention.cpp.s
+.PHONY : test_Attention.cpp.s
 
 test_CNN.o: test_CNN.cpp.o
 .PHONY : test_CNN.o
@@ -598,6 +660,30 @@ test_PoolLayer.cpp.s:
 	cd "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build" && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_PoolLayer.dir/build.make test/CMakeFiles/test_PoolLayer.dir/test_PoolLayer.cpp.s
 .PHONY : test_PoolLayer.cpp.s
 
+test_Sparse.o: test_Sparse.cpp.o
+.PHONY : test_Sparse.o
+
+# target to build an object file
+test_Sparse.cpp.o:
+	cd "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build" && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_Sparse.dir/build.make test/CMakeFiles/test_Sparse.dir/test_Sparse.cpp.o
+.PHONY : test_Sparse.cpp.o
+
+test_Sparse.i: test_Sparse.cpp.i
+.PHONY : test_Sparse.i
+
+# target to preprocess a source file
+test_Sparse.cpp.i:
+	cd "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build" && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_Sparse.dir/build.make test/CMakeFiles/test_Sparse.dir/test_Sparse.cpp.i
+.PHONY : test_Sparse.cpp.i
+
+test_Sparse.s: test_Sparse.cpp.s
+.PHONY : test_Sparse.s
+
+# target to generate assembly for a file
+test_Sparse.cpp.s:
+	cd "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build" && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_Sparse.dir/build.make test/CMakeFiles/test_Sparse.dir/test_Sparse.cpp.s
+.PHONY : test_Sparse.cpp.s
+
 test_Tensor.o: test_Tensor.cpp.o
 .PHONY : test_Tensor.o
 
@@ -630,7 +716,9 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
+	@echo "... test"
 	@echo "... test_ActivationLayer"
+	@echo "... test_Attention"
 	@echo "... test_CNN"
 	@echo "... test_ConvLayer"
 	@echo "... test_DenseLayer"
@@ -639,6 +727,7 @@ help:
 	@echo "... test_LossLayer"
 	@echo "... test_Optimizer"
 	@echo "... test_PoolLayer"
+	@echo "... test_Sparse"
 	@echo "... test_Tensor"
 	@echo "... __/src/CNN.o"
 	@echo "... __/src/CNN.i"
@@ -658,6 +747,9 @@ help:
 	@echo "... test_ActivationLayer.o"
 	@echo "... test_ActivationLayer.i"
 	@echo "... test_ActivationLayer.s"
+	@echo "... test_Attention.o"
+	@echo "... test_Attention.i"
+	@echo "... test_Attention.s"
 	@echo "... test_CNN.o"
 	@echo "... test_CNN.i"
 	@echo "... test_CNN.s"
@@ -682,6 +774,9 @@ help:
 	@echo "... test_PoolLayer.o"
 	@echo "... test_PoolLayer.i"
 	@echo "... test_PoolLayer.s"
+	@echo "... test_Sparse.o"
+	@echo "... test_Sparse.i"
+	@echo "... test_Sparse.s"
 	@echo "... test_Tensor.o"
 	@echo "... test_Tensor.i"
 	@echo "... test_Tensor.s"

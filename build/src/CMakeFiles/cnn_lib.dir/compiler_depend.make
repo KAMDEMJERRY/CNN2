@@ -228,6 +228,13 @@ src/CMakeFiles/cnn_lib.dir/CNN.cpp.o: ../src/CNN.cpp \
   /usr/include/c++/11/bits/quoted_string.h \
   /usr/include/c++/11/sstream \
   /usr/include/c++/11/bits/sstream.tcc \
+  ../include/shared.hpp \
+  /usr/include/c++/11/filesystem \
+  /usr/include/c++/11/bits/fs_fwd.h \
+  /usr/include/c++/11/bits/fs_path.h \
+  /usr/include/c++/11/codecvt \
+  /usr/include/c++/11/bits/fs_dir.h \
+  /usr/include/c++/11/bits/fs_ops.h \
   ../include/IDataLoader.hpp \
   ../include/Tensor.hpp \
   /usr/include/eigen3/Eigen/Dense \
@@ -580,7 +587,11 @@ src/CMakeFiles/cnn_lib.dir/CNN.cpp.o: ../src/CNN.cpp \
   /usr/include/eigen3/Eigen/src/Core/util/ReenableStupidWarnings.h \
   ../include/Layer.hpp \
   ../include/Optimizer.hpp \
-  ../include/LossLayer.hpp
+  ../include/LossLayer.hpp \
+  /usr/include/c++/11/fstream \
+  /usr/include/x86_64-linux-gnu/c++/11/bits/basic_file.h \
+  /usr/include/x86_64-linux-gnu/c++/11/bits/c++io.h \
+  /usr/include/c++/11/bits/fstream.tcc
 
 src/CMakeFiles/cnn_lib.dir/ConvLayer.cpp.o: ../src/ConvLayer.cpp \
   /usr/include/stdc-predef.h \
@@ -2326,6 +2337,10 @@ src/CMakeFiles/cnn_lib.dir/DenseLayer.cpp.o: ../src/DenseLayer.cpp \
 
 ../src/ConvLayer.cpp:
 
+/usr/include/x86_64-linux-gnu/c++/11/bits/c++io.h:
+
+/usr/include/c++/11/fstream:
+
 ../include/Layer.hpp:
 
 /usr/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorRef.h:
@@ -2358,21 +2373,15 @@ src/CMakeFiles/cnn_lib.dir/DenseLayer.cpp.o: ../src/DenseLayer.cpp \
 
 /usr/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorChipping.h:
 
-/usr/include/c++/11/tr1/riemann_zeta.tcc:
+/usr/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorImagePatch.h:
 
-/usr/include/c++/11/tr1/legendre_function.tcc:
+/usr/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorFFT.h:
 
-/usr/include/x86_64-linux-gnu/bits/pthread_stack_min-dynamic.h:
-
-/usr/include/x86_64-linux-gnu/c++/11/bits/c++config.h:
-
-/usr/include/eigen3/Eigen/src/Core/products/GeneralBlockPanelKernel.h:
+/usr/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorConvolution.h:
 
 /usr/include/c++/11/tr1/beta_function.tcc:
 
 /usr/include/c++/11/array:
-
-/usr/include/c++/11/bits/specfun.h:
 
 /usr/include/x86_64-linux-gnu/bits/mathcalls-narrow.h:
 
@@ -2380,11 +2389,31 @@ src/CMakeFiles/cnn_lib.dir/DenseLayer.cpp.o: ../src/DenseLayer.cpp \
 
 /usr/include/x86_64-linux-gnu/bits/flt-eval-method.h:
 
+/usr/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorPatch.h:
+
+/usr/include/c++/11/string_view:
+
 /usr/include/eigen3/Eigen/src/LU/Determinant.h:
 
 /usr/include/eigen3/Eigen/src/Core/products/SelfadjointRank2Update.h:
 
 ../include/Tensor.hpp:
+
+/usr/include/c++/11/bits/fs_ops.h:
+
+/usr/include/c++/11/bits/fs_fwd.h:
+
+/usr/include/c++/11/bits/stl_bvector.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/clockid_t.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/struct___jmp_buf_tag.h:
+
+/usr/include/eigen3/Eigen/src/Core/util/BlasUtil.h:
+
+/usr/include/c++/11/bits/specfun.h:
+
+/usr/include/c++/11/filesystem:
 
 /usr/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorGlobalFunctions.h:
 
@@ -2430,8 +2459,6 @@ src/CMakeFiles/cnn_lib.dir/DenseLayer.cpp.o: ../src/DenseLayer.cpp \
 
 /usr/include/c++/11/cwctype:
 
-/usr/include/c++/11/tr1/poly_hermite.tcc:
-
 /usr/include/c++/11/bits/locale_facets.h:
 
 /usr/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorContraction.h:
@@ -2458,6 +2485,10 @@ src/CMakeFiles/cnn_lib.dir/DenseLayer.cpp.o: ../src/DenseLayer.cpp \
 
 /usr/include/asm-generic/errno.h:
 
+/usr/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorVolumePatch.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/struct_sched_param.h:
+
 /usr/include/x86_64-linux-gnu/c++/11/bits/ctype_base.h:
 
 /usr/include/wctype.h:
@@ -2470,9 +2501,7 @@ src/CMakeFiles/cnn_lib.dir/DenseLayer.cpp.o: ../src/DenseLayer.cpp \
 
 /usr/include/eigen3/Eigen/LU:
 
-/usr/include/c++/11/string_view:
-
-/usr/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorPatch.h:
+/usr/include/c++/11/bits/fs_dir.h:
 
 /usr/include/c++/11/cerrno:
 
@@ -2495,6 +2524,8 @@ src/CMakeFiles/cnn_lib.dir/DenseLayer.cpp.o: ../src/DenseLayer.cpp \
 /usr/include/c++/11/bits/std_abs.h:
 
 /usr/include/alloca.h:
+
+/usr/include/c++/11/bits/fs_path.h:
 
 /usr/include/c++/11/iostream:
 
@@ -2545,12 +2576,6 @@ src/CMakeFiles/cnn_lib.dir/DenseLayer.cpp.o: ../src/DenseLayer.cpp \
 /usr/include/eigen3/Eigen/src/Core/Array.h:
 
 /usr/include/c++/11/clocale:
-
-/usr/include/c++/11/tr1/hypergeometric.tcc:
-
-/usr/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorMap.h:
-
-/usr/include/eigen3/Eigen/src/QR/ColPivHouseholderQR.h:
 
 /usr/include/c++/11/bits/localefwd.h:
 
@@ -2660,6 +2685,10 @@ src/CMakeFiles/cnn_lib.dir/DenseLayer.cpp.o: ../src/DenseLayer.cpp \
 
 /usr/include/x86_64-linux-gnu/bits/typesizes.h:
 
+/usr/include/eigen3/Eigen/src/Core/Assign.h:
+
+/usr/include/x86_64-linux-gnu/bits/pthreadtypes.h:
+
 /usr/include/c++/11/bits/functional_hash.h:
 
 /usr/include/c++/11/type_traits:
@@ -2728,6 +2757,8 @@ src/CMakeFiles/cnn_lib.dir/DenseLayer.cpp.o: ../src/DenseLayer.cpp \
 
 /usr/include/errno.h:
 
+../include/shared.hpp:
+
 /usr/include/c++/11/memory:
 
 ../src/ConvLayer3D.cpp:
@@ -2738,6 +2769,8 @@ src/CMakeFiles/cnn_lib.dir/DenseLayer.cpp.o: ../src/DenseLayer.cpp \
 
 /usr/include/c++/11/debug/debug.h:
 
+/usr/include/x86_64-linux-gnu/c++/11/bits/basic_file.h:
+
 /usr/include/eigen3/Eigen/src/Core/GenericPacketMath.h:
 
 /usr/include/x86_64-linux-gnu/c++/11/bits/c++locale.h:
@@ -2746,13 +2779,13 @@ src/CMakeFiles/cnn_lib.dir/DenseLayer.cpp.o: ../src/DenseLayer.cpp \
 
 /usr/include/c++/11/functional:
 
-/usr/include/c++/11/bits/stl_bvector.h:
+/usr/include/x86_64-linux-gnu/bits/pthread_stack_min-dynamic.h:
 
-/usr/include/x86_64-linux-gnu/bits/types/clockid_t.h:
+/usr/include/x86_64-linux-gnu/c++/11/bits/c++config.h:
 
-/usr/include/x86_64-linux-gnu/bits/types/struct___jmp_buf_tag.h:
+/usr/include/c++/11/tr1/legendre_function.tcc:
 
-/usr/include/eigen3/Eigen/src/Core/util/BlasUtil.h:
+/usr/include/eigen3/Eigen/src/Core/products/GeneralBlockPanelKernel.h:
 
 ../include/CNN.hpp:
 
@@ -2810,11 +2843,7 @@ src/CMakeFiles/cnn_lib.dir/DenseLayer.cpp.o: ../src/DenseLayer.cpp \
 
 /usr/include/eigen3/Eigen/src/LU/PartialPivLU.h:
 
-/usr/include/c++/11/tr1/poly_laguerre.tcc:
-
 /usr/include/c++/11/cstdlib:
-
-/usr/include/c++/11/tr1/exp_integral.tcc:
 
 /usr/include/eigen3/unsupported/Eigen/src/SpecialFunctions/SpecialFunctionsBFloat16.h:
 
@@ -2857,6 +2886,10 @@ src/CMakeFiles/cnn_lib.dir/DenseLayer.cpp.o: ../src/DenseLayer.cpp \
 /usr/include/eigen3/Eigen/src/Core/Redux.h:
 
 /usr/include/x86_64-linux-gnu/sys/select.h:
+
+/usr/include/eigen3/Eigen/src/plugins/BlockMethods.h:
+
+/usr/include/eigen3/Eigen/src/Core/AssignEvaluator.h:
 
 /usr/include/x86_64-linux-gnu/bits/select.h:
 
@@ -2924,14 +2957,6 @@ src/CMakeFiles/cnn_lib.dir/DenseLayer.cpp.o: ../src/DenseLayer.cpp \
 
 /usr/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorDeviceSycl.h:
 
-/usr/include/eigen3/Eigen/src/Core/Assign.h:
-
-/usr/include/x86_64-linux-gnu/bits/pthreadtypes.h:
-
-/usr/include/eigen3/Eigen/src/Core/AssignEvaluator.h:
-
-/usr/include/eigen3/Eigen/src/plugins/BlockMethods.h:
-
 /usr/include/c++/11/bits/refwrap.h:
 
 /usr/include/x86_64-linux-gnu/c++/11/bits/gthr-default.h:
@@ -2974,6 +2999,20 @@ src/CMakeFiles/cnn_lib.dir/DenseLayer.cpp.o: ../src/DenseLayer.cpp \
 
 /usr/include/x86_64-linux-gnu/bits/types/__fpos64_t.h:
 
+/usr/include/c++/11/tr1/exp_integral.tcc:
+
+/usr/include/c++/11/tr1/hypergeometric.tcc:
+
+/usr/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorMap.h:
+
+/usr/include/eigen3/Eigen/src/QR/ColPivHouseholderQR.h:
+
+/usr/include/c++/11/tr1/poly_hermite.tcc:
+
+/usr/include/c++/11/tr1/poly_laguerre.tcc:
+
+/usr/include/c++/11/tr1/riemann_zeta.tcc:
+
 /usr/include/eigen3/Eigen/src/Core/util/ConfigureVectorization.h:
 
 /usr/lib/gcc/x86_64-linux-gnu/11/include/mmintrin.h:
@@ -2989,6 +3028,8 @@ src/CMakeFiles/cnn_lib.dir/DenseLayer.cpp.o: ../src/DenseLayer.cpp \
 /usr/include/eigen3/Eigen/src/Core/util/MKL_support.h:
 
 /usr/include/c++/11/cassert:
+
+/usr/include/c++/11/codecvt:
 
 /usr/include/c++/11/bits/allocated_ptr.h:
 
@@ -3021,6 +3062,12 @@ src/CMakeFiles/cnn_lib.dir/DenseLayer.cpp.o: ../src/DenseLayer.cpp \
 /usr/include/x86_64-linux-gnu/bits/locale.h:
 
 /usr/include/x86_64-linux-gnu/bits/posix1_lim.h:
+
+/usr/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorConversion.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/11/include/syslimits.h:
+
+/usr/include/eigen3/Eigen/src/Householder/HouseholderSequence.h:
 
 /usr/include/x86_64-linux-gnu/bits/local_lim.h:
 
@@ -3090,12 +3137,6 @@ src/CMakeFiles/cnn_lib.dir/DenseLayer.cpp.o: ../src/DenseLayer.cpp \
 
 /usr/include/eigen3/Eigen/src/Core/arch/Default/Settings.h:
 
-/usr/lib/gcc/x86_64-linux-gnu/11/include/syslimits.h:
-
-/usr/include/eigen3/Eigen/src/Householder/HouseholderSequence.h:
-
-/usr/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorConversion.h:
-
 /usr/include/eigen3/Eigen/src/Core/arch/SSE/PacketMath.h:
 
 /usr/include/eigen3/Eigen/src/Core/arch/Default/GenericPacketMathFunctions.h:
@@ -3137,6 +3178,8 @@ src/CMakeFiles/cnn_lib.dir/DenseLayer.cpp.o: ../src/DenseLayer.cpp \
 /usr/include/eigen3/Eigen/src/Core/ArrayBase.h:
 
 /usr/include/c++/11/bits/random.h:
+
+/usr/include/c++/11/bits/fstream.tcc:
 
 /usr/include/eigen3/Eigen/src/Eigenvalues/RealSchur.h:
 
@@ -3392,6 +3435,10 @@ src/CMakeFiles/cnn_lib.dir/DenseLayer.cpp.o: ../src/DenseLayer.cpp \
 
 /usr/include/eigen3/unsupported/Eigen/src/SpecialFunctions/SpecialFunctionsFunctors.h:
 
+/usr/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorBroadcasting.h:
+
+/usr/include/eigen3/unsupported/Eigen/src/SpecialFunctions/SpecialFunctionsArrayAPI.h:
+
 /usr/include/eigen3/unsupported/Eigen/CXX11/src/util/CXX11Meta.h:
 
 /usr/include/x86_64-linux-gnu/bits/long-double.h:
@@ -3451,17 +3498,3 @@ src/CMakeFiles/cnn_lib.dir/DenseLayer.cpp.o: ../src/DenseLayer.cpp \
 /usr/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorContractionBlocking.h:
 
 /usr/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorContractionGpu.h:
-
-/usr/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorConvolution.h:
-
-/usr/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorFFT.h:
-
-/usr/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorImagePatch.h:
-
-/usr/include/x86_64-linux-gnu/bits/types/struct_sched_param.h:
-
-/usr/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorVolumePatch.h:
-
-/usr/include/eigen3/unsupported/Eigen/src/SpecialFunctions/SpecialFunctionsArrayAPI.h:
-
-/usr/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorBroadcasting.h:
