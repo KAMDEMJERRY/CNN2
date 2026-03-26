@@ -1,8 +1,10 @@
 #pragma once
 #include "IDataLoader.hpp"
 #include "MedMNIST3DDataset.hpp"
+#include "Augmentation3D.hpp"
 #include <algorithm>
 #include <numeric>
+#include <optional>
 #include <random>
 #include <vector>
 #include <iostream>
@@ -33,6 +35,7 @@ public:
         return current_idx_ < static_cast<int>(indices_.size());
     }
 
+    // ── nextBatch : récupère le batch puis augmente si activé ────────────────
     std::pair<Tensor, Tensor> nextBatch() override {
         if (!hasNext()) reset();
         int end = std::min(current_idx_ + batch_size_,
@@ -40,8 +43,49 @@ public:
         std::vector<int> batch_indices(indices_.begin() + current_idx_,
                                        indices_.begin() + end);
         current_idx_ = end;
-        return dataset_.getBatch(batch_indices);
+
+        auto [images, labels] = dataset_.getBatch(batch_indices);
+
+        if (augmentor_) {
+            const int B = images.dim(0);
+            const int C = images.dim(1);
+            const int D = images.dim(2);
+            const int H = images.dim(3);
+            const int W = images.dim(4);
+            const int vol_size = C * D * H * W;
+
+            for (int b = 0; b < B; ++b) {
+                // Extraire le volume b : Tensor(1, C, D, H, W)
+                Tensor vol(1, C, D, H, W);
+                const float* src = images.getData() + b * vol_size;
+                std::memcpy(vol.getData(), src, vol_size * sizeof(float));
+
+                // Appliquer l'augmentation
+                Tensor aug_vol = augmentor_->apply(vol, rng_);
+
+                // Remettre dans le batch
+                // Note : la rotation peut changer H/W si H≠W,
+                // mais sur FractureMNIST3D H==W==D==28 donc la shape est stable.
+                float* dst = images.getData() + b * vol_size;
+                std::memcpy(dst, aug_vol.getData(), vol_size * sizeof(float));
+            }
+        }
+
+        return { images, labels };
     }
+
+    // ── Activation de l'augmentation ─────────────────────────────────────────
+    // Appeler UNIQUEMENT sur le train_loader. Ne pas appeler sur val/test.
+    void setAugmentation(const AugmentConfig& cfg = AugmentConfig{}) {
+        augmentor_ = Augmentor3D(cfg);
+    }
+
+    // Désactive l'augmentation
+    void clearAugmentation() {
+        augmentor_.reset();
+    }
+
+    bool isAugmented() const { return augmentor_.has_value(); }
 
     float computeAccuracy(const Tensor& predictions,
                           const Tensor& targets) const override {
@@ -81,11 +125,12 @@ public:
     }
 
 private:
-    MedMNIST3DDataset& dataset_;
-    int                batch_size_;
-    bool               shuffle_;
-    int                max_samples_ = -1;
-    std::vector<int>   indices_;
-    int                current_idx_ = 0;
-    std::mt19937       rng_;
+    MedMNIST3DDataset&         dataset_;
+    int                        batch_size_;
+    bool                       shuffle_;
+    int                        max_samples_ = -1;
+    std::vector<int>           indices_;
+    int                        current_idx_ = 0;
+    std::mt19937               rng_;
+    std::optional<Augmentor3D> augmentor_;  // actif seulement sur train_loader
 };

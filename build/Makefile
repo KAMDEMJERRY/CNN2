@@ -334,6 +334,19 @@ test_Attention/fast:
 	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_Attention.dir/build.make test/CMakeFiles/test_Attention.dir/build
 .PHONY : test_Attention/fast
 
+#=============================================================================
+# Target rules for targets named test_Augmentation3D
+
+# Build rule for target.
+test_Augmentation3D: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test_Augmentation3D
+.PHONY : test_Augmentation3D
+
+# fast build rule for target.
+test_Augmentation3D/fast:
+	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_Augmentation3D.dir/build.make test/CMakeFiles/test_Augmentation3D.dir/build
+.PHONY : test_Augmentation3D/fast
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -349,6 +362,7 @@ help:
 	@echo "... cnn_lib"
 	@echo "... test_ActivationLayer"
 	@echo "... test_Attention"
+	@echo "... test_Augmentation3D"
 	@echo "... test_CNN"
 	@echo "... test_ConvLayer"
 	@echo "... test_DenseLayer"

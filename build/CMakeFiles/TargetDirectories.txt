@@ -20,6 +20,7 @@
 /home/ndomboukamdem/Documents/INFL/Master 2/Code2/build/test/CMakeFiles/test_CNN.dir
 /home/ndomboukamdem/Documents/INFL/Master 2/Code2/build/test/CMakeFiles/test_Sparse.dir
 /home/ndomboukamdem/Documents/INFL/Master 2/Code2/build/test/CMakeFiles/test_Attention.dir
+/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build/test/CMakeFiles/test_Augmentation3D.dir
 /home/ndomboukamdem/Documents/INFL/Master 2/Code2/build/test/CMakeFiles/test.dir
 /home/ndomboukamdem/Documents/INFL/Master 2/Code2/build/test/CMakeFiles/edit_cache.dir
 /home/ndomboukamdem/Documents/INFL/Master 2/Code2/build/test/CMakeFiles/rebuild_cache.dir

@@ -746,15 +746,20 @@ src/CMakeFiles/CNN.dir/main.cpp.o: ../src/main.cpp \
   /usr/include/c++/11/bits/regex.tcc \
   /usr/include/c++/11/bits/regex_executor.h \
   /usr/include/c++/11/bits/regex_executor.tcc \
+  ../include/Augmentation3D.hpp \
+  /usr/include/c++/11/optional \
   ../include/SparseTensor.hpp \
   ../include/SparseConvLayer3D.hpp \
   ../include/SparseConvAdapterLayer.hpp \
-  ../include/WindowAttention3DLayer.hpp
+  ../include/WindowAttention3DLayer.hpp \
+  ../include/BatchNorm3DLayer.hpp
 
 
 ../include/WindowAttention3DLayer.hpp:
 
 ../include/SparseConvAdapterLayer.hpp:
+
+/usr/include/c++/11/optional:
 
 /usr/include/c++/11/bits/regex.tcc:
 
@@ -1742,6 +1747,8 @@ src/CMakeFiles/CNN.dir/main.cpp.o: ../src/main.cpp \
 
 /usr/include/eigen3/Eigen/src/Core/util/Memory.h:
 
+../include/Augmentation3D.hpp:
+
 /usr/include/eigen3/Eigen/src/Eigenvalues/ComplexSchur.h:
 
 /usr/include/x86_64-linux-gnu/c++/11/bits/opt_random.h:
@@ -2005,6 +2012,8 @@ src/CMakeFiles/CNN.dir/main.cpp.o: ../src/main.cpp \
 /usr/include/c++/11/bits/locale_conv.h:
 
 /usr/include/eigen3/Eigen/src/Core/Random.h:
+
+../include/BatchNorm3DLayer.hpp:
 
 /usr/include/eigen3/Eigen/src/Core/Replicate.h:
 

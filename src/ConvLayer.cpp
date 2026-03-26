@@ -183,7 +183,7 @@ Tensor ConvLayer::col2im(const Eigen::MatrixXf& col,
 Eigen::MatrixXf ConvLayer::weightsToMatrix() const {
     Eigen::MatrixXf m(out_channels_, in_channels_ * kernel_h_ * kernel_w_);
 
-#pragma omp parallel for collapse(2)
+#pragma omp parallel for collapse(4)
     for (int oc = 0; oc < out_channels_; ++oc)
         for (int ic = 0; ic < in_channels_; ++ic)
             for (int kh = 0; kh < kernel_h_; ++kh)

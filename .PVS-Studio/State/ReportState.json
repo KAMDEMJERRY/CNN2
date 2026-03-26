@@ -1,0 +1,13 @@
+{
+  "json": [
+    {
+      "falseAlarm": false,
+      "level": 0,
+      "code": "",
+      "message": "License was not entered. Please enter a valid PVS-Studio license or request a trial license at https://pvs-studio.com/en/pvs-studio/try-free/. You can use credentials mode to enter license information.Command example: pvs-studio-analyzer credentials \"PVS-Studio Free\" FREE-FREE-FREE-FREE.The analyzer writes the license to the license file located in the default directory: ~/.config/PVS-Studio/PVS-Studio.lic.",
+      "positions": [],
+      "projects": [],
+      "id": 4246213571
+    }
+  ]
+}

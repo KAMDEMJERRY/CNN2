@@ -64,7 +64,7 @@ public:
         std::string images_path = prefix + "_images.npy";
         if (verbose) std::cout << "⏳ Chargement images : " << images_path << std::endl;
         images = NpyParser::load(images_path, verbose);
-
+        
         if (verbose) {
             std::cout << "✅ Images chargées → ";
             images.printShape();

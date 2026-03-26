@@ -91,6 +91,11 @@ void CNN::fit(const Tensor& inputs, const Tensor& targets, int epochs, int batch
 // =============================================================================
 // Évaluation / Inférence
 // =============================================================================
+void CNN::evaluate(IDataLoader& loader) {
+    EpochMetrics test_m = runEpoch(loader,   /*train=*/false);
+    printTestStats(test_m);
+}
+
 
 float CNN::evaluate(const Tensor& inputs, const Tensor& targets) {
     requireLoss();
@@ -252,14 +257,24 @@ void CNN::printEpochStats(int epoch, int total_epochs,
         << " | Val Acc: " << std::setprecision(2) << val->accuracy * 100.0f << "%";
     std::cout << "\n";
 
-
-
 }
+
+void CNN::printTestStats(const EpochMetrics& test) {
+    std::cout << "Test "
+        << " | Loss: " << std::fixed << std::setprecision(4) << test.loss
+        << " | Acc: " << std::setprecision(2) << test.accuracy * 100.0f << "%"
+        << " | Time: " << test.ms << "ms";
+    std::cout << "\n";
+}
+
 
 static void logEpochStats(int epoch, int total_epochs, const EpochMetrics& train, const EpochMetrics* val) {
     std::string logfile = relativePath("/logs/training_log.txt");
     std::ofstream log_file(logfile, std::ios::app);
-    if (epoch == 0) log_file << std::string(50, '=') << std::endl;
+    if (epoch == 0) {
+        std::string now = currentTime();
+        log_file << std::endl << now << std::string(50, '=') << std::endl;
+    }
     log_file << "Epoch " << std::setw(3) << epoch + 1 << "/" << total_epochs
         << " | Loss: " << std::fixed << std::setprecision(4) << train.loss
         << " | Acc: " << std::setprecision(2) << train.accuracy * 100.0f << "%";

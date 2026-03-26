@@ -16,6 +16,9 @@
 #include "SparseConvLayer3D.hpp"
 #include "SparseConvAdapterLayer.hpp"
 #include "WindowAttention3DLayer.hpp"    // ← nouveau
+#include "Augmentation3D.hpp"
+#include "BatchNorm3DLayer.hpp"
+
 #include <iostream>
 #include <iomanip>
 #include <chrono>
@@ -26,40 +29,40 @@
 // =============================================================================
 
 enum class Pipeline { CNN2D, CNN3D, CNN3D_SPARSE, CNN3D_ATTN, CNN3D_SPARSE_ATTN };
-static constexpr Pipeline ACTIVE_PIPELINE = Pipeline::CNN3D_SPARSE_ATTN;
+static  Pipeline ACTIVE_PIPELINE = Pipeline::CNN3D;
 
 // --- 2D ---
-#define MNIST_TRAIN_PATH      "../../../dataset/mnist_img/trainingSample/trainingSample/"
-#define MNIST_TEST_PATH       "../../../dataset/mnist_img/trainingSample/trainingSample/"
-#define BLOODCELLS_TRAIN_PATH "../../../dataset/bloodcell/images/TRAIN/"
-#define BLOODCELLS_TEST_PATH  "../../../dataset/bloodcell/images/TEST/"
+#define MNIST_TRAIN_PATH      "../dataset/mnist_img/trainingSample/trainingSample/"
+#define MNIST_TEST_PATH       "../dataset/mnist_img/trainingSample/trainingSample/"
+#define BLOODCELLS_TRAIN_PATH "../dataset/bloodcell/images/TRAIN/"
+#define BLOODCELLS_TEST_PATH  "../dataset/bloodcell/images/TEST/"
 
 static constexpr bool  USE_BLOODCELLS = false;
-static constexpr int   IMAGE_SIZE_2D  = 28;
-static constexpr int   BATCH_SIZE_2D  = 100;
-static constexpr int   EPOCHS_2D      = 50;
-static constexpr float LR_2D          = 0.0001f;
+static constexpr int   IMAGE_SIZE_2D = 28;
+static constexpr int   BATCH_SIZE_2D = 100;
+static constexpr int   EPOCHS_2D = 50;
+static constexpr float LR_2D = 0.0001f;
 
 // --- 3D dense ---
-#define FRACTURE_PATH "../../../dataset/fracturemnist3d"
+#define FRACTURE_PATH "../dataset/fracturemnist3d"
 
-static constexpr int   BATCH_SIZE_3D = 16;
-static constexpr int   EPOCHS_3D     = 30;
-static constexpr float LR_3D         = 0.0001f;
-static constexpr int   VOL_SIZE      = 28;
+static constexpr int   BATCH_SIZE_3D = 240;
+static constexpr int   EPOCHS_3D = 100;
+static constexpr float LR_3D = 0.0001f;
+static constexpr int   VOL_SIZE = 28;
 
 // --- 3D sparse ---
-static constexpr float SPARSE_THRESHOLD  = 0.02f;
+static constexpr float SPARSE_THRESHOLD = 0.02f;
 static constexpr int   BATCH_SIZE_SPARSE = 8;
-static constexpr int   EPOCHS_SPARSE     = 30;
-static constexpr float LR_SPARSE         = 0.0001f;
+static constexpr int   EPOCHS_SPARSE = 30;
+static constexpr float LR_SPARSE = 0.001f;
 
 // --- Attention ---
 // Taille de fenêtre : 7 couvre tout le volume 7×7×7 après deux strides
 // Pour les volumes 14×14×14 (après bloc 1), fenêtre de 4 → 4 fenêtres par axe
 static constexpr int   ATTN_WIN_LARGE = 7;   // utilisé sur volume 7³
 static constexpr int   ATTN_WIN_SMALL = 4;   // utilisé sur volume 14³
-static constexpr int   ATTN_HEADS     = 4;   // têtes d'attention
+static constexpr int   ATTN_HEADS = 4;   // têtes d'attention
 
 // =============================================================================
 // Utilitaires
@@ -103,13 +106,13 @@ static CNN buildModel2D(int num_classes) {
 static int run2D() {
     section("Pipeline 2D");
     const std::string train_dir = USE_BLOODCELLS ? BLOODCELLS_TRAIN_PATH : MNIST_TRAIN_PATH;
-    const std::string test_dir  = USE_BLOODCELLS ? BLOODCELLS_TEST_PATH  : MNIST_TEST_PATH;
+    const std::string test_dir = USE_BLOODCELLS ? BLOODCELLS_TEST_PATH : MNIST_TEST_PATH;
     requireDir(train_dir); requireDir(test_dir);
-    ImageFolderDataset train_ds(train_dir, IMAGE_SIZE_2D, IMAGE_SIZE_2D, true,  true);
-    ImageFolderDataset val_ds  (test_dir,  IMAGE_SIZE_2D, IMAGE_SIZE_2D, false, true);
+    ImageFolderDataset train_ds(train_dir, IMAGE_SIZE_2D, IMAGE_SIZE_2D, true, true);
+    ImageFolderDataset val_ds(test_dir, IMAGE_SIZE_2D, IMAGE_SIZE_2D, false, true);
     CNN model = buildModel2D(train_ds.getNumClasses());
     DataLoader train_loader(train_ds, BATCH_SIZE_2D, true);
-    DataLoader val_loader  (val_ds,   BATCH_SIZE_2D, false);
+    DataLoader val_loader(val_ds, BATCH_SIZE_2D, false);
     train_loader.setMaxSamples(100); val_loader.setMaxSamples(20);
     model.fitWithValidation(train_loader, val_loader, EPOCHS_2D, BATCH_SIZE_2D);
     return 0;
@@ -121,16 +124,19 @@ static int run2D() {
 
 static CNN buildModel3D(int num_classes) {
     CNN model;
-    model.addLayer(std::make_shared<ConvLayer3D>(1,  16, 3,3,3, 1,1,1, 1,1,1));
+    model.addLayer(std::make_shared<ConvLayer3D>(1, 16, 3, 3, 3, 1, 1, 1, 1, 1, 1));
+    model.addLayer(std::make_shared<BatchNorm3D>(16));
     model.addLayer(std::make_shared<ReLULayer>());
-    model.addLayer(std::make_shared<ConvLayer3D>(16, 32, 3,3,3, 2,2,2, 1,1,1));
+    model.addLayer(std::make_shared<ConvLayer3D>(16, 32, 3, 3, 3, 2, 2, 2, 1, 1, 1));
+    model.addLayer(std::make_shared<BatchNorm3D>(32));
     model.addLayer(std::make_shared<ReLULayer>());
-    model.addLayer(std::make_shared<ConvLayer3D>(32, 64, 3,3,3, 2,2,2, 1,1,1));
+    model.addLayer(std::make_shared<ConvLayer3D>(32, 64, 3, 3, 3, 2, 2, 2, 1, 1, 1));
     model.addLayer(std::make_shared<ReLULayer>());
-    model.addLayer(std::make_shared<DenseLayer>(7*7*7*64, 256));
+    model.addLayer(std::make_shared<DenseLayer>(7 * 7 * 7 * 64, 32));
+    model.addLayer(std::make_shared<BatchNorm3D>(32));
     model.addLayer(std::make_shared<ReLULayer>());
     model.addLayer(std::make_shared<DropoutLayer>(0.5f));
-    model.addLayer(std::make_shared<DenseLayer>(256, num_classes));
+    model.addLayer(std::make_shared<DenseLayer>(32, num_classes));
     model.setLossLayer(std::make_shared<SoftmaxCrossEntropyLayer>());
     model.setOptimizer(std::make_shared<Adam>(LR_3D));
     return model;
@@ -140,12 +146,16 @@ static int run3D() {
     section("Pipeline 3D dense");
     requireDir(FRACTURE_PATH);
     MedMNIST3DDataset train_ds(FRACTURE_PATH, Split::TRAIN, 3, "FractureMNIST3D", true);
-    MedMNIST3DDataset val_ds  (FRACTURE_PATH, Split::VAL,   3, "FractureMNIST3D", true);
+    MedMNIST3DDataset val_ds(FRACTURE_PATH, Split::VAL, 3, "FractureMNIST3D", true);
+    MedMNIST3DDataset test_ds(FRACTURE_PATH, Split::TEST, 3, "FractureMNIST3D", true);
     CNN model = buildModel3D(3);
     DataLoader3D train_loader(train_ds, BATCH_SIZE_3D, true);
-    DataLoader3D val_loader  (val_ds,   BATCH_SIZE_3D, false);
+    DataLoader3D val_loader(val_ds, BATCH_SIZE_3D, false);
+    DataLoader3D test_loader(test_ds, BATCH_SIZE_3D, false);
+    train_loader.setAugmentation();  // augmentation entraînement uniquement
     train_loader.setMaxSamples(32); val_loader.setMaxSamples(16);
     model.fitWithValidation(train_loader, val_loader, EPOCHS_3D, BATCH_SIZE_3D);
+    model.evaluate(test_loader);
     return 0;
 }
 
@@ -156,13 +166,13 @@ static int run3D() {
 static CNN buildModel3DSparse(int num_classes) {
     CNN model;
     model.addLayer(std::make_shared<SparseConvAdapterLayer>(
-        1, 16, 3,3,3, 1,1,1, 1,1,1, true, SPARSE_THRESHOLD));
+        1, 16, 3, 3, 3, 1, 1, 1, 1, 1, 1, true, SPARSE_THRESHOLD));
     model.addLayer(std::make_shared<ReLULayer>());
     model.addLayer(std::make_shared<SparseConvAdapterLayer>(
-        16, 32, 3,3,3, 2,2,2, 1,1,1, false, 0.0f));
+        16, 32, 3, 3, 3, 2, 2, 2, 1, 1, 1, false, 0.0f));
     model.addLayer(std::make_shared<ReLULayer>());
     model.addLayer(std::make_shared<SparseConvAdapterLayer>(
-        32, 64, 3,3,3, 2,2,2, 1,1,1, false, 0.0f));
+        32, 64, 3, 3, 3, 2, 2, 2, 1, 1, 1, false, 0.0f));
     model.addLayer(std::make_shared<ReLULayer>());
     model.addLayer(std::make_shared<SparseGlobalAvgPoolLayer>(0.0f));
     model.addLayer(std::make_shared<DenseLayer>(64, 256));
@@ -178,10 +188,11 @@ static int run3DSparse() {
     section("Pipeline 3D sparse (sans attention)");
     requireDir(FRACTURE_PATH);
     MedMNIST3DDataset train_ds(FRACTURE_PATH, Split::TRAIN, 3, "FractureMNIST3D", true);
-    MedMNIST3DDataset val_ds  (FRACTURE_PATH, Split::VAL,   3, "FractureMNIST3D", true);
+    MedMNIST3DDataset val_ds(FRACTURE_PATH, Split::VAL, 3, "FractureMNIST3D", true);
     CNN model = buildModel3DSparse(3);
     DataLoader3D train_loader(train_ds, BATCH_SIZE_SPARSE, true);
-    DataLoader3D val_loader  (val_ds,   BATCH_SIZE_SPARSE, false);
+    DataLoader3D val_loader(val_ds, BATCH_SIZE_SPARSE, false);
+    train_loader.setAugmentation();  // augmentation entraînement uniquement
     train_loader.setMaxSamples(32); val_loader.setMaxSamples(16);
     model.fitWithValidation(train_loader, val_loader, EPOCHS_SPARSE, BATCH_SIZE_SPARSE);
     return 0;
@@ -217,11 +228,11 @@ static CNN buildModel3DAttn(int num_classes) {
     CNN model;
 
     // ── Bloc 1 — Extraction locale ────────────────────────────────────────────
-    model.addLayer(std::make_shared<ConvLayer3D>(1, 16, 3,3,3, 1,1,1, 1,1,1));
+    model.addLayer(std::make_shared<ConvLayer3D>(1, 16, 3, 3, 3, 1, 1, 1, 1, 1, 1));
     model.addLayer(std::make_shared<ReLULayer>());
 
     // ── Bloc 2 — Réduction ×2 ────────────────────────────────────────────────
-    model.addLayer(std::make_shared<ConvLayer3D>(16, 32, 3,3,3, 2,2,2, 1,1,1));
+    model.addLayer(std::make_shared<ConvLayer3D>(16, 32, 3, 3, 3, 2, 2, 2, 1, 1, 1));
     model.addLayer(std::make_shared<ReLULayer>());
 
     // ── Attention sur volume 14³ (fenêtres 4³) ────────────────────────────────
@@ -237,7 +248,7 @@ static CNN buildModel3DAttn(int num_classes) {
         true));            // use_norm
 
     // ── Bloc 3 — Réduction ×2 ────────────────────────────────────────────────
-    model.addLayer(std::make_shared<ConvLayer3D>(32, 64, 3,3,3, 2,2,2, 1,1,1));
+    model.addLayer(std::make_shared<ConvLayer3D>(32, 64, 3, 3, 3, 2, 2, 2, 1, 1, 1));
     model.addLayer(std::make_shared<ReLULayer>());
 
     // ── Attention sur volume 7³ (fenêtre globale 7³) ──────────────────────────
@@ -268,9 +279,9 @@ static int run3DAttn() {
     section("Pipeline 3D dense + WindowAttention");
     requireDir(FRACTURE_PATH);
     MedMNIST3DDataset train_ds(FRACTURE_PATH, Split::TRAIN, 3, "FractureMNIST3D", true);
-    MedMNIST3DDataset val_ds  (FRACTURE_PATH, Split::VAL,   3, "FractureMNIST3D", true);
+    MedMNIST3DDataset val_ds(FRACTURE_PATH, Split::VAL, 3, "FractureMNIST3D", true);
     std::cout << "Train : " << train_ds.getNumSamples()
-              << "  Val : " << val_ds.getNumSamples() << "\n";
+        << "  Val : " << val_ds.getNumSamples() << "\n";
     section("Architecture 3D dense + attention");
     CNN model = buildModel3DAttn(3);
     {
@@ -278,7 +289,8 @@ static int run3DAttn() {
         DimensionCalculator::debugArchitecture(model, probe);
     }
     DataLoader3D train_loader(train_ds, BATCH_SIZE_3D, true);
-    DataLoader3D val_loader  (val_ds,   BATCH_SIZE_3D, false);
+    DataLoader3D val_loader(val_ds, BATCH_SIZE_3D, false);
+    train_loader.setAugmentation();  // augmentation entraînement uniquement
     train_loader.setMaxSamples(32); val_loader.setMaxSamples(16);
     section("Entraînement 3D + attention");
     model.fitWithValidation(train_loader, val_loader, EPOCHS_3D, BATCH_SIZE_3D);
@@ -320,12 +332,12 @@ static CNN buildModel3DSparseAttn(int num_classes) {
 
     // ── Bloc 1 — SubManifold sparse ───────────────────────────────────────────
     model.addLayer(std::make_shared<SparseConvAdapterLayer>(
-        1, 16, 3,3,3, 1,1,1, 1,1,1, true, SPARSE_THRESHOLD));
+        1, 16, 3, 3, 3, 1, 1, 1, 1, 1, 1, true, SPARSE_THRESHOLD));
     model.addLayer(std::make_shared<ReLULayer>());
 
     // ── Bloc 2 — Standard sparse stride=2 ────────────────────────────────────
     model.addLayer(std::make_shared<SparseConvAdapterLayer>(
-        16, 32, 3,3,3, 2,2,2, 1,1,1, false, 0.0f));
+        16, 32, 3, 3, 3, 2, 2, 2, 1, 1, 1, false, 0.0f));
     model.addLayer(std::make_shared<ReLULayer>());
 
     // ── Attention spatio-temporelle sur volume 14³ ────────────────────────────
@@ -346,7 +358,7 @@ static CNN buildModel3DSparseAttn(int num_classes) {
     // L'attention a enrichi la représentation → la conv apprenante bénéficie
     // de features contextualisées pour effectuer le sous-échantillonnage
     model.addLayer(std::make_shared<SparseConvAdapterLayer>(
-        32, 64, 3,3,3, 2,2,2, 1,1,1, false, 0.0f));
+        32, 64, 3, 3, 3, 2, 2, 2, 1, 1, 1, false, 0.0f));
     model.addLayer(std::make_shared<ReLULayer>());
 
     // ── Attention spatio-temporelle globale sur volume 7³ ─────────────────────
@@ -383,12 +395,12 @@ static int run3DSparseAttn() {
     requireDir(FRACTURE_PATH);
 
     MedMNIST3DDataset train_ds(FRACTURE_PATH, Split::TRAIN, 3, "FractureMNIST3D", true);
-    MedMNIST3DDataset val_ds  (FRACTURE_PATH, Split::VAL,   3, "FractureMNIST3D", true);
+    MedMNIST3DDataset val_ds(FRACTURE_PATH, Split::VAL, 3, "FractureMNIST3D", true);
 
     std::cout << "Classes   : 3\n"
-              << "Train     : " << train_ds.getNumSamples() << "\n"
-              << "Val       : " << val_ds.getNumSamples()   << "\n"
-              << "Threshold : " << SPARSE_THRESHOLD         << "\n";
+        << "Train     : " << train_ds.getNumSamples() << "\n"
+        << "Val       : " << val_ds.getNumSamples() << "\n"
+        << "Threshold : " << SPARSE_THRESHOLD << "\n";
 
     section("Architecture 3D sparse + attention");
     CNN model = buildModel3DSparseAttn(3);
@@ -405,13 +417,14 @@ static int run3DSparseAttn() {
         auto* attn = dynamic_cast<WindowAttention3DLayer*>(model.getLayer(i));
         if (attn) {
             std::cout << "  Layer " << std::setw(2) << i
-                      << " [" << attn->getName() << "]"
-                      << "  params=" << attn->numParams() << "\n";
+                << " [" << attn->getName() << "]"
+                << "  params=" << attn->numParams() << "\n";
         }
     }
 
     DataLoader3D train_loader(train_ds, BATCH_SIZE_SPARSE, true);
-    DataLoader3D val_loader  (val_ds,   BATCH_SIZE_SPARSE, false);
+    DataLoader3D val_loader(val_ds, BATCH_SIZE_SPARSE, false);
+    train_loader.setAugmentation();  // augmentation entraînement uniquement
     train_loader.setMaxSamples(32);
     val_loader.setMaxSamples(16);
 
@@ -425,8 +438,22 @@ static int run3DSparseAttn() {
 // Point d'entrée
 // =============================================================================
 
-int main() {
+int main(int argc, char* argv[]) {
     try {
+
+        if (argc > 1) {
+            std::string arg = argv[1];
+            if (arg == "2d") { ACTIVE_PIPELINE = Pipeline::CNN2D; }
+            else if (arg == "3d") { ACTIVE_PIPELINE = Pipeline::CNN3D; }
+            else if (arg == "sparse") { ACTIVE_PIPELINE = Pipeline::CNN3D_SPARSE; }
+            else if (arg == "attn") { ACTIVE_PIPELINE = Pipeline::CNN3D_ATTN; }
+            else if (arg == "sparse_attn") { ACTIVE_PIPELINE = Pipeline::CNN3D_SPARSE_ATTN; }
+            else {
+                std::cerr << "Usage: " << argv[0] << " [2d|3d|sparse|attn|sparse_attn]\n";
+                return 1;
+            }
+        }
+
         Eigen::initParallel();
         Eigen::setNbThreads(4);
 
@@ -434,19 +461,19 @@ int main() {
 
         int ret = 0;
         switch (ACTIVE_PIPELINE) {
-            case Pipeline::CNN2D:
-                ret = run2D();           break;
-            case Pipeline::CNN3D:
-                ret = run3D();           break;
-            case Pipeline::CNN3D_SPARSE:
-                ret = run3DSparse();     break;
-            case Pipeline::CNN3D_ATTN:
-                ret = run3DAttn();       break;
-            case Pipeline::CNN3D_SPARSE_ATTN:
-                ret = run3DSparseAttn(); break;
+        case Pipeline::CNN2D:
+            ret = run2D();           break;
+        case Pipeline::CNN3D:
+            ret = run3D();           break;
+        case Pipeline::CNN3D_SPARSE:
+            ret = run3DSparse();     break;
+        case Pipeline::CNN3D_ATTN:
+            ret = run3DAttn();       break;
+        case Pipeline::CNN3D_SPARSE_ATTN:
+            ret = run3DSparseAttn(); break;
         }
 
-        auto t1  = std::chrono::high_resolution_clock::now();
+        auto t1 = std::chrono::high_resolution_clock::now();
         auto min = std::chrono::duration_cast<std::chrono::minutes>(t1 - t0).count();
         auto sec = std::chrono::duration_cast<std::chrono::seconds> (t1 - t0).count() % 60;
 
@@ -454,7 +481,8 @@ int main() {
         std::cout << "Durée totale : " << min << "m " << sec << "s\n";
         return ret;
 
-    } catch (const std::exception& e) {
+    }
+    catch (const std::exception& e) {
         std::cerr << "\n[ERREUR] " << e.what() << "\n";
         return 1;
     }

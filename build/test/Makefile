@@ -294,6 +294,20 @@ test_Attention/fast:
 	cd "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build" && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_Attention.dir/build.make test/CMakeFiles/test_Attention.dir/build
 .PHONY : test_Attention/fast
 
+# Convenience name for target.
+test/CMakeFiles/test_Augmentation3D.dir/rule:
+	cd "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build" && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/CMakeFiles/test_Augmentation3D.dir/rule
+.PHONY : test/CMakeFiles/test_Augmentation3D.dir/rule
+
+# Convenience name for target.
+test_Augmentation3D: test/CMakeFiles/test_Augmentation3D.dir/rule
+.PHONY : test_Augmentation3D
+
+# fast build rule for target.
+test_Augmentation3D/fast:
+	cd "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build" && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_Augmentation3D.dir/build.make test/CMakeFiles/test_Augmentation3D.dir/build
+.PHONY : test_Augmentation3D/fast
+
 __/src/CNN.o: __/src/CNN.cpp.o
 .PHONY : __/src/CNN.o
 
@@ -467,6 +481,30 @@ test_Attention.s: test_Attention.cpp.s
 test_Attention.cpp.s:
 	cd "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build" && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_Attention.dir/build.make test/CMakeFiles/test_Attention.dir/test_Attention.cpp.s
 .PHONY : test_Attention.cpp.s
+
+test_Augmentation3D.o: test_Augmentation3D.cpp.o
+.PHONY : test_Augmentation3D.o
+
+# target to build an object file
+test_Augmentation3D.cpp.o:
+	cd "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build" && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_Augmentation3D.dir/build.make test/CMakeFiles/test_Augmentation3D.dir/test_Augmentation3D.cpp.o
+.PHONY : test_Augmentation3D.cpp.o
+
+test_Augmentation3D.i: test_Augmentation3D.cpp.i
+.PHONY : test_Augmentation3D.i
+
+# target to preprocess a source file
+test_Augmentation3D.cpp.i:
+	cd "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build" && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_Augmentation3D.dir/build.make test/CMakeFiles/test_Augmentation3D.dir/test_Augmentation3D.cpp.i
+.PHONY : test_Augmentation3D.cpp.i
+
+test_Augmentation3D.s: test_Augmentation3D.cpp.s
+.PHONY : test_Augmentation3D.s
+
+# target to generate assembly for a file
+test_Augmentation3D.cpp.s:
+	cd "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build" && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_Augmentation3D.dir/build.make test/CMakeFiles/test_Augmentation3D.dir/test_Augmentation3D.cpp.s
+.PHONY : test_Augmentation3D.cpp.s
 
 test_CNN.o: test_CNN.cpp.o
 .PHONY : test_CNN.o
@@ -719,6 +757,7 @@ help:
 	@echo "... test"
 	@echo "... test_ActivationLayer"
 	@echo "... test_Attention"
+	@echo "... test_Augmentation3D"
 	@echo "... test_CNN"
 	@echo "... test_ConvLayer"
 	@echo "... test_DenseLayer"
@@ -750,6 +789,9 @@ help:
 	@echo "... test_Attention.o"
 	@echo "... test_Attention.i"
 	@echo "... test_Attention.s"
+	@echo "... test_Augmentation3D.o"
+	@echo "... test_Augmentation3D.i"
+	@echo "... test_Augmentation3D.s"
 	@echo "... test_CNN.o"
 	@echo "... test_CNN.i"
 	@echo "... test_CNN.s"

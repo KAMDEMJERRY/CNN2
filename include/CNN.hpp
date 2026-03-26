@@ -18,9 +18,9 @@ class Tensor;
 // Métriques d'une epoch
 // =============================================================================
 struct EpochMetrics {
-    float loss     = 0.0f;
+    float loss = 0.0f;
     float accuracy = 0.0f;
-    long  ms       = 0;
+    long  ms = 0;
 };
 
 // =============================================================================
@@ -36,7 +36,7 @@ public:
     void setOptimizer(std::shared_ptr<Optimizer> opt);
 
     // --- Accesseurs ---
-    Layer*                                     getLayer(int idx) const;
+    Layer* getLayer(int idx) const;
     std::shared_ptr<LossLayer>                 getLossLayer()    const;
     const std::vector<std::shared_ptr<Layer>>& getLayers()       const;
 
@@ -47,20 +47,22 @@ public:
 
     // --- Entraînement (DataLoader ou DataLoader3D via IDataLoader) ---
     void fit(IDataLoader& dataloader,
-             int epochs     = 10,
-             int batch_size = 32);
+        int epochs = 10,
+        int batch_size = 32);
 
     void fit(const Tensor& inputs,
-             const Tensor& targets,
-             int epochs     = 10,
-             int batch_size = 32);
+        const Tensor& targets,
+        int epochs = 10,
+        int batch_size = 32);
 
     void fitWithValidation(IDataLoader& train_loader,
-                           IDataLoader& val_loader,
-                           int epochs,
-                           int batch_size);
+        IDataLoader& val_loader,
+        int epochs,
+        int batch_size);
+
 
     // --- Évaluation / Inférence ---
+    void evaluate(IDataLoader& loader);
     float  evaluate(const Tensor& inputs, const Tensor& targets);
     Tensor predict(const Tensor& inputs);
 
@@ -79,13 +81,15 @@ private:
 
     // Boucle d'epoch sur Tensor
     EpochMetrics runEpoch(const Tensor& inputs, const Tensor& targets,
-                          int batch_size, bool train);
+        int batch_size, bool train);
 
     static Tensor extractBatch(const Tensor& data, int batch_idx, int batch_size);
 
     static void printEpochStats(int epoch, int total_epochs,
-                                const EpochMetrics& train,
-                                const EpochMetrics* val = nullptr);
+        const EpochMetrics& train,
+        const EpochMetrics* val = nullptr);
+
+    void printTestStats(const EpochMetrics& test);
 
     void requireOptimizer() const;
     void requireLoss()      const;

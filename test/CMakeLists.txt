@@ -51,3 +51,7 @@ gtest_discover_tests(test_Sparse)
 add_executable(test_Attention test_Attention.cpp)
 target_link_libraries(test_Attention PRIVATE GTest::GTest GTest::Main Eigen3::Eigen OpenMP::OpenMP_CXX)
 gtest_discover_tests(test_Attention)
+
+add_executable(test_Augmentation3D test_Augmentation3D.cpp)
+target_link_libraries(test_Augmentation3D PRIVATE GTest::GTest GTest::Main Eigen3::Eigen OpenMP::OpenMP_CXX)
+gtest_discover_tests(test_Augmentation3D)

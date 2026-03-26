@@ -102,4 +102,5 @@ set(CMAKE_DEPEND_INFO_FILES
   "test/CMakeFiles/test_CNN.dir/DependInfo.cmake"
   "test/CMakeFiles/test_Sparse.dir/DependInfo.cmake"
   "test/CMakeFiles/test_Attention.dir/DependInfo.cmake"
+  "test/CMakeFiles/test_Augmentation3D.dir/DependInfo.cmake"
   )
