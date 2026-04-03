@@ -6,7 +6,7 @@
             "type": "lldb",
             "request": "launch",
             "program": "${workspaceFolder}/votre_executable", // À modifier
-            "args": [],
+            "args": ["-g", "3d"],
             "cwd": "${workspaceFolder}",
             "setupCommands": [
                 {

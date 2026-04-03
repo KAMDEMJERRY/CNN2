@@ -104,46 +104,33 @@ class LivePlotter:
         self.log_file = log_file
         self.refresh_interval = refresh_interval
         self.logger = TrainingLogger(log_file)
-        self.fig, self.axes = plt.subplots(2, 2, figsize=(15, 10))
+        
+        # 2 graphiques au lieu de 4
+        self.fig, (self.ax_loss, self.ax_acc) = plt.subplots(1, 2, figsize=(14, 6))
         self.fig.suptitle('Training Progress - Live Update', fontsize=16)
         
-        # Configurer les subplots
-        self.ax_loss = self.axes[0, 0]
-        self.ax_acc = self.axes[0, 1]
-        self.ax_val_loss = self.axes[1, 0]
-        self.ax_val_acc = self.axes[1, 1]
-        
-        self.ax_loss.set_title('Training Loss')
+        # Graphique des losses (train + val)
+        self.ax_loss.set_title('Loss Curves')
         self.ax_loss.set_xlabel('Epoch')
         self.ax_loss.set_ylabel('Loss')
         self.ax_loss.grid(True, alpha=0.3)
         
-        self.ax_acc.set_title('Training Accuracy')
+        # Graphique des accuracies (train + val)
+        self.ax_acc.set_title('Accuracy Curves')
         self.ax_acc.set_xlabel('Epoch')
         self.ax_acc.set_ylabel('Accuracy (%)')
         self.ax_acc.grid(True, alpha=0.3)
         
-        self.ax_val_loss.set_title('Validation Loss')
-        self.ax_val_loss.set_xlabel('Epoch')
-        self.ax_val_loss.set_ylabel('Loss')
-        self.ax_val_loss.grid(True, alpha=0.3)
-        
-        self.ax_val_acc.set_title('Validation Accuracy')
-        self.ax_val_acc.set_xlabel('Epoch')
-        self.ax_val_acc.set_ylabel('Accuracy (%)')
-        self.ax_val_acc.grid(True, alpha=0.3)
-        
         # Lignes pour les graphiques
         self.line_train_loss, = self.ax_loss.plot([], [], 'b-', label='Training Loss', linewidth=2)
+        self.line_val_loss, = self.ax_loss.plot([], [], 'r-', label='Validation Loss', linewidth=2)
+        
         self.line_train_acc, = self.ax_acc.plot([], [], 'b-', label='Training Accuracy', linewidth=2)
-        self.line_val_loss, = self.ax_val_loss.plot([], [], 'r-', label='Validation Loss', linewidth=2)
-        self.line_val_acc, = self.ax_val_acc.plot([], [], 'r-', label='Validation Accuracy', linewidth=2)
+        self.line_val_acc, = self.ax_acc.plot([], [], 'r-', label='Validation Accuracy', linewidth=2)
         
         # Ajouter des légendes
-        self.ax_loss.legend()
-        self.ax_acc.legend()
-        self.ax_val_loss.legend()
-        self.ax_val_acc.legend()
+        self.ax_loss.legend(loc='upper right')
+        self.ax_acc.legend(loc='lower right')
         
         plt.tight_layout()
         
@@ -159,21 +146,22 @@ class LivePlotter:
             if epochs:
                 # Mettre à jour les données des graphiques
                 self.line_train_loss.set_data(epochs, train_losses)
-                self.line_train_acc.set_data(epochs, train_accs)
                 self.line_val_loss.set_data(epochs, val_losses)
+                self.line_train_acc.set_data(epochs, train_accs)
                 self.line_val_acc.set_data(epochs, val_accs)
                 
                 # Ajuster les limites des axes
-                for ax, data in [(self.ax_loss, train_losses + val_losses),
-                                 (self.ax_acc, train_accs + val_accs),
-                                 (self.ax_val_loss, val_losses),
-                                 (self.ax_val_acc, val_accs)]:
-                    if data:
-                        ax.set_xlim(0, max(epochs) + 1)
-                        if ax == self.ax_loss or ax == self.ax_val_loss:
-                            ax.set_ylim(0, max(data) * 1.1)
-                        else:
-                            ax.set_ylim(0, 105)
+                # Pour le graphique des losses
+                all_losses = train_losses + val_losses
+                if all_losses:
+                    self.ax_loss.set_xlim(0, max(epochs) + 1)
+                    self.ax_loss.set_ylim(0, max(all_losses) * 1.1)
+                
+                # Pour le graphique des accuracies
+                all_accs = train_accs + val_accs
+                if all_accs:
+                    self.ax_acc.set_xlim(0, max(epochs) + 1)
+                    self.ax_acc.set_ylim(0, 105)
                 
                 # Mettre à jour le titre avec les dernières métriques
                 last_epoch = epochs[-1]
@@ -195,8 +183,8 @@ class LivePlotter:
     def animate(self, i):
         """Fonction d'animation appelée périodiquement"""
         self.update_plots()
-        return [self.line_train_loss, self.line_train_acc, 
-                self.line_val_loss, self.line_val_acc]
+        return [self.line_train_loss, self.line_val_loss, 
+                self.line_train_acc, self.line_val_acc]
     
     def start(self):
         """Démarre l'affichage en direct"""
@@ -213,7 +201,7 @@ class LivePlotter:
                                       cache_frame_data=False)
         plt.show()
     
-    def save_final_plot(self, output_file='training_plot.png'):
+    def save_final_plot(self, output_file='final_training_plot.png'):
         """Sauvegarde le graphique final"""
         self.update_plots()
         plt.savefig(output_file, dpi=300, bbox_inches='tight')
@@ -245,49 +233,44 @@ class TrainingMonitor:
             print("Aucune donnée d'epoch trouvée")
             return False
         
-        # Créer les graphiques
-        fig, axes = plt.subplots(2, 2, figsize=(15, 10))
+        # Créer les graphiques (2 subplots)
+        fig, (ax_loss, ax_acc) = plt.subplots(1, 2, figsize=(14, 6))
         fig.suptitle('Training Results - Last Session', fontsize=16)
         
-        # Loss
-        axes[0, 0].plot(epochs, train_losses, 'b-', label='Training Loss', linewidth=2)
-        axes[0, 0].plot(epochs, val_losses, 'r-', label='Validation Loss', linewidth=2)
-        axes[0, 0].set_xlabel('Epoch')
-        axes[0, 0].set_ylabel('Loss')
-        axes[0, 0].set_title('Loss Over Time')
-        axes[0, 0].legend()
-        axes[0, 0].grid(True, alpha=0.3)
+        # Graphique des losses
+        ax_loss.plot(epochs, train_losses, 'b-', label='Training Loss', linewidth=2)
+        ax_loss.plot(epochs, val_losses, 'r-', label='Validation Loss', linewidth=2)
+        ax_loss.set_xlabel('Epoch')
+        ax_loss.set_ylabel('Loss')
+        ax_loss.set_title('Loss Curves')
+        ax_loss.legend(loc='upper right')
+        ax_loss.grid(True, alpha=0.3)
         
-        # Accuracy
-        axes[0, 1].plot(epochs, train_accs, 'b-', label='Training Accuracy', linewidth=2)
-        axes[0, 1].plot(epochs, val_accs, 'r-', label='Validation Accuracy', linewidth=2)
-        axes[0, 1].set_xlabel('Epoch')
-        axes[0, 1].set_ylabel('Accuracy (%)')
-        axes[0, 1].set_title('Accuracy Over Time')
-        axes[0, 1].legend()
-        axes[0, 1].grid(True, alpha=0.3)
+        # Ajouter le point du meilleur loss validation
+        best_val_loss_idx = val_losses.index(min(val_losses))
+        best_val_loss = val_losses[best_val_loss_idx]
+        ax_loss.plot(best_val_loss_idx + 1, best_val_loss, 'go', markersize=10, 
+                    label=f'Best Val Loss: {best_val_loss:.4f}')
+        ax_loss.legend(loc='upper right')
         
-        # Training Loss (détail)
-        axes[1, 0].plot(epochs, train_losses, 'b-', linewidth=2)
-        axes[1, 0].set_xlabel('Epoch')
-        axes[1, 0].set_ylabel('Loss')
-        axes[1, 0].set_title('Training Loss Details')
-        axes[1, 0].grid(True, alpha=0.3)
+        # Graphique des accuracies
+        ax_acc.plot(epochs, train_accs, 'b-', label='Training Accuracy', linewidth=2)
+        ax_acc.plot(epochs, val_accs, 'r-', label='Validation Accuracy', linewidth=2)
+        ax_acc.set_xlabel('Epoch')
+        ax_acc.set_ylabel('Accuracy (%)')
+        ax_acc.set_title('Accuracy Curves')
+        ax_acc.legend(loc='lower right')
+        ax_acc.grid(True, alpha=0.3)
         
-        # Validation Accuracy (détail)
-        axes[1, 1].plot(epochs, val_accs, 'r-', linewidth=2)
-        axes[1, 1].set_xlabel('Epoch')
-        axes[1, 1].set_ylabel('Accuracy (%)')
-        axes[1, 1].set_title('Validation Accuracy Details')
-        axes[1, 1].grid(True, alpha=0.3)
+        # Ajouter le point de la meilleure accuracy validation
+        best_val_acc_idx = val_accs.index(max(val_accs))
+        best_val_acc = val_accs[best_val_acc_idx]
+        ax_acc.plot(best_val_acc_idx + 1, best_val_acc, 'go', markersize=10,
+                   label=f'Best Val Acc: {best_val_acc:.2f}%')
+        ax_acc.legend(loc='lower right')
         
-        # Ajouter les meilleures valeurs
-        best_val_acc = max(val_accs)
-        best_epoch = val_accs.index(best_val_acc) + 1
-        axes[1, 1].axhline(y=best_val_acc, color='g', linestyle='--', alpha=0.5)
-        axes[1, 1].text(0.02, 0.98, f'Best: {best_val_acc:.2f}% at epoch {best_epoch}',
-                        transform=axes[1, 1].transAxes, verticalalignment='top',
-                        bbox=dict(boxstyle='round', facecolor='wheat', alpha=0.5))
+        # Ajouter une grille et ajuster les limites
+        ax_acc.set_ylim(0, 105)
         
         plt.tight_layout()
         
@@ -319,26 +302,32 @@ class TrainingMonitor:
         best_epoch = val_accs.index(best_val_acc) + 1
         best_train_acc = train_accs[best_epoch - 1]
         
+        best_val_loss = min(val_losses)
+        best_loss_epoch = val_losses.index(best_val_loss) + 1
+        
         print("\n" + "="*60)
         print("RÉSUMÉ DU DERNIER ENTRAÎNEMENT")
         print("="*60)
         print(f"Nombre d'epochs: {len(epochs)}")
-        print(f"Meilleure accuracy validation: {best_val_acc:.2f}% (epoch {best_epoch})")
+        print(f"\nMeilleure accuracy validation: {best_val_acc:.2f}% (epoch {best_epoch})")
         print(f"Accuracy entraînement correspondante: {best_train_acc:.2f}%")
-        print(f"Loss finale - Entraînement: {train_losses[-1]:.4f}, Validation: {val_losses[-1]:.4f}")
-        print(f"Accuracy finale - Entraînement: {train_accs[-1]:.2f}%, Validation: {val_accs[-1]:.2f}%")
+        print(f"\nMeilleure loss validation: {best_val_loss:.4f} (epoch {best_loss_epoch})")
+        print(f"\nMétriques finales:")
+        print(f"  - Loss - Entraînement: {train_losses[-1]:.4f}, Validation: {val_losses[-1]:.4f}")
+        print(f"  - Accuracy - Entraînement: {train_accs[-1]:.2f}%, Validation: {val_accs[-1]:.2f}%")
         
         # Détecter le surapprentissage
-        overfitting = val_losses[-1] > min(val_losses) * 1.2
-        if overfitting:
-            print("\n⚠️  ATTENTION: Possible surapprentissage détecté!")
-            print(f"   La loss de validation augmente: {min(val_losses):.4f} → {val_losses[-1]:.4f}")
+        if len(val_losses) > 10:
+            recent_losses = val_losses[-5:]
+            if recent_losses[-1] > min(val_losses) * 1.1:
+                print("\n⚠️  ATTENTION: Possible surapprentissage détecté!")
+                print(f"   La loss de validation augmente: {min(val_losses):.4f} → {val_losses[-1]:.4f}")
         print("="*60)
 
 
 def main(logfilepath="training_log.txt"):
     # Configuration
-    LOG_FILE = logfilepath  # Remplacez par le chemin de votre fichier de log
+    LOG_FILE = logfilepath
     MODE = "live"  # Options: "live", "static", "summary"
     
     if not os.path.exists(LOG_FILE):

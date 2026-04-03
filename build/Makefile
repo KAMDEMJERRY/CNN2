@@ -57,10 +57,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = "/home/ndomboukamdem/Documents/INFL/Master 2/Code2"
+CMAKE_SOURCE_DIR = /home/ndomboukamdem/Documents/INFL/Master_2/Code2
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build"
+CMAKE_BINARY_DIR = /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -97,9 +97,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build/CMakeFiles" "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build//CMakeFiles/progress.marks"
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build/CMakeFiles /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build/CMakeFiles" 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -177,6 +177,19 @@ PLAY: cmake_check_build_system
 PLAY/fast:
 	$(MAKE) $(MAKESILENT) -f src/CMakeFiles/PLAY.dir/build.make src/CMakeFiles/PLAY.dir/build
 .PHONY : PLAY/fast
+
+#=============================================================================
+# Target rules for targets named CNN2D
+
+# Build rule for target.
+CNN2D: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CNN2D
+.PHONY : CNN2D
+
+# fast build rule for target.
+CNN2D/fast:
+	$(MAKE) $(MAKESILENT) -f src/CMakeFiles/CNN2D.dir/build.make src/CMakeFiles/CNN2D.dir/build
+.PHONY : CNN2D/fast
 
 #=============================================================================
 # Target rules for targets named test_Tensor
@@ -357,6 +370,7 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... test"
 	@echo "... CNN"
+	@echo "... CNN2D"
 	@echo "... DIMS"
 	@echo "... PLAY"
 	@echo "... cnn_lib"

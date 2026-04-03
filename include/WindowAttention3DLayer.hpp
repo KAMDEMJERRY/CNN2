@@ -92,6 +92,7 @@ public:
                 std::to_string(num_heads_) + ")");
 
         d_k_ = C_ / num_heads_;   // dimension par tête
+        // scale : 1/sqrt(d_k) — correct pour le vrai multi-head (d_k = C/heads)
         scale_ = 1.0f / std::sqrt(static_cast<float>(d_k_));
 
         // Taille d'un token = C canaux
@@ -157,7 +158,8 @@ public:
                 "[WindowAttention3D] channels mismatch: attendu "
                 + std::to_string(C_) + ", reçu " + std::to_string(input.dim(1)));
 
-        input_cache_ = input;
+        // Dimensions seulement — les données ne sont pas relues en backward
+        input_dims_ = { input.dim(0), input.dim(2), input.dim(3), input.dim(4) };
 
         const int B = input.dim(0);
         const int D = input.dim(2);
@@ -196,30 +198,43 @@ public:
         K_cache_ = K;
         V_cache_ = V;
 
-        // ── Étape 3 : Scores d'attention par fenêtre, par tête ───────────────
-        // Pour chaque fenêtre w et chaque batch b :
-        //   S[b,w] = Q[b,w] · K[b,w]^T / sqrt(d_k)   (N_tok, N_tok)
-        //   A[b,w] = softmax(S[b,w])
-        const int BW = B * N_win;   // nombre de "contextes" indépendants
-        A_cache_.resize(BW, Eigen::MatrixXf::Zero(N_tok, N_tok));
+        // ── Étape 3 : Scores d'attention par fenêtre et par tête ─────────────
+        // Pour chaque (fenêtre bw, tête h) :
+        //   Q_h = Q[bw*N_tok:(bw+1)*N_tok, h*d_k:(h+1)*d_k]  (N_tok, d_k)
+        //   S_h = Q_h · K_h^T / sqrt(d_k)                    (N_tok, N_tok)
+        //   A_h = softmax(S_h)                                  (N_tok, N_tok)
+        //   Out_h = A_h · V_h                                  (N_tok, d_k)
+        //   attn_out[bw*N_tok:, h*d_k:] = Out_h
+        const int BW = B * N_win;
+        // A_cache_ taille BW * num_heads_ — un slot par (fenêtre, tête)
+        A_cache_.assign(BW * num_heads_, Eigen::MatrixXf::Zero(N_tok, N_tok));
 
-        Eigen::MatrixXf attn_out(BW * N_tok, C_);  // sortie de A·V
+        Eigen::MatrixXf attn_out(BW * N_tok, C_);
+        attn_out.setZero();
 
         for (int bw = 0; bw < BW; ++bw) {
-            // Extraction de la fenêtre : (N_tok, C)
-            const Eigen::MatrixXf q_win = Q.middleRows(bw * N_tok, N_tok);
+            const Eigen::MatrixXf q_win = Q.middleRows(bw * N_tok, N_tok);  // (N_tok, C)
             const Eigen::MatrixXf k_win = K.middleRows(bw * N_tok, N_tok);
             const Eigen::MatrixXf v_win = V.middleRows(bw * N_tok, N_tok);
 
-            // Score (N_tok, N_tok)
-            Eigen::MatrixXf S = (q_win * k_win.transpose()) * scale_;
+            for (int h = 0; h < num_heads_; ++h) {
+                const int col0 = h * d_k_;
 
-            // Softmax numériquement stable (soustraction du max par ligne)
-            Eigen::MatrixXf A = softmax(S);
-            A_cache_[bw] = A;
+                // Sous-matrices de dimension d_k pour cette tête
+                const Eigen::MatrixXf q_h = q_win.middleCols(col0, d_k_);  // (N_tok, d_k)
+                const Eigen::MatrixXf k_h = k_win.middleCols(col0, d_k_);
+                const Eigen::MatrixXf v_h = v_win.middleCols(col0, d_k_);
 
-            // Agrégation : A · V → (N_tok, C)
-            attn_out.middleRows(bw * N_tok, N_tok) = A * v_win;
+                // Score : (N_tok, N_tok) = (N_tok, d_k) * (d_k, N_tok)
+                Eigen::MatrixXf S = (q_h * k_h.transpose()) * scale_;
+
+                // Softmax numériquement stable
+                Eigen::MatrixXf A = softmax(S);
+                A_cache_[bw * num_heads_ + h] = A;
+
+                // Agrégation : (N_tok, d_k) = (N_tok, N_tok) * (N_tok, d_k)
+                attn_out.block(bw * N_tok, col0, N_tok, d_k_) = A * v_h;
+            }
         }
 
         // ── Étape 4 : Projection de sortie W_O ───────────────────────────────
@@ -278,52 +293,68 @@ public:
         // ── 4b. Backward projection W_O ───────────────────────────────────────
         // out_proj = attn_out * W_O^T
         // d_attn_out = d_out_proj * W_O
-        // dW_O       = d_out_proj^T * attn_out / B
+        // dW_O       = d_out_proj^T * attn_out / (B * N_win)  — normalisation correcte
         Eigen::MatrixXf d_attn_out = d_out_proj * W_O_;
         dW_O_ = (d_out_proj.transpose() * attn_out_cache_)
-                / static_cast<float>(B);
+                / static_cast<float>(B * N_win);
 
-        // ── 3b. Backward attention par fenêtre ────────────────────────────────
+        // ── 3b. Backward attention par fenêtre et par tête ─────────────────
         Eigen::MatrixXf d_Q = Eigen::MatrixXf::Zero(BW * N_tok, C_);
         Eigen::MatrixXf d_K = Eigen::MatrixXf::Zero(BW * N_tok, C_);
         Eigen::MatrixXf d_V = Eigen::MatrixXf::Zero(BW * N_tok, C_);
 
         for (int bw = 0; bw < BW; ++bw) {
-            const Eigen::MatrixXf& A    = A_cache_[bw];
-            const Eigen::MatrixXf  q_w  = Q_cache_.middleRows(bw * N_tok, N_tok);
-            const Eigen::MatrixXf  k_w  = K_cache_.middleRows(bw * N_tok, N_tok);
-            const Eigen::MatrixXf  v_w  = V_cache_.middleRows(bw * N_tok, N_tok);
-            const Eigen::MatrixXf  dO_w = d_attn_out.middleRows(bw * N_tok, N_tok);
+            const Eigen::MatrixXf q_win = Q_cache_.middleRows(bw * N_tok, N_tok);  // (N_tok,C)
+            const Eigen::MatrixXf k_win = K_cache_.middleRows(bw * N_tok, N_tok);
+            const Eigen::MatrixXf v_win = V_cache_.middleRows(bw * N_tok, N_tok);
+            const Eigen::MatrixXf dO_win = d_attn_out.middleRows(bw * N_tok, N_tok);
 
-            // dL/dV = A^T · dO      (N_tok, C)
-            d_V.middleRows(bw * N_tok, N_tok) = A.transpose() * dO_w;
+            Eigen::MatrixXf dq_win = Eigen::MatrixXf::Zero(N_tok, C_);
+            Eigen::MatrixXf dk_win = Eigen::MatrixXf::Zero(N_tok, C_);
+            Eigen::MatrixXf dv_win = Eigen::MatrixXf::Zero(N_tok, C_);
 
-            // dL/dA = dO · V^T      (N_tok, N_tok)
-            Eigen::MatrixXf d_A = dO_w * v_w.transpose();
+            for (int h = 0; h < num_heads_; ++h) {
+                const int col0 = h * d_k_;
+                const Eigen::MatrixXf& A   = A_cache_[bw * num_heads_ + h];
+                const Eigen::MatrixXf q_h  = q_win.middleCols(col0, d_k_);
+                const Eigen::MatrixXf k_h  = k_win.middleCols(col0, d_k_);
+                const Eigen::MatrixXf v_h  = v_win.middleCols(col0, d_k_);
+                const Eigen::MatrixXf dO_h = dO_win.middleCols(col0, d_k_);  // (N_tok, d_k)
 
-            // Backward softmax : dL/dS = A ⊙ (dL/dA - sum(dL/dA ⊙ A, axis=1))
-            // Pour chaque ligne i : dS[i] = A[i] ⊙ (dA[i] - dot(A[i], dA[i]))
-            Eigen::MatrixXf d_S(N_tok, N_tok);
-            for (int i = 0; i < N_tok; ++i) {
-                float dot = (A.row(i).array() * d_A.row(i).array()).sum();
-                d_S.row(i) = A.row(i).array() * (d_A.row(i).array() - dot);
+                // dL/dV_h = A^T · dO_h    (N_tok, d_k)
+                dv_win.middleCols(col0, d_k_) = A.transpose() * dO_h;
+
+                // dL/dA = dO_h · V_h^T   (N_tok, N_tok)
+                const Eigen::MatrixXf d_A = dO_h * v_h.transpose();
+
+                // Backward softmax
+                Eigen::MatrixXf d_S(N_tok, N_tok);
+                for (int i = 0; i < N_tok; ++i) {
+                    const float dot = (A.row(i).array() * d_A.row(i).array()).sum();
+                    d_S.row(i) = A.row(i).array() * (d_A.row(i).array() - dot);
+                }
+                d_S *= scale_;
+
+                // dL/dQ_h = d_S · K_h    (N_tok, d_k)
+                dq_win.middleCols(col0, d_k_) = d_S * k_h;
+
+                // dL/dK_h = d_S^T · Q_h  (N_tok, d_k)
+                dk_win.middleCols(col0, d_k_) = d_S.transpose() * q_h;
             }
-            d_S *= scale_;  // facteur 1/sqrt(d_k)
 
-            // dL/dQ = dS · K        (N_tok, C)
-            d_Q.middleRows(bw * N_tok, N_tok) = d_S * k_w;
-
-            // dL/dK = dS^T · Q      (N_tok, C)
-            d_K.middleRows(bw * N_tok, N_tok) = d_S.transpose() * q_w;
+            d_Q.middleRows(bw * N_tok, N_tok) = dq_win;
+            d_K.middleRows(bw * N_tok, N_tok) = dk_win;
+            d_V.middleRows(bw * N_tok, N_tok) = dv_win;
         }
 
         // ── 2b. Backward projections W_Q, W_K, W_V ───────────────────────────
         // Q = tokens * W_Q^T → dL/dW_Q = d_Q^T * tokens / B
         //                       dL/dtokens += d_Q * W_Q
-        const float inv_B = 1.f / static_cast<float>(B);
-        dW_Q_ = (d_Q.transpose() * tokens_cache_) * inv_B;
-        dW_K_ = (d_K.transpose() * tokens_cache_) * inv_B;
-        dW_V_ = (d_V.transpose() * tokens_cache_) * inv_B;
+        // Normalisation par B*N_win — tous les contextes fenêtrés contribuent
+        const float inv_BW = 1.f / static_cast<float>(BW);
+        dW_Q_ = (d_Q.transpose() * tokens_cache_) * inv_BW;
+        dW_K_ = (d_K.transpose() * tokens_cache_) * inv_BW;
+        dW_V_ = (d_V.transpose() * tokens_cache_) * inv_BW;
 
         // Gradient vers les tokens d'entrée
         Eigen::MatrixXf d_tokens = d_Q * W_Q_
@@ -393,7 +424,8 @@ private:
     Eigen::VectorXf d_gamma_, d_beta_;
 
     // ── Cache backward ────────────────────────────────────────────────────────
-    Tensor                      input_cache_;
+    struct InputDims { int b, d, h, w; };   // dims seulement — pas de copie des données
+    InputDims                   input_dims_{};
     Eigen::MatrixXf             tokens_cache_;   // (B*N_win*N_tok, C)
     Eigen::MatrixXf             Q_cache_, K_cache_, V_cache_;
     Eigen::MatrixXf             attn_out_cache_; // sortie avant W_O

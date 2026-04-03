@@ -1,0 +1,22 @@
+#pragma once
+#include "CNN.hpp"
+#include "ConvLayer.hpp"
+#include "ConvLayerDataParallel.hpp"
+#include "ConvLayer3D.hpp"
+#include "ActivationLayer.hpp"
+#include "PoolLayer.hpp"
+#include "DenseLayer.hpp"
+#include "LossLayer.hpp"
+#include "Optimizer.hpp"
+#include "Dimensions.hpp"
+#include "DropoutLayer.hpp"
+#include "DataLoader.hpp"
+#include "DataLoader3D.hpp"
+#include "MedMNIST3DDataset.hpp"
+#include "SparseTensor.hpp"
+#include "SparseConvLayer3D.hpp"
+#include "SparseConvAdapterLayer.hpp"
+#include "WindowAttention3DLayer.hpp"    // ← nouveau
+#include "Augmentation3D.hpp"
+#include "BatchNorm3DLayer.hpp"
+

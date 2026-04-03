@@ -1,0 +1,2 @@
+/usr/bin/ar qc libcnn_lib.a CMakeFiles/cnn_lib.dir/shared.cpp.o CMakeFiles/cnn_lib.dir/ConvLayer.cpp.o CMakeFiles/cnn_lib.dir/ConvLayer3D.cpp.o CMakeFiles/cnn_lib.dir/DenseLayer.cpp.o CMakeFiles/cnn_lib.dir/CNN.cpp.o
+/usr/bin/ranlib libcnn_lib.a

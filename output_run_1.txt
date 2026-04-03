@@ -1,0 +1,142 @@
+
+============================================================
+  Pipeline 3D sparse + WindowAttention (Flash ST-Attention)
+============================================================
+═══════════════════════════════════════════════════════
+📦 FractureMNIST3D — Train
+═══════════════════════════════════════════════════════
+⏳ Chargement images : ../dataset/fracturemnist3d/train_images.npy
+─────────────────────────────────────────────
+📂 ../dataset/fracturemnist3d/train_images.npy
+   dtype         : uint8
+   fortran_order : False ✅
+   shape         : (1027, 28, 28, 28)
+   num_elements  : 22544704
+   data_offset   : 128 bytes
+─────────────────────────────────────────────
+✅ Images chargées → Tensor shape: (1027, 1, 28, 28, 28)  [5D]
+⏳ Chargement labels : ../dataset/fracturemnist3d/train_labels.npy
+─────────────────────────────────────────────
+📂 ../dataset/fracturemnist3d/train_labels.npy
+   dtype         : uint8
+   fortran_order : False ✅
+   shape         : (1027, 1)
+   num_elements  : 1027
+   data_offset   : 128 bytes
+─────────────────────────────────────────────
+✅ Labels chargés → 1027 échantillons
+✅ Normalisation z-score appliquée (mean=0.0229, std=0.1104)
+───────────────────────────────────────────────────────
+📋 FractureMNIST3D (Train)
+   Samples     : 1027
+   Classes     : 3
+   Volume shape: (1, 28, 28, 28)
+   Mean (norm) : 0.022901
+   Std  (norm) : 0.110397
+───────────────────────────────────────────────────────
+📊 Distribution des classes (FractureMNIST3D — Train):
+   Classe 0 :   473 samples (46.1%)
+   Classe 1 :   383 samples (37.3%)
+   Classe 2 :   171 samples (16.7%)
+═══════════════════════════════════════════════════════
+═══════════════════════════════════════════════════════
+📦 FractureMNIST3D — Validation
+═══════════════════════════════════════════════════════
+⏳ Chargement images : ../dataset/fracturemnist3d/val_images.npy
+─────────────────────────────────────────────
+📂 ../dataset/fracturemnist3d/val_images.npy
+   dtype         : uint8
+   fortran_order : False ✅
+   shape         : (103, 28, 28, 28)
+   num_elements  : 2261056
+   data_offset   : 128 bytes
+─────────────────────────────────────────────
+✅ Images chargées → Tensor shape: (103, 1, 28, 28, 28)  [5D]
+⏳ Chargement labels : ../dataset/fracturemnist3d/val_labels.npy
+─────────────────────────────────────────────
+📂 ../dataset/fracturemnist3d/val_labels.npy
+   dtype         : uint8
+   fortran_order : False ✅
+   shape         : (103, 1)
+   num_elements  : 103
+   data_offset   : 128 bytes
+─────────────────────────────────────────────
+✅ Labels chargés → 103 échantillons
+✅ Normalisation z-score appliquée (mean=0.0241, std=0.1158)
+───────────────────────────────────────────────────────
+📋 FractureMNIST3D (Validation)
+   Samples     : 103
+   Classes     : 3
+   Volume shape: (1, 28, 28, 28)
+   Mean (norm) : 0.024078
+   Std  (norm) : 0.115769
+───────────────────────────────────────────────────────
+📊 Distribution des classes (FractureMNIST3D — Validation):
+   Classe 0 :    42 samples (40.8%)
+   Classe 1 :    40 samples (38.8%)
+   Classe 2 :    21 samples (20.4%)
+═══════════════════════════════════════════════════════
+═══════════════════════════════════════════════════════
+📦 FractureMNIST3D — Test
+═══════════════════════════════════════════════════════
+⏳ Chargement images : ../dataset/fracturemnist3d/test_images.npy
+─────────────────────────────────────────────
+📂 ../dataset/fracturemnist3d/test_images.npy
+   dtype         : uint8
+   fortran_order : False ✅
+   shape         : (240, 28, 28, 28)
+   num_elements  : 5268480
+   data_offset   : 128 bytes
+─────────────────────────────────────────────
+✅ Images chargées → Tensor shape: (240, 1, 28, 28, 28)  [5D]
+⏳ Chargement labels : ../dataset/fracturemnist3d/test_labels.npy
+─────────────────────────────────────────────
+📂 ../dataset/fracturemnist3d/test_labels.npy
+   dtype         : uint8
+   fortran_order : False ✅
+   shape         : (240, 1)
+   num_elements  : 240
+   data_offset   : 128 bytes
+─────────────────────────────────────────────
+✅ Labels chargés → 240 échantillons
+✅ Normalisation z-score appliquée (mean=0.0211, std=0.1060)
+───────────────────────────────────────────────────────
+📋 FractureMNIST3D (Test)
+   Samples     : 240
+   Classes     : 3
+   Volume shape: (1, 28, 28, 28)
+   Mean (norm) : 0.021062
+   Std  (norm) : 0.105964
+───────────────────────────────────────────────────────
+📊 Distribution des classes (FractureMNIST3D — Test):
+   Classe 0 :    90 samples (37.5%)
+   Classe 1 :   104 samples (43.3%)
+   Classe 2 :    46 samples (19.2%)
+═══════════════════════════════════════════════════════
+Classes   : 3
+Train     : 1027
+Val       : 103
+Test      : 240
+Threshold : 0.0
+
+============================================================
+  Architecture 3D sparse + attention
+============================================================
+
+=== Debug Architecture ===
+Tensor shape: (1, 1, 28, 28, 28)  [5D]
+SparseConvAdapter(SubManifold): Tensor shape: (1, 16, 28, 28, 28)  [5D]
+ReLU: Tensor shape: (1, 16, 28, 28, 28)  [5D]
+SparseConvAdapter(Standard): Tensor shape: (1, 32, 14, 14, 14)  [5D]
+ReLU: Tensor shape: (1, 32, 14, 14, 14)  [5D]
+WindowAttention3D(C=32 win=4x4x4 heads=4): Tensor shape: (1, 32, 14, 14, 14)  [5D]
+SparseConvAdapter(Standard): Tensor shape: (1, 64, 7, 7, 7)  [5D]
+ReLU: Tensor shape: (1, 64, 7, 7, 7)  [5D]
+WindowAttention3D(C=64 win=7x7x7 heads=4): Tensor shape: (1, 64, 7, 7, 7)  [5D]
+SparseGlobalAvgPool: Tensor shape: (1, 64, 1, 1, 1)  [5D]
+Dense: Tensor shape: (1, 256, 1, 1, 1)  [5D]
+ReLU: Tensor shape: (1, 256, 1, 1, 1)  [5D]
+DropoutLayer: Tensor shape: (1, 256, 1, 1, 1)  [5D]
+Dense: Tensor shape: (1, 3, 1, 1, 1)  [5D]
+Dense input from SparseGlobalAvgPool: Tensor shape: (1, 64, 1, 1, 1)  [5D]
+Dense input from DropoutLayer: Tensor shape: (1, 256, 1, 1, 1)  [5D]

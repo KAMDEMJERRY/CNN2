@@ -57,10 +57,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = "/home/ndomboukamdem/Documents/INFL/Master 2/Code2"
+CMAKE_SOURCE_DIR = /home/ndomboukamdem/Documents/INFL/Master_2/Code2
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build"
+CMAKE_BINARY_DIR = /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -97,14 +97,14 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build" && $(CMAKE_COMMAND) -E cmake_progress_start "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build/CMakeFiles" "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build/src//CMakeFiles/progress.marks"
-	cd "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build" && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/all
-	$(CMAKE_COMMAND) -E cmake_progress_start "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build/CMakeFiles" 0
+	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build/CMakeFiles /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build/src//CMakeFiles/progress.marks
+	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build" && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/clean
+	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/clean
 .PHONY : clean
 
 # The main clean target
@@ -113,22 +113,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build" && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/preinstall
+	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build" && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/preinstall
+	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build" && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 src/CMakeFiles/cnn_lib.dir/rule:
-	cd "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build" && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/CMakeFiles/cnn_lib.dir/rule
+	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/CMakeFiles/cnn_lib.dir/rule
 .PHONY : src/CMakeFiles/cnn_lib.dir/rule
 
 # Convenience name for target.
@@ -137,12 +137,12 @@ cnn_lib: src/CMakeFiles/cnn_lib.dir/rule
 
 # fast build rule for target.
 cnn_lib/fast:
-	cd "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build" && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/cnn_lib.dir/build.make src/CMakeFiles/cnn_lib.dir/build
+	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/cnn_lib.dir/build.make src/CMakeFiles/cnn_lib.dir/build
 .PHONY : cnn_lib/fast
 
 # Convenience name for target.
 src/CMakeFiles/CNN.dir/rule:
-	cd "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build" && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/CMakeFiles/CNN.dir/rule
+	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/CMakeFiles/CNN.dir/rule
 .PHONY : src/CMakeFiles/CNN.dir/rule
 
 # Convenience name for target.
@@ -151,12 +151,12 @@ CNN: src/CMakeFiles/CNN.dir/rule
 
 # fast build rule for target.
 CNN/fast:
-	cd "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build" && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/CNN.dir/build.make src/CMakeFiles/CNN.dir/build
+	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/CNN.dir/build.make src/CMakeFiles/CNN.dir/build
 .PHONY : CNN/fast
 
 # Convenience name for target.
 src/CMakeFiles/DIMS.dir/rule:
-	cd "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build" && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/CMakeFiles/DIMS.dir/rule
+	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/CMakeFiles/DIMS.dir/rule
 .PHONY : src/CMakeFiles/DIMS.dir/rule
 
 # Convenience name for target.
@@ -165,12 +165,12 @@ DIMS: src/CMakeFiles/DIMS.dir/rule
 
 # fast build rule for target.
 DIMS/fast:
-	cd "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build" && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/DIMS.dir/build.make src/CMakeFiles/DIMS.dir/build
+	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/DIMS.dir/build.make src/CMakeFiles/DIMS.dir/build
 .PHONY : DIMS/fast
 
 # Convenience name for target.
 src/CMakeFiles/PLAY.dir/rule:
-	cd "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build" && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/CMakeFiles/PLAY.dir/rule
+	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/CMakeFiles/PLAY.dir/rule
 .PHONY : src/CMakeFiles/PLAY.dir/rule
 
 # Convenience name for target.
@@ -179,15 +179,29 @@ PLAY: src/CMakeFiles/PLAY.dir/rule
 
 # fast build rule for target.
 PLAY/fast:
-	cd "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build" && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/PLAY.dir/build.make src/CMakeFiles/PLAY.dir/build
+	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/PLAY.dir/build.make src/CMakeFiles/PLAY.dir/build
 .PHONY : PLAY/fast
+
+# Convenience name for target.
+src/CMakeFiles/CNN2D.dir/rule:
+	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/CMakeFiles/CNN2D.dir/rule
+.PHONY : src/CMakeFiles/CNN2D.dir/rule
+
+# Convenience name for target.
+CNN2D: src/CMakeFiles/CNN2D.dir/rule
+.PHONY : CNN2D
+
+# fast build rule for target.
+CNN2D/fast:
+	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/CNN2D.dir/build.make src/CMakeFiles/CNN2D.dir/build
+.PHONY : CNN2D/fast
 
 CNN.o: CNN.cpp.o
 .PHONY : CNN.o
 
 # target to build an object file
 CNN.cpp.o:
-	cd "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build" && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/cnn_lib.dir/build.make src/CMakeFiles/cnn_lib.dir/CNN.cpp.o
+	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/cnn_lib.dir/build.make src/CMakeFiles/cnn_lib.dir/CNN.cpp.o
 .PHONY : CNN.cpp.o
 
 CNN.i: CNN.cpp.i
@@ -195,7 +209,7 @@ CNN.i: CNN.cpp.i
 
 # target to preprocess a source file
 CNN.cpp.i:
-	cd "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build" && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/cnn_lib.dir/build.make src/CMakeFiles/cnn_lib.dir/CNN.cpp.i
+	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/cnn_lib.dir/build.make src/CMakeFiles/cnn_lib.dir/CNN.cpp.i
 .PHONY : CNN.cpp.i
 
 CNN.s: CNN.cpp.s
@@ -203,15 +217,39 @@ CNN.s: CNN.cpp.s
 
 # target to generate assembly for a file
 CNN.cpp.s:
-	cd "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build" && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/cnn_lib.dir/build.make src/CMakeFiles/cnn_lib.dir/CNN.cpp.s
+	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/cnn_lib.dir/build.make src/CMakeFiles/cnn_lib.dir/CNN.cpp.s
 .PHONY : CNN.cpp.s
+
+CNN2D.o: CNN2D.cpp.o
+.PHONY : CNN2D.o
+
+# target to build an object file
+CNN2D.cpp.o:
+	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/CNN2D.dir/build.make src/CMakeFiles/CNN2D.dir/CNN2D.cpp.o
+.PHONY : CNN2D.cpp.o
+
+CNN2D.i: CNN2D.cpp.i
+.PHONY : CNN2D.i
+
+# target to preprocess a source file
+CNN2D.cpp.i:
+	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/CNN2D.dir/build.make src/CMakeFiles/CNN2D.dir/CNN2D.cpp.i
+.PHONY : CNN2D.cpp.i
+
+CNN2D.s: CNN2D.cpp.s
+.PHONY : CNN2D.s
+
+# target to generate assembly for a file
+CNN2D.cpp.s:
+	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/CNN2D.dir/build.make src/CMakeFiles/CNN2D.dir/CNN2D.cpp.s
+.PHONY : CNN2D.cpp.s
 
 ConvLayer.o: ConvLayer.cpp.o
 .PHONY : ConvLayer.o
 
 # target to build an object file
 ConvLayer.cpp.o:
-	cd "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build" && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/cnn_lib.dir/build.make src/CMakeFiles/cnn_lib.dir/ConvLayer.cpp.o
+	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/cnn_lib.dir/build.make src/CMakeFiles/cnn_lib.dir/ConvLayer.cpp.o
 .PHONY : ConvLayer.cpp.o
 
 ConvLayer.i: ConvLayer.cpp.i
@@ -219,7 +257,7 @@ ConvLayer.i: ConvLayer.cpp.i
 
 # target to preprocess a source file
 ConvLayer.cpp.i:
-	cd "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build" && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/cnn_lib.dir/build.make src/CMakeFiles/cnn_lib.dir/ConvLayer.cpp.i
+	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/cnn_lib.dir/build.make src/CMakeFiles/cnn_lib.dir/ConvLayer.cpp.i
 .PHONY : ConvLayer.cpp.i
 
 ConvLayer.s: ConvLayer.cpp.s
@@ -227,7 +265,7 @@ ConvLayer.s: ConvLayer.cpp.s
 
 # target to generate assembly for a file
 ConvLayer.cpp.s:
-	cd "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build" && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/cnn_lib.dir/build.make src/CMakeFiles/cnn_lib.dir/ConvLayer.cpp.s
+	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/cnn_lib.dir/build.make src/CMakeFiles/cnn_lib.dir/ConvLayer.cpp.s
 .PHONY : ConvLayer.cpp.s
 
 ConvLayer3D.o: ConvLayer3D.cpp.o
@@ -235,7 +273,7 @@ ConvLayer3D.o: ConvLayer3D.cpp.o
 
 # target to build an object file
 ConvLayer3D.cpp.o:
-	cd "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build" && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/cnn_lib.dir/build.make src/CMakeFiles/cnn_lib.dir/ConvLayer3D.cpp.o
+	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/cnn_lib.dir/build.make src/CMakeFiles/cnn_lib.dir/ConvLayer3D.cpp.o
 .PHONY : ConvLayer3D.cpp.o
 
 ConvLayer3D.i: ConvLayer3D.cpp.i
@@ -243,7 +281,7 @@ ConvLayer3D.i: ConvLayer3D.cpp.i
 
 # target to preprocess a source file
 ConvLayer3D.cpp.i:
-	cd "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build" && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/cnn_lib.dir/build.make src/CMakeFiles/cnn_lib.dir/ConvLayer3D.cpp.i
+	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/cnn_lib.dir/build.make src/CMakeFiles/cnn_lib.dir/ConvLayer3D.cpp.i
 .PHONY : ConvLayer3D.cpp.i
 
 ConvLayer3D.s: ConvLayer3D.cpp.s
@@ -251,15 +289,39 @@ ConvLayer3D.s: ConvLayer3D.cpp.s
 
 # target to generate assembly for a file
 ConvLayer3D.cpp.s:
-	cd "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build" && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/cnn_lib.dir/build.make src/CMakeFiles/cnn_lib.dir/ConvLayer3D.cpp.s
+	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/cnn_lib.dir/build.make src/CMakeFiles/cnn_lib.dir/ConvLayer3D.cpp.s
 .PHONY : ConvLayer3D.cpp.s
+
+ConvLayerDataParallel.o: ConvLayerDataParallel.cpp.o
+.PHONY : ConvLayerDataParallel.o
+
+# target to build an object file
+ConvLayerDataParallel.cpp.o:
+	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/cnn_lib.dir/build.make src/CMakeFiles/cnn_lib.dir/ConvLayerDataParallel.cpp.o
+.PHONY : ConvLayerDataParallel.cpp.o
+
+ConvLayerDataParallel.i: ConvLayerDataParallel.cpp.i
+.PHONY : ConvLayerDataParallel.i
+
+# target to preprocess a source file
+ConvLayerDataParallel.cpp.i:
+	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/cnn_lib.dir/build.make src/CMakeFiles/cnn_lib.dir/ConvLayerDataParallel.cpp.i
+.PHONY : ConvLayerDataParallel.cpp.i
+
+ConvLayerDataParallel.s: ConvLayerDataParallel.cpp.s
+.PHONY : ConvLayerDataParallel.s
+
+# target to generate assembly for a file
+ConvLayerDataParallel.cpp.s:
+	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/cnn_lib.dir/build.make src/CMakeFiles/cnn_lib.dir/ConvLayerDataParallel.cpp.s
+.PHONY : ConvLayerDataParallel.cpp.s
 
 DenseLayer.o: DenseLayer.cpp.o
 .PHONY : DenseLayer.o
 
 # target to build an object file
 DenseLayer.cpp.o:
-	cd "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build" && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/cnn_lib.dir/build.make src/CMakeFiles/cnn_lib.dir/DenseLayer.cpp.o
+	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/cnn_lib.dir/build.make src/CMakeFiles/cnn_lib.dir/DenseLayer.cpp.o
 .PHONY : DenseLayer.cpp.o
 
 DenseLayer.i: DenseLayer.cpp.i
@@ -267,7 +329,7 @@ DenseLayer.i: DenseLayer.cpp.i
 
 # target to preprocess a source file
 DenseLayer.cpp.i:
-	cd "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build" && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/cnn_lib.dir/build.make src/CMakeFiles/cnn_lib.dir/DenseLayer.cpp.i
+	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/cnn_lib.dir/build.make src/CMakeFiles/cnn_lib.dir/DenseLayer.cpp.i
 .PHONY : DenseLayer.cpp.i
 
 DenseLayer.s: DenseLayer.cpp.s
@@ -275,7 +337,7 @@ DenseLayer.s: DenseLayer.cpp.s
 
 # target to generate assembly for a file
 DenseLayer.cpp.s:
-	cd "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build" && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/cnn_lib.dir/build.make src/CMakeFiles/cnn_lib.dir/DenseLayer.cpp.s
+	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/cnn_lib.dir/build.make src/CMakeFiles/cnn_lib.dir/DenseLayer.cpp.s
 .PHONY : DenseLayer.cpp.s
 
 dimensions.o: dimensions.cpp.o
@@ -283,7 +345,7 @@ dimensions.o: dimensions.cpp.o
 
 # target to build an object file
 dimensions.cpp.o:
-	cd "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build" && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/DIMS.dir/build.make src/CMakeFiles/DIMS.dir/dimensions.cpp.o
+	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/DIMS.dir/build.make src/CMakeFiles/DIMS.dir/dimensions.cpp.o
 .PHONY : dimensions.cpp.o
 
 dimensions.i: dimensions.cpp.i
@@ -291,7 +353,7 @@ dimensions.i: dimensions.cpp.i
 
 # target to preprocess a source file
 dimensions.cpp.i:
-	cd "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build" && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/DIMS.dir/build.make src/CMakeFiles/DIMS.dir/dimensions.cpp.i
+	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/DIMS.dir/build.make src/CMakeFiles/DIMS.dir/dimensions.cpp.i
 .PHONY : dimensions.cpp.i
 
 dimensions.s: dimensions.cpp.s
@@ -299,7 +361,7 @@ dimensions.s: dimensions.cpp.s
 
 # target to generate assembly for a file
 dimensions.cpp.s:
-	cd "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build" && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/DIMS.dir/build.make src/CMakeFiles/DIMS.dir/dimensions.cpp.s
+	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/DIMS.dir/build.make src/CMakeFiles/DIMS.dir/dimensions.cpp.s
 .PHONY : dimensions.cpp.s
 
 main.o: main.cpp.o
@@ -307,7 +369,7 @@ main.o: main.cpp.o
 
 # target to build an object file
 main.cpp.o:
-	cd "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build" && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/CNN.dir/build.make src/CMakeFiles/CNN.dir/main.cpp.o
+	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/CNN.dir/build.make src/CMakeFiles/CNN.dir/main.cpp.o
 .PHONY : main.cpp.o
 
 main.i: main.cpp.i
@@ -315,7 +377,7 @@ main.i: main.cpp.i
 
 # target to preprocess a source file
 main.cpp.i:
-	cd "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build" && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/CNN.dir/build.make src/CMakeFiles/CNN.dir/main.cpp.i
+	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/CNN.dir/build.make src/CMakeFiles/CNN.dir/main.cpp.i
 .PHONY : main.cpp.i
 
 main.s: main.cpp.s
@@ -323,7 +385,7 @@ main.s: main.cpp.s
 
 # target to generate assembly for a file
 main.cpp.s:
-	cd "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build" && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/CNN.dir/build.make src/CMakeFiles/CNN.dir/main.cpp.s
+	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/CNN.dir/build.make src/CMakeFiles/CNN.dir/main.cpp.s
 .PHONY : main.cpp.s
 
 playground.o: playground.cpp.o
@@ -331,7 +393,7 @@ playground.o: playground.cpp.o
 
 # target to build an object file
 playground.cpp.o:
-	cd "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build" && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/PLAY.dir/build.make src/CMakeFiles/PLAY.dir/playground.cpp.o
+	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/PLAY.dir/build.make src/CMakeFiles/PLAY.dir/playground.cpp.o
 .PHONY : playground.cpp.o
 
 playground.i: playground.cpp.i
@@ -339,7 +401,7 @@ playground.i: playground.cpp.i
 
 # target to preprocess a source file
 playground.cpp.i:
-	cd "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build" && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/PLAY.dir/build.make src/CMakeFiles/PLAY.dir/playground.cpp.i
+	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/PLAY.dir/build.make src/CMakeFiles/PLAY.dir/playground.cpp.i
 .PHONY : playground.cpp.i
 
 playground.s: playground.cpp.s
@@ -347,8 +409,32 @@ playground.s: playground.cpp.s
 
 # target to generate assembly for a file
 playground.cpp.s:
-	cd "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build" && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/PLAY.dir/build.make src/CMakeFiles/PLAY.dir/playground.cpp.s
+	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/PLAY.dir/build.make src/CMakeFiles/PLAY.dir/playground.cpp.s
 .PHONY : playground.cpp.s
+
+shared.o: shared.cpp.o
+.PHONY : shared.o
+
+# target to build an object file
+shared.cpp.o:
+	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/cnn_lib.dir/build.make src/CMakeFiles/cnn_lib.dir/shared.cpp.o
+.PHONY : shared.cpp.o
+
+shared.i: shared.cpp.i
+.PHONY : shared.i
+
+# target to preprocess a source file
+shared.cpp.i:
+	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/cnn_lib.dir/build.make src/CMakeFiles/cnn_lib.dir/shared.cpp.i
+.PHONY : shared.cpp.i
+
+shared.s: shared.cpp.s
+.PHONY : shared.s
+
+# target to generate assembly for a file
+shared.cpp.s:
+	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/cnn_lib.dir/build.make src/CMakeFiles/cnn_lib.dir/shared.cpp.s
+.PHONY : shared.cpp.s
 
 # Help Target
 help:
@@ -360,18 +446,25 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... test"
 	@echo "... CNN"
+	@echo "... CNN2D"
 	@echo "... DIMS"
 	@echo "... PLAY"
 	@echo "... cnn_lib"
 	@echo "... CNN.o"
 	@echo "... CNN.i"
 	@echo "... CNN.s"
+	@echo "... CNN2D.o"
+	@echo "... CNN2D.i"
+	@echo "... CNN2D.s"
 	@echo "... ConvLayer.o"
 	@echo "... ConvLayer.i"
 	@echo "... ConvLayer.s"
 	@echo "... ConvLayer3D.o"
 	@echo "... ConvLayer3D.i"
 	@echo "... ConvLayer3D.s"
+	@echo "... ConvLayerDataParallel.o"
+	@echo "... ConvLayerDataParallel.i"
+	@echo "... ConvLayerDataParallel.s"
 	@echo "... DenseLayer.o"
 	@echo "... DenseLayer.i"
 	@echo "... DenseLayer.s"
@@ -384,6 +477,9 @@ help:
 	@echo "... playground.o"
 	@echo "... playground.i"
 	@echo "... playground.s"
+	@echo "... shared.o"
+	@echo "... shared.i"
+	@echo "... shared.s"
 .PHONY : help
 
 
@@ -395,6 +491,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd "/home/ndomboukamdem/Documents/INFL/Master 2/Code2/build" && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

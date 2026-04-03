@@ -25,7 +25,8 @@ private:
     Eigen::VectorXf grad_bias;
 
     // Cache backward
-    Tensor          input_cache;
+    struct InputDims { int b, d, h, w; };  // seules les dims sont nécessaires en backward
+    InputDims       input_dims_cache_{};
     Eigen::MatrixXf col_cache;
 
 public:
@@ -107,6 +108,8 @@ private:
 
     // Tensor (out_ch, in_ch, Kd, Kh, Kw) → MatrixXf (out_ch, in_ch×Kd×Kh×Kw)
     void convertWeightsToMatrix(Eigen::MatrixXf& W) const;
+
+    Eigen::Map<const Eigen::MatrixXf> weightsToMatrix() const;
 
     // MatrixXf (out_ch, in_ch×Kd×Kh×Kw) → Tensor grad_weights
     // Identique à ConvLayer::convertMatrixToWeights, étendu à Kd

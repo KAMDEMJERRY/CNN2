@@ -90,6 +90,7 @@ set(CMAKE_DEPEND_INFO_FILES
   "src/CMakeFiles/CNN.dir/DependInfo.cmake"
   "src/CMakeFiles/DIMS.dir/DependInfo.cmake"
   "src/CMakeFiles/PLAY.dir/DependInfo.cmake"
+  "src/CMakeFiles/CNN2D.dir/DependInfo.cmake"
   "test/CMakeFiles/test_Tensor.dir/DependInfo.cmake"
   "test/CMakeFiles/test_ConvLayer.dir/DependInfo.cmake"
   "test/CMakeFiles/test_DenseLayer.dir/DependInfo.cmake"

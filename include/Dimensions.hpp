@@ -1,3 +1,4 @@
+# pragma once
 #include "CNN.hpp"
 #include "Layer.hpp"
 

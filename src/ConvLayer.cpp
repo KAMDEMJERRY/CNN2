@@ -50,7 +50,8 @@ void ConvLayer::initializeWeights(const std::string& method) {
 // =============================================================================
 
 Tensor ConvLayer::forward(const Tensor& input) {
-    input_cache_ = input;
+    // Stocke uniquement les dimensions — les données ne sont pas relues en backward
+    input_dims_cache_ = { input.dim(0), input.dim(2), input.dim(3) };
 
     const int B = input.dim(0);
     const int H = input.dim(2);
@@ -60,22 +61,11 @@ Tensor ConvLayer::forward(const Tensor& input) {
     // im2col : [in_ch*kH*kW,  B*oH*oW]
     col_cache_ = im2col(input);
 
-    // GEMM : [out_ch, in_ch*kH*kW] × [in_ch*kH*kW, B*oH*oW]
-    //      = [out_ch, B*oH*oW]
-    Eigen::MatrixXf out_mat = weightsToMatrix() * col_cache_;
-    out_mat.colwise() += bias_;
-
-    // Réorganisation → Tensor [B, out_ch, oH, oW]
+    // GEMM écrit directement dans le buffer output via un Map (pas de temporaire)
     Tensor output(B, out_channels_, oH, oW);
-
-#pragma omp parallel for collapse(4)
-    for (int b = 0; b < B; ++b)
-        for (int oc = 0; oc < out_channels_; ++oc)
-            for (int oh = 0; oh < oH; ++oh)
-                for (int ow = 0; ow < oW; ++ow) {
-                    const int col = b * oH * oW + oh * oW + ow;
-                    output(b, oc, oh, ow) = out_mat(oc, col);
-                }
+    Eigen::Map<Eigen::MatrixXf> out_map(output.getData(), out_channels_, B * oH * oW);
+    out_map.noalias() = weightsToMatrix() * col_cache_;
+    out_map.colwise() += bias_;
 
     return output;
 }
@@ -85,9 +75,9 @@ Tensor ConvLayer::forward(const Tensor& input) {
 // =============================================================================
 
 Tensor ConvLayer::backward(const Tensor& grad_output) {
-    const int B = input_cache_.dim(0);
-    const int H = input_cache_.dim(2);
-    const int W = input_cache_.dim(3);
+    const int B = input_dims_cache_.b;
+    const int H = input_dims_cache_.h;
+    const int W = input_dims_cache_.w;
     auto [oH, oW] = outputDims(H, W);
 
     // grad_output → [out_ch, B*oH*oW]
@@ -150,7 +140,7 @@ Eigen::MatrixXf ConvLayer::im2col(const Tensor& input) const {
 
 Tensor ConvLayer::col2im(const Eigen::MatrixXf& col,
     int height, int width) const {
-    const int B = input_cache_.dim(0);
+    const int B = input_dims_cache_.b;
     auto [oH, oW] = outputDims(height, width);
 
     Tensor grad_input(B, in_channels_, height, width);
@@ -180,17 +170,15 @@ Tensor ConvLayer::col2im(const Eigen::MatrixXf& col,
 // Conversions poids ↔ matrice
 // =============================================================================
 
-Eigen::MatrixXf ConvLayer::weightsToMatrix() const {
-    Eigen::MatrixXf m(out_channels_, in_channels_ * kernel_h_ * kernel_w_);
-
-#pragma omp parallel for collapse(4)
-    for (int oc = 0; oc < out_channels_; ++oc)
-        for (int ic = 0; ic < in_channels_; ++ic)
-            for (int kh = 0; kh < kernel_h_; ++kh)
-                for (int kw = 0; kw < kernel_w_; ++kw)
-                    m(oc, patchRow(ic, kh, kw)) = weights_(oc, ic, kh, kw);
-
-    return m;
+// Map direct sur le buffer des poids : [out_ch, in_ch*kH*kW] row-major
+// Le layout mémoire de Tensor<RowMajor>(out_ch, in_ch, kH, kW) est identique
+// à la matrice [out_ch, in_ch*kH*kW] row-major — aucune allocation.
+Eigen::Map<const Eigen::MatrixXf> ConvLayer::weightsToMatrix() const {
+    return Eigen::Map<const Eigen::MatrixXf>(
+        weights_.getData(),
+        out_channels_,
+        in_channels_ * kernel_h_ * kernel_w_
+    );
 }
 
 void ConvLayer::matrixToGradWeights(const Eigen::MatrixXf& m) {

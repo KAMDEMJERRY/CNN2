@@ -1,0 +1,5 @@
+if(EXISTS "/home/ndomboukamdem/Documents/INFL/Master_2/Code2/build_bench/test/test_LossLayer[1]_tests.cmake")
+  include("/home/ndomboukamdem/Documents/INFL/Master_2/Code2/build_bench/test/test_LossLayer[1]_tests.cmake")
+else()
+  add_test(test_LossLayer_NOT_BUILT test_LossLayer_NOT_BUILT)
+endif()

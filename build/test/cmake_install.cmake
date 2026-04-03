@@ -1,4 +1,4 @@
-# Install script for directory: /home/ndomboukamdem/Documents/INFL/Master 2/Code2/test
+# Install script for directory: /home/ndomboukamdem/Documents/INFL/Master_2/Code2/test
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

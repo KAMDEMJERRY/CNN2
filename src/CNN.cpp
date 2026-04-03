@@ -31,7 +31,10 @@ const std::vector<std::shared_ptr<Layer>>& CNN::getLayers()       const { return
 
 Tensor CNN::forward(const Tensor& input) {
     Tensor output = input;
-    for (const auto& layer : layers_) output = layer->forward(output);
+    for (const auto& layer : layers_) {
+        // std::cout<< layer->getName() << std::endl;
+        output = layer->forward(output);
+    }
     return output;
 }
 
@@ -268,7 +271,7 @@ void CNN::printTestStats(const EpochMetrics& test) {
 }
 
 
-static void logEpochStats(int epoch, int total_epochs, const EpochMetrics& train, const EpochMetrics* val) {
+void logEpochStats(int epoch, int total_epochs, const EpochMetrics& train, const EpochMetrics* val) {
     std::string logfile = relativePath("/logs/training_log.txt");
     std::ofstream log_file(logfile, std::ios::app);
     if (epoch == 0) {

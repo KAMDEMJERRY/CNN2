@@ -1,0 +1,5 @@
+if(EXISTS "/home/ndomboukamdem/Documents/INFL/Master_2/Code2/build_bench/test/test_Tensor[1]_tests.cmake")
+  include("/home/ndomboukamdem/Documents/INFL/Master_2/Code2/build_bench/test/test_Tensor[1]_tests.cmake")
+else()
+  add_test(test_Tensor_NOT_BUILT test_Tensor_NOT_BUILT)
+endif()

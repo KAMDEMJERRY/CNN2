@@ -5,8 +5,12 @@ file(REMOVE_RECURSE
   "CMakeFiles/cnn_lib.dir/ConvLayer.cpp.o.d"
   "CMakeFiles/cnn_lib.dir/ConvLayer3D.cpp.o"
   "CMakeFiles/cnn_lib.dir/ConvLayer3D.cpp.o.d"
+  "CMakeFiles/cnn_lib.dir/ConvLayerDataParallel.cpp.o"
+  "CMakeFiles/cnn_lib.dir/ConvLayerDataParallel.cpp.o.d"
   "CMakeFiles/cnn_lib.dir/DenseLayer.cpp.o"
   "CMakeFiles/cnn_lib.dir/DenseLayer.cpp.o.d"
+  "CMakeFiles/cnn_lib.dir/shared.cpp.o"
+  "CMakeFiles/cnn_lib.dir/shared.cpp.o.d"
   "libcnn_lib.a"
   "libcnn_lib.pdb"
 )

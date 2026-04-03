@@ -1,0 +1,5 @@
+if(EXISTS "/home/ndomboukamdem/Documents/INFL/Master_2/Code2/build_bench/test/test_ConvLayer[1]_tests.cmake")
+  include("/home/ndomboukamdem/Documents/INFL/Master_2/Code2/build_bench/test/test_ConvLayer[1]_tests.cmake")
+else()
+  add_test(test_ConvLayer_NOT_BUILT test_ConvLayer_NOT_BUILT)
+endif()

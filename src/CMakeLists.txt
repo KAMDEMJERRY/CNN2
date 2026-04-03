@@ -1,5 +1,7 @@
 add_library(cnn_lib
+    shared.cpp
     ConvLayer.cpp
+    ConvLayerDataParallel.cpp
     ConvLayer3D.cpp
     DenseLayer.cpp
     CNN.cpp
@@ -11,6 +13,7 @@ target_link_libraries(cnn_lib
     ${OPENMP_LIBRARIES}
     ${Boost_LIBRARIES}
     ${Python3_LIBRARIES}
+    ${OpenMP_CXX_FLAGS}
     # PRIVATE dotenv-cpp
 )
 
@@ -47,3 +50,11 @@ target_link_libraries(PLAY
 )
 
 
+macro(add_exec name main)
+add_executable(${name} ${main})
+target_link_libraries(${name}
+    cnn_lib
+)
+endmacro()
+
+add_exec(CNN2D CNN2D.cpp)

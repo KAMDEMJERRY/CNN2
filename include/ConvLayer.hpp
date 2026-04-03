@@ -44,7 +44,7 @@ public:
     void setWeights(const Tensor& w)          { weights_ = w;    }
     void setBias   (const Eigen::VectorXf& b) { bias_    = b;    }
 
-private:
+protected:
     // --- Hyperparamètres ---
     const int in_channels_;
     const int out_channels_;
@@ -61,8 +61,9 @@ private:
     Eigen::VectorXf grad_bias_;
 
     // --- Cache (forward → backward) ---
-    Tensor          input_cache_;
-    Eigen::MatrixXf col_cache_;     // im2col de l'entrée
+    struct InputDims { int b, h, w; };  // seules les dims sont nécessaires en backward
+    InputDims       input_dims_cache_{};
+    Eigen::MatrixXf col_cache_;         // im2col de l'entrée
 
     // --- Helpers : dimensions ---
     std::pair<int,int> outputDims(int in_h, int in_w) const {
@@ -81,8 +82,8 @@ private:
                            int height, int width) const;
 
     // --- Conversion poids ↔ matrice ---
-    // Remplit une matrice [out_ch, in_ch*kH*kW] depuis weights_
-    Eigen::MatrixXf weightsToMatrix() const;
+    // Retourne un Map [out_ch, in_ch*kH*kW] directement sur le buffer weights_ (sans copie)
+    Eigen::Map<const Eigen::MatrixXf> weightsToMatrix() const;
 
     // Remplit grad_weights_ depuis une matrice [out_ch, in_ch*kH*kW]
     void matrixToGradWeights(const Eigen::MatrixXf& m);

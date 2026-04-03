@@ -2,7 +2,7 @@ include(GoogleTest)
 
 # ── Tests originaux ──────────────────────────────────────────────────────────
 
-add_executable(test_Tensor test_Tensor.cpp)
+add_executable(test_Tensor test_Tensor.cpp )
 target_link_libraries(test_Tensor PRIVATE GTest::GTest GTest::Main Eigen3::Eigen)
 gtest_discover_tests(test_Tensor)
 
@@ -40,7 +40,7 @@ add_executable(test_Dimensions test_Dimensions.cpp ../src/dimensions.cpp)
 target_link_libraries(test_Dimensions PRIVATE GTest::GTest GTest::Main Eigen3::Eigen OpenMP::OpenMP_CXX)
 gtest_discover_tests(test_Dimensions)
 
-add_executable(test_CNN test_CNN.cpp ../src/CNN.cpp ../src/ConvLayer.cpp ../src/ConvLayer3D.cpp ../src/DenseLayer.cpp)
+add_executable(test_CNN test_CNN.cpp ../src/CNN.cpp ../src/ConvLayer.cpp ../src/ConvLayer3D.cpp ../src/DenseLayer.cpp ../src/shared.cpp)
 target_link_libraries(test_CNN PRIVATE GTest::GTest GTest::Main Eigen3::Eigen OpenMP::OpenMP_CXX)
 gtest_discover_tests(test_CNN)
 

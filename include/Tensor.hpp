@@ -7,7 +7,6 @@
 #include <limits>
 #include <stdexcept>
 #include <cmath>
-#include <cstring>
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Tensor — classe unifiée 2D/3D
@@ -227,7 +226,8 @@ public:
         Tensor reshaped(newShape);
         if (reshaped.size() != size())
             throw std::runtime_error("[Tensor] reshape: taille incompatible");
-        std::memcpy(reshaped.getData(), getData(), size() * sizeof(float));
+        // Expression lazy Eigen : aucun buffer intermédiaire, une seule écriture
+        reshaped.eigen() = data.reshape(reshaped.eigen().dimensions());
         return reshaped;
     }
 
@@ -491,6 +491,20 @@ public:
                         const std::string& n2 = "T2") {
         compare(t1, t2, n1, n2);
     }
+
+
+// Version inefficace (avec copie)
+Tensor getBatch_i_copy(int i) const {
+    Tensor batch(this->dim(1), this->dim(2), this->dim(3), this->dim(4));
+    
+    for (int c = 0; c < dim(1); ++c)
+        for (int d = 0; d < dim(2); ++d)
+            for (int h = 0; h < dim(3); ++h)
+                for (int w = 0; w < dim(4); ++w)
+                    batch(c, d, h, w) = (*this)(i, c, d, h, w);
+    
+    return batch;  // Copie coûteuse !
+}
 };
 
 // ─────────────────────────────────────────────────────────────────────────────
