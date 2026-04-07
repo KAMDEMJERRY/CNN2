@@ -32,14 +32,14 @@ static constexpr float LR_2D = 0.0001f;
 
 static constexpr int   BATCH_SIZE_3D = 16;
 static constexpr int   EPOCHS_3D = 100;
-static constexpr float LR_3D = 0.0005f;
+static constexpr float LR_3D = 0.0003f;
 static constexpr int   VOL_SIZE = 28;
 
 // --- 3D sparse ---
 static constexpr float SPARSE_THRESHOLD = 0.02f;
-static constexpr int   BATCH_SIZE_SPARSE = 8;
+static constexpr int   BATCH_SIZE_SPARSE = 16;
 static constexpr int   EPOCHS_SPARSE = 30;
-static constexpr float LR_SPARSE = 0.001f;
+static constexpr float LR_SPARSE = 0.003f;
 
 // --- Attention ---
 // Taille de fenêtre : 7 couvre tout le volume 7×7×7 après deux strides
@@ -212,10 +212,12 @@ static CNN buildModel3DAttn(int num_classes) {
 
     // ── Bloc 1 — Extraction locale ────────────────────────────────────────────
     model.addLayer(std::make_shared<ConvLayer3D>(1, 16, 3, 3, 3, 1, 1, 1, 1, 1, 1));
+    model.addLayer(std::make_shared<BatchNorm3D>(16));
     model.addLayer(std::make_shared<ReLULayer>());
 
     // ── Bloc 2 — Réduction ×2 ────────────────────────────────────────────────
     model.addLayer(std::make_shared<ConvLayer3D>(16, 32, 3, 3, 3, 2, 2, 2, 1, 1, 1));
+    model.addLayer(std::make_shared<BatchNorm3D>(32));
     model.addLayer(std::make_shared<ReLULayer>());
 
     // ── Attention sur volume 14³ (fenêtres 4³) ────────────────────────────────
@@ -232,6 +234,7 @@ static CNN buildModel3DAttn(int num_classes) {
 
     // ── Bloc 3 — Réduction ×2 ────────────────────────────────────────────────
     model.addLayer(std::make_shared<ConvLayer3D>(32, 64, 3, 3, 3, 2, 2, 2, 1, 1, 1));
+    model.addLayer(std::make_shared<BatchNorm3D>(64));
     model.addLayer(std::make_shared<ReLULayer>());
 
     // ── Attention sur volume 7³ (fenêtre globale 7³) ──────────────────────────
@@ -251,7 +254,7 @@ static CNN buildModel3DAttn(int num_classes) {
     model.addLayer(std::make_shared<GlobalAvgPool3DLayer>());
     model.addLayer(std::make_shared<DenseLayer>(64, 256));
     model.addLayer(std::make_shared<ReLULayer>());
-    model.addLayer(std::make_shared<DropoutLayer>(0.5f));
+    model.addLayer(std::make_shared<DropoutLayer>(0.3f));
     model.addLayer(std::make_shared<DenseLayer>(256, num_classes));
     model.setLossLayer(std::make_shared<SoftmaxCrossEntropyLayer>());
     model.setOptimizer(std::make_shared<Adam>(LR_3D));
@@ -373,7 +376,7 @@ static CNN buildModel3DSparseAttn(int num_classes) {
     // ── Classifieur ───────────────────────────────────────────────────────────
     model.addLayer(std::make_shared<DenseLayer>(64, 256));
     model.addLayer(std::make_shared<ReLULayer>());
-    model.addLayer(std::make_shared<DropoutLayer>(0.5f));
+    model.addLayer(std::make_shared<DropoutLayer>(0.3f));
     model.addLayer(std::make_shared<DenseLayer>(256, num_classes));
     model.setLossLayer(std::make_shared<SoftmaxCrossEntropyLayer>());
     model.setOptimizer(std::make_shared<Adam>(LR_SPARSE));
@@ -382,6 +385,7 @@ static CNN buildModel3DSparseAttn(int num_classes) {
 
 static int run3DSparseAttn() {
     section("Pipeline 3D sparse + WindowAttention (Flash ST-Attention)");
+    std::string filename = "./models/sparse_attn.bin";
     requireDir(FRACTURE_PATH);
 
     MedMNIST3DDataset train_ds(FRACTURE_PATH, Split::TRAIN, 3, "FractureMNIST3D", true);
@@ -396,7 +400,7 @@ static int run3DSparseAttn() {
 
     section("Architecture 3D sparse + attention");
     CNN model = buildModel3DSparseAttn(3);
-
+    if(fs::exists(filename))model.loadParameters(filename);
     // debugArchitecture fonctionne car WindowAttention3DLayer hérite de Layer
     {
         Tensor probe(1, 1, VOL_SIZE, VOL_SIZE, VOL_SIZE);
@@ -422,7 +426,9 @@ static int run3DSparseAttn() {
 
     section("Entraînement 3D sparse + attention");
     model.fitWithValidation(train_loader, val_loader, EPOCHS_SPARSE, BATCH_SIZE_SPARSE);
-
+    
+    model.saveParameters(filename);
+    
     return 0;
 }
 

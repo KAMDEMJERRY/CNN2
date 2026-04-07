@@ -11,10 +11,10 @@
 
 // void test_performance() {
 //     const int size = 10000;
-    
+
 //     // 1. Déclaration d'une matrice Col-Major (Défaut Eigen)
 //     Matrix<float, Dynamic, Dynamic, ColMajor> col_mat(size, size);
-    
+
 //     // 2. Déclaration d'une matrice Row-Major (Style C / PyTorch)
 //     Matrix<float, Dynamic, Dynamic, RowMajor> row_mat(size, size);
 
@@ -75,9 +75,9 @@ void visualiser_mapping() {
     // 1. Création d'un petit tenseur 3D (Profondeur=2, Lignes=2, Cols=2)
     // Par défaut, Eigen::Tensor est COL-MAJOR
     Tensor<float, 3> t_col(2, 2, 2);
-    
+
     // Remplissage séquentiel : 0, 1, 2, 3, 4, 5, 6, 7
-    for(int i=0; i<8; ++i) t_col.data()[i] = i;
+    for (int i = 0; i < 8; ++i) t_col.data()[i] = i;
 
     // 2. Vérification du Layout
     cout << "--- VERIFICATION LAYOUT ---" << endl;
@@ -90,7 +90,7 @@ void visualiser_mapping() {
 
     cout << "\n--- VISUALISATION MATRICE (Map ColMajor) ---" << endl;
     cout << m_col << endl;
-    /* 
+    /*
        Interprétation attendue (ColMajor) :
        Chaque colonne est remplie en premier.
        0 2 4 6
@@ -99,7 +99,7 @@ void visualiser_mapping() {
 
     // 4. Test avec Row-Major (Simulation de données C-style/Torch)
     Tensor<float, 3, RowMajor> t_row(2, 2, 2);
-    for(int i=0; i<8; ++i) t_row.data()[i] = i;
+    for (int i = 0; i < 8; ++i) t_row.data()[i] = i;
 
     // On doit utiliser un Map qui accepte le Row2Major
     using RowMatrixMap = Map<Matrix<float, Dynamic, Dynamic, RowMajor>>;
@@ -107,7 +107,7 @@ void visualiser_mapping() {
 
     cout << "\n--- VISUALISATION MATRICE (Map RowMajor) ---" << endl;
     cout << m_row << endl;
-    /* 
+    /*
        Interprétation attendue (RowMajor) :
        Chaque ligne est remplie en premier.
        0 1 2 3
@@ -116,6 +116,21 @@ void visualiser_mapping() {
 }
 
 int main() {
-    visualiser_mapping();
+
+    int k = 0;
+    std::cin >> k;
+    while (k--) {
+        int a, b, c, d;
+        cout << "Entrez 4 entiers : ";
+        std::cin >> a >> b >> c >> d;
+
+        if (a == b && b == c && c == d) {
+            cout << "YES" << endl;
+        }
+        else {
+            cout << "NO" << endl;
+        }
+    }
+
     return 0;
 }

@@ -1,6 +1,8 @@
 # pragma once
 # include "Tensor.hpp"
 # include "Optimizer.hpp"
+# include <boost/archive/binary_oarchive.hpp>
+# include <boost/archive/binary_iarchive.hpp>
 
 # include <memory>
 # include <cmath>
@@ -23,4 +25,8 @@ public:
 
 
     virtual void updateParams(Optimizer& optimizer){};
+
+    // Serialize parameters (default does nothing, overridden by layers with parameters)
+    virtual void saveParameters(boost::archive::binary_oarchive& archive) const {}
+    virtual void loadParameters(boost::archive::binary_iarchive& archive) {}
 };

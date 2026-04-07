@@ -360,6 +360,19 @@ test_Augmentation3D/fast:
 	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_Augmentation3D.dir/build.make test/CMakeFiles/test_Augmentation3D.dir/build
 .PHONY : test_Augmentation3D/fast
 
+#=============================================================================
+# Target rules for targets named test_serialization
+
+# Build rule for target.
+test_serialization: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test_serialization
+.PHONY : test_serialization
+
+# fast build rule for target.
+test_serialization/fast:
+	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_serialization.dir/build.make test/CMakeFiles/test_serialization.dir/build
+.PHONY : test_serialization/fast
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -387,6 +400,7 @@ help:
 	@echo "... test_PoolLayer"
 	@echo "... test_Sparse"
 	@echo "... test_Tensor"
+	@echo "... test_serialization"
 .PHONY : help
 
 

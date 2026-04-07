@@ -2,6 +2,7 @@
 #include "Layer.hpp"
 #include "SparseTensor.hpp"
 #include "SparseConvLayer3D.hpp"
+#include "ModelSerializer.hpp"
 
 // =============================================================================
 // SparseConvAdapterLayer
@@ -158,6 +159,16 @@ public:
         return "SparseConvAdapter("
              + std::string(sparse_conv_.isSubmanifold() ? "SubManifold" : "Standard")
              + ")";
+    }
+
+    void saveParameters(boost::archive::binary_oarchive& archive) const override {
+        archive << sparse_conv_.getWeights();
+        archive << sparse_conv_.getBias();
+    }
+
+    void loadParameters(boost::archive::binary_iarchive& archive) override {
+        archive >> sparse_conv_.getWeights();
+        archive >> sparse_conv_.getBias();
     }
 
     // ── Accesseurs utiles ─────────────────────────────────────────────────────

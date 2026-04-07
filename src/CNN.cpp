@@ -5,9 +5,12 @@
 #include "LossLayer.hpp"
 #include "Optimizer.hpp"
 #include "Tensor.hpp"
+#include "ModelSerializer.hpp"
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <boost/archive/binary_oarchive.hpp>
+#include <boost/archive/binary_iarchive.hpp>
 
 // =============================================================================
 // Construction
@@ -109,6 +112,47 @@ float CNN::evaluate(const Tensor& inputs, const Tensor& targets) {
 }
 
 Tensor CNN::predict(const Tensor& inputs) { return forward(inputs); }
+
+// =============================================================================
+// Sérialisation des paramètres (Boost)
+// =============================================================================
+
+void CNN::saveParameters(const std::string& filename) const {
+    std::ofstream ofs(filename, std::ios::binary);
+    if (!ofs) {
+        throw std::runtime_error("[CNN] Impossible d'ouvrir le fichier pour l'écriture: " + filename);
+    }
+    boost::archive::binary_oarchive oa(ofs);
+    
+    int num_layers = layers_.size();
+    oa << num_layers;
+    
+    for (const auto& layer : layers_) {
+        layer->saveParameters(oa);
+    }
+    std::cout << "[CNN] Paramètres sauvegardés dans: " << filename << std::endl;
+}
+
+void CNN::loadParameters(const std::string& filename) {
+    std::ifstream ifs(filename, std::ios::binary);
+    if (!ifs) {
+        throw std::runtime_error("[CNN] Impossible d'ouvrir le fichier pour la lecture: " + filename);
+    }
+    boost::archive::binary_iarchive ia(ifs);
+    
+    int num_layers;
+    ia >> num_layers;
+    
+    if (num_layers != static_cast<int>(layers_.size())) {
+        throw std::runtime_error("[CNN] Le modèle lu a " + std::to_string(num_layers) + 
+            " couches, mais le CNN courant en a " + std::to_string(layers_.size()) + ".");
+    }
+    
+    for (const auto& layer : layers_) {
+        layer->loadParameters(ia);
+    }
+    std::cout << "[CNN] Paramètres chargés depuis: " << filename << std::endl;
+}
 
 // =============================================================================
 // Benchmarking

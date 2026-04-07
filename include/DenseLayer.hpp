@@ -1,5 +1,6 @@
 #pragma once
 #include "Layer.hpp"
+#include "ModelSerializer.hpp"
 #include <Eigen/Dense>
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -54,6 +55,16 @@ public:
         optimizer.updateBias   (getBias(),    getBiasGradients());
         grad_weights.setZero();
         grad_bias.setZero();
+    }
+
+    void saveParameters(boost::archive::binary_oarchive& archive) const override {
+        archive << weights;
+        archive << bias;
+    }
+
+    void loadParameters(boost::archive::binary_iarchive& archive) override {
+        archive >> weights;
+        archive >> bias;
     }
 
 private:

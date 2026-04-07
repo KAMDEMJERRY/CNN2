@@ -7,6 +7,7 @@
 #include <vector>
 #include <stdexcept>
 #include <algorithm>
+#include "ModelSerializer.hpp"
 
 // =============================================================================
 // WindowAttention3DLayer — Attention Spatio-Temporelle sur Fenêtres Locales
@@ -392,6 +393,24 @@ public:
              + " win=" + std::to_string(wd_) + "x"
              + std::to_string(wh_) + "x" + std::to_string(ww_)
              + " heads=" + std::to_string(num_heads_) + ")";
+    }
+
+    void saveParameters(boost::archive::binary_oarchive& archive) const override {
+        archive << W_Q_;
+        archive << W_K_;
+        archive << W_V_;
+        archive << W_O_;
+        archive << gamma_;
+        archive << beta_;
+    }
+
+    void loadParameters(boost::archive::binary_iarchive& archive) override {
+        archive >> W_Q_;
+        archive >> W_K_;
+        archive >> W_V_;
+        archive >> W_O_;
+        archive >> gamma_;
+        archive >> beta_;
     }
 
     // ── Accesseurs ────────────────────────────────────────────────────────────

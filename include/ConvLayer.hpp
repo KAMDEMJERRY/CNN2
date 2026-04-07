@@ -1,5 +1,6 @@
 #pragma once
 #include "Layer.hpp"
+#include "ModelSerializer.hpp"
 
 // =============================================================================
 // ConvLayer — convolution 2D avec im2col + GEMM Eigen
@@ -29,6 +30,16 @@ public:
         optimizer.updateBias   (bias_,        grad_bias_);
         grad_weights_.setZero();
         grad_bias_.setZero();
+    }
+
+    void saveParameters(boost::archive::binary_oarchive& archive) const override {
+        archive << weights_;
+        archive << bias_;
+    }
+
+    void loadParameters(boost::archive::binary_iarchive& archive) override {
+        archive >> weights_;
+        archive >> bias_;
     }
 
     // --- Initialisation ---

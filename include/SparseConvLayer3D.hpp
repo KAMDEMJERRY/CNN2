@@ -355,6 +355,9 @@ public:
     Eigen::VectorXf& getBias()            { return bias_;    }
     Eigen::VectorXf& getBiasGradients()   { return grad_b_;  }
 
+    const Eigen::MatrixXf& getWeights() const { return weights_; }
+    const Eigen::VectorXf& getBias()    const { return bias_;    }
+
     void setWeights(const Eigen::MatrixXf& w) {
         if (w.rows() != out_ch_ || w.cols() != in_ch_ * kd_ * kh_ * kw_)
             throw std::runtime_error("[SparseConvLayer3D::setWeights] dimensions incorrectes");

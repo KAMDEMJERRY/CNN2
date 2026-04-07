@@ -308,12 +308,27 @@ test_Augmentation3D/fast:
 	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_Augmentation3D.dir/build.make test/CMakeFiles/test_Augmentation3D.dir/build
 .PHONY : test_Augmentation3D/fast
 
+# Convenience name for target.
+test/CMakeFiles/test_serialization.dir/rule:
+	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/CMakeFiles/test_serialization.dir/rule
+.PHONY : test/CMakeFiles/test_serialization.dir/rule
+
+# Convenience name for target.
+test_serialization: test/CMakeFiles/test_serialization.dir/rule
+.PHONY : test_serialization
+
+# fast build rule for target.
+test_serialization/fast:
+	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_serialization.dir/build.make test/CMakeFiles/test_serialization.dir/build
+.PHONY : test_serialization/fast
+
 __/src/CNN.o: __/src/CNN.cpp.o
 .PHONY : __/src/CNN.o
 
 # target to build an object file
 __/src/CNN.cpp.o:
 	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_CNN.dir/build.make test/CMakeFiles/test_CNN.dir/__/src/CNN.cpp.o
+	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_serialization.dir/build.make test/CMakeFiles/test_serialization.dir/__/src/CNN.cpp.o
 .PHONY : __/src/CNN.cpp.o
 
 __/src/CNN.i: __/src/CNN.cpp.i
@@ -322,6 +337,7 @@ __/src/CNN.i: __/src/CNN.cpp.i
 # target to preprocess a source file
 __/src/CNN.cpp.i:
 	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_CNN.dir/build.make test/CMakeFiles/test_CNN.dir/__/src/CNN.cpp.i
+	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_serialization.dir/build.make test/CMakeFiles/test_serialization.dir/__/src/CNN.cpp.i
 .PHONY : __/src/CNN.cpp.i
 
 __/src/CNN.s: __/src/CNN.cpp.s
@@ -330,6 +346,7 @@ __/src/CNN.s: __/src/CNN.cpp.s
 # target to generate assembly for a file
 __/src/CNN.cpp.s:
 	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_CNN.dir/build.make test/CMakeFiles/test_CNN.dir/__/src/CNN.cpp.s
+	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_serialization.dir/build.make test/CMakeFiles/test_serialization.dir/__/src/CNN.cpp.s
 .PHONY : __/src/CNN.cpp.s
 
 __/src/ConvLayer.o: __/src/ConvLayer.cpp.o
@@ -339,6 +356,7 @@ __/src/ConvLayer.o: __/src/ConvLayer.cpp.o
 __/src/ConvLayer.cpp.o:
 	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_ConvLayer.dir/build.make test/CMakeFiles/test_ConvLayer.dir/__/src/ConvLayer.cpp.o
 	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_CNN.dir/build.make test/CMakeFiles/test_CNN.dir/__/src/ConvLayer.cpp.o
+	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_serialization.dir/build.make test/CMakeFiles/test_serialization.dir/__/src/ConvLayer.cpp.o
 .PHONY : __/src/ConvLayer.cpp.o
 
 __/src/ConvLayer.i: __/src/ConvLayer.cpp.i
@@ -348,6 +366,7 @@ __/src/ConvLayer.i: __/src/ConvLayer.cpp.i
 __/src/ConvLayer.cpp.i:
 	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_ConvLayer.dir/build.make test/CMakeFiles/test_ConvLayer.dir/__/src/ConvLayer.cpp.i
 	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_CNN.dir/build.make test/CMakeFiles/test_CNN.dir/__/src/ConvLayer.cpp.i
+	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_serialization.dir/build.make test/CMakeFiles/test_serialization.dir/__/src/ConvLayer.cpp.i
 .PHONY : __/src/ConvLayer.cpp.i
 
 __/src/ConvLayer.s: __/src/ConvLayer.cpp.s
@@ -357,6 +376,7 @@ __/src/ConvLayer.s: __/src/ConvLayer.cpp.s
 __/src/ConvLayer.cpp.s:
 	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_ConvLayer.dir/build.make test/CMakeFiles/test_ConvLayer.dir/__/src/ConvLayer.cpp.s
 	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_CNN.dir/build.make test/CMakeFiles/test_CNN.dir/__/src/ConvLayer.cpp.s
+	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_serialization.dir/build.make test/CMakeFiles/test_serialization.dir/__/src/ConvLayer.cpp.s
 .PHONY : __/src/ConvLayer.cpp.s
 
 __/src/ConvLayer3D.o: __/src/ConvLayer3D.cpp.o
@@ -365,6 +385,7 @@ __/src/ConvLayer3D.o: __/src/ConvLayer3D.cpp.o
 # target to build an object file
 __/src/ConvLayer3D.cpp.o:
 	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_CNN.dir/build.make test/CMakeFiles/test_CNN.dir/__/src/ConvLayer3D.cpp.o
+	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_serialization.dir/build.make test/CMakeFiles/test_serialization.dir/__/src/ConvLayer3D.cpp.o
 .PHONY : __/src/ConvLayer3D.cpp.o
 
 __/src/ConvLayer3D.i: __/src/ConvLayer3D.cpp.i
@@ -373,6 +394,7 @@ __/src/ConvLayer3D.i: __/src/ConvLayer3D.cpp.i
 # target to preprocess a source file
 __/src/ConvLayer3D.cpp.i:
 	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_CNN.dir/build.make test/CMakeFiles/test_CNN.dir/__/src/ConvLayer3D.cpp.i
+	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_serialization.dir/build.make test/CMakeFiles/test_serialization.dir/__/src/ConvLayer3D.cpp.i
 .PHONY : __/src/ConvLayer3D.cpp.i
 
 __/src/ConvLayer3D.s: __/src/ConvLayer3D.cpp.s
@@ -381,6 +403,7 @@ __/src/ConvLayer3D.s: __/src/ConvLayer3D.cpp.s
 # target to generate assembly for a file
 __/src/ConvLayer3D.cpp.s:
 	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_CNN.dir/build.make test/CMakeFiles/test_CNN.dir/__/src/ConvLayer3D.cpp.s
+	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_serialization.dir/build.make test/CMakeFiles/test_serialization.dir/__/src/ConvLayer3D.cpp.s
 .PHONY : __/src/ConvLayer3D.cpp.s
 
 __/src/DenseLayer.o: __/src/DenseLayer.cpp.o
@@ -390,6 +413,7 @@ __/src/DenseLayer.o: __/src/DenseLayer.cpp.o
 __/src/DenseLayer.cpp.o:
 	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_DenseLayer.dir/build.make test/CMakeFiles/test_DenseLayer.dir/__/src/DenseLayer.cpp.o
 	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_CNN.dir/build.make test/CMakeFiles/test_CNN.dir/__/src/DenseLayer.cpp.o
+	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_serialization.dir/build.make test/CMakeFiles/test_serialization.dir/__/src/DenseLayer.cpp.o
 .PHONY : __/src/DenseLayer.cpp.o
 
 __/src/DenseLayer.i: __/src/DenseLayer.cpp.i
@@ -399,6 +423,7 @@ __/src/DenseLayer.i: __/src/DenseLayer.cpp.i
 __/src/DenseLayer.cpp.i:
 	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_DenseLayer.dir/build.make test/CMakeFiles/test_DenseLayer.dir/__/src/DenseLayer.cpp.i
 	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_CNN.dir/build.make test/CMakeFiles/test_CNN.dir/__/src/DenseLayer.cpp.i
+	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_serialization.dir/build.make test/CMakeFiles/test_serialization.dir/__/src/DenseLayer.cpp.i
 .PHONY : __/src/DenseLayer.cpp.i
 
 __/src/DenseLayer.s: __/src/DenseLayer.cpp.s
@@ -408,6 +433,7 @@ __/src/DenseLayer.s: __/src/DenseLayer.cpp.s
 __/src/DenseLayer.cpp.s:
 	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_DenseLayer.dir/build.make test/CMakeFiles/test_DenseLayer.dir/__/src/DenseLayer.cpp.s
 	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_CNN.dir/build.make test/CMakeFiles/test_CNN.dir/__/src/DenseLayer.cpp.s
+	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_serialization.dir/build.make test/CMakeFiles/test_serialization.dir/__/src/DenseLayer.cpp.s
 .PHONY : __/src/DenseLayer.cpp.s
 
 __/src/dimensions.o: __/src/dimensions.cpp.o
@@ -440,6 +466,7 @@ __/src/shared.o: __/src/shared.cpp.o
 # target to build an object file
 __/src/shared.cpp.o:
 	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_CNN.dir/build.make test/CMakeFiles/test_CNN.dir/__/src/shared.cpp.o
+	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_serialization.dir/build.make test/CMakeFiles/test_serialization.dir/__/src/shared.cpp.o
 .PHONY : __/src/shared.cpp.o
 
 __/src/shared.i: __/src/shared.cpp.i
@@ -448,6 +475,7 @@ __/src/shared.i: __/src/shared.cpp.i
 # target to preprocess a source file
 __/src/shared.cpp.i:
 	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_CNN.dir/build.make test/CMakeFiles/test_CNN.dir/__/src/shared.cpp.i
+	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_serialization.dir/build.make test/CMakeFiles/test_serialization.dir/__/src/shared.cpp.i
 .PHONY : __/src/shared.cpp.i
 
 __/src/shared.s: __/src/shared.cpp.s
@@ -456,6 +484,7 @@ __/src/shared.s: __/src/shared.cpp.s
 # target to generate assembly for a file
 __/src/shared.cpp.s:
 	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_CNN.dir/build.make test/CMakeFiles/test_CNN.dir/__/src/shared.cpp.s
+	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_serialization.dir/build.make test/CMakeFiles/test_serialization.dir/__/src/shared.cpp.s
 .PHONY : __/src/shared.cpp.s
 
 test_ActivationLayer.o: test_ActivationLayer.cpp.o
@@ -770,6 +799,30 @@ test_Tensor.cpp.s:
 	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_Tensor.dir/build.make test/CMakeFiles/test_Tensor.dir/test_Tensor.cpp.s
 .PHONY : test_Tensor.cpp.s
 
+test_serialization.o: test_serialization.cpp.o
+.PHONY : test_serialization.o
+
+# target to build an object file
+test_serialization.cpp.o:
+	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_serialization.dir/build.make test/CMakeFiles/test_serialization.dir/test_serialization.cpp.o
+.PHONY : test_serialization.cpp.o
+
+test_serialization.i: test_serialization.cpp.i
+.PHONY : test_serialization.i
+
+# target to preprocess a source file
+test_serialization.cpp.i:
+	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_serialization.dir/build.make test/CMakeFiles/test_serialization.dir/test_serialization.cpp.i
+.PHONY : test_serialization.cpp.i
+
+test_serialization.s: test_serialization.cpp.s
+.PHONY : test_serialization.s
+
+# target to generate assembly for a file
+test_serialization.cpp.s:
+	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_serialization.dir/build.make test/CMakeFiles/test_serialization.dir/test_serialization.cpp.s
+.PHONY : test_serialization.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -792,6 +845,7 @@ help:
 	@echo "... test_PoolLayer"
 	@echo "... test_Sparse"
 	@echo "... test_Tensor"
+	@echo "... test_serialization"
 	@echo "... __/src/CNN.o"
 	@echo "... __/src/CNN.i"
 	@echo "... __/src/CNN.s"
@@ -849,6 +903,9 @@ help:
 	@echo "... test_Tensor.o"
 	@echo "... test_Tensor.i"
 	@echo "... test_Tensor.s"
+	@echo "... test_serialization.o"
+	@echo "... test_serialization.i"
+	@echo "... test_serialization.s"
 .PHONY : help
 
 

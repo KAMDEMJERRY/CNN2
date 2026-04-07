@@ -5,6 +5,7 @@
 #include <numeric>
 #include "Layer.hpp"
 #include "Tensor.hpp"
+#include "ModelSerializer.hpp"
 
 // ---------------------------------------------------------------------------
 //  BatchNorm3D — Batch Normalisation pour volumes 3D
@@ -58,6 +59,20 @@ public:
     
     std::string getName() const override {
         return "BatchNorm3D";
+    }
+
+    void saveParameters(boost::archive::binary_oarchive& archive) const override {
+        archive << gamma_;
+        archive << beta_;
+        archive << running_mean_;
+        archive << running_var_;
+    }
+
+    void loadParameters(boost::archive::binary_iarchive& archive) override {
+        archive >> gamma_;
+        archive >> beta_;
+        archive >> running_mean_;
+        archive >> running_var_;
     }
 
     // Forward pass

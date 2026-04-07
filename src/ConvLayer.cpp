@@ -215,5 +215,9 @@ Eigen::MatrixXf ConvLayer::gradOutputToMatrix(const Tensor& grad_output,
                     m(oc, col) = grad_output(b, oc, oh, ow);
             }
 
+    // Eigen::Map<Eigen::Matrix> m(grad_output.getData(), out_channels_, B * oH * oW);
     return m;
 }
+
+
+

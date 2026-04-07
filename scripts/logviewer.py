@@ -325,7 +325,7 @@ class TrainingMonitor:
         print("="*60)
 
 
-def main(logfilepath="training_log.txt"):
+def main(logfilepath="./logs/training_log.txt"):
     # Configuration
     LOG_FILE = logfilepath
     MODE = "live"  # Options: "live", "static", "summary"
@@ -356,4 +356,5 @@ def main(logfilepath="training_log.txt"):
 
 
 if __name__ == "__main__":
-    main("logs/training_log.txt")
+    filepath = "logs/training_log.txt"
+    main()

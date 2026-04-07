@@ -66,6 +66,10 @@ public:
     float  evaluate(const Tensor& inputs, const Tensor& targets);
     Tensor predict(const Tensor& inputs);
 
+    // --- Sérialisation des paramètres (Boost) ---
+    void saveParameters(const std::string& filename) const;
+    void loadParameters(const std::string& filename);
+
     // --- Benchmarking ---
     double benchmarkForward(const Tensor& input, int iterations = 100);
 
