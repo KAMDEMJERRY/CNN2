@@ -39,7 +39,7 @@ static constexpr int   VOL_SIZE = 28;
 static constexpr float SPARSE_THRESHOLD = 0.02f;
 static constexpr int   BATCH_SIZE_SPARSE = 16;
 static constexpr int   EPOCHS_SPARSE = 30;
-static constexpr float LR_SPARSE = 0.003f;
+static constexpr float LR_SPARSE = 0.0003f;
 
 // --- Attention ---
 // Taille de fenêtre : 7 couvre tout le volume 7×7×7 après deux strides
@@ -141,17 +141,20 @@ static int run3D() {
 static CNN buildModel3DSparse(int num_classes) {
     CNN model;
     model.addLayer(std::make_shared<SparseConvAdapterLayer>(
-        1, 16, 3, 3, 3, 1, 1, 1, 1, 1, 1, true, SPARSE_THRESHOLD));
-    model.addLayer(std::make_shared<ReLULayer>());
+        1, 16, 3,3,3, 1,1,1, 1,1,1, true, SPARSE_THRESHOLD));
+    model.addLayer(std::make_shared<SparseReLULayer>(0.0f));  // ← était ReLULayer
+
     model.addLayer(std::make_shared<SparseConvAdapterLayer>(
-        16, 32, 3, 3, 3, 2, 2, 2, 1, 1, 1, false, 0.0f));
-    model.addLayer(std::make_shared<ReLULayer>());
+        16, 32, 3,3,3, 2,2,2, 1,1,1, false, 0.0f));
+    model.addLayer(std::make_shared<SparseReLULayer>(0.0f));  // ← était ReLULayer
+
     model.addLayer(std::make_shared<SparseConvAdapterLayer>(
-        32, 64, 3, 3, 3, 2, 2, 2, 1, 1, 1, false, 0.0f));
-    model.addLayer(std::make_shared<ReLULayer>());
+        32, 64, 3,3,3, 2,2,2, 1,1,1, false, 0.0f));
+    model.addLayer(std::make_shared<SparseReLULayer>(0.0f));  // ← était ReLULayer
+
     model.addLayer(std::make_shared<SparseGlobalAvgPoolLayer>(0.0f));
     model.addLayer(std::make_shared<DenseLayer>(64, 256));
-    model.addLayer(std::make_shared<ReLULayer>());
+    model.addLayer(std::make_shared<ReLULayer>());            // ← reste dense (après GAP)
     model.addLayer(std::make_shared<DropoutLayer>(0.5f));
     model.addLayer(std::make_shared<DenseLayer>(256, num_classes));
     model.setLossLayer(std::make_shared<SoftmaxCrossEntropyLayer>());
@@ -170,10 +173,10 @@ static int run3DSparse() {
     DataLoader3D val_loader(val_ds, BATCH_SIZE_SPARSE, false);
     DataLoader3D test_loader(test_ds, BATCH_SIZE_SPARSE, false);
 
-    // train_loader.setAugmentation();  // augmentation entraînement uniquement
-    train_loader.setMaxSamples(714);
-    val_loader.setMaxSamples(102);
-    test_loader.setMaxSamples(204);
+    train_loader.setAugmentation();  // augmentation entraînement uniquement
+    // train_loader.setMaxSamples(714);
+    // val_loader.setMaxSamples(102);
+    // test_loader.setMaxSamples(204);
 
     model.fitWithValidation(train_loader, val_loader, EPOCHS_SPARSE, BATCH_SIZE_SPARSE);
     model.evaluate(test_loader);
@@ -281,9 +284,9 @@ static int run3DAttn() {
     DataLoader3D test_loader(test_ds, BATCH_SIZE_SPARSE, false);
     // train_loader.setAugmentation();  // augmentation entraînement uniquement
     // train_loader.setMaxSamples(32); val_loader.setMaxSamples(16);
-    train_loader.setMaxSamples(714);
-    val_loader.setMaxSamples(102);
-    test_loader.setMaxSamples(204);
+    train_loader.setMaxSamples(714); //714 échantillons d'entraînement → 45 batches par époque
+    val_loader.setMaxSamples(102); //102 échantillons de validation → 6-7 batches par époque
+    test_loader.setMaxSamples(204);//204 échantillons de test → 12-13 batches pour l'évaluation finale
 
     section("Entraînement 3D + attention");
     model.fitWithValidation(train_loader, val_loader, EPOCHS_3D, BATCH_SIZE_3D);
@@ -323,66 +326,40 @@ static int run3DAttn() {
 static CNN buildModel3DSparseAttn(int num_classes) {
     CNN model;
 
-    // ── Bloc 1 — SubManifold sparse ───────────────────────────────────────────
+    // Bloc 1
     model.addLayer(std::make_shared<SparseConvAdapterLayer>(
-        1, 16, 3, 3, 3, 1, 1, 1, 1, 1, 1, true, SPARSE_THRESHOLD));
-    model.addLayer(std::make_shared<ReLULayer>());
+        1, 16, 3,3,3, 1,1,1, 1,1,1, true, SPARSE_THRESHOLD));
+    model.addLayer(std::make_shared<SparseReLULayer>(0.0f));  // ← était ReLULayer
 
-    // ── Bloc 2 — Standard sparse stride=2 ────────────────────────────────────
+    // Bloc 2
     model.addLayer(std::make_shared<SparseConvAdapterLayer>(
-        16, 32, 3, 3, 3, 2, 2, 2, 1, 1, 1, false, 0.0f));
-    model.addLayer(std::make_shared<ReLULayer>());
+        16, 32, 3,3,3, 2,2,2, 1,1,1, false, 0.0f));
+    model.addLayer(std::make_shared<SparseReLULayer>(0.0f));  // ← était ReLULayer
 
-    // ── Attention spatio-temporelle sur volume 14³ ────────────────────────────
-    // Positionné après to_dense() de l'adaptateur sparse — opère sur Tensor dense.
-    // Fenêtres 4×4×4 : 4 fenêtres par axe sur 14³ → matrices 64×64.
-    // L'attention capte les relations entre les régions osseuses à échelle moyenne.
-    // La connexion résiduelle et LayerNorm stabilisent l'entraînement.
+    // Attention sur 14³ — reçoit tenseur dense, reste dense : ReLULayer normal
     model.addLayer(std::make_shared<WindowAttention3DLayer>(
-        32,             // C = 32 canaux
-        ATTN_WIN_SMALL, // fenêtre 4×4×4
-        ATTN_WIN_SMALL,
-        ATTN_WIN_SMALL,
-        ATTN_HEADS,     // 4 têtes
-        true,           // residual
-        true));         // norm
+        32, ATTN_WIN_SMALL, ATTN_WIN_SMALL, ATTN_WIN_SMALL,
+        ATTN_HEADS, true, true));
 
-    // ── Bloc 3 — Standard sparse stride=2 ────────────────────────────────────
-    // L'attention a enrichi la représentation → la conv apprenante bénéficie
-    // de features contextualisées pour effectuer le sous-échantillonnage
+    // Bloc 3 — reçoit tenseur dense de l'attention, from_dense() interne à l'adapter
     model.addLayer(std::make_shared<SparseConvAdapterLayer>(
-        32, 64, 3, 3, 3, 2, 2, 2, 1, 1, 1, false, 0.0f));
-    model.addLayer(std::make_shared<ReLULayer>());
+        32, 64, 3,3,3, 2,2,2, 1,1,1, false, 0.0f));
+    model.addLayer(std::make_shared<SparseReLULayer>(0.0f));  // ← était ReLULayer
 
-    // ── Attention spatio-temporelle globale sur volume 7³ ─────────────────────
-    // win=7 = une seule fenêtre couvre tout le volume 7×7×7 = 343 tokens.
-    // Attention globale : chaque voxel peut interagir avec tous les autres.
-    // C'est l'implémentation de la "Flash Spatio-Temporal Attention" du README.
-    // Pour 343 tokens : matrice 343×343 ≈ 117k valeurs — léger à ce stade.
+    // Attention globale sur 7³
     model.addLayer(std::make_shared<WindowAttention3DLayer>(
-        64,             // C = 64 canaux
-        ATTN_WIN_LARGE, // fenêtre 7×7×7 = volume entier
-        ATTN_WIN_LARGE,
-        ATTN_WIN_LARGE,
-        ATTN_HEADS,
-        true,
-        true));
+        64, ATTN_WIN_LARGE, ATTN_WIN_LARGE, ATTN_WIN_LARGE,
+        ATTN_HEADS, true, true));
 
-    // ── Transition sparse → dense ─────────────────────────────────────────────
-    // SparseGlobalAvgPool reçoit le Tensor dense produit par l'attention,
-    // le re-seuille avec threshold=0 et calcule la moyenne sur les voxels actifs
     model.addLayer(std::make_shared<SparseGlobalAvgPoolLayer>(0.0f));
-
-    // ── Classifieur ───────────────────────────────────────────────────────────
     model.addLayer(std::make_shared<DenseLayer>(64, 256));
-    model.addLayer(std::make_shared<ReLULayer>());
+    model.addLayer(std::make_shared<ReLULayer>());            // ← reste dense
     model.addLayer(std::make_shared<DropoutLayer>(0.3f));
     model.addLayer(std::make_shared<DenseLayer>(256, num_classes));
     model.setLossLayer(std::make_shared<SoftmaxCrossEntropyLayer>());
     model.setOptimizer(std::make_shared<Adam>(LR_SPARSE));
     return model;
 }
-
 static int run3DSparseAttn() {
     section("Pipeline 3D sparse + WindowAttention (Flash ST-Attention)");
     std::string filename = "./models/sparse_attn.bin";
@@ -453,7 +430,7 @@ int main(int argc, char* argv[]) {
         }
 
         Eigen::initParallel();
-        Eigen::setNbThreads(4);
+        Eigen::setNbThreads(8);
 
         auto t0 = std::chrono::high_resolution_clock::now();
 

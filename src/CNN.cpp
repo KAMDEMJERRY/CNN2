@@ -123,10 +123,10 @@ void CNN::saveParameters(const std::string& filename) const {
         throw std::runtime_error("[CNN] Impossible d'ouvrir le fichier pour l'écriture: " + filename);
     }
     boost::archive::binary_oarchive oa(ofs);
-    
+
     int num_layers = layers_.size();
     oa << num_layers;
-    
+
     for (const auto& layer : layers_) {
         layer->saveParameters(oa);
     }
@@ -139,15 +139,15 @@ void CNN::loadParameters(const std::string& filename) {
         throw std::runtime_error("[CNN] Impossible d'ouvrir le fichier pour la lecture: " + filename);
     }
     boost::archive::binary_iarchive ia(ifs);
-    
+
     int num_layers;
     ia >> num_layers;
-    
+
     if (num_layers != static_cast<int>(layers_.size())) {
-        throw std::runtime_error("[CNN] Le modèle lu a " + std::to_string(num_layers) + 
+        throw std::runtime_error("[CNN] Le modèle lu a " + std::to_string(num_layers) +
             " couches, mais le CNN courant en a " + std::to_string(layers_.size()) + ".");
     }
-    
+
     for (const auto& layer : layers_) {
         layer->loadParameters(ia);
     }
@@ -181,6 +181,7 @@ EpochMetrics CNN::runEpoch(IDataLoader& loader, bool train) {
     while (loader.hasNext()) {
         auto [images, targets] = loader.nextBatch();
         Tensor predictions = forward(images);
+        
         float  loss = 0.0f;
         if (softmax_ce) {
             softmax_ce->setTargets(targets);
@@ -295,13 +296,20 @@ Tensor CNN::extractBatch(const Tensor& data, int batch_idx, int batch_size) {
 
 void CNN::printEpochStats(int epoch, int total_epochs,
     const EpochMetrics& train, const EpochMetrics* val) {
-    std::cout << "Epoch " << std::setw(3) << epoch + 1 << "/" << total_epochs
-        << " | Loss: " << std::fixed << std::setprecision(4) << train.loss
-        << " | Acc: " << std::setprecision(2) << train.accuracy * 100.0f << "%"
-        << " | Time: " << train.ms << "ms";
+    std::cout << "Epoch " << std::setw(3) << epoch + 1 << "/" << total_epochs 
+        << " | Loss: " << std::fixed << std::setprecision(4) << train.loss;
+
     if (val)
-        std::cout << " | Val Loss: " << std::setprecision(4) << val->loss
-        << " | Val Acc: " << std::setprecision(2) << val->accuracy * 100.0f << "%";
+        std::cout << " | Val Loss: " << std::setprecision(4) << val->loss;
+
+    std::cout << " | Acc: " << std::setprecision(2) << train.accuracy * 100.0f << "%";
+
+    if (val)
+        std::cout << " | Val Acc: " << std::setprecision(2) << val->accuracy * 100.0f << "%";
+
+    int min = train.ms/(1000 * 60);
+    std::cout << " | Time: " << train.ms << "ms" << std::setprecision(2) << "("<<  min <<"min)";
+
     std::cout << "\n";
 
 }

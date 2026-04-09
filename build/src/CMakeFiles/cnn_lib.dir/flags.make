@@ -6,5 +6,5 @@ CXX_DEFINES = -DBOOST_ALL_NO_LIB -DBOOST_SERIALIZATION_DYN_LINK -DBOOST_SYSTEM_D
 
 CXX_INCLUDES = -I/home/ndomboukamdem/Documents/INFL/Master_2/Code2/include -I/usr/include/python3.10 -I/home/ndomboukamdem/.local/lib/python3.10/site-packages/numpy/core/include -isystem /usr/include/eigen3 -isystem /usr/include/opencv4
 
-CXX_FLAGS = -g -frtti -std=gnu++17
+CXX_FLAGS = -O3 -DNDEBUG -frtti -O3 -mavx2 -mfma -march=native -DNDEBUG -std=gnu++17
 

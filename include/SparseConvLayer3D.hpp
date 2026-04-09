@@ -282,7 +282,7 @@ public:
         // Même convention que ConvLayer3D : division par B (batch size)
         grad_w_ = (grad_out_mat * col_cache_.transpose()) / static_cast<float>(B);
 
-        // ── dL/db ─────────────────────────────────────────────────────────────
+        // ── dL/db ────────`─────────────────────────────────────────────────────
         grad_b_ = grad_out_mat.rowwise().sum()
                 / static_cast<float>(B * std::max(N_out, 1));
 

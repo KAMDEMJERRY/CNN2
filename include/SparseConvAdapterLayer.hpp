@@ -335,3 +335,85 @@ private:
     SparseTensor     cached_sp_;
     std::vector<int> cached_shape_;
 };
+
+
+
+
+
+
+
+
+
+
+// À ajouter dans SparseConvAdapterLayer.hpp
+// REMPLACE SparseReLUAdapterLayer (qu'on peut garder pour compatibilité)
+// =============================================================================
+// SparseReLULayer
+// =============================================================================
+// ReLU qui opère sur les nnz features uniquement.
+//
+// Différence avec SparseReLUAdapterLayer :
+//   - Le backward ne stocke PAS le tenseur dense complet en cache.
+//     Il stocke uniquement le masque binaire sparse (MatrixXb, taille nnz×C).
+//   - from_dense() utilise le même threshold que la SparseConvAdapter précédente.
+// =============================================================================
+class SparseReLULayer : public Layer {
+public:
+
+    explicit SparseReLULayer(float threshold = 0.0f)
+        : threshold_(threshold) {}
+
+    ~SparseReLULayer() override = default;
+
+    Tensor forward(const Tensor& input) override {
+        // Dense → Sparse (seulement les voxels actifs)
+        SparseTensor sp = SparseTensor::from_dense(input, threshold_);
+
+        // Cache du masque pour le backward : true = feature > 0
+        // Taille : nnz × C  (beaucoup plus petit que D×H×W×C)
+        mask_cache_   = (sp.features.array() > 0.0f);
+        coords_cache_ = sp.coords;
+        shape_cache_  = input.shape();
+        sp_dims_      = {sp.batch_size, sp.num_channels,
+                         sp.spatial_d,  sp.spatial_h, sp.spatial_w};
+
+        // ReLU in-place sur les features actives uniquement
+        sp.applyReLU();
+
+        // Sparse → Dense
+        return sp.to_dense();
+    }
+
+    Tensor backward(const Tensor& grad_output) override {
+        // Reconstruit le gradient sparse depuis le tenseur dense grad_output
+        const int N   = coords_cache_.rows();
+        const int C   = sp_dims_[1];
+
+        Tensor grad_input(shape_cache_);
+        grad_input.setZero();
+
+        // Propage le gradient uniquement aux positions actives, masqué par ReLU
+        for (int i = 0; i < N; ++i) {
+            const int b = coords_cache_(i, 0);
+            const int d = coords_cache_(i, 1);
+            const int h = coords_cache_(i, 2);
+            const int w = coords_cache_(i, 3);
+            for (int c = 0; c < C; ++c) {
+                grad_input(b, c, d, h, w) =
+                    mask_cache_(i, c) ? grad_output(b, c, d, h, w) : 0.f;
+            }
+        }
+        return grad_input;
+    }
+
+    std::string getName() const override { return "SparseReLU"; }
+
+private:
+    float threshold_;
+
+    // Cache backward — sparse uniquement (nnz × C), pas le volume dense complet
+    Eigen::Array<bool, Eigen::Dynamic, Eigen::Dynamic> mask_cache_;
+    Eigen::MatrixXi  coords_cache_;
+    std::vector<int> shape_cache_;
+    std::array<int,5> sp_dims_{};
+};
