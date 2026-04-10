@@ -9,6 +9,7 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <filesystem>
 #include <boost/archive/binary_oarchive.hpp>
 #include <boost/archive/binary_iarchive.hpp>
 
@@ -81,6 +82,61 @@ void CNN::fitWithValidation(IDataLoader& train_loader, IDataLoader& val_loader,
         logEpochStats(epoch, epochs, train_m, &val_m);
     }
 }
+
+// ---------------------------------------------------------------------------
+// fitWithValidation avec Early Stopping
+// ---------------------------------------------------------------------------
+//
+//  Logique :
+//    - Chaque époque, es.step(val_loss) vérifie si la perte de validation
+//      s'améliore d'au moins min_delta.
+//    - Si amélioration → sauvegarde le checkpoint (meilleur modèle).
+//    - Sinon → incrémente le compteur de patience.
+//    - Si patience épuisée → arrêt et restauration du checkpoint si
+//      es.restore_best == true.
+//
+void CNN::fitWithValidation(IDataLoader& train_loader, IDataLoader& val_loader,
+    int epochs, int /*batch_size*/, EarlyStopping& es) {
+    requireLoss();
+
+    // Créer le dossier models si absent
+    std::filesystem::create_directories(
+        std::filesystem::path(es.checkpoint).parent_path());
+
+    for (int epoch = 0; epoch < epochs; ++epoch) {
+        EpochMetrics train_m = runEpoch(train_loader, /*train=*/true);
+        EpochMetrics val_m   = runEpoch(val_loader,   /*train=*/false);
+
+        const bool stop = es.step(val_m.loss);
+
+        // Affichage enrichi avec indicateur d'amélioration et compteur
+        printEpochStats(epoch, epochs, train_m, &val_m);
+
+        if (es.improved()) {
+            std::cout << "  ✓ Early stopping — meilleure val_loss: "
+                      << std::fixed << std::setprecision(4) << es.best_loss()
+                      << " → checkpoint sauvegardé\n";
+            saveParameters(es.checkpoint);
+        } else {
+            std::cout << "  · Pas d'amélioration ("
+                      << es.wait_count() << "/" << es.patience << ")\n";
+        }
+
+        logEpochStats(epoch, epochs, train_m, &val_m);
+
+        if (stop) {
+            std::cout << "\n[Early Stopping] Arrêt à l'époque " << epoch + 1
+                      << " — patience épuisée (" << es.patience << " époques).\n";
+            if (es.restore_best && std::filesystem::exists(es.checkpoint)) {
+                std::cout << "[Early Stopping] Restauration du meilleur modèle: "
+                          << es.checkpoint << "\n";
+                loadParameters(es.checkpoint);
+            }
+            break;
+        }
+    }
+}
+
 
 // =============================================================================
 // Entraînement — Tensor
@@ -349,4 +405,117 @@ void CNN::requireOptimizer() const {
 void CNN::requireLoss() const {
     if (!loss_layer_ && !findSoftmaxCELayer())
         throw std::runtime_error("CNN: aucune fonction de perte définie");
+}
+
+
+
+// =============================================================================
+// Matrice de confusion
+// =============================================================================
+
+Eigen::MatrixXi CNN::confusionMatrix(IDataLoader& loader, int num_classes) {
+    Eigen::MatrixXi cm = Eigen::MatrixXi::Zero(num_classes, num_classes);
+    loader.reset();
+
+    while (loader.hasNext()) {
+        auto [images, targets] = loader.nextBatch();
+        Tensor preds = forward(images);
+        const int B = preds.dim(0);
+        const int C = preds.dim(1);
+
+        for (int b = 0; b < B; ++b) {
+            // Classe prédite : argmax sur les canaux
+            int pred_class = 0;
+            float max_val  = preds(b, 0, 0, 0, 0);
+            for (int c = 1; c < C; ++c) {
+                const float v = preds(b, c, 0, 0, 0);
+                if (v > max_val) { max_val = v; pred_class = c; }
+            }
+
+            // Classe vraie : index scalaire dans targets
+            // targets est (B, 1, 1, 1, 1) ou (B, num_classes, 1, 1, 1)
+            int true_class = 0;
+            if (targets.dim(1) == 1) {
+                // Stockage comme index scalaire
+                true_class = static_cast<int>(targets(b, 0, 0, 0, 0));
+            } else {
+                // Stockage one-hot → argmax
+                float max_t = targets(b, 0, 0, 0, 0);
+                for (int c = 1; c < targets.dim(1); ++c) {
+                    const float v = targets(b, c, 0, 0, 0);
+                    if (v > max_t) { max_t = v; true_class = c; }
+                }
+            }
+
+            if (true_class >= 0 && true_class < num_classes &&
+                pred_class >= 0 && pred_class < num_classes)
+                cm(true_class, pred_class)++;
+        }
+    }
+    return cm;
+}
+
+void CNN::printConfusionMatrix(const Eigen::MatrixXi& cm,
+                                const std::vector<std::string>& class_names) {
+    const int N = cm.rows();
+    std::cout << "\n── Matrice de confusion ─────────────────────────────\n";
+
+    // En-tête colonnes (prédictions)
+    std::cout << std::setw(12) << " ";
+    for (int j = 0; j < N; ++j)
+        std::cout << std::setw(10)
+                  << (class_names.empty() ? "Pred_" + std::to_string(j)
+                                          : class_names[j]);
+    std::cout << "\n";
+
+    for (int i = 0; i < N; ++i) {
+        std::cout << std::setw(12)
+                  << (class_names.empty() ? "True_" + std::to_string(i)
+                                          : class_names[i]);
+        for (int j = 0; j < N; ++j) {
+            // Diagonale en vert, erreurs en rouge
+            if (i == j)
+                std::cout << "\033[32m" << std::setw(10) << cm(i, j) << "\033[0m";
+            else if (cm(i, j) > 0)
+                std::cout << "\033[31m" << std::setw(10) << cm(i, j) << "\033[0m";
+            else
+                std::cout << std::setw(10) << cm(i, j);
+        }
+        std::cout << "\n";
+    }
+
+    // Métriques par classe
+    std::cout << "\n── Métriques par classe ─────────────────────────────\n";
+    std::cout << std::setw(12) << " "
+              << std::setw(10) << "Precision"
+              << std::setw(10) << "Recall"
+              << std::setw(10) << "F1"
+              << std::setw(10) << "Support"
+              << "\n";
+
+    float macro_f1 = 0.f;
+    for (int i = 0; i < N; ++i) {
+        int tp = cm(i, i);
+        int fp = cm.col(i).sum() - tp;  // prédit i mais vrai != i
+        int fn = cm.row(i).sum() - tp;  // vrai i mais prédit != i
+
+        float precision = (tp + fp > 0) ? (float)tp / (tp + fp) : 0.f;
+        float recall    = (tp + fn > 0) ? (float)tp / (tp + fn) : 0.f;
+        float f1        = (precision + recall > 0)
+                          ? 2.f * precision * recall / (precision + recall) : 0.f;
+        int   support   = cm.row(i).sum();
+        macro_f1 += f1;
+
+        std::cout << std::setw(12)
+                  << (class_names.empty() ? "Classe_" + std::to_string(i)
+                                          : class_names[i])
+                  << std::fixed << std::setprecision(3)
+                  << std::setw(10) << precision
+                  << std::setw(10) << recall
+                  << std::setw(10) << f1
+                  << std::setw(10) << support
+                  << "\n";
+    }
+    std::cout << "\n   Macro F1 : " << macro_f1 / N << "\n";
+    std::cout << "─────────────────────────────────────────────────────\n\n";
 }

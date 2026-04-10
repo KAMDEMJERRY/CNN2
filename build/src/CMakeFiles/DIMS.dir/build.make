@@ -73,15 +73,15 @@ src/CMakeFiles/DIMS.dir/dimensions.cpp.o: src/CMakeFiles/DIMS.dir/flags.make
 src/CMakeFiles/DIMS.dir/dimensions.cpp.o: ../src/dimensions.cpp
 src/CMakeFiles/DIMS.dir/dimensions.cpp.o: src/CMakeFiles/DIMS.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ndomboukamdem/Documents/INFL/Master_2/Code2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object src/CMakeFiles/DIMS.dir/dimensions.cpp.o"
-	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/CMakeFiles/DIMS.dir/dimensions.cpp.o -MF CMakeFiles/DIMS.dir/dimensions.cpp.o.d -o CMakeFiles/DIMS.dir/dimensions.cpp.o -c /home/ndomboukamdem/Documents/INFL/Master_2/Code2/src/dimensions.cpp
+	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build/src && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/CMakeFiles/DIMS.dir/dimensions.cpp.o -MF CMakeFiles/DIMS.dir/dimensions.cpp.o.d -o CMakeFiles/DIMS.dir/dimensions.cpp.o -c /home/ndomboukamdem/Documents/INFL/Master_2/Code2/src/dimensions.cpp
 
 src/CMakeFiles/DIMS.dir/dimensions.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/DIMS.dir/dimensions.cpp.i"
-	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ndomboukamdem/Documents/INFL/Master_2/Code2/src/dimensions.cpp > CMakeFiles/DIMS.dir/dimensions.cpp.i
+	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build/src && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ndomboukamdem/Documents/INFL/Master_2/Code2/src/dimensions.cpp > CMakeFiles/DIMS.dir/dimensions.cpp.i
 
 src/CMakeFiles/DIMS.dir/dimensions.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/DIMS.dir/dimensions.cpp.s"
-	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ndomboukamdem/Documents/INFL/Master_2/Code2/src/dimensions.cpp -o CMakeFiles/DIMS.dir/dimensions.cpp.s
+	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build/src && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ndomboukamdem/Documents/INFL/Master_2/Code2/src/dimensions.cpp -o CMakeFiles/DIMS.dir/dimensions.cpp.s
 
 # Object files for target DIMS
 DIMS_OBJECTS = \

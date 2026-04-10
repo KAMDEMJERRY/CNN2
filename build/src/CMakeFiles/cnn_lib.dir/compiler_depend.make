@@ -234,15 +234,6 @@ src/CMakeFiles/cnn_lib.dir/CNN.cpp.o: ../src/CNN.cpp \
   /usr/include/c++/11/bits/quoted_string.h \
   /usr/include/c++/11/sstream \
   /usr/include/c++/11/bits/sstream.tcc \
-  ../include/shared.hpp \
-  /usr/include/c++/11/filesystem \
-  /usr/include/c++/11/bits/fs_fwd.h \
-  /usr/include/c++/11/bits/fs_path.h \
-  /usr/include/c++/11/codecvt \
-  /usr/include/c++/11/bits/fs_dir.h \
-  /usr/include/c++/11/bits/fs_ops.h \
-  ../include/IDataLoader.hpp \
-  ../include/Tensor.hpp \
   /usr/include/eigen3/Eigen/Dense \
   /usr/include/eigen3/Eigen/Core \
   /usr/include/eigen3/Eigen/src/Core/util/DisableStupidWarnings.h \
@@ -586,6 +577,15 @@ src/CMakeFiles/cnn_lib.dir/CNN.cpp.o: ../src/CNN.cpp \
   /usr/include/eigen3/Eigen/src/Eigenvalues/GeneralizedEigenSolver.h \
   /usr/include/eigen3/Eigen/src/Eigenvalues/RealQZ.h \
   /usr/include/eigen3/Eigen/src/Eigenvalues/MatrixBaseEigenvalues.h \
+  ../include/shared.hpp \
+  /usr/include/c++/11/filesystem \
+  /usr/include/c++/11/bits/fs_fwd.h \
+  /usr/include/c++/11/bits/fs_path.h \
+  /usr/include/c++/11/codecvt \
+  /usr/include/c++/11/bits/fs_dir.h \
+  /usr/include/c++/11/bits/fs_ops.h \
+  ../include/IDataLoader.hpp \
+  ../include/Tensor.hpp \
   /usr/include/eigen3/unsupported/Eigen/CXX11/Tensor \
   /usr/include/eigen3/Eigen/Core \
   /usr/include/eigen3/unsupported/Eigen/SpecialFunctions \
@@ -6315,6 +6315,20 @@ src/CMakeFiles/cnn_lib.dir/shared.cpp.o: ../src/shared.cpp \
 
 /usr/include/eigen3/unsupported/Eigen/CXX11/Tensor:
 
+../include/Tensor.hpp:
+
+../include/IDataLoader.hpp:
+
+/usr/include/c++/11/bits/fs_ops.h:
+
+/usr/include/c++/11/bits/fs_dir.h:
+
+/usr/include/c++/11/bits/fs_path.h:
+
+/usr/include/c++/11/bits/fs_fwd.h:
+
+/usr/include/c++/11/filesystem:
+
 /usr/include/eigen3/Eigen/src/Eigenvalues/MatrixBaseEigenvalues.h:
 
 /usr/include/boost/archive/basic_archive.hpp:
@@ -6363,21 +6377,13 @@ src/CMakeFiles/cnn_lib.dir/shared.cpp.o: ../src/shared.cpp \
 
 /usr/include/eigen3/Eigen/Geometry:
 
-/usr/include/eigen3/Eigen/src/SVD/UpperBidiagonalization.h:
+/usr/include/c++/11/tr1/legendre_function.tcc:
 
-/usr/include/eigen3/Eigen/SVD:
+/usr/include/x86_64-linux-gnu/c++/11/bits/c++config.h:
 
-/usr/include/eigen3/Eigen/src/QR/CompleteOrthogonalDecomposition.h:
+/usr/include/eigen3/Eigen/src/Core/products/GeneralBlockPanelKernel.h:
 
-/usr/include/boost/type_traits/remove_cv.hpp:
-
-/usr/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorMap.h:
-
-/usr/include/eigen3/Eigen/src/QR/ColPivHouseholderQR.h:
-
-/usr/include/boost/type_traits/has_nothrow_assign.hpp:
-
-/usr/include/eigen3/Eigen/src/QR/FullPivHouseholderQR.h:
+/usr/include/c++/11/tr1/beta_function.tcc:
 
 /usr/include/c++/11/bits/postypes.h:
 
@@ -6400,30 +6406,6 @@ src/CMakeFiles/cnn_lib.dir/shared.cpp.o: ../src/shared.cpp \
 /usr/lib/gcc/x86_64-linux-gnu/11/include/rtmintrin.h:
 
 /usr/include/eigen3/Eigen/src/Core/products/SelfadjointRank2Update.h:
-
-../include/Tensor.hpp:
-
-/usr/include/eigen3/Eigen/src/Core/arch/AVX/MathFunctions.h:
-
-/usr/include/c++/11/bits/fs_ops.h:
-
-/usr/include/c++/11/bits/fs_fwd.h:
-
-/usr/include/x86_64-linux-gnu/bits/mathcalls-narrow.h:
-
-/usr/include/x86_64-linux-gnu/bits/stdlib-bsearch.h:
-
-/usr/include/boost/archive/detail/basic_pointer_iserializer.hpp:
-
-/usr/include/c++/11/bits/stl_bvector.h:
-
-/usr/include/x86_64-linux-gnu/bits/types/clockid_t.h:
-
-/usr/include/boost/smart_ptr/detail/spinlock_gcc_atomic.hpp:
-
-/usr/include/x86_64-linux-gnu/bits/types/struct___jmp_buf_tag.h:
-
-/usr/include/eigen3/Eigen/src/Core/util/BlasUtil.h:
 
 /usr/include/eigen3/Eigen/src/Geometry/Umeyama.h:
 
@@ -6458,10 +6440,6 @@ src/CMakeFiles/cnn_lib.dir/shared.cpp.o: ../src/shared.cpp \
 /usr/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorForwardDeclarations.h:
 
 /usr/include/c++/11/istream:
-
-../include/IDataLoader.hpp:
-
-/usr/lib/gcc/x86_64-linux-gnu/11/include/tsxldtrkintrin.h:
 
 /usr/include/boost/preprocessor/facilities/empty.hpp:
 
@@ -6507,6 +6485,10 @@ src/CMakeFiles/cnn_lib.dir/shared.cpp.o: ../src/shared.cpp \
 
 /usr/include/x86_64-linux-gnu/bits/mathcalls-helper-functions.h:
 
+/usr/include/x86_64-linux-gnu/c++/11/bits/error_constants.h:
+
+/usr/include/c++/11/tr1/ell_integral.tcc:
+
 /usr/include/asm-generic/errno.h:
 
 /usr/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorVolumePatch.h:
@@ -6530,8 +6512,6 @@ src/CMakeFiles/cnn_lib.dir/shared.cpp.o: ../src/shared.cpp \
 /usr/include/boost/core/alloc_construct.hpp:
 
 /usr/include/eigen3/Eigen/LU:
-
-/usr/include/c++/11/bits/fs_dir.h:
 
 /usr/include/c++/11/cerrno:
 
@@ -6579,6 +6559,22 @@ src/CMakeFiles/cnn_lib.dir/shared.cpp.o: ../src/shared.cpp \
 
 /usr/include/eigen3/Eigen/src/LU/arch/InverseSize4.h:
 
+/usr/include/x86_64-linux-gnu/bits/mathcalls-narrow.h:
+
+/usr/include/x86_64-linux-gnu/bits/stdlib-bsearch.h:
+
+/usr/include/boost/archive/detail/basic_pointer_iserializer.hpp:
+
+/usr/include/c++/11/bits/stl_bvector.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/clockid_t.h:
+
+/usr/include/boost/smart_ptr/detail/spinlock_gcc_atomic.hpp:
+
+/usr/include/x86_64-linux-gnu/bits/types/struct___jmp_buf_tag.h:
+
+/usr/include/eigen3/Eigen/src/Core/util/BlasUtil.h:
+
 /usr/include/alloca.h:
 
 /usr/include/boost/type_traits/is_function.hpp:
@@ -6588,8 +6584,6 @@ src/CMakeFiles/cnn_lib.dir/shared.cpp.o: ../src/shared.cpp \
 /usr/include/boost/utility/enable_if.hpp:
 
 /usr/include/x86_64-linux-gnu/bits/select2.h:
-
-/usr/include/c++/11/bits/fs_path.h:
 
 /usr/include/c++/11/iostream:
 
@@ -6609,6 +6603,10 @@ src/CMakeFiles/cnn_lib.dir/shared.cpp.o: ../src/shared.cpp \
 
 /usr/include/x86_64-linux-gnu/bits/waitflags.h:
 
+/usr/include/c++/11/array:
+
+/usr/include/eigen3/Eigen/src/Core/arch/AVX512/TypeCasting.h:
+
 /usr/include/boost/type_traits/remove_pointer.hpp:
 
 /usr/include/stdlib.h:
@@ -6623,7 +6621,19 @@ src/CMakeFiles/cnn_lib.dir/shared.cpp.o: ../src/shared.cpp \
 
 /usr/include/x86_64-linux-gnu/bits/uio_lim.h:
 
+/usr/include/c++/11/tr1/gamma.tcc:
+
+/usr/include/boost/serialization/extended_type_info.hpp:
+
+/usr/include/eigen3/unsupported/Eigen/src/SpecialFunctions/SpecialFunctionsFunctors.h:
+
+/usr/include/eigen3/Eigen/src/Eigenvalues/EigenSolver.h:
+
+/usr/include/x86_64-linux-gnu/gnu/stubs-64.h:
+
 /usr/include/c++/11/bits/locale_classes.h:
+
+/usr/include/eigen3/Eigen/SVD:
 
 /usr/include/x86_64-linux-gnu/bits/wchar2.h:
 
@@ -6649,6 +6659,14 @@ src/CMakeFiles/cnn_lib.dir/shared.cpp.o: ../src/shared.cpp \
 
 /usr/include/c++/11/clocale:
 
+/usr/include/c++/11/tr1/hypergeometric.tcc:
+
+/usr/include/boost/type_traits/remove_cv.hpp:
+
+/usr/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorMap.h:
+
+/usr/include/eigen3/Eigen/src/QR/ColPivHouseholderQR.h:
+
 /usr/include/c++/11/bits/localefwd.h:
 
 /usr/include/boost/mpl/aux_/config/pp_counter.hpp:
@@ -6664,6 +6682,10 @@ src/CMakeFiles/cnn_lib.dir/shared.cpp.o: ../src/shared.cpp \
 /usr/include/c++/11/bits/exception.h:
 
 /usr/include/eigen3/Eigen/src/Core/BandMatrix.h:
+
+/usr/include/boost/type_traits/declval.hpp:
+
+/usr/include/c++/11/tr1/bessel_function.tcc:
 
 /usr/include/string.h:
 
@@ -6710,16 +6732,6 @@ src/CMakeFiles/cnn_lib.dir/shared.cpp.o: ../src/shared.cpp \
 /usr/include/c++/11/bits/hash_bytes.h:
 
 /usr/include/c++/11/bits/move.h:
-
-/usr/include/boost/serialization/extended_type_info.hpp:
-
-/usr/include/eigen3/unsupported/Eigen/src/SpecialFunctions/SpecialFunctionsFunctors.h:
-
-/usr/include/eigen3/Eigen/src/Eigenvalues/EigenSolver.h:
-
-/usr/include/x86_64-linux-gnu/gnu/stubs-64.h:
-
-/usr/include/c++/11/tr1/gamma.tcc:
 
 /usr/include/c++/11/initializer_list:
 
@@ -6804,10 +6816,6 @@ src/CMakeFiles/cnn_lib.dir/shared.cpp.o: ../src/shared.cpp \
 /usr/include/c++/11/bits/predefined_ops.h:
 
 /usr/include/x86_64-linux-gnu/bits/typesizes.h:
-
-/usr/include/eigen3/Eigen/src/Core/Assign.h:
-
-/usr/include/x86_64-linux-gnu/bits/pthreadtypes.h:
 
 /usr/include/c++/11/bits/functional_hash.h:
 
@@ -6917,12 +6925,6 @@ src/CMakeFiles/cnn_lib.dir/shared.cpp.o: ../src/shared.cpp \
 
 /usr/include/c++/11/functional:
 
-/usr/include/x86_64-linux-gnu/c++/11/bits/c++config.h:
-
-/usr/include/c++/11/tr1/legendre_function.tcc:
-
-/usr/include/eigen3/Eigen/src/Core/products/GeneralBlockPanelKernel.h:
-
 /usr/include/boost/mpl/aux_/numeric_cast_utils.hpp:
 
 /usr/include/boost/checked_delete.hpp:
@@ -6930,12 +6932,6 @@ src/CMakeFiles/cnn_lib.dir/shared.cpp.o: ../src/shared.cpp \
 ../include/CNN.hpp:
 
 /usr/include/x86_64-linux-gnu/bits/struct_rwlock.h:
-
-/usr/include/eigen3/Eigen/src/Core/arch/AVX512/TypeCasting.h:
-
-/usr/include/c++/11/array:
-
-/usr/include/c++/11/tr1/beta_function.tcc:
 
 /usr/include/c++/11/streambuf:
 
@@ -6960,6 +6956,8 @@ src/CMakeFiles/cnn_lib.dir/shared.cpp.o: ../src/shared.cpp \
 /usr/include/boost/mpl/aux_/config/has_apply.hpp:
 
 /usr/include/limits.h:
+
+/usr/include/eigen3/Eigen/src/QR/CompleteOrthogonalDecomposition.h:
 
 /usr/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorMeta.h:
 
@@ -7029,11 +7027,7 @@ src/CMakeFiles/cnn_lib.dir/shared.cpp.o: ../src/shared.cpp \
 
 /usr/include/c++/11/bit:
 
-/usr/include/eigen3/unsupported/Eigen/src/SpecialFunctions/SpecialFunctionsBFloat16.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/11/include/lwpintrin.h:
-
-/usr/include/c++/11/bits/exception_defines.h:
+/usr/include/c++/11/tr1/exp_integral.tcc:
 
 /usr/include/x86_64-linux-gnu/c++/11/bits/os_defines.h:
 
@@ -7055,10 +7049,6 @@ src/CMakeFiles/cnn_lib.dir/shared.cpp.o: ../src/shared.cpp \
 
 /usr/include/c++/11/ctime:
 
-/usr/include/eigen3/Eigen/src/SVD/BDCSVD.h:
-
-/usr/include/eigen3/Eigen/src/plugins/ArrayCwiseBinaryOps.h:
-
 /usr/lib/gcc/x86_64-linux-gnu/11/include/mm_malloc.h:
 
 /usr/include/x86_64-linux-gnu/bits/time64.h:
@@ -7073,10 +7063,6 @@ src/CMakeFiles/cnn_lib.dir/shared.cpp.o: ../src/shared.cpp \
 
 /usr/include/x86_64-linux-gnu/sys/select.h:
 
-/usr/include/eigen3/Eigen/src/plugins/BlockMethods.h:
-
-/usr/include/eigen3/Eigen/src/Core/AssignEvaluator.h:
-
 /usr/include/boost/preprocessor/detail/is_binary.hpp:
 
 /usr/include/x86_64-linux-gnu/bits/select.h:
@@ -7089,7 +7075,11 @@ src/CMakeFiles/cnn_lib.dir/shared.cpp.o: ../src/shared.cpp \
 
 /usr/include/c++/11/backward/binders.h:
 
-/usr/include/c++/11/filesystem:
+/usr/include/c++/11/bits/specfun.h:
+
+/usr/include/boost/archive/detail/helper_collection.hpp:
+
+/usr/include/c++/11/tr1/special_function_util.h:
 
 /usr/lib/gcc/x86_64-linux-gnu/11/include/amxint8intrin.h:
 
@@ -7147,6 +7137,14 @@ src/CMakeFiles/cnn_lib.dir/shared.cpp.o: ../src/shared.cpp \
 
 /usr/include/eigen3/Eigen/src/Cholesky/LDLT.h:
 
+/usr/include/eigen3/Eigen/src/Core/Assign.h:
+
+/usr/include/x86_64-linux-gnu/bits/pthreadtypes.h:
+
+/usr/include/eigen3/Eigen/src/Core/AssignEvaluator.h:
+
+/usr/include/eigen3/Eigen/src/plugins/BlockMethods.h:
+
 /usr/include/c++/11/bits/refwrap.h:
 
 /usr/include/boost/mpl/aux_/config/lambda.hpp:
@@ -7201,35 +7199,9 @@ src/CMakeFiles/cnn_lib.dir/shared.cpp.o: ../src/shared.cpp \
 
 /usr/include/c++/11/bits/stl_pair.h:
 
-/usr/include/boost/preprocessor/control/expr_iif.hpp:
-
-/usr/include/eigen3/Eigen/src/SVD/JacobiSVD.h:
-
-/usr/include/c++/11/bits/std_function.h:
-
-/usr/include/x86_64-linux-gnu/bits/types/timer_t.h:
-
 /usr/include/boost/mpl/bool.hpp:
 
 /usr/include/x86_64-linux-gnu/bits/types/__fpos64_t.h:
-
-/usr/include/c++/11/bits/specfun.h:
-
-/usr/include/boost/archive/detail/helper_collection.hpp:
-
-/usr/include/c++/11/tr1/special_function_util.h:
-
-/usr/include/boost/type_traits/declval.hpp:
-
-/usr/include/c++/11/tr1/bessel_function.tcc:
-
-/usr/include/x86_64-linux-gnu/c++/11/bits/error_constants.h:
-
-/usr/include/c++/11/tr1/ell_integral.tcc:
-
-/usr/include/c++/11/tr1/exp_integral.tcc:
-
-/usr/include/c++/11/tr1/hypergeometric.tcc:
 
 /usr/include/c++/11/tr1/poly_hermite.tcc:
 
@@ -7327,6 +7299,12 @@ src/CMakeFiles/cnn_lib.dir/shared.cpp.o: ../src/shared.cpp \
 
 /usr/lib/gcc/x86_64-linux-gnu/11/include/lzcntintrin.h:
 
+/usr/include/eigen3/unsupported/Eigen/src/SpecialFunctions/SpecialFunctionsBFloat16.h:
+
+/usr/include/c++/11/bits/exception_defines.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/11/include/lwpintrin.h:
+
 /usr/include/boost/core/allocator_access.hpp:
 
 /usr/lib/gcc/x86_64-linux-gnu/11/include/movdirintrin.h:
@@ -7356,6 +7334,8 @@ src/CMakeFiles/cnn_lib.dir/shared.cpp.o: ../src/shared.cpp \
 /usr/lib/gcc/x86_64-linux-gnu/11/include/tbmintrin.h:
 
 /usr/include/eigen3/Eigen/src/Core/Select.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/11/include/tsxldtrkintrin.h:
 
 /usr/lib/gcc/x86_64-linux-gnu/11/include/wbnoinvdintrin.h:
 
@@ -7412,6 +7392,16 @@ src/CMakeFiles/cnn_lib.dir/shared.cpp.o: ../src/shared.cpp \
 /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512vbmivlintrin.h:
 
 /usr/include/eigen3/Eigen/src/Core/ProductEvaluators.h:
+
+/usr/include/eigen3/Eigen/src/SVD/UpperBidiagonalization.h:
+
+/usr/include/boost/preprocessor/control/expr_iif.hpp:
+
+/usr/include/c++/11/bits/std_function.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/timer_t.h:
+
+/usr/include/eigen3/Eigen/src/SVD/JacobiSVD.h:
 
 /usr/lib/gcc/x86_64-linux-gnu/11/include/avx5124fmapsintrin.h:
 
@@ -7497,15 +7487,13 @@ src/CMakeFiles/cnn_lib.dir/shared.cpp.o: ../src/shared.cpp \
 
 /usr/include/assert.h:
 
-/usr/include/eigen3/Eigen/src/SVD/SVDBase.h:
-
-/usr/include/c++/11/ext/atomicity.h:
-
-/usr/include/eigen3/Eigen/src/Core/DenseBase.h:
-
 /usr/include/boost/type_traits/is_base_and_derived.hpp:
 
 /usr/include/eigen3/Eigen/Householder:
+
+/usr/include/boost/type_traits/has_nothrow_assign.hpp:
+
+/usr/include/eigen3/Eigen/src/QR/FullPivHouseholderQR.h:
 
 /usr/include/c++/11/unordered_map:
 
@@ -7646,6 +7634,8 @@ src/CMakeFiles/cnn_lib.dir/shared.cpp.o: ../src/shared.cpp \
 /usr/include/c++/11/ext/new_allocator.h:
 
 /usr/include/eigen3/Eigen/src/Core/Visitor.h:
+
+/usr/include/eigen3/Eigen/src/Core/arch/AVX/MathFunctions.h:
 
 /usr/include/eigen3/Eigen/src/Core/arch/Default/Half.h:
 
@@ -7832,3 +7822,13 @@ src/CMakeFiles/cnn_lib.dir/shared.cpp.o: ../src/shared.cpp \
 /usr/include/eigen3/Eigen/src/Core/Stride.h:
 
 /usr/include/eigen3/Eigen/src/QR/HouseholderQR.h:
+
+/usr/include/c++/11/ext/atomicity.h:
+
+/usr/include/eigen3/Eigen/src/Core/DenseBase.h:
+
+/usr/include/eigen3/Eigen/src/SVD/SVDBase.h:
+
+/usr/include/eigen3/Eigen/src/plugins/ArrayCwiseBinaryOps.h:
+
+/usr/include/eigen3/Eigen/src/SVD/BDCSVD.h:

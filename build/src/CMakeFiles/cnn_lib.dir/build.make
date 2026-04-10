@@ -73,85 +73,85 @@ src/CMakeFiles/cnn_lib.dir/shared.cpp.o: src/CMakeFiles/cnn_lib.dir/flags.make
 src/CMakeFiles/cnn_lib.dir/shared.cpp.o: ../src/shared.cpp
 src/CMakeFiles/cnn_lib.dir/shared.cpp.o: src/CMakeFiles/cnn_lib.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ndomboukamdem/Documents/INFL/Master_2/Code2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object src/CMakeFiles/cnn_lib.dir/shared.cpp.o"
-	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/CMakeFiles/cnn_lib.dir/shared.cpp.o -MF CMakeFiles/cnn_lib.dir/shared.cpp.o.d -o CMakeFiles/cnn_lib.dir/shared.cpp.o -c /home/ndomboukamdem/Documents/INFL/Master_2/Code2/src/shared.cpp
+	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build/src && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/CMakeFiles/cnn_lib.dir/shared.cpp.o -MF CMakeFiles/cnn_lib.dir/shared.cpp.o.d -o CMakeFiles/cnn_lib.dir/shared.cpp.o -c /home/ndomboukamdem/Documents/INFL/Master_2/Code2/src/shared.cpp
 
 src/CMakeFiles/cnn_lib.dir/shared.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/cnn_lib.dir/shared.cpp.i"
-	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ndomboukamdem/Documents/INFL/Master_2/Code2/src/shared.cpp > CMakeFiles/cnn_lib.dir/shared.cpp.i
+	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build/src && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ndomboukamdem/Documents/INFL/Master_2/Code2/src/shared.cpp > CMakeFiles/cnn_lib.dir/shared.cpp.i
 
 src/CMakeFiles/cnn_lib.dir/shared.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/cnn_lib.dir/shared.cpp.s"
-	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ndomboukamdem/Documents/INFL/Master_2/Code2/src/shared.cpp -o CMakeFiles/cnn_lib.dir/shared.cpp.s
+	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build/src && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ndomboukamdem/Documents/INFL/Master_2/Code2/src/shared.cpp -o CMakeFiles/cnn_lib.dir/shared.cpp.s
 
 src/CMakeFiles/cnn_lib.dir/ConvLayer.cpp.o: src/CMakeFiles/cnn_lib.dir/flags.make
 src/CMakeFiles/cnn_lib.dir/ConvLayer.cpp.o: ../src/ConvLayer.cpp
 src/CMakeFiles/cnn_lib.dir/ConvLayer.cpp.o: src/CMakeFiles/cnn_lib.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ndomboukamdem/Documents/INFL/Master_2/Code2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object src/CMakeFiles/cnn_lib.dir/ConvLayer.cpp.o"
-	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/CMakeFiles/cnn_lib.dir/ConvLayer.cpp.o -MF CMakeFiles/cnn_lib.dir/ConvLayer.cpp.o.d -o CMakeFiles/cnn_lib.dir/ConvLayer.cpp.o -c /home/ndomboukamdem/Documents/INFL/Master_2/Code2/src/ConvLayer.cpp
+	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build/src && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/CMakeFiles/cnn_lib.dir/ConvLayer.cpp.o -MF CMakeFiles/cnn_lib.dir/ConvLayer.cpp.o.d -o CMakeFiles/cnn_lib.dir/ConvLayer.cpp.o -c /home/ndomboukamdem/Documents/INFL/Master_2/Code2/src/ConvLayer.cpp
 
 src/CMakeFiles/cnn_lib.dir/ConvLayer.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/cnn_lib.dir/ConvLayer.cpp.i"
-	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ndomboukamdem/Documents/INFL/Master_2/Code2/src/ConvLayer.cpp > CMakeFiles/cnn_lib.dir/ConvLayer.cpp.i
+	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build/src && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ndomboukamdem/Documents/INFL/Master_2/Code2/src/ConvLayer.cpp > CMakeFiles/cnn_lib.dir/ConvLayer.cpp.i
 
 src/CMakeFiles/cnn_lib.dir/ConvLayer.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/cnn_lib.dir/ConvLayer.cpp.s"
-	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ndomboukamdem/Documents/INFL/Master_2/Code2/src/ConvLayer.cpp -o CMakeFiles/cnn_lib.dir/ConvLayer.cpp.s
+	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build/src && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ndomboukamdem/Documents/INFL/Master_2/Code2/src/ConvLayer.cpp -o CMakeFiles/cnn_lib.dir/ConvLayer.cpp.s
 
 src/CMakeFiles/cnn_lib.dir/ConvLayerDataParallel.cpp.o: src/CMakeFiles/cnn_lib.dir/flags.make
 src/CMakeFiles/cnn_lib.dir/ConvLayerDataParallel.cpp.o: ../src/ConvLayerDataParallel.cpp
 src/CMakeFiles/cnn_lib.dir/ConvLayerDataParallel.cpp.o: src/CMakeFiles/cnn_lib.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ndomboukamdem/Documents/INFL/Master_2/Code2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object src/CMakeFiles/cnn_lib.dir/ConvLayerDataParallel.cpp.o"
-	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/CMakeFiles/cnn_lib.dir/ConvLayerDataParallel.cpp.o -MF CMakeFiles/cnn_lib.dir/ConvLayerDataParallel.cpp.o.d -o CMakeFiles/cnn_lib.dir/ConvLayerDataParallel.cpp.o -c /home/ndomboukamdem/Documents/INFL/Master_2/Code2/src/ConvLayerDataParallel.cpp
+	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build/src && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/CMakeFiles/cnn_lib.dir/ConvLayerDataParallel.cpp.o -MF CMakeFiles/cnn_lib.dir/ConvLayerDataParallel.cpp.o.d -o CMakeFiles/cnn_lib.dir/ConvLayerDataParallel.cpp.o -c /home/ndomboukamdem/Documents/INFL/Master_2/Code2/src/ConvLayerDataParallel.cpp
 
 src/CMakeFiles/cnn_lib.dir/ConvLayerDataParallel.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/cnn_lib.dir/ConvLayerDataParallel.cpp.i"
-	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ndomboukamdem/Documents/INFL/Master_2/Code2/src/ConvLayerDataParallel.cpp > CMakeFiles/cnn_lib.dir/ConvLayerDataParallel.cpp.i
+	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build/src && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ndomboukamdem/Documents/INFL/Master_2/Code2/src/ConvLayerDataParallel.cpp > CMakeFiles/cnn_lib.dir/ConvLayerDataParallel.cpp.i
 
 src/CMakeFiles/cnn_lib.dir/ConvLayerDataParallel.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/cnn_lib.dir/ConvLayerDataParallel.cpp.s"
-	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ndomboukamdem/Documents/INFL/Master_2/Code2/src/ConvLayerDataParallel.cpp -o CMakeFiles/cnn_lib.dir/ConvLayerDataParallel.cpp.s
+	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build/src && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ndomboukamdem/Documents/INFL/Master_2/Code2/src/ConvLayerDataParallel.cpp -o CMakeFiles/cnn_lib.dir/ConvLayerDataParallel.cpp.s
 
 src/CMakeFiles/cnn_lib.dir/ConvLayer3D.cpp.o: src/CMakeFiles/cnn_lib.dir/flags.make
 src/CMakeFiles/cnn_lib.dir/ConvLayer3D.cpp.o: ../src/ConvLayer3D.cpp
 src/CMakeFiles/cnn_lib.dir/ConvLayer3D.cpp.o: src/CMakeFiles/cnn_lib.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ndomboukamdem/Documents/INFL/Master_2/Code2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object src/CMakeFiles/cnn_lib.dir/ConvLayer3D.cpp.o"
-	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/CMakeFiles/cnn_lib.dir/ConvLayer3D.cpp.o -MF CMakeFiles/cnn_lib.dir/ConvLayer3D.cpp.o.d -o CMakeFiles/cnn_lib.dir/ConvLayer3D.cpp.o -c /home/ndomboukamdem/Documents/INFL/Master_2/Code2/src/ConvLayer3D.cpp
+	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build/src && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/CMakeFiles/cnn_lib.dir/ConvLayer3D.cpp.o -MF CMakeFiles/cnn_lib.dir/ConvLayer3D.cpp.o.d -o CMakeFiles/cnn_lib.dir/ConvLayer3D.cpp.o -c /home/ndomboukamdem/Documents/INFL/Master_2/Code2/src/ConvLayer3D.cpp
 
 src/CMakeFiles/cnn_lib.dir/ConvLayer3D.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/cnn_lib.dir/ConvLayer3D.cpp.i"
-	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ndomboukamdem/Documents/INFL/Master_2/Code2/src/ConvLayer3D.cpp > CMakeFiles/cnn_lib.dir/ConvLayer3D.cpp.i
+	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build/src && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ndomboukamdem/Documents/INFL/Master_2/Code2/src/ConvLayer3D.cpp > CMakeFiles/cnn_lib.dir/ConvLayer3D.cpp.i
 
 src/CMakeFiles/cnn_lib.dir/ConvLayer3D.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/cnn_lib.dir/ConvLayer3D.cpp.s"
-	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ndomboukamdem/Documents/INFL/Master_2/Code2/src/ConvLayer3D.cpp -o CMakeFiles/cnn_lib.dir/ConvLayer3D.cpp.s
+	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build/src && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ndomboukamdem/Documents/INFL/Master_2/Code2/src/ConvLayer3D.cpp -o CMakeFiles/cnn_lib.dir/ConvLayer3D.cpp.s
 
 src/CMakeFiles/cnn_lib.dir/DenseLayer.cpp.o: src/CMakeFiles/cnn_lib.dir/flags.make
 src/CMakeFiles/cnn_lib.dir/DenseLayer.cpp.o: ../src/DenseLayer.cpp
 src/CMakeFiles/cnn_lib.dir/DenseLayer.cpp.o: src/CMakeFiles/cnn_lib.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ndomboukamdem/Documents/INFL/Master_2/Code2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object src/CMakeFiles/cnn_lib.dir/DenseLayer.cpp.o"
-	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/CMakeFiles/cnn_lib.dir/DenseLayer.cpp.o -MF CMakeFiles/cnn_lib.dir/DenseLayer.cpp.o.d -o CMakeFiles/cnn_lib.dir/DenseLayer.cpp.o -c /home/ndomboukamdem/Documents/INFL/Master_2/Code2/src/DenseLayer.cpp
+	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build/src && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/CMakeFiles/cnn_lib.dir/DenseLayer.cpp.o -MF CMakeFiles/cnn_lib.dir/DenseLayer.cpp.o.d -o CMakeFiles/cnn_lib.dir/DenseLayer.cpp.o -c /home/ndomboukamdem/Documents/INFL/Master_2/Code2/src/DenseLayer.cpp
 
 src/CMakeFiles/cnn_lib.dir/DenseLayer.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/cnn_lib.dir/DenseLayer.cpp.i"
-	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ndomboukamdem/Documents/INFL/Master_2/Code2/src/DenseLayer.cpp > CMakeFiles/cnn_lib.dir/DenseLayer.cpp.i
+	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build/src && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ndomboukamdem/Documents/INFL/Master_2/Code2/src/DenseLayer.cpp > CMakeFiles/cnn_lib.dir/DenseLayer.cpp.i
 
 src/CMakeFiles/cnn_lib.dir/DenseLayer.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/cnn_lib.dir/DenseLayer.cpp.s"
-	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ndomboukamdem/Documents/INFL/Master_2/Code2/src/DenseLayer.cpp -o CMakeFiles/cnn_lib.dir/DenseLayer.cpp.s
+	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build/src && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ndomboukamdem/Documents/INFL/Master_2/Code2/src/DenseLayer.cpp -o CMakeFiles/cnn_lib.dir/DenseLayer.cpp.s
 
 src/CMakeFiles/cnn_lib.dir/CNN.cpp.o: src/CMakeFiles/cnn_lib.dir/flags.make
 src/CMakeFiles/cnn_lib.dir/CNN.cpp.o: ../src/CNN.cpp
 src/CMakeFiles/cnn_lib.dir/CNN.cpp.o: src/CMakeFiles/cnn_lib.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ndomboukamdem/Documents/INFL/Master_2/Code2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object src/CMakeFiles/cnn_lib.dir/CNN.cpp.o"
-	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/CMakeFiles/cnn_lib.dir/CNN.cpp.o -MF CMakeFiles/cnn_lib.dir/CNN.cpp.o.d -o CMakeFiles/cnn_lib.dir/CNN.cpp.o -c /home/ndomboukamdem/Documents/INFL/Master_2/Code2/src/CNN.cpp
+	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build/src && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/CMakeFiles/cnn_lib.dir/CNN.cpp.o -MF CMakeFiles/cnn_lib.dir/CNN.cpp.o.d -o CMakeFiles/cnn_lib.dir/CNN.cpp.o -c /home/ndomboukamdem/Documents/INFL/Master_2/Code2/src/CNN.cpp
 
 src/CMakeFiles/cnn_lib.dir/CNN.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/cnn_lib.dir/CNN.cpp.i"
-	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ndomboukamdem/Documents/INFL/Master_2/Code2/src/CNN.cpp > CMakeFiles/cnn_lib.dir/CNN.cpp.i
+	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build/src && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ndomboukamdem/Documents/INFL/Master_2/Code2/src/CNN.cpp > CMakeFiles/cnn_lib.dir/CNN.cpp.i
 
 src/CMakeFiles/cnn_lib.dir/CNN.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/cnn_lib.dir/CNN.cpp.s"
-	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ndomboukamdem/Documents/INFL/Master_2/Code2/src/CNN.cpp -o CMakeFiles/cnn_lib.dir/CNN.cpp.s
+	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build/src && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ndomboukamdem/Documents/INFL/Master_2/Code2/src/CNN.cpp -o CMakeFiles/cnn_lib.dir/CNN.cpp.s
 
 # Object files for target cnn_lib
 cnn_lib_OBJECTS = \

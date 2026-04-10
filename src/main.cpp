@@ -38,7 +38,7 @@ static constexpr int   VOL_SIZE = 28;
 // --- 3D sparse ---
 static constexpr float SPARSE_THRESHOLD = 0.02f;
 static constexpr int   BATCH_SIZE_SPARSE = 16;
-static constexpr int   EPOCHS_SPARSE = 30;
+static constexpr int   EPOCHS_SPARSE = 150;
 static constexpr float LR_SPARSE = 0.0003f;
 
 // --- Attention ---
@@ -88,7 +88,11 @@ static int run2D() {
     DataLoader train_loader(train_ds, BATCH_SIZE_2D, true);
     DataLoader val_loader(val_ds, BATCH_SIZE_2D, false);
     train_loader.setMaxSamples(200); val_loader.setMaxSamples(100);
-    model.fitWithValidation(train_loader, val_loader, EPOCHS_2D, BATCH_SIZE_2D);
+    EarlyStopping es;
+    es.patience = 20;
+    es.min_delta = 5e-4f;
+    es.checkpoint = "./models/2d_best.bin";
+    model.fitWithValidation(train_loader, val_loader, EPOCHS_2D, BATCH_SIZE_2D, es);
     // model.fit(val_loader, EPOCHS_2D, BATCH_SIZE_2D);
     return 0;
 }
@@ -112,7 +116,11 @@ static CNN buildModel3D(int num_classes) {
     model.addLayer(std::make_shared<ReLULayer>());
     model.addLayer(std::make_shared<DropoutLayer>(0.5f));
     model.addLayer(std::make_shared<DenseLayer>(256, num_classes));
-    model.setLossLayer(std::make_shared<SoftmaxCrossEntropyLayer>());
+    
+    // Poids classes [0, 1, 2]
+    std::vector<float> weights = {0.723f, 0.894f, 2.002f}; 
+    model.setLossLayer(std::make_shared<SoftmaxCrossEntropyLayer>(weights));
+    
     model.setOptimizer(std::make_shared<Adam>(LR_3D));
     return model;
 }
@@ -129,7 +137,11 @@ static int run3D() {
     DataLoader3D test_loader(test_ds, BATCH_SIZE_3D, false);
     // train_loader.setAugmentation();  // augmentation entraînement uniquement
     train_loader.setMaxSamples(32); val_loader.setMaxSamples(16);
-    model.fitWithValidation(train_loader, val_loader, EPOCHS_3D, BATCH_SIZE_3D);
+    EarlyStopping es;
+    es.patience = 20;
+    es.min_delta = 5e-4f;
+    es.checkpoint = "./models/3d_best.bin";
+    model.fitWithValidation(train_loader, val_loader, EPOCHS_3D, BATCH_SIZE_3D, es);
     model.evaluate(test_loader);
     return 0;
 }
@@ -141,34 +153,45 @@ static int run3D() {
 static CNN buildModel3DSparse(int num_classes) {
     CNN model;
     model.addLayer(std::make_shared<SparseConvAdapterLayer>(
-        1, 16, 3,3,3, 1,1,1, 1,1,1, true, SPARSE_THRESHOLD));
-    model.addLayer(std::make_shared<SparseReLULayer>(0.0f));  // ← était ReLULayer
+        1, 16, 3, 3, 3, 1, 1, 1, 1, 1, 1, true, SPARSE_THRESHOLD));
+    model.addLayer(std::make_shared<BatchNorm3D>(16));
+    model.addLayer(std::make_shared<ReLULayer>());
 
     model.addLayer(std::make_shared<SparseConvAdapterLayer>(
-        16, 32, 3,3,3, 2,2,2, 1,1,1, false, 0.0f));
-    model.addLayer(std::make_shared<SparseReLULayer>(0.0f));  // ← était ReLULayer
+        16, 32, 3, 3, 3, 2, 2, 2, 1, 1, 1, false, 0.0f));
+    model.addLayer(std::make_shared<BatchNorm3D>(32));
+    model.addLayer(std::make_shared<ReLULayer>());
 
     model.addLayer(std::make_shared<SparseConvAdapterLayer>(
-        32, 64, 3,3,3, 2,2,2, 1,1,1, false, 0.0f));
-    model.addLayer(std::make_shared<SparseReLULayer>(0.0f));  // ← était ReLULayer
+        32, 64, 3, 3, 3, 2, 2, 2, 1, 1, 1, false, 0.0f));
+    model.addLayer(std::make_shared<BatchNorm3D>(64));
+    model.addLayer(std::make_shared<ReLULayer>());
 
     model.addLayer(std::make_shared<SparseGlobalAvgPoolLayer>(0.0f));
     model.addLayer(std::make_shared<DenseLayer>(64, 256));
     model.addLayer(std::make_shared<ReLULayer>());            // ← reste dense (après GAP)
     model.addLayer(std::make_shared<DropoutLayer>(0.5f));
     model.addLayer(std::make_shared<DenseLayer>(256, num_classes));
-    model.setLossLayer(std::make_shared<SoftmaxCrossEntropyLayer>());
+
+    // Poids classes [0, 1, 2]
+    std::vector<float> weights ={0.723f, 0.894f, 2.002f};  //{10 * 0.021712473572938693, 10 * 0.02681462140992167, 10 * 0.06005847953216375};//
+    float gamma = 2.0f; // Activating Focal Loss
+    model.setLossLayer(std::make_shared<SoftmaxCrossEntropyLayer>(weights, gamma));
+
     model.setOptimizer(std::make_shared<Adam>(LR_SPARSE));
     return model;
 }
 
 static int run3DSparse() {
     section("Pipeline 3D sparse (sans attention)");
+    std::string filename = "./models/sparse.bin";
     requireDir(FRACTURE_PATH);
     MedMNIST3DDataset train_ds(FRACTURE_PATH, Split::TRAIN, 3, "FractureMNIST3D", true);
     MedMNIST3DDataset val_ds(FRACTURE_PATH, Split::VAL, 3, "FractureMNIST3D", true);
     MedMNIST3DDataset test_ds(FRACTURE_PATH, Split::TEST, 3, "FractureMNIST3D", true);
     CNN model = buildModel3DSparse(3);
+    if(fs::exists(filename))model.loadParameters(filename);
+
     DataLoader3D train_loader(train_ds, BATCH_SIZE_SPARSE, true);
     DataLoader3D val_loader(val_ds, BATCH_SIZE_SPARSE, false);
     DataLoader3D test_loader(test_ds, BATCH_SIZE_SPARSE, false);
@@ -178,8 +201,19 @@ static int run3DSparse() {
     // val_loader.setMaxSamples(102);
     // test_loader.setMaxSamples(204);
 
-    model.fitWithValidation(train_loader, val_loader, EPOCHS_SPARSE, BATCH_SIZE_SPARSE);
-    model.evaluate(test_loader);
+    EarlyStopping es;
+    es.patience = 20;
+    es.min_delta = 5e-4f;
+    es.checkpoint = "./models/sparse_best.bin";
+    model.fitWithValidation(train_loader, val_loader, EPOCHS_SPARSE, BATCH_SIZE_SPARSE, es);
+    
+    // Matrice de confusion
+    test_loader.reset();  // important — evaluate() a consommé le loader
+    auto cm = model.confusionMatrix(test_loader, 3);
+    model.printConfusionMatrix(cm, {"No fracture", "Fracture T1", "Fracture T2"});
+
+
+    model.saveParameters(filename);
 
     return 0;
 }
@@ -259,7 +293,11 @@ static CNN buildModel3DAttn(int num_classes) {
     model.addLayer(std::make_shared<ReLULayer>());
     model.addLayer(std::make_shared<DropoutLayer>(0.3f));
     model.addLayer(std::make_shared<DenseLayer>(256, num_classes));
-    model.setLossLayer(std::make_shared<SoftmaxCrossEntropyLayer>());
+
+    // Poids classes [0, 1, 2]
+    std::vector<float> weights = {0.723f, 0.894f, 2.002f}; 
+    model.setLossLayer(std::make_shared<SoftmaxCrossEntropyLayer>(weights));
+
     model.setOptimizer(std::make_shared<Adam>(LR_3D));
     return model;
 }
@@ -289,7 +327,11 @@ static int run3DAttn() {
     test_loader.setMaxSamples(204);//204 échantillons de test → 12-13 batches pour l'évaluation finale
 
     section("Entraînement 3D + attention");
-    model.fitWithValidation(train_loader, val_loader, EPOCHS_3D, BATCH_SIZE_3D);
+    EarlyStopping es;
+    es.patience = 20;
+    es.min_delta = 5e-4f;
+    es.checkpoint = "./models/3d_attn_best.bin";
+    model.fitWithValidation(train_loader, val_loader, EPOCHS_3D, BATCH_SIZE_3D, es);
     return 0;
 }
 
@@ -329,34 +371,43 @@ static CNN buildModel3DSparseAttn(int num_classes) {
     // Bloc 1
     model.addLayer(std::make_shared<SparseConvAdapterLayer>(
         1, 16, 3,3,3, 1,1,1, 1,1,1, true, SPARSE_THRESHOLD));
-    model.addLayer(std::make_shared<SparseReLULayer>(0.0f));  // ← était ReLULayer
+    model.addLayer(std::make_shared<BatchNorm3D>(16));
+    model.addLayer(std::make_shared<SparseReLULayer>(0.0f));
 
     // Bloc 2
     model.addLayer(std::make_shared<SparseConvAdapterLayer>(
         16, 32, 3,3,3, 2,2,2, 1,1,1, false, 0.0f));
-    model.addLayer(std::make_shared<SparseReLULayer>(0.0f));  // ← était ReLULayer
+    model.addLayer(std::make_shared<BatchNorm3D>(32));
+    model.addLayer(std::make_shared<SparseReLULayer>(0.0f));
 
-    // Attention sur 14³ — reçoit tenseur dense, reste dense : ReLULayer normal
+    // Attention 14³
     model.addLayer(std::make_shared<WindowAttention3DLayer>(
         32, ATTN_WIN_SMALL, ATTN_WIN_SMALL, ATTN_WIN_SMALL,
         ATTN_HEADS, true, true));
 
-    // Bloc 3 — reçoit tenseur dense de l'attention, from_dense() interne à l'adapter
+    // Bloc 3
     model.addLayer(std::make_shared<SparseConvAdapterLayer>(
         32, 64, 3,3,3, 2,2,2, 1,1,1, false, 0.0f));
-    model.addLayer(std::make_shared<SparseReLULayer>(0.0f));  // ← était ReLULayer
+    model.addLayer(std::make_shared<BatchNorm3D>(64));
+    model.addLayer(std::make_shared<SparseReLULayer>(0.0f));
 
-    // Attention globale sur 7³
+    // Attention 7³
     model.addLayer(std::make_shared<WindowAttention3DLayer>(
         64, ATTN_WIN_LARGE, ATTN_WIN_LARGE, ATTN_WIN_LARGE,
         ATTN_HEADS, true, true));
 
-    model.addLayer(std::make_shared<SparseGlobalAvgPoolLayer>(0.0f));
+    // Classifieur
+    model.addLayer(std::make_shared<GlobalAvgPool3DLayer>());
     model.addLayer(std::make_shared<DenseLayer>(64, 256));
-    model.addLayer(std::make_shared<ReLULayer>());            // ← reste dense
+    model.addLayer(std::make_shared<ReLULayer>());
     model.addLayer(std::make_shared<DropoutLayer>(0.3f));
-    model.addLayer(std::make_shared<DenseLayer>(256, num_classes));
-    model.setLossLayer(std::make_shared<SoftmaxCrossEntropyLayer>());
+    model.addLayer(std::make_shared<DenseLayer>(256, num_classes)); // ← était manquant
+
+    // Poids inversement proportionnels à la fréquence — identiques à buildModel3DSparse
+    const std::vector<float> weights = {0.723f, 0.894f, 2.002f};
+    model.setLossLayer(
+        std::make_shared<SoftmaxCrossEntropyLayer>(weights, 2.0f)); // gamma=0 d'abord
+
     model.setOptimizer(std::make_shared<Adam>(LR_SPARSE));
     return model;
 }
@@ -398,15 +449,21 @@ static int run3DSparseAttn() {
     DataLoader3D train_loader(train_ds, BATCH_SIZE_SPARSE, true);
     DataLoader3D val_loader(val_ds, BATCH_SIZE_SPARSE, false);
     train_loader.setAugmentation();  // augmentation entraînement uniquement
-    train_loader.setMaxSamples(714); // dataset complet
-    val_loader.setMaxSamples(102);   // dataset complet
+    // train_loader.setMaxSamples(14); // dataset complet
+    // val_loader.setMaxSamples(2);   // dataset complet
 
     section("Entraînement 3D sparse + attention");
-    model.fitWithValidation(train_loader, val_loader, EPOCHS_SPARSE, BATCH_SIZE_SPARSE);
+    EarlyStopping es;
+    es.patience    = 20;
+    es.min_delta   = 5e-4f;
+    es.restore_best = true;
+    es.checkpoint  = "./models/sparse_attn_best.bin";
+    model.fitWithValidation(train_loader, val_loader, EPOCHS_SPARSE, BATCH_SIZE_SPARSE, es);
     
     model.saveParameters(filename);
     
     return 0;
+
 }
 
 // =============================================================================

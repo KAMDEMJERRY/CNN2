@@ -41,5 +41,5 @@ done
 # cmake .. -DCMAKE_BUILD_TYPE=Release
 # make -j$(nproc)
 
-cmake .. -DCMAKE_BUILD_TYPE=Release
-make -j$(nproc)
+# cmake .. -DCMAKE_BUILD_TYPE=Release
+# make -j$(nproc)

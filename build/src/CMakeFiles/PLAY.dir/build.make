@@ -73,15 +73,15 @@ src/CMakeFiles/PLAY.dir/playground.cpp.o: src/CMakeFiles/PLAY.dir/flags.make
 src/CMakeFiles/PLAY.dir/playground.cpp.o: ../src/playground.cpp
 src/CMakeFiles/PLAY.dir/playground.cpp.o: src/CMakeFiles/PLAY.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ndomboukamdem/Documents/INFL/Master_2/Code2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object src/CMakeFiles/PLAY.dir/playground.cpp.o"
-	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/CMakeFiles/PLAY.dir/playground.cpp.o -MF CMakeFiles/PLAY.dir/playground.cpp.o.d -o CMakeFiles/PLAY.dir/playground.cpp.o -c /home/ndomboukamdem/Documents/INFL/Master_2/Code2/src/playground.cpp
+	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build/src && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/CMakeFiles/PLAY.dir/playground.cpp.o -MF CMakeFiles/PLAY.dir/playground.cpp.o.d -o CMakeFiles/PLAY.dir/playground.cpp.o -c /home/ndomboukamdem/Documents/INFL/Master_2/Code2/src/playground.cpp
 
 src/CMakeFiles/PLAY.dir/playground.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/PLAY.dir/playground.cpp.i"
-	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ndomboukamdem/Documents/INFL/Master_2/Code2/src/playground.cpp > CMakeFiles/PLAY.dir/playground.cpp.i
+	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build/src && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ndomboukamdem/Documents/INFL/Master_2/Code2/src/playground.cpp > CMakeFiles/PLAY.dir/playground.cpp.i
 
 src/CMakeFiles/PLAY.dir/playground.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/PLAY.dir/playground.cpp.s"
-	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ndomboukamdem/Documents/INFL/Master_2/Code2/src/playground.cpp -o CMakeFiles/PLAY.dir/playground.cpp.s
+	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build/src && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ndomboukamdem/Documents/INFL/Master_2/Code2/src/playground.cpp -o CMakeFiles/PLAY.dir/playground.cpp.s
 
 # Object files for target PLAY
 PLAY_OBJECTS = \

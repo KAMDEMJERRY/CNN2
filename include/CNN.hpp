@@ -6,7 +6,7 @@
 #include <iomanip>
 #include <limits>
 #include <stdexcept>
-
+#include <Eigen/Dense>
 class Layer;
 class LossLayer;
 class SoftmaxCrossEntropyLayer;
@@ -21,6 +21,39 @@ struct EpochMetrics {
     float loss = 0.0f;
     float accuracy = 0.0f;
     long  ms = 0;
+};
+
+// =============================================================================
+// Early Stopping
+// =============================================================================
+struct EarlyStopping {
+    int   patience  = 20;       // nb d'époques sans amélioration avant arrêt
+    float min_delta = 1e-4f;    // amélioration minimale requise pour réinitialiser le compteur
+    bool  restore_best = true;  // restaurer les poids du meilleur modèle à la fin
+    std::string checkpoint = "./models/early_stop_best.bin"; // chemin de sauvegarde
+
+    // Retourne true si l'entraînement doit s'arrêter
+    // Appelé avec la val_loss de l'époque courante
+    bool step(float val_loss) {
+        if (val_loss < best_loss_ - min_delta) {
+            best_loss_   = val_loss;
+            wait_        = 0;
+            improved_    = true;
+        } else {
+            ++wait_;
+            improved_ = false;
+        }
+        return wait_ >= patience;
+    }
+
+    bool  improved()   const { return improved_; }
+    float best_loss()  const { return best_loss_; }
+    int   wait_count() const { return wait_; }
+
+private:
+    float best_loss_ = std::numeric_limits<float>::max();
+    int   wait_      = 0;
+    bool  improved_  = false;
 };
 
 // =============================================================================
@@ -55,10 +88,18 @@ public:
         int epochs = 10,
         int batch_size = 32);
 
+    // Sans early stopping
     void fitWithValidation(IDataLoader& train_loader,
         IDataLoader& val_loader,
         int epochs,
         int batch_size);
+
+    // Avec early stopping
+    void fitWithValidation(IDataLoader& train_loader,
+        IDataLoader& val_loader,
+        int epochs,
+        int batch_size,
+        EarlyStopping& es);
 
 
     // --- Évaluation / Inférence ---
@@ -72,6 +113,14 @@ public:
 
     // --- Benchmarking ---
     double benchmarkForward(const Tensor& input, int iterations = 100);
+
+
+    // Matrice de confusion — inférence uniquement, pas de gradient
+    // Retourne une matrice (num_classes × num_classes)
+    // confusion[pred][true] — ligne = prédit, colonne = réel
+    Eigen::MatrixXi confusionMatrix(IDataLoader& loader, int num_classes);
+    void printConfusionMatrix(const Eigen::MatrixXi& cm,
+                          const std::vector<std::string>& class_names = {});
 
 private:
     std::vector<std::shared_ptr<Layer>> layers_;
