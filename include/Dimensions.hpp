@@ -54,14 +54,25 @@ public:
 
         // Stocker les couches et leurs sorties
         std::vector<std::pair<std::string, Tensor>> layer_outputs;
+        size_t total_params = 0;
 
         for (const auto& layer : model.getLayers()) {
             output = layer->forward(output);
             layer_outputs.push_back({ layer->getName(), output });
+            
+            int params = layer->numParams();
+            total_params += params;
 
             std::cout << layer->getName() << ": ";
             output.printShape();
+            if (params > 0) {
+                std::cout << "    |_ params: " << params << "\n";
+            }
         }
+        
+        std::cout << "---------------------------------" << std::endl;
+        std::cout << "Total trainable parameters: " << total_params << std::endl;
+        std::cout << "---------------------------------\n" << std::endl;
 
         // Vérifier la cohérence pour DenseLayer
         for (size_t i = 0; i < layer_outputs.size(); ++i) {

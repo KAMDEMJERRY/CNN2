@@ -66,6 +66,8 @@ public:
     Eigen::VectorXf& getBias()            { return bias;         }
     Eigen::VectorXf& getBiasGradients()   { return grad_bias;    }
 
+    int numParams() const override { return weights.size() + bias.size(); }
+
     // ── updateParams — identique à ConvLayer ─────────────────────────────────
 
     void updateParams(Optimizer& optimizer) override {

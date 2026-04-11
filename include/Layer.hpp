@@ -29,4 +29,7 @@ public:
     // Serialize parameters (default does nothing, overridden by layers with parameters)
     virtual void saveParameters(boost::archive::binary_oarchive& archive) const {}
     virtual void loadParameters(boost::archive::binary_iarchive& archive) {}
+
+    // Number of learnable parameters
+    virtual int numParams() const { return 0; }
 };

@@ -584,6 +584,9 @@ public:
     Eigen::VectorXf&       getBeta()      { return beta_;    }
     Eigen::VectorXf&       getGammaGrad() { return d_gamma_; }
     Eigen::VectorXf&       getBetaGrad()  { return d_beta_;  }
+
+    int numParams() const override { return gamma_.size() + beta_.size(); }
+
     const Eigen::VectorXf& getGamma()     const { return gamma_;   }
     const Eigen::VectorXf& getBeta()      const { return beta_;    }
 

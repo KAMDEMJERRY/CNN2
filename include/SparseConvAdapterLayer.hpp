@@ -161,7 +161,12 @@ public:
              + ")";
     }
 
+    int numParams() const override {
+        return sparse_conv_.getWeights().size() + sparse_conv_.getBias().size();
+    }
+
     void saveParameters(boost::archive::binary_oarchive& archive) const override {
+
         archive << sparse_conv_.getWeights();
         archive << sparse_conv_.getBias();
     }

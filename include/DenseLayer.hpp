@@ -46,6 +46,8 @@ public:
     int getInputSize()  const              { return input_size;   }
     int getOutputSize() const              { return output_size;  }
 
+    int numParams() const override { return weights.size() + bias.size(); }
+
     void setWeights(const Eigen::MatrixXf& new_weights);
     void setBias   (const Eigen::VectorXf& new_bias);
 

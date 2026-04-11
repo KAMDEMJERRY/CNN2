@@ -142,7 +142,14 @@ static int run3D() {
     es.min_delta = 5e-4f;
     es.checkpoint = "./models/3d_best.bin";
     model.fitWithValidation(train_loader, val_loader, EPOCHS_3D, BATCH_SIZE_3D, es);
+    section("Évaluation finale sur le Test Set");
     model.evaluate(test_loader);
+
+    // Matrice de confusion
+    test_loader.reset();
+    auto cm = model.confusionMatrix(test_loader, 3);
+    model.printConfusionMatrix(cm, {"No fracture", "Fracture T1", "Fracture T2"});
+
     return 0;
 }
 
@@ -332,6 +339,15 @@ static int run3DAttn() {
     es.min_delta = 5e-4f;
     es.checkpoint = "./models/3d_attn_best.bin";
     model.fitWithValidation(train_loader, val_loader, EPOCHS_3D, BATCH_SIZE_3D, es);
+    
+    section("Évaluation finale sur le Test Set");
+    model.evaluate(test_loader);
+
+    // Matrice de confusion
+    test_loader.reset();
+    auto cm = model.confusionMatrix(test_loader, 3);
+    model.printConfusionMatrix(cm, {"No fracture", "Fracture T1", "Fracture T2"});
+
     return 0;
 }
 
@@ -413,7 +429,7 @@ static CNN buildModel3DSparseAttn(int num_classes) {
 }
 static int run3DSparseAttn() {
     section("Pipeline 3D sparse + WindowAttention (Flash ST-Attention)");
-    std::string filename = "./models/sparse_attn.bin";
+    std::string filename = "./models/sparse_attn_best.bin";
     requireDir(FRACTURE_PATH);
 
     MedMNIST3DDataset train_ds(FRACTURE_PATH, Split::TRAIN, 3, "FractureMNIST3D", true);
@@ -448,6 +464,8 @@ static int run3DSparseAttn() {
 
     DataLoader3D train_loader(train_ds, BATCH_SIZE_SPARSE, true);
     DataLoader3D val_loader(val_ds, BATCH_SIZE_SPARSE, false);
+    DataLoader3D test_loader(test_ds, BATCH_SIZE_SPARSE, false);
+   
     train_loader.setAugmentation();  // augmentation entraînement uniquement
     // train_loader.setMaxSamples(14); // dataset complet
     // val_loader.setMaxSamples(2);   // dataset complet
@@ -460,7 +478,15 @@ static int run3DSparseAttn() {
     es.checkpoint  = "./models/sparse_attn_best.bin";
     model.fitWithValidation(train_loader, val_loader, EPOCHS_SPARSE, BATCH_SIZE_SPARSE, es);
     
-    model.saveParameters(filename);
+    section("Évaluation finale sur le Test Set");
+    model.evaluate(test_loader);
+
+    // Matrice de confusion
+    test_loader.reset();
+    auto cm = model.confusionMatrix(test_loader, 3);
+    model.printConfusionMatrix(cm, {"No fracture", "Fracture T1", "Fracture T2"});
+
+    // model.saveParameters(filename);
     
     return 0;
 

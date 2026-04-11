@@ -52,6 +52,8 @@ public:
     Eigen::VectorXf& getBias()             { return bias_;         }
     Eigen::VectorXf& getBiasGradients()    { return grad_bias_;    }
 
+    int numParams() const override { return weights_.size() + bias_.size(); }
+
     void setWeights(const Tensor& w)          { weights_ = w;    }
     void setBias   (const Eigen::VectorXf& b) { bias_    = b;    }
 
