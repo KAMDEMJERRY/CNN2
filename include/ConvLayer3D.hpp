@@ -8,7 +8,7 @@
 // même style im2col/col2im, même updateParams, même initializeWeights.
 // ─────────────────────────────────────────────────────────────────────────────
 class ConvLayer3D : public Layer {
-private:
+protected:
     int in_channels;
     int out_channels;
     int kernel_d, kernel_h, kernel_w;
@@ -87,7 +87,7 @@ public:
         archive >> bias;
     }
 
-private:
+protected:
 
     // ── Dimensions de sortie ──────────────────────────────────────────────────
 

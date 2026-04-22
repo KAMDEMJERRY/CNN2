@@ -231,6 +231,19 @@ test_DenseLayer/fast:
 .PHONY : test_DenseLayer/fast
 
 #=============================================================================
+# Target rules for targets named test_DenseLayerModelParallel
+
+# Build rule for target.
+test_DenseLayerModelParallel: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test_DenseLayerModelParallel
+.PHONY : test_DenseLayerModelParallel
+
+# fast build rule for target.
+test_DenseLayerModelParallel/fast:
+	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_DenseLayerModelParallel.dir/build.make test/CMakeFiles/test_DenseLayerModelParallel.dir/build
+.PHONY : test_DenseLayerModelParallel/fast
+
+#=============================================================================
 # Target rules for targets named test_ActivationLayer
 
 # Build rule for target.
@@ -393,6 +406,7 @@ help:
 	@echo "... test_CNN"
 	@echo "... test_ConvLayer"
 	@echo "... test_DenseLayer"
+	@echo "... test_DenseLayerModelParallel"
 	@echo "... test_Dimensions"
 	@echo "... test_DropoutLayer"
 	@echo "... test_LossLayer"

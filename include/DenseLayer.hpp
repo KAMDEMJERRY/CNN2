@@ -13,7 +13,7 @@
 //             → compatible SoftmaxLayer dans les deux cas
 // ─────────────────────────────────────────────────────────────────────────────
 class DenseLayer : public Layer {
-private:
+protected:
     int input_size;
     int output_size;
 
@@ -69,7 +69,7 @@ public:
         archive >> bias;
     }
 
-private:
+protected:
 
     // Construit la sortie dans le bon rang logique
     // (B, output_size, 1, 1) en 4D  ou  (B, output_size, 1, 1, 1) en 5D

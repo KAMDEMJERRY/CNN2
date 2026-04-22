@@ -176,13 +176,13 @@ src/CMakeFiles/CNN.dir/main.cpp.o: \
  /usr/include/c++/11/bits/refwrap.h \
  /usr/include/c++/11/ext/aligned_buffer.h \
  /usr/include/c++/11/bits/fs_dir.h /usr/include/c++/11/bits/fs_ops.h \
- /home/ndomboukamdem/Documents/INFL/Master_2/Code2/include/CNNLIB.hpp \
- /home/ndomboukamdem/Documents/INFL/Master_2/Code2/include/CNN.hpp \
  /usr/include/c++/11/vector /usr/include/c++/11/bits/stl_uninitialized.h \
  /usr/include/c++/11/bits/stl_vector.h \
  /usr/include/c++/11/bits/stl_bvector.h \
- /usr/include/c++/11/bits/vector.tcc /usr/include/c++/11/memory \
- /usr/include/c++/11/bits/stl_tempbuf.h \
+ /usr/include/c++/11/bits/vector.tcc \
+ /home/ndomboukamdem/Documents/INFL/Master_2/Code2/include/CNNLIB.hpp \
+ /home/ndomboukamdem/Documents/INFL/Master_2/Code2/include/CNN.hpp \
+ /usr/include/c++/11/memory /usr/include/c++/11/bits/stl_tempbuf.h \
  /usr/include/c++/11/bits/stl_raw_storage_iter.h \
  /usr/include/c++/11/bits/align.h /usr/include/c++/11/bit \
  /usr/include/c++/11/bits/shared_ptr_atomic.h \
@@ -1160,4 +1160,7 @@ src/CMakeFiles/CNN.dir/main.cpp.o: \
  /home/ndomboukamdem/Documents/INFL/Master_2/Code2/include/SparseConvLayer3D.hpp \
  /home/ndomboukamdem/Documents/INFL/Master_2/Code2/include/SparseConvAdapterLayer.hpp \
  /home/ndomboukamdem/Documents/INFL/Master_2/Code2/include/WindowAttention3DLayer.hpp \
- /home/ndomboukamdem/Documents/INFL/Master_2/Code2/include/BatchNorm3DLayer.hpp
+ /home/ndomboukamdem/Documents/INFL/Master_2/Code2/include/BatchNorm3DLayer.hpp \
+ /home/ndomboukamdem/Documents/INFL/Master_2/Code2/include/DenseLayerDataParallel.hpp \
+ /home/ndomboukamdem/Documents/INFL/Master_2/Code2/include/DenseLayerModelParallel.hpp \
+ /usr/lib/gcc/x86_64-linux-gnu/11/include/omp.h

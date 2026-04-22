@@ -224,13 +224,13 @@ src/CMakeFiles/CNN.dir/main.cpp.o: ../src/main.cpp \
   /usr/include/c++/11/ext/aligned_buffer.h \
   /usr/include/c++/11/bits/fs_dir.h \
   /usr/include/c++/11/bits/fs_ops.h \
-  ../include/CNNLIB.hpp \
-  ../include/CNN.hpp \
   /usr/include/c++/11/vector \
   /usr/include/c++/11/bits/stl_uninitialized.h \
   /usr/include/c++/11/bits/stl_vector.h \
   /usr/include/c++/11/bits/stl_bvector.h \
   /usr/include/c++/11/bits/vector.tcc \
+  ../include/CNNLIB.hpp \
+  ../include/CNN.hpp \
   /usr/include/c++/11/memory \
   /usr/include/c++/11/bits/stl_tempbuf.h \
   /usr/include/c++/11/bits/stl_raw_storage_iter.h \
@@ -1256,8 +1256,15 @@ src/CMakeFiles/CNN.dir/main.cpp.o: ../src/main.cpp \
   ../include/SparseConvLayer3D.hpp \
   ../include/SparseConvAdapterLayer.hpp \
   ../include/WindowAttention3DLayer.hpp \
-  ../include/BatchNorm3DLayer.hpp
+  ../include/BatchNorm3DLayer.hpp \
+  ../include/DenseLayerDataParallel.hpp \
+  ../include/DenseLayerModelParallel.hpp \
+  /usr/lib/gcc/x86_64-linux-gnu/11/include/omp.h
 
+
+/usr/lib/gcc/x86_64-linux-gnu/11/include/omp.h:
+
+../include/DenseLayerModelParallel.hpp:
 
 ../include/BatchNorm3DLayer.hpp:
 
@@ -2685,11 +2692,9 @@ src/CMakeFiles/CNN.dir/main.cpp.o: ../src/main.cpp \
 
 /usr/include/c++/11/bits/fs_ops.h:
 
-../include/CNN.hpp:
+/usr/include/c++/11/vector:
 
-/usr/include/c++/11/bits/exception_defines.h:
-
-/usr/include/boost/mpl/aux_/numeric_cast_utils.hpp:
+/usr/include/c++/11/bits/stl_uninitialized.h:
 
 /usr/include/c++/11/tr1/ell_integral.tcc:
 
@@ -2715,9 +2720,11 @@ src/CMakeFiles/CNN.dir/main.cpp.o: ../src/main.cpp \
 
 /usr/include/boost/archive/detail/basic_pointer_iserializer.hpp:
 
-/usr/include/c++/11/vector:
+../include/CNN.hpp:
 
-/usr/include/c++/11/bits/stl_uninitialized.h:
+/usr/include/c++/11/bits/exception_defines.h:
+
+/usr/include/boost/mpl/aux_/numeric_cast_utils.hpp:
 
 /usr/lib/gcc/x86_64-linux-gnu/11/include/xsaveoptintrin.h:
 
@@ -2980,6 +2987,8 @@ src/CMakeFiles/CNN.dir/main.cpp.o: ../src/main.cpp \
 /usr/include/boost/mpl/aux_/lambda_arity_param.hpp:
 
 /usr/include/boost/archive/codecvt_null.hpp:
+
+../include/DenseLayerDataParallel.hpp:
 
 /usr/include/boost/archive/detail/abi_prefix.hpp:
 

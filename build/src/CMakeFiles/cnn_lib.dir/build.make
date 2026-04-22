@@ -111,10 +111,24 @@ src/CMakeFiles/cnn_lib.dir/ConvLayerDataParallel.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/cnn_lib.dir/ConvLayerDataParallel.cpp.s"
 	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build/src && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ndomboukamdem/Documents/INFL/Master_2/Code2/src/ConvLayerDataParallel.cpp -o CMakeFiles/cnn_lib.dir/ConvLayerDataParallel.cpp.s
 
+src/CMakeFiles/cnn_lib.dir/ConvLayer3DDataParallel.cpp.o: src/CMakeFiles/cnn_lib.dir/flags.make
+src/CMakeFiles/cnn_lib.dir/ConvLayer3DDataParallel.cpp.o: ../src/ConvLayer3DDataParallel.cpp
+src/CMakeFiles/cnn_lib.dir/ConvLayer3DDataParallel.cpp.o: src/CMakeFiles/cnn_lib.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ndomboukamdem/Documents/INFL/Master_2/Code2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object src/CMakeFiles/cnn_lib.dir/ConvLayer3DDataParallel.cpp.o"
+	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build/src && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/CMakeFiles/cnn_lib.dir/ConvLayer3DDataParallel.cpp.o -MF CMakeFiles/cnn_lib.dir/ConvLayer3DDataParallel.cpp.o.d -o CMakeFiles/cnn_lib.dir/ConvLayer3DDataParallel.cpp.o -c /home/ndomboukamdem/Documents/INFL/Master_2/Code2/src/ConvLayer3DDataParallel.cpp
+
+src/CMakeFiles/cnn_lib.dir/ConvLayer3DDataParallel.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/cnn_lib.dir/ConvLayer3DDataParallel.cpp.i"
+	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build/src && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ndomboukamdem/Documents/INFL/Master_2/Code2/src/ConvLayer3DDataParallel.cpp > CMakeFiles/cnn_lib.dir/ConvLayer3DDataParallel.cpp.i
+
+src/CMakeFiles/cnn_lib.dir/ConvLayer3DDataParallel.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/cnn_lib.dir/ConvLayer3DDataParallel.cpp.s"
+	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build/src && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ndomboukamdem/Documents/INFL/Master_2/Code2/src/ConvLayer3DDataParallel.cpp -o CMakeFiles/cnn_lib.dir/ConvLayer3DDataParallel.cpp.s
+
 src/CMakeFiles/cnn_lib.dir/ConvLayer3D.cpp.o: src/CMakeFiles/cnn_lib.dir/flags.make
 src/CMakeFiles/cnn_lib.dir/ConvLayer3D.cpp.o: ../src/ConvLayer3D.cpp
 src/CMakeFiles/cnn_lib.dir/ConvLayer3D.cpp.o: src/CMakeFiles/cnn_lib.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ndomboukamdem/Documents/INFL/Master_2/Code2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object src/CMakeFiles/cnn_lib.dir/ConvLayer3D.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ndomboukamdem/Documents/INFL/Master_2/Code2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object src/CMakeFiles/cnn_lib.dir/ConvLayer3D.cpp.o"
 	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build/src && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/CMakeFiles/cnn_lib.dir/ConvLayer3D.cpp.o -MF CMakeFiles/cnn_lib.dir/ConvLayer3D.cpp.o.d -o CMakeFiles/cnn_lib.dir/ConvLayer3D.cpp.o -c /home/ndomboukamdem/Documents/INFL/Master_2/Code2/src/ConvLayer3D.cpp
 
 src/CMakeFiles/cnn_lib.dir/ConvLayer3D.cpp.i: cmake_force
@@ -128,7 +142,7 @@ src/CMakeFiles/cnn_lib.dir/ConvLayer3D.cpp.s: cmake_force
 src/CMakeFiles/cnn_lib.dir/DenseLayer.cpp.o: src/CMakeFiles/cnn_lib.dir/flags.make
 src/CMakeFiles/cnn_lib.dir/DenseLayer.cpp.o: ../src/DenseLayer.cpp
 src/CMakeFiles/cnn_lib.dir/DenseLayer.cpp.o: src/CMakeFiles/cnn_lib.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ndomboukamdem/Documents/INFL/Master_2/Code2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object src/CMakeFiles/cnn_lib.dir/DenseLayer.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ndomboukamdem/Documents/INFL/Master_2/Code2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object src/CMakeFiles/cnn_lib.dir/DenseLayer.cpp.o"
 	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build/src && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/CMakeFiles/cnn_lib.dir/DenseLayer.cpp.o -MF CMakeFiles/cnn_lib.dir/DenseLayer.cpp.o.d -o CMakeFiles/cnn_lib.dir/DenseLayer.cpp.o -c /home/ndomboukamdem/Documents/INFL/Master_2/Code2/src/DenseLayer.cpp
 
 src/CMakeFiles/cnn_lib.dir/DenseLayer.cpp.i: cmake_force
@@ -139,10 +153,38 @@ src/CMakeFiles/cnn_lib.dir/DenseLayer.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/cnn_lib.dir/DenseLayer.cpp.s"
 	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build/src && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ndomboukamdem/Documents/INFL/Master_2/Code2/src/DenseLayer.cpp -o CMakeFiles/cnn_lib.dir/DenseLayer.cpp.s
 
+src/CMakeFiles/cnn_lib.dir/DenseLayerDataParallel.cpp.o: src/CMakeFiles/cnn_lib.dir/flags.make
+src/CMakeFiles/cnn_lib.dir/DenseLayerDataParallel.cpp.o: ../src/DenseLayerDataParallel.cpp
+src/CMakeFiles/cnn_lib.dir/DenseLayerDataParallel.cpp.o: src/CMakeFiles/cnn_lib.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ndomboukamdem/Documents/INFL/Master_2/Code2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object src/CMakeFiles/cnn_lib.dir/DenseLayerDataParallel.cpp.o"
+	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build/src && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/CMakeFiles/cnn_lib.dir/DenseLayerDataParallel.cpp.o -MF CMakeFiles/cnn_lib.dir/DenseLayerDataParallel.cpp.o.d -o CMakeFiles/cnn_lib.dir/DenseLayerDataParallel.cpp.o -c /home/ndomboukamdem/Documents/INFL/Master_2/Code2/src/DenseLayerDataParallel.cpp
+
+src/CMakeFiles/cnn_lib.dir/DenseLayerDataParallel.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/cnn_lib.dir/DenseLayerDataParallel.cpp.i"
+	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build/src && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ndomboukamdem/Documents/INFL/Master_2/Code2/src/DenseLayerDataParallel.cpp > CMakeFiles/cnn_lib.dir/DenseLayerDataParallel.cpp.i
+
+src/CMakeFiles/cnn_lib.dir/DenseLayerDataParallel.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/cnn_lib.dir/DenseLayerDataParallel.cpp.s"
+	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build/src && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ndomboukamdem/Documents/INFL/Master_2/Code2/src/DenseLayerDataParallel.cpp -o CMakeFiles/cnn_lib.dir/DenseLayerDataParallel.cpp.s
+
+src/CMakeFiles/cnn_lib.dir/DenseLayerModelParallel.cpp.o: src/CMakeFiles/cnn_lib.dir/flags.make
+src/CMakeFiles/cnn_lib.dir/DenseLayerModelParallel.cpp.o: ../src/DenseLayerModelParallel.cpp
+src/CMakeFiles/cnn_lib.dir/DenseLayerModelParallel.cpp.o: src/CMakeFiles/cnn_lib.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ndomboukamdem/Documents/INFL/Master_2/Code2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object src/CMakeFiles/cnn_lib.dir/DenseLayerModelParallel.cpp.o"
+	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build/src && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/CMakeFiles/cnn_lib.dir/DenseLayerModelParallel.cpp.o -MF CMakeFiles/cnn_lib.dir/DenseLayerModelParallel.cpp.o.d -o CMakeFiles/cnn_lib.dir/DenseLayerModelParallel.cpp.o -c /home/ndomboukamdem/Documents/INFL/Master_2/Code2/src/DenseLayerModelParallel.cpp
+
+src/CMakeFiles/cnn_lib.dir/DenseLayerModelParallel.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/cnn_lib.dir/DenseLayerModelParallel.cpp.i"
+	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build/src && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ndomboukamdem/Documents/INFL/Master_2/Code2/src/DenseLayerModelParallel.cpp > CMakeFiles/cnn_lib.dir/DenseLayerModelParallel.cpp.i
+
+src/CMakeFiles/cnn_lib.dir/DenseLayerModelParallel.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/cnn_lib.dir/DenseLayerModelParallel.cpp.s"
+	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build/src && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ndomboukamdem/Documents/INFL/Master_2/Code2/src/DenseLayerModelParallel.cpp -o CMakeFiles/cnn_lib.dir/DenseLayerModelParallel.cpp.s
+
 src/CMakeFiles/cnn_lib.dir/CNN.cpp.o: src/CMakeFiles/cnn_lib.dir/flags.make
 src/CMakeFiles/cnn_lib.dir/CNN.cpp.o: ../src/CNN.cpp
 src/CMakeFiles/cnn_lib.dir/CNN.cpp.o: src/CMakeFiles/cnn_lib.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ndomboukamdem/Documents/INFL/Master_2/Code2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object src/CMakeFiles/cnn_lib.dir/CNN.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ndomboukamdem/Documents/INFL/Master_2/Code2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object src/CMakeFiles/cnn_lib.dir/CNN.cpp.o"
 	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build/src && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/CMakeFiles/cnn_lib.dir/CNN.cpp.o -MF CMakeFiles/cnn_lib.dir/CNN.cpp.o.d -o CMakeFiles/cnn_lib.dir/CNN.cpp.o -c /home/ndomboukamdem/Documents/INFL/Master_2/Code2/src/CNN.cpp
 
 src/CMakeFiles/cnn_lib.dir/CNN.cpp.i: cmake_force
@@ -158,8 +200,11 @@ cnn_lib_OBJECTS = \
 "CMakeFiles/cnn_lib.dir/shared.cpp.o" \
 "CMakeFiles/cnn_lib.dir/ConvLayer.cpp.o" \
 "CMakeFiles/cnn_lib.dir/ConvLayerDataParallel.cpp.o" \
+"CMakeFiles/cnn_lib.dir/ConvLayer3DDataParallel.cpp.o" \
 "CMakeFiles/cnn_lib.dir/ConvLayer3D.cpp.o" \
 "CMakeFiles/cnn_lib.dir/DenseLayer.cpp.o" \
+"CMakeFiles/cnn_lib.dir/DenseLayerDataParallel.cpp.o" \
+"CMakeFiles/cnn_lib.dir/DenseLayerModelParallel.cpp.o" \
 "CMakeFiles/cnn_lib.dir/CNN.cpp.o"
 
 # External object files for target cnn_lib
@@ -168,12 +213,15 @@ cnn_lib_EXTERNAL_OBJECTS =
 src/libcnn_lib.a: src/CMakeFiles/cnn_lib.dir/shared.cpp.o
 src/libcnn_lib.a: src/CMakeFiles/cnn_lib.dir/ConvLayer.cpp.o
 src/libcnn_lib.a: src/CMakeFiles/cnn_lib.dir/ConvLayerDataParallel.cpp.o
+src/libcnn_lib.a: src/CMakeFiles/cnn_lib.dir/ConvLayer3DDataParallel.cpp.o
 src/libcnn_lib.a: src/CMakeFiles/cnn_lib.dir/ConvLayer3D.cpp.o
 src/libcnn_lib.a: src/CMakeFiles/cnn_lib.dir/DenseLayer.cpp.o
+src/libcnn_lib.a: src/CMakeFiles/cnn_lib.dir/DenseLayerDataParallel.cpp.o
+src/libcnn_lib.a: src/CMakeFiles/cnn_lib.dir/DenseLayerModelParallel.cpp.o
 src/libcnn_lib.a: src/CMakeFiles/cnn_lib.dir/CNN.cpp.o
 src/libcnn_lib.a: src/CMakeFiles/cnn_lib.dir/build.make
 src/libcnn_lib.a: src/CMakeFiles/cnn_lib.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/ndomboukamdem/Documents/INFL/Master_2/Code2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX static library libcnn_lib.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/ndomboukamdem/Documents/INFL/Master_2/Code2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Linking CXX static library libcnn_lib.a"
 	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build/src && $(CMAKE_COMMAND) -P CMakeFiles/cnn_lib.dir/cmake_clean_target.cmake
 	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build/src && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/cnn_lib.dir/link.txt --verbose=$(VERBOSE)
 

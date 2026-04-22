@@ -94,6 +94,7 @@ set(CMAKE_DEPEND_INFO_FILES
   "test/CMakeFiles/test_Tensor.dir/DependInfo.cmake"
   "test/CMakeFiles/test_ConvLayer.dir/DependInfo.cmake"
   "test/CMakeFiles/test_DenseLayer.dir/DependInfo.cmake"
+  "test/CMakeFiles/test_DenseLayerModelParallel.dir/DependInfo.cmake"
   "test/CMakeFiles/test_ActivationLayer.dir/DependInfo.cmake"
   "test/CMakeFiles/test_PoolLayer.dir/DependInfo.cmake"
   "test/CMakeFiles/test_LossLayer.dir/DependInfo.cmake"

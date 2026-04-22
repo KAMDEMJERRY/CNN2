@@ -1,15 +1,21 @@
-sudo apt update
-sudo apt install libeigen3-dev
-sudo apt install libopencv-dev
-sudo apt install libgtest-dev
-sudo apt install libboost-all-dev
+echo "Building CNN..."
 
+# Check if build directory exists, if not create it
+if [ ! -d "build" ]; then
+    mkdir build
+fi
 
-rm -r build/
-mkdir build
+# Navigate to build directory
 cd build
+
+# Run CMake to configure the project
 cmake ..
+
+# Compile the project
 make
-cd src/
-ls
+
+# Navigate back to src directory
+cd src
+
+# Run the CNN executable
 ./CNN

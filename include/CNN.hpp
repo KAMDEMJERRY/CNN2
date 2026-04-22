@@ -31,6 +31,7 @@ struct EarlyStopping {
     float min_delta = 1e-4f;    // amélioration minimale requise pour réinitialiser le compteur
     bool  restore_best = true;  // restaurer les poids du meilleur modèle à la fin
     std::string checkpoint = "./models/early_stop_best.bin"; // chemin de sauvegarde
+    std::string log_file = "./logs/training_log.txt";        // fichier de logs d'entraînement
 
     // Retourne true si l'entraînement doit s'arrêter
     // Appelé avec la val_loss de l'époque courante
@@ -115,6 +116,9 @@ public:
     double benchmarkForward(const Tensor& input, int iterations = 100);
 
 
+    // Export des probabilités de prédiction dans un fichier CSV
+    void exportPredictionsToCSV(IDataLoader& loader, const std::string& filename);
+
     // Matrice de confusion — inférence uniquement, pas de gradient
     // Retourne une matrice (num_classes × num_classes)
     // confusion[pred][true] — ligne = prédit, colonne = réel
@@ -148,4 +152,4 @@ private:
     void requireLoss()      const;
 };
 
-void logEpochStats(int epoch, int total_epochs, const EpochMetrics& train, const EpochMetrics* val);
+void logEpochStats(int epoch, int total_epochs, const EpochMetrics& train, const EpochMetrics* val, const std::string& logfile, bool improved = false, const std::string& checkpoint_path = "");

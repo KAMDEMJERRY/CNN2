@@ -76,10 +76,11 @@ void CNN::fitWithValidation(IDataLoader& train_loader, IDataLoader& val_loader,
         EpochMetrics train_m = runEpoch(train_loader, /*train=*/true);
         EpochMetrics val_m = runEpoch(val_loader,   /*train=*/false);
 
-        if (val_m.loss < best_val_loss) best_val_loss = val_m.loss;
+        bool improved = (val_m.loss < best_val_loss);
+        if (improved) best_val_loss = val_m.loss;
 
         printEpochStats(epoch, epochs, train_m, &val_m);
-        logEpochStats(epoch, epochs, train_m, &val_m);
+        logEpochStats(epoch, epochs, train_m, &val_m, "./logs/training_log.txt", improved);
     }
 }
 
@@ -122,7 +123,8 @@ void CNN::fitWithValidation(IDataLoader& train_loader, IDataLoader& val_loader,
                       << es.wait_count() << "/" << es.patience << ")\n";
         }
 
-        logEpochStats(epoch, epochs, train_m, &val_m);
+        logEpochStats(epoch, epochs, train_m, &val_m, es.log_file, es.improved(), es.improved() ? es.checkpoint : std::string());
+
 
         if (stop) {
             std::cout << "\n[Early Stopping] Arrêt à l'époque " << epoch + 1
@@ -379,9 +381,14 @@ void CNN::printTestStats(const EpochMetrics& test) {
 }
 
 
-void logEpochStats(int epoch, int total_epochs, const EpochMetrics& train, const EpochMetrics* val) {
-    std::string logfile = relativePath("/logs/training_log.txt");
-    std::ofstream log_file(logfile, std::ios::app);
+void logEpochStats(int epoch, int total_epochs, const EpochMetrics& train, const EpochMetrics* val, const std::string& logfile_path, bool improved /*= false*/, const std::string& checkpoint_path /*= "" */) {
+    // std::string logfile = relativePath(logfile_path);
+    std::ofstream log_file(logfile_path, std::ios::app);
+    if(!log_file.is_open()){
+        std::cerr << "Error: Could not open log file " << logfile_path << std::endl;
+        return;
+    }
+
     if (epoch == 0) {
         std::string now = currentTime();
         log_file << std::endl << now << std::string(50, '=') << std::endl;
@@ -390,8 +397,15 @@ void logEpochStats(int epoch, int total_epochs, const EpochMetrics& train, const
         << " | Loss: " << std::fixed << std::setprecision(4) << train.loss
         << " | Acc: " << std::setprecision(2) << train.accuracy * 100.0f << "%";
     log_file << " | Time: " << train.ms << "ms";
-    if (val)log_file << " | Val Loss: " << std::setprecision(4) << val->loss
+    if (val) log_file << " | Val Loss: " << std::setprecision(4) << val->loss
         << " | Val Acc: " << std::setprecision(2) << val->accuracy * 100.0f << "%";
+
+    // Marquer les améliorations / checkpoints dans le fichier de log
+    if (improved) {
+        log_file << " | Improved ✓";
+        if (!checkpoint_path.empty()) log_file << " [ckpt: " << checkpoint_path << "]";
+    }
+
     log_file << "\n";
 
     log_file.close();
@@ -408,6 +422,84 @@ void CNN::requireLoss() const {
 }
 
 
+
+// =============================================================================
+// Export CSV pour ROC-AUC
+// =============================================================================
+
+void CNN::exportPredictionsToCSV(IDataLoader& loader, const std::string& filename) {
+    std::filesystem::path p(filename);
+    if (p.has_parent_path()) {
+        std::filesystem::create_directories(p.parent_path());
+    }
+    
+    std::ofstream ofs(filename);
+    if (!ofs) {
+        throw std::runtime_error("[CNN] Impossible d'ouvrir " + filename + " pour export CSV");
+    }
+
+    loader.reset();
+    
+    // Obtenir le nombre de classes à partir de la première prédiction
+    bool header_written = false;
+
+    while (loader.hasNext()) {
+        auto [images, targets] = loader.nextBatch();
+        Tensor preds = forward(images);
+        const int B = preds.dim(0);
+        const int C = preds.dim(1);
+
+        if (!header_written) {
+            ofs << "true_label";
+            for (int c = 0; c < C; ++c) {
+                ofs << ",prob_class_" << c;
+            }
+            ofs << "\n";
+            header_written = true;
+        }
+
+        for (int b = 0; b < B; ++b) {
+            // Classe vraie : index scalaire dans targets
+            int true_class = 0;
+            if (targets.dim(1) == 1) {
+                // Stockage comme index scalaire
+                true_class = static_cast<int>(targets(b, 0, 0, 0, 0));
+            } else {
+                // Stockage one-hot → argmax
+                float max_t = targets(b, 0, 0, 0, 0);
+                for (int c = 1; c < targets.dim(1); ++c) {
+                    const float v = targets(b, c, 0, 0, 0);
+                    if (v > max_t) { max_t = v; true_class = c; }
+                }
+            }
+
+            ofs << true_class;
+
+            // Comme softmax est potentiellement dans LossLayer, nous prenons les sorties
+            // Si Model a une Softmax indépendante, ce sont les probs.
+            // S'il n'y en a pas, c'est des logits. Pour ROC AUC, l'ordre des logits 
+            // préserve l'AUC de toute façon, mais on peut appliquer softmax par précaution.
+            
+            // Calcul du sum exp pour Softmax instable...
+            float max_val = preds(b, 0, 0, 0, 0);
+            for (int c = 1; c < C; ++c) {
+                if (preds(b, c, 0, 0, 0) > max_val) max_val = preds(b, c, 0, 0, 0);
+            }
+            float sum_exp = 0.0f;
+            for (int c = 0; c < C; ++c) {
+                sum_exp += std::exp(preds(b, c, 0, 0, 0) - max_val);
+            }
+
+            for (int c = 0; c < C; ++c) {
+                float prob = std::exp(preds(b, c, 0, 0, 0) - max_val) / sum_exp;
+                ofs << "," << prob;
+            }
+            ofs << "\n";
+        }
+    }
+    
+    std::cout << "[CNN] Prédictions exportées dans: " << filename << std::endl;
+}
 
 // =============================================================================
 // Matrice de confusion
@@ -475,9 +567,9 @@ void CNN::printConfusionMatrix(const Eigen::MatrixXi& cm,
         for (int j = 0; j < N; ++j) {
             // Diagonale en vert, erreurs en rouge
             if (i == j)
-                std::cout << "\033[32m" << std::setw(10) << cm(i, j) << "\033[0m";
+                std::cout << green << std::setw(10) << cm(i, j) << reset;
             else if (cm(i, j) > 0)
-                std::cout << "\033[31m" << std::setw(10) << cm(i, j) << "\033[0m";
+                std::cout << red << std::setw(10) << cm(i, j) << reset;
             else
                 std::cout << std::setw(10) << cm(i, j);
         }

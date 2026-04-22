@@ -13,6 +13,7 @@ ConvLayerDataParallel::ConvLayerDataParallel(int in_channels, int out_channels,
     : ConvLayer(in_channels, out_channels, kernel_h, kernel_w, stride_h, stride_w, pad_h, pad_w),
     n_threads_(n_threads > 0 ? n_threads : omp_get_max_threads())
 {
+    omp_set_num_threads(n_threads_);    
 }
 
 // =============================================================================
@@ -100,7 +101,7 @@ Tensor ConvLayerDataParallel::forward(const Tensor& input)
     // Copie de l'input — cohérence avec ConvLayer (durée de vie garantie)
     input_cache_ = input;
 
-    omp_set_num_threads(n_threads_);
+    
 
 #pragma omp parallel
     {
@@ -170,7 +171,7 @@ Tensor ConvLayerDataParallel::backward(const Tensor& grad_output)
     dW.setZero();
     db.setZero();
 
-    omp_set_num_threads(n_threads_);
+   
 
 #pragma omp parallel
     {

@@ -169,6 +169,20 @@ test_DenseLayer/fast:
 .PHONY : test_DenseLayer/fast
 
 # Convenience name for target.
+test/CMakeFiles/test_DenseLayerModelParallel.dir/rule:
+	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/CMakeFiles/test_DenseLayerModelParallel.dir/rule
+.PHONY : test/CMakeFiles/test_DenseLayerModelParallel.dir/rule
+
+# Convenience name for target.
+test_DenseLayerModelParallel: test/CMakeFiles/test_DenseLayerModelParallel.dir/rule
+.PHONY : test_DenseLayerModelParallel
+
+# fast build rule for target.
+test_DenseLayerModelParallel/fast:
+	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_DenseLayerModelParallel.dir/build.make test/CMakeFiles/test_DenseLayerModelParallel.dir/build
+.PHONY : test_DenseLayerModelParallel/fast
+
+# Convenience name for target.
 test/CMakeFiles/test_ActivationLayer.dir/rule:
 	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/CMakeFiles/test_ActivationLayer.dir/rule
 .PHONY : test/CMakeFiles/test_ActivationLayer.dir/rule
@@ -412,6 +426,7 @@ __/src/DenseLayer.o: __/src/DenseLayer.cpp.o
 # target to build an object file
 __/src/DenseLayer.cpp.o:
 	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_DenseLayer.dir/build.make test/CMakeFiles/test_DenseLayer.dir/__/src/DenseLayer.cpp.o
+	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_DenseLayerModelParallel.dir/build.make test/CMakeFiles/test_DenseLayerModelParallel.dir/__/src/DenseLayer.cpp.o
 	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_CNN.dir/build.make test/CMakeFiles/test_CNN.dir/__/src/DenseLayer.cpp.o
 	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_serialization.dir/build.make test/CMakeFiles/test_serialization.dir/__/src/DenseLayer.cpp.o
 .PHONY : __/src/DenseLayer.cpp.o
@@ -422,6 +437,7 @@ __/src/DenseLayer.i: __/src/DenseLayer.cpp.i
 # target to preprocess a source file
 __/src/DenseLayer.cpp.i:
 	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_DenseLayer.dir/build.make test/CMakeFiles/test_DenseLayer.dir/__/src/DenseLayer.cpp.i
+	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_DenseLayerModelParallel.dir/build.make test/CMakeFiles/test_DenseLayerModelParallel.dir/__/src/DenseLayer.cpp.i
 	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_CNN.dir/build.make test/CMakeFiles/test_CNN.dir/__/src/DenseLayer.cpp.i
 	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_serialization.dir/build.make test/CMakeFiles/test_serialization.dir/__/src/DenseLayer.cpp.i
 .PHONY : __/src/DenseLayer.cpp.i
@@ -432,9 +448,34 @@ __/src/DenseLayer.s: __/src/DenseLayer.cpp.s
 # target to generate assembly for a file
 __/src/DenseLayer.cpp.s:
 	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_DenseLayer.dir/build.make test/CMakeFiles/test_DenseLayer.dir/__/src/DenseLayer.cpp.s
+	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_DenseLayerModelParallel.dir/build.make test/CMakeFiles/test_DenseLayerModelParallel.dir/__/src/DenseLayer.cpp.s
 	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_CNN.dir/build.make test/CMakeFiles/test_CNN.dir/__/src/DenseLayer.cpp.s
 	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_serialization.dir/build.make test/CMakeFiles/test_serialization.dir/__/src/DenseLayer.cpp.s
 .PHONY : __/src/DenseLayer.cpp.s
+
+__/src/DenseLayerModelParallel.o: __/src/DenseLayerModelParallel.cpp.o
+.PHONY : __/src/DenseLayerModelParallel.o
+
+# target to build an object file
+__/src/DenseLayerModelParallel.cpp.o:
+	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_DenseLayerModelParallel.dir/build.make test/CMakeFiles/test_DenseLayerModelParallel.dir/__/src/DenseLayerModelParallel.cpp.o
+.PHONY : __/src/DenseLayerModelParallel.cpp.o
+
+__/src/DenseLayerModelParallel.i: __/src/DenseLayerModelParallel.cpp.i
+.PHONY : __/src/DenseLayerModelParallel.i
+
+# target to preprocess a source file
+__/src/DenseLayerModelParallel.cpp.i:
+	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_DenseLayerModelParallel.dir/build.make test/CMakeFiles/test_DenseLayerModelParallel.dir/__/src/DenseLayerModelParallel.cpp.i
+.PHONY : __/src/DenseLayerModelParallel.cpp.i
+
+__/src/DenseLayerModelParallel.s: __/src/DenseLayerModelParallel.cpp.s
+.PHONY : __/src/DenseLayerModelParallel.s
+
+# target to generate assembly for a file
+__/src/DenseLayerModelParallel.cpp.s:
+	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_DenseLayerModelParallel.dir/build.make test/CMakeFiles/test_DenseLayerModelParallel.dir/__/src/DenseLayerModelParallel.cpp.s
+.PHONY : __/src/DenseLayerModelParallel.cpp.s
 
 __/src/dimensions.o: __/src/dimensions.cpp.o
 .PHONY : __/src/dimensions.o
@@ -630,6 +671,30 @@ test_DenseLayer.s: test_DenseLayer.cpp.s
 test_DenseLayer.cpp.s:
 	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_DenseLayer.dir/build.make test/CMakeFiles/test_DenseLayer.dir/test_DenseLayer.cpp.s
 .PHONY : test_DenseLayer.cpp.s
+
+test_DenseLayerModelParallel.o: test_DenseLayerModelParallel.cpp.o
+.PHONY : test_DenseLayerModelParallel.o
+
+# target to build an object file
+test_DenseLayerModelParallel.cpp.o:
+	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_DenseLayerModelParallel.dir/build.make test/CMakeFiles/test_DenseLayerModelParallel.dir/test_DenseLayerModelParallel.cpp.o
+.PHONY : test_DenseLayerModelParallel.cpp.o
+
+test_DenseLayerModelParallel.i: test_DenseLayerModelParallel.cpp.i
+.PHONY : test_DenseLayerModelParallel.i
+
+# target to preprocess a source file
+test_DenseLayerModelParallel.cpp.i:
+	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_DenseLayerModelParallel.dir/build.make test/CMakeFiles/test_DenseLayerModelParallel.dir/test_DenseLayerModelParallel.cpp.i
+.PHONY : test_DenseLayerModelParallel.cpp.i
+
+test_DenseLayerModelParallel.s: test_DenseLayerModelParallel.cpp.s
+.PHONY : test_DenseLayerModelParallel.s
+
+# target to generate assembly for a file
+test_DenseLayerModelParallel.cpp.s:
+	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_DenseLayerModelParallel.dir/build.make test/CMakeFiles/test_DenseLayerModelParallel.dir/test_DenseLayerModelParallel.cpp.s
+.PHONY : test_DenseLayerModelParallel.cpp.s
 
 test_Dimensions.o: test_Dimensions.cpp.o
 .PHONY : test_Dimensions.o
@@ -838,6 +903,7 @@ help:
 	@echo "... test_CNN"
 	@echo "... test_ConvLayer"
 	@echo "... test_DenseLayer"
+	@echo "... test_DenseLayerModelParallel"
 	@echo "... test_Dimensions"
 	@echo "... test_DropoutLayer"
 	@echo "... test_LossLayer"
@@ -858,6 +924,9 @@ help:
 	@echo "... __/src/DenseLayer.o"
 	@echo "... __/src/DenseLayer.i"
 	@echo "... __/src/DenseLayer.s"
+	@echo "... __/src/DenseLayerModelParallel.o"
+	@echo "... __/src/DenseLayerModelParallel.i"
+	@echo "... __/src/DenseLayerModelParallel.s"
 	@echo "... __/src/dimensions.o"
 	@echo "... __/src/dimensions.i"
 	@echo "... __/src/dimensions.s"
@@ -882,6 +951,9 @@ help:
 	@echo "... test_DenseLayer.o"
 	@echo "... test_DenseLayer.i"
 	@echo "... test_DenseLayer.s"
+	@echo "... test_DenseLayerModelParallel.o"
+	@echo "... test_DenseLayerModelParallel.i"
+	@echo "... test_DenseLayerModelParallel.s"
 	@echo "... test_Dimensions.o"
 	@echo "... test_Dimensions.i"
 	@echo "... test_Dimensions.s"

@@ -325,10 +325,10 @@ class TrainingMonitor:
         print("="*60)
 
 
-def main(logfilepath="./logs/training_log.txt"):
+def main(logfilepath="./logs/training_log.txt", mode="live", refresh_interval=5):
     # Configuration
     LOG_FILE = logfilepath
-    MODE = "live"  # Options: "live", "static", "summary"
+    MODE = mode  # Options: "live", "static", "summary"
     
     if not os.path.exists(LOG_FILE):
         print(f"Erreur: Fichier {LOG_FILE} non trouvé")
@@ -336,7 +336,7 @@ def main(logfilepath="./logs/training_log.txt"):
     
     if MODE == "live":
         # Mode en direct - met à jour les graphiques en temps réel
-        plotter = LivePlotter(LOG_FILE, refresh_interval=5)
+        plotter = LivePlotter(LOG_FILE, refresh_interval=refresh_interval)
         try:
             plotter.start()
         except KeyboardInterrupt:
@@ -356,5 +356,15 @@ def main(logfilepath="./logs/training_log.txt"):
 
 
 if __name__ == "__main__":
-    filepath = "logs/training_log.txt"
-    main()
+    import argparse
+
+    parser = argparse.ArgumentParser(description='Visualiseur de logs d\'entraînement')
+    parser.add_argument('logfile', nargs='?', default='./logs/training_log.txt',
+                        help='Chemin vers le fichier de log (défaut: ./logs/training_log.txt)')
+    parser.add_argument('--mode', choices=['live', 'static', 'summary'], default='live',
+                        help='Mode d\'exécution: live, static, ou summary')
+    parser.add_argument('--refresh', type=int, default=5,
+                        help='Intervalle de rafraîchissement en secondes pour le mode live')
+
+    args = parser.parse_args()
+    main(args.logfile, mode=args.mode, refresh_interval=args.refresh)

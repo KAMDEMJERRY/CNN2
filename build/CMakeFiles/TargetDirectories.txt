@@ -12,6 +12,7 @@
 /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build/test/CMakeFiles/test_Tensor.dir
 /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build/test/CMakeFiles/test_ConvLayer.dir
 /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build/test/CMakeFiles/test_DenseLayer.dir
+/home/ndomboukamdem/Documents/INFL/Master_2/Code2/build/test/CMakeFiles/test_DenseLayerModelParallel.dir
 /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build/test/CMakeFiles/test_ActivationLayer.dir
 /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build/test/CMakeFiles/test_PoolLayer.dir
 /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build/test/CMakeFiles/test_LossLayer.dir

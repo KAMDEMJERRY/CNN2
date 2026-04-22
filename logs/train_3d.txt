@@ -1,0 +1,24 @@
+
+2026-04-22 01:22:55==================================================
+Epoch   1/100 | Loss: 0.4665 | Acc: 61.92% | Time: 33552ms | Val Loss: 0.3296 | Val Acc: 72.32% | Improved ✓ [ckpt: ./models/3d_best.bin]
+Epoch   2/100 | Loss: 0.1669 | Acc: 81.17% | Time: 33535ms | Val Loss: 0.1571 | Val Acc: 88.39% | Improved ✓ [ckpt: ./models/3d_best.bin]
+Epoch   3/100 | Loss: 0.1507 | Acc: 84.50% | Time: 35968ms | Val Loss: 0.2481 | Val Acc: 81.25%
+Epoch   4/100 | Loss: 0.1002 | Acc: 88.25% | Time: 33801ms | Val Loss: 0.3000 | Val Acc: 73.21%
+Epoch   5/100 | Loss: 0.0798 | Acc: 89.00% | Time: 37449ms | Val Loss: 0.1695 | Val Acc: 82.14%
+Epoch   6/100 | Loss: 0.0730 | Acc: 90.17% | Time: 34512ms | Val Loss: 0.2895 | Val Acc: 82.14%
+Epoch   7/100 | Loss: 0.0601 | Acc: 91.83% | Time: 33877ms | Val Loss: 0.3050 | Val Acc: 81.25%
+Epoch   8/100 | Loss: 0.0402 | Acc: 94.00% | Time: 32625ms | Val Loss: 0.2880 | Val Acc: 80.36%
+Epoch   9/100 | Loss: 0.0466 | Acc: 92.58% | Time: 32190ms | Val Loss: 0.2661 | Val Acc: 83.93%
+Epoch  10/100 | Loss: 0.0354 | Acc: 94.92% | Time: 31906ms | Val Loss: 0.1866 | Val Acc: 84.82%
+Epoch  11/100 | Loss: 0.0295 | Acc: 96.75% | Time: 31974ms | Val Loss: 0.1724 | Val Acc: 84.82%
+Epoch  12/100 | Loss: 0.0301 | Acc: 95.75% | Time: 33635ms | Val Loss: 0.2302 | Val Acc: 81.25%
+Epoch  13/100 | Loss: 0.0358 | Acc: 95.42% | Time: 32410ms | Val Loss: 0.2465 | Val Acc: 83.93%
+Epoch  14/100 | Loss: 0.0246 | Acc: 95.83% | Time: 32515ms | Val Loss: 0.1795 | Val Acc: 84.82%
+Epoch  15/100 | Loss: 0.0337 | Acc: 95.00% | Time: 32733ms | Val Loss: 0.2329 | Val Acc: 82.14%
+Epoch  16/100 | Loss: 0.0433 | Acc: 95.08% | Time: 34948ms | Val Loss: 0.2624 | Val Acc: 75.89%
+Epoch  17/100 | Loss: 0.0374 | Acc: 94.33% | Time: 32629ms | Val Loss: 0.2745 | Val Acc: 83.04%
+Epoch  18/100 | Loss: 0.0364 | Acc: 95.08% | Time: 33357ms | Val Loss: 0.1704 | Val Acc: 82.14%
+Epoch  19/100 | Loss: 0.0397 | Acc: 93.33% | Time: 35265ms | Val Loss: 0.2830 | Val Acc: 83.93%
+Epoch  20/100 | Loss: 0.0341 | Acc: 94.50% | Time: 32970ms | Val Loss: 0.2796 | Val Acc: 83.04%
+Epoch  21/100 | Loss: 0.0333 | Acc: 95.75% | Time: 33217ms | Val Loss: 0.2056 | Val Acc: 87.50%
+Epoch  22/100 | Loss: 0.0230 | Acc: 95.50% | Time: 32736ms | Val Loss: 0.2165 | Val Acc: 83.93%

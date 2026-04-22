@@ -2,8 +2,11 @@ add_library(cnn_lib
     shared.cpp
     ConvLayer.cpp
     ConvLayerDataParallel.cpp
+    ConvLayer3DDataParallel.cpp
     ConvLayer3D.cpp
     DenseLayer.cpp
+    DenseLayerDataParallel.cpp
+    DenseLayerModelParallel.cpp
     CNN.cpp
 )
 

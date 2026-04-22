@@ -11,8 +11,11 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/ndomboukamdem/Documents/INFL/Master_2/Code2/src/CNN.cpp" "src/CMakeFiles/cnn_lib.dir/CNN.cpp.o" "gcc" "src/CMakeFiles/cnn_lib.dir/CNN.cpp.o.d"
   "/home/ndomboukamdem/Documents/INFL/Master_2/Code2/src/ConvLayer.cpp" "src/CMakeFiles/cnn_lib.dir/ConvLayer.cpp.o" "gcc" "src/CMakeFiles/cnn_lib.dir/ConvLayer.cpp.o.d"
   "/home/ndomboukamdem/Documents/INFL/Master_2/Code2/src/ConvLayer3D.cpp" "src/CMakeFiles/cnn_lib.dir/ConvLayer3D.cpp.o" "gcc" "src/CMakeFiles/cnn_lib.dir/ConvLayer3D.cpp.o.d"
+  "/home/ndomboukamdem/Documents/INFL/Master_2/Code2/src/ConvLayer3DDataParallel.cpp" "src/CMakeFiles/cnn_lib.dir/ConvLayer3DDataParallel.cpp.o" "gcc" "src/CMakeFiles/cnn_lib.dir/ConvLayer3DDataParallel.cpp.o.d"
   "/home/ndomboukamdem/Documents/INFL/Master_2/Code2/src/ConvLayerDataParallel.cpp" "src/CMakeFiles/cnn_lib.dir/ConvLayerDataParallel.cpp.o" "gcc" "src/CMakeFiles/cnn_lib.dir/ConvLayerDataParallel.cpp.o.d"
   "/home/ndomboukamdem/Documents/INFL/Master_2/Code2/src/DenseLayer.cpp" "src/CMakeFiles/cnn_lib.dir/DenseLayer.cpp.o" "gcc" "src/CMakeFiles/cnn_lib.dir/DenseLayer.cpp.o.d"
+  "/home/ndomboukamdem/Documents/INFL/Master_2/Code2/src/DenseLayerDataParallel.cpp" "src/CMakeFiles/cnn_lib.dir/DenseLayerDataParallel.cpp.o" "gcc" "src/CMakeFiles/cnn_lib.dir/DenseLayerDataParallel.cpp.o.d"
+  "/home/ndomboukamdem/Documents/INFL/Master_2/Code2/src/DenseLayerModelParallel.cpp" "src/CMakeFiles/cnn_lib.dir/DenseLayerModelParallel.cpp.o" "gcc" "src/CMakeFiles/cnn_lib.dir/DenseLayerModelParallel.cpp.o.d"
   "/home/ndomboukamdem/Documents/INFL/Master_2/Code2/src/shared.cpp" "src/CMakeFiles/cnn_lib.dir/shared.cpp.o" "gcc" "src/CMakeFiles/cnn_lib.dir/shared.cpp.o.d"
   )
 

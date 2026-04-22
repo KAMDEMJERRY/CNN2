@@ -292,6 +292,30 @@ ConvLayer3D.cpp.s:
 	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/cnn_lib.dir/build.make src/CMakeFiles/cnn_lib.dir/ConvLayer3D.cpp.s
 .PHONY : ConvLayer3D.cpp.s
 
+ConvLayer3DDataParallel.o: ConvLayer3DDataParallel.cpp.o
+.PHONY : ConvLayer3DDataParallel.o
+
+# target to build an object file
+ConvLayer3DDataParallel.cpp.o:
+	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/cnn_lib.dir/build.make src/CMakeFiles/cnn_lib.dir/ConvLayer3DDataParallel.cpp.o
+.PHONY : ConvLayer3DDataParallel.cpp.o
+
+ConvLayer3DDataParallel.i: ConvLayer3DDataParallel.cpp.i
+.PHONY : ConvLayer3DDataParallel.i
+
+# target to preprocess a source file
+ConvLayer3DDataParallel.cpp.i:
+	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/cnn_lib.dir/build.make src/CMakeFiles/cnn_lib.dir/ConvLayer3DDataParallel.cpp.i
+.PHONY : ConvLayer3DDataParallel.cpp.i
+
+ConvLayer3DDataParallel.s: ConvLayer3DDataParallel.cpp.s
+.PHONY : ConvLayer3DDataParallel.s
+
+# target to generate assembly for a file
+ConvLayer3DDataParallel.cpp.s:
+	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/cnn_lib.dir/build.make src/CMakeFiles/cnn_lib.dir/ConvLayer3DDataParallel.cpp.s
+.PHONY : ConvLayer3DDataParallel.cpp.s
+
 ConvLayerDataParallel.o: ConvLayerDataParallel.cpp.o
 .PHONY : ConvLayerDataParallel.o
 
@@ -339,6 +363,54 @@ DenseLayer.s: DenseLayer.cpp.s
 DenseLayer.cpp.s:
 	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/cnn_lib.dir/build.make src/CMakeFiles/cnn_lib.dir/DenseLayer.cpp.s
 .PHONY : DenseLayer.cpp.s
+
+DenseLayerDataParallel.o: DenseLayerDataParallel.cpp.o
+.PHONY : DenseLayerDataParallel.o
+
+# target to build an object file
+DenseLayerDataParallel.cpp.o:
+	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/cnn_lib.dir/build.make src/CMakeFiles/cnn_lib.dir/DenseLayerDataParallel.cpp.o
+.PHONY : DenseLayerDataParallel.cpp.o
+
+DenseLayerDataParallel.i: DenseLayerDataParallel.cpp.i
+.PHONY : DenseLayerDataParallel.i
+
+# target to preprocess a source file
+DenseLayerDataParallel.cpp.i:
+	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/cnn_lib.dir/build.make src/CMakeFiles/cnn_lib.dir/DenseLayerDataParallel.cpp.i
+.PHONY : DenseLayerDataParallel.cpp.i
+
+DenseLayerDataParallel.s: DenseLayerDataParallel.cpp.s
+.PHONY : DenseLayerDataParallel.s
+
+# target to generate assembly for a file
+DenseLayerDataParallel.cpp.s:
+	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/cnn_lib.dir/build.make src/CMakeFiles/cnn_lib.dir/DenseLayerDataParallel.cpp.s
+.PHONY : DenseLayerDataParallel.cpp.s
+
+DenseLayerModelParallel.o: DenseLayerModelParallel.cpp.o
+.PHONY : DenseLayerModelParallel.o
+
+# target to build an object file
+DenseLayerModelParallel.cpp.o:
+	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/cnn_lib.dir/build.make src/CMakeFiles/cnn_lib.dir/DenseLayerModelParallel.cpp.o
+.PHONY : DenseLayerModelParallel.cpp.o
+
+DenseLayerModelParallel.i: DenseLayerModelParallel.cpp.i
+.PHONY : DenseLayerModelParallel.i
+
+# target to preprocess a source file
+DenseLayerModelParallel.cpp.i:
+	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/cnn_lib.dir/build.make src/CMakeFiles/cnn_lib.dir/DenseLayerModelParallel.cpp.i
+.PHONY : DenseLayerModelParallel.cpp.i
+
+DenseLayerModelParallel.s: DenseLayerModelParallel.cpp.s
+.PHONY : DenseLayerModelParallel.s
+
+# target to generate assembly for a file
+DenseLayerModelParallel.cpp.s:
+	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/cnn_lib.dir/build.make src/CMakeFiles/cnn_lib.dir/DenseLayerModelParallel.cpp.s
+.PHONY : DenseLayerModelParallel.cpp.s
 
 dimensions.o: dimensions.cpp.o
 .PHONY : dimensions.o
@@ -462,12 +534,21 @@ help:
 	@echo "... ConvLayer3D.o"
 	@echo "... ConvLayer3D.i"
 	@echo "... ConvLayer3D.s"
+	@echo "... ConvLayer3DDataParallel.o"
+	@echo "... ConvLayer3DDataParallel.i"
+	@echo "... ConvLayer3DDataParallel.s"
 	@echo "... ConvLayerDataParallel.o"
 	@echo "... ConvLayerDataParallel.i"
 	@echo "... ConvLayerDataParallel.s"
 	@echo "... DenseLayer.o"
 	@echo "... DenseLayer.i"
 	@echo "... DenseLayer.s"
+	@echo "... DenseLayerDataParallel.o"
+	@echo "... DenseLayerDataParallel.i"
+	@echo "... DenseLayerDataParallel.s"
+	@echo "... DenseLayerModelParallel.o"
+	@echo "... DenseLayerModelParallel.i"
+	@echo "... DenseLayerModelParallel.s"
 	@echo "... dimensions.o"
 	@echo "... dimensions.i"
 	@echo "... dimensions.s"

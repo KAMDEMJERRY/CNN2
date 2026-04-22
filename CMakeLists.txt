@@ -10,6 +10,7 @@ endif()
 
 # ── Flags communs ─────────────────────────────────────────────────────────────
 add_compile_options(-frtti)
+# add_compile_definitions(EIGEN_DONT_PARALLELIZE) 
 
 # ── Flags par mode ────────────────────────────────────────────────────────────
 if(CMAKE_BUILD_TYPE STREQUAL "Release")

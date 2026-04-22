@@ -16,6 +16,15 @@ add_executable(test_DenseLayer test_DenseLayer.cpp ../src/DenseLayer.cpp)
 target_link_libraries(test_DenseLayer PRIVATE GTest::GTest GTest::Main Eigen3::Eigen OpenMP::OpenMP_CXX Boost::serialization)
 gtest_discover_tests(test_DenseLayer)
 
+add_executable(test_DenseLayerModelParallel
+    test_DenseLayerModelParallel.cpp
+    ../src/DenseLayer.cpp
+    ../src/DenseLayerModelParallel.cpp
+)
+target_link_libraries(test_DenseLayerModelParallel
+    PRIVATE GTest::GTest GTest::Main Eigen3::Eigen OpenMP::OpenMP_CXX Boost::serialization)
+gtest_discover_tests(test_DenseLayerModelParallel)
+
 add_executable(test_ActivationLayer test_ActivationLayer.cpp)
 target_link_libraries(test_ActivationLayer PRIVATE GTest::GTest GTest::Main Eigen3::Eigen OpenMP::OpenMP_CXX Boost::serialization)
 gtest_discover_tests(test_ActivationLayer)

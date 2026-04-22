@@ -19,4 +19,6 @@
 #include "WindowAttention3DLayer.hpp"    // ← nouveau
 #include "Augmentation3D.hpp"
 #include "BatchNorm3DLayer.hpp"
-
+#include "ConvLayerDataParallel.hpp"
+#include "DenseLayerDataParallel.hpp"
+#include "DenseLayerModelParallel.hpp"
