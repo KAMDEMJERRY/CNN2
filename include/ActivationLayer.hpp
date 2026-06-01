@@ -117,6 +117,55 @@ public:
 };
 
 // ─────────────────────────────────────────────────────────────────────────────
+// GELULayer et utilitaires
+// ─────────────────────────────────────────────────────────────────────────────
+inline float gelu_approx(float x) {
+    return 0.5f * x * (1.0f + std::tanh(0.7978845608f * (x + 0.044715f * x*x*x)));
+}
+
+inline float gelu_grad(float x) {
+    float t  = std::tanh(0.7978845608f * (x + 0.044715f * x*x*x));
+    float s2 = 1.0f - t * t;
+    return 0.5f * (1.0f + t) + 0.5f * x * s2 * 0.7978845608f * (1.0f + 3.0f * 0.044715f * x*x);
+}
+
+inline void gelu_inplace(Eigen::MatrixXf& m) {
+    m = m.unaryExpr([](float x){ return gelu_approx(x); });
+}
+
+class GELULayer : public Layer {
+private:
+    Tensor input_cache;
+
+public:
+    GELULayer() = default;
+    ~GELULayer() override = default;
+
+    Tensor forward(const Tensor& input) override {
+        input_cache = input;
+        Tensor output = input;
+
+        for (int i = 0; i < output.size(); ++i) {
+            output[i] = gelu_approx(output[i]);
+        }
+
+        return output;
+    }
+
+    Tensor backward(const Tensor& gradOutput) override {
+        Tensor gradInput(gradOutput.shape());
+
+        for (int i = 0; i < gradOutput.size(); ++i) {
+            gradInput[i] = gradOutput[i] * gelu_grad(input_cache[i]);
+        }
+
+        return gradInput;
+    }
+
+    std::string getName() const override { return "GELU"; }
+};
+
+// ─────────────────────────────────────────────────────────────────────────────
 // SoftmaxLayer
 //
 // Supporte 4D et 5D :

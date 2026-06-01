@@ -67,3 +67,13 @@ gtest_discover_tests(test_Augmentation3D)
 
 add_executable(test_serialization test_serialization.cpp ../src/CNN.cpp ../src/ConvLayer.cpp ../src/ConvLayer3D.cpp ../src/DenseLayer.cpp ../src/shared.cpp)
 target_link_libraries(test_serialization PRIVATE Eigen3::Eigen OpenMP::OpenMP_CXX Boost::serialization)
+
+# ── ConvNeXt Tests ───────────────────────────────────────────────────────────
+
+add_executable(test_ConvNeXtDense test_ConvNeXtDense.cpp ../src/ConvLayer3D.cpp)
+target_link_libraries(test_ConvNeXtDense PRIVATE GTest::GTest GTest::Main Eigen3::Eigen OpenMP::OpenMP_CXX Boost::serialization)
+gtest_discover_tests(test_ConvNeXtDense)
+
+add_executable(test_ConvNeXtSparse test_ConvNeXtSparse.cpp ../src/ConvLayer3D.cpp)
+target_link_libraries(test_ConvNeXtSparse PRIVATE GTest::GTest GTest::Main Eigen3::Eigen OpenMP::OpenMP_CXX Boost::serialization)
+gtest_discover_tests(test_ConvNeXtSparse)

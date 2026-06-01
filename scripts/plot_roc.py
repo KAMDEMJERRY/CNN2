@@ -4,20 +4,21 @@ import matplotlib.pyplot as plt
 from sklearn.metrics import roc_curve, auc
 from sklearn.preprocessing import label_binarize
 import os
+import argparse
 
-# Paramètres
+# Paramètres par défaut
 CSV_PATH = "logs/predictions.csv"
 OUTPUT_PATH = "docs/results/roc_curve.png"
 CLASSES = ["No fracture", "Fracture T1", "Fracture T2"]
 N_CLASSES = len(CLASSES)
 
-def plot_roc_auc():
-    if not os.path.exists(CSV_PATH):
-        print(f"Error: {CSV_PATH} not found. Please run the C++ training/evaluation first.")
+def plot_roc_auc(csv_path=CSV_PATH, output_path=OUTPUT_PATH):
+    if not os.path.exists(csv_path):
+        print(f"Error: {csv_path} not found. Please run the C++ training/evaluation first.")
         return
 
     # 1. Charger les données
-    df = pd.read_csv(CSV_PATH)
+    df = pd.read_csv(csv_path)
     y_true = df['true_label'].values
     
     # Extraire les probs
@@ -89,8 +90,19 @@ def plot_roc_auc():
     plt.grid(True, alpha=0.3)
     
     # Enregistrer
-    plt.savefig(OUTPUT_PATH, dpi=300, bbox_inches='tight')
-    print(f"ROC Curve successfully saved to {OUTPUT_PATH}")
+    # Ensure output directory exists
+    out_dir = os.path.dirname(output_path)
+    if out_dir and not os.path.exists(out_dir):
+        os.makedirs(out_dir, exist_ok=True)
+
+    plt.savefig(output_path, dpi=300, bbox_inches='tight')
+    print(f"ROC Curve successfully saved to {output_path}")
 
 if __name__ == "__main__":
-    plot_roc_auc()
+    parser = argparse.ArgumentParser(description='Plot ROC curve from predictions CSV')
+    parser.add_argument('csvfile', nargs='?', default=CSV_PATH,
+                        help=f'Predictions CSV file (default: {CSV_PATH})')
+    parser.add_argument('-o', '--out', default=OUTPUT_PATH,
+                        help=f'Output image path (default: {OUTPUT_PATH})')
+    args = parser.parse_args()
+    plot_roc_auc(csv_path=args.csvfile, output_path=args.out)

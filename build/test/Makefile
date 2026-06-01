@@ -336,6 +336,34 @@ test_serialization/fast:
 	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_serialization.dir/build.make test/CMakeFiles/test_serialization.dir/build
 .PHONY : test_serialization/fast
 
+# Convenience name for target.
+test/CMakeFiles/test_ConvNeXtDense.dir/rule:
+	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/CMakeFiles/test_ConvNeXtDense.dir/rule
+.PHONY : test/CMakeFiles/test_ConvNeXtDense.dir/rule
+
+# Convenience name for target.
+test_ConvNeXtDense: test/CMakeFiles/test_ConvNeXtDense.dir/rule
+.PHONY : test_ConvNeXtDense
+
+# fast build rule for target.
+test_ConvNeXtDense/fast:
+	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_ConvNeXtDense.dir/build.make test/CMakeFiles/test_ConvNeXtDense.dir/build
+.PHONY : test_ConvNeXtDense/fast
+
+# Convenience name for target.
+test/CMakeFiles/test_ConvNeXtSparse.dir/rule:
+	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/CMakeFiles/test_ConvNeXtSparse.dir/rule
+.PHONY : test/CMakeFiles/test_ConvNeXtSparse.dir/rule
+
+# Convenience name for target.
+test_ConvNeXtSparse: test/CMakeFiles/test_ConvNeXtSparse.dir/rule
+.PHONY : test_ConvNeXtSparse
+
+# fast build rule for target.
+test_ConvNeXtSparse/fast:
+	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_ConvNeXtSparse.dir/build.make test/CMakeFiles/test_ConvNeXtSparse.dir/build
+.PHONY : test_ConvNeXtSparse/fast
+
 __/src/CNN.o: __/src/CNN.cpp.o
 .PHONY : __/src/CNN.o
 
@@ -400,6 +428,8 @@ __/src/ConvLayer3D.o: __/src/ConvLayer3D.cpp.o
 __/src/ConvLayer3D.cpp.o:
 	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_CNN.dir/build.make test/CMakeFiles/test_CNN.dir/__/src/ConvLayer3D.cpp.o
 	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_serialization.dir/build.make test/CMakeFiles/test_serialization.dir/__/src/ConvLayer3D.cpp.o
+	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_ConvNeXtDense.dir/build.make test/CMakeFiles/test_ConvNeXtDense.dir/__/src/ConvLayer3D.cpp.o
+	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_ConvNeXtSparse.dir/build.make test/CMakeFiles/test_ConvNeXtSparse.dir/__/src/ConvLayer3D.cpp.o
 .PHONY : __/src/ConvLayer3D.cpp.o
 
 __/src/ConvLayer3D.i: __/src/ConvLayer3D.cpp.i
@@ -409,6 +439,8 @@ __/src/ConvLayer3D.i: __/src/ConvLayer3D.cpp.i
 __/src/ConvLayer3D.cpp.i:
 	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_CNN.dir/build.make test/CMakeFiles/test_CNN.dir/__/src/ConvLayer3D.cpp.i
 	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_serialization.dir/build.make test/CMakeFiles/test_serialization.dir/__/src/ConvLayer3D.cpp.i
+	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_ConvNeXtDense.dir/build.make test/CMakeFiles/test_ConvNeXtDense.dir/__/src/ConvLayer3D.cpp.i
+	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_ConvNeXtSparse.dir/build.make test/CMakeFiles/test_ConvNeXtSparse.dir/__/src/ConvLayer3D.cpp.i
 .PHONY : __/src/ConvLayer3D.cpp.i
 
 __/src/ConvLayer3D.s: __/src/ConvLayer3D.cpp.s
@@ -418,6 +450,8 @@ __/src/ConvLayer3D.s: __/src/ConvLayer3D.cpp.s
 __/src/ConvLayer3D.cpp.s:
 	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_CNN.dir/build.make test/CMakeFiles/test_CNN.dir/__/src/ConvLayer3D.cpp.s
 	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_serialization.dir/build.make test/CMakeFiles/test_serialization.dir/__/src/ConvLayer3D.cpp.s
+	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_ConvNeXtDense.dir/build.make test/CMakeFiles/test_ConvNeXtDense.dir/__/src/ConvLayer3D.cpp.s
+	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_ConvNeXtSparse.dir/build.make test/CMakeFiles/test_ConvNeXtSparse.dir/__/src/ConvLayer3D.cpp.s
 .PHONY : __/src/ConvLayer3D.cpp.s
 
 __/src/DenseLayer.o: __/src/DenseLayer.cpp.o
@@ -647,6 +681,54 @@ test_ConvLayer.s: test_ConvLayer.cpp.s
 test_ConvLayer.cpp.s:
 	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_ConvLayer.dir/build.make test/CMakeFiles/test_ConvLayer.dir/test_ConvLayer.cpp.s
 .PHONY : test_ConvLayer.cpp.s
+
+test_ConvNeXtDense.o: test_ConvNeXtDense.cpp.o
+.PHONY : test_ConvNeXtDense.o
+
+# target to build an object file
+test_ConvNeXtDense.cpp.o:
+	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_ConvNeXtDense.dir/build.make test/CMakeFiles/test_ConvNeXtDense.dir/test_ConvNeXtDense.cpp.o
+.PHONY : test_ConvNeXtDense.cpp.o
+
+test_ConvNeXtDense.i: test_ConvNeXtDense.cpp.i
+.PHONY : test_ConvNeXtDense.i
+
+# target to preprocess a source file
+test_ConvNeXtDense.cpp.i:
+	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_ConvNeXtDense.dir/build.make test/CMakeFiles/test_ConvNeXtDense.dir/test_ConvNeXtDense.cpp.i
+.PHONY : test_ConvNeXtDense.cpp.i
+
+test_ConvNeXtDense.s: test_ConvNeXtDense.cpp.s
+.PHONY : test_ConvNeXtDense.s
+
+# target to generate assembly for a file
+test_ConvNeXtDense.cpp.s:
+	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_ConvNeXtDense.dir/build.make test/CMakeFiles/test_ConvNeXtDense.dir/test_ConvNeXtDense.cpp.s
+.PHONY : test_ConvNeXtDense.cpp.s
+
+test_ConvNeXtSparse.o: test_ConvNeXtSparse.cpp.o
+.PHONY : test_ConvNeXtSparse.o
+
+# target to build an object file
+test_ConvNeXtSparse.cpp.o:
+	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_ConvNeXtSparse.dir/build.make test/CMakeFiles/test_ConvNeXtSparse.dir/test_ConvNeXtSparse.cpp.o
+.PHONY : test_ConvNeXtSparse.cpp.o
+
+test_ConvNeXtSparse.i: test_ConvNeXtSparse.cpp.i
+.PHONY : test_ConvNeXtSparse.i
+
+# target to preprocess a source file
+test_ConvNeXtSparse.cpp.i:
+	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_ConvNeXtSparse.dir/build.make test/CMakeFiles/test_ConvNeXtSparse.dir/test_ConvNeXtSparse.cpp.i
+.PHONY : test_ConvNeXtSparse.cpp.i
+
+test_ConvNeXtSparse.s: test_ConvNeXtSparse.cpp.s
+.PHONY : test_ConvNeXtSparse.s
+
+# target to generate assembly for a file
+test_ConvNeXtSparse.cpp.s:
+	cd /home/ndomboukamdem/Documents/INFL/Master_2/Code2/build && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_ConvNeXtSparse.dir/build.make test/CMakeFiles/test_ConvNeXtSparse.dir/test_ConvNeXtSparse.cpp.s
+.PHONY : test_ConvNeXtSparse.cpp.s
 
 test_DenseLayer.o: test_DenseLayer.cpp.o
 .PHONY : test_DenseLayer.o
@@ -902,6 +984,8 @@ help:
 	@echo "... test_Augmentation3D"
 	@echo "... test_CNN"
 	@echo "... test_ConvLayer"
+	@echo "... test_ConvNeXtDense"
+	@echo "... test_ConvNeXtSparse"
 	@echo "... test_DenseLayer"
 	@echo "... test_DenseLayerModelParallel"
 	@echo "... test_Dimensions"
@@ -948,6 +1032,12 @@ help:
 	@echo "... test_ConvLayer.o"
 	@echo "... test_ConvLayer.i"
 	@echo "... test_ConvLayer.s"
+	@echo "... test_ConvNeXtDense.o"
+	@echo "... test_ConvNeXtDense.i"
+	@echo "... test_ConvNeXtDense.s"
+	@echo "... test_ConvNeXtSparse.o"
+	@echo "... test_ConvNeXtSparse.i"
+	@echo "... test_ConvNeXtSparse.s"
 	@echo "... test_DenseLayer.o"
 	@echo "... test_DenseLayer.i"
 	@echo "... test_DenseLayer.s"

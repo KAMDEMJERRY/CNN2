@@ -91,7 +91,6 @@ src/CMakeFiles/cnn_lib.dir/CNN.cpp.o: ../src/CNN.cpp \
   /usr/include/x86_64-linux-gnu/bits/types/FILE.h \
   /usr/include/x86_64-linux-gnu/bits/types/locale_t.h \
   /usr/include/x86_64-linux-gnu/bits/types/__locale_t.h \
-  /usr/include/x86_64-linux-gnu/bits/wchar2.h \
   /usr/include/c++/11/bits/shared_ptr_base.h \
   /usr/include/c++/11/typeinfo \
   /usr/include/c++/11/bits/allocated_ptr.h \
@@ -173,11 +172,8 @@ src/CMakeFiles/cnn_lib.dir/CNN.cpp.o: ../src/CNN.cpp \
   /usr/include/x86_64-linux-gnu/sys/select.h \
   /usr/include/x86_64-linux-gnu/bits/select.h \
   /usr/include/x86_64-linux-gnu/bits/types/sigset_t.h \
-  /usr/include/x86_64-linux-gnu/bits/select2.h \
   /usr/include/alloca.h \
-  /usr/include/x86_64-linux-gnu/bits/stdlib-bsearch.h \
   /usr/include/x86_64-linux-gnu/bits/stdlib-float.h \
-  /usr/include/x86_64-linux-gnu/bits/stdlib.h \
   /usr/include/c++/11/bits/std_abs.h \
   /usr/include/c++/11/cstdio \
   /usr/include/stdio.h \
@@ -186,8 +182,6 @@ src/CMakeFiles/cnn_lib.dir/CNN.cpp.o: ../src/CNN.cpp \
   /usr/include/x86_64-linux-gnu/bits/types/struct_FILE.h \
   /usr/include/x86_64-linux-gnu/bits/types/cookie_io_functions_t.h \
   /usr/include/x86_64-linux-gnu/bits/stdio_lim.h \
-  /usr/include/x86_64-linux-gnu/bits/stdio.h \
-  /usr/include/x86_64-linux-gnu/bits/stdio2.h \
   /usr/include/c++/11/cerrno \
   /usr/include/errno.h \
   /usr/include/x86_64-linux-gnu/bits/errno.h \
@@ -268,87 +262,6 @@ src/CMakeFiles/cnn_lib.dir/CNN.cpp.o: ../src/CNN.cpp \
   /usr/lib/gcc/x86_64-linux-gnu/11/include/xmmintrin.h \
   /usr/lib/gcc/x86_64-linux-gnu/11/include/mm_malloc.h \
   /usr/include/c++/11/stdlib.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/pmmintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/mwaitintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/tmmintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/smmintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/popcntintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/nmmintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/immintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/x86gprintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/ia32intrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/adxintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/bmiintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/bmi2intrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/cetintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/cldemoteintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/clflushoptintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/clwbintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/clzerointrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/enqcmdintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/fxsrintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/lzcntintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/lwpintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/movdirintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/mwaitxintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/pconfigintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/pkuintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/rdseedintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/rtmintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/serializeintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/sgxintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/tbmintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/tsxldtrkintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/uintrintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/waitpkgintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/wbnoinvdintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/xsaveintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/xsavecintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/xsaveoptintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/xsavesintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/xtestintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/hresetintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/wmmintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avxintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avxvnniintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx2intrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512fintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512erintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512pfintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512cdintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512vlintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512bwintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512dqintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512vlbwintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512vldqintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512ifmaintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512ifmavlintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512vbmiintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512vbmivlintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx5124fmapsintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx5124vnniwintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512vpopcntdqintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512vbmi2intrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512vbmi2vlintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512vnniintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512vnnivlintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512vpopcntdqvlintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512bitalgintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512vp2intersectintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512vp2intersectvlintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/shaintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/fmaintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/f16cintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/gfniintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/vaesintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/vpclmulqdqintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512bf16vlintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512bf16intrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/amxtileintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/amxint8intrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/amxbf16intrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/prfchwintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/keylockerintrin.h \
   /usr/include/c++/11/complex \
   /usr/include/eigen3/Eigen/src/Core/util/MKL_support.h \
   /usr/include/c++/11/cstddef \
@@ -370,8 +283,6 @@ src/CMakeFiles/cnn_lib.dir/CNN.cpp.o: ../src/CNN.cpp \
   /usr/include/c++/11/cstring \
   /usr/include/string.h \
   /usr/include/strings.h \
-  /usr/include/x86_64-linux-gnu/bits/strings_fortified.h \
-  /usr/include/x86_64-linux-gnu/bits/string_fortified.h \
   /usr/include/c++/11/climits \
   /usr/lib/gcc/x86_64-linux-gnu/11/include/limits.h \
   /usr/lib/gcc/x86_64-linux-gnu/11/include/syslimits.h \
@@ -403,16 +314,8 @@ src/CMakeFiles/cnn_lib.dir/CNN.cpp.o: ../src/CNN.cpp \
   /usr/include/eigen3/Eigen/src/Core/arch/Default/GenericPacketMathFunctionsFwd.h \
   /usr/include/eigen3/Eigen/src/Core/arch/SSE/PacketMath.h \
   /usr/include/eigen3/Eigen/src/Core/arch/SSE/TypeCasting.h \
-  /usr/include/eigen3/Eigen/src/Core/arch/SSE/Complex.h \
-  /usr/include/eigen3/Eigen/src/Core/arch/AVX/PacketMath.h \
-  /usr/include/eigen3/Eigen/src/Core/arch/AVX/TypeCasting.h \
-  /usr/include/eigen3/Eigen/src/Core/arch/AVX/Complex.h \
-  /usr/include/eigen3/Eigen/src/Core/arch/AVX512/PacketMath.h \
-  /usr/include/eigen3/Eigen/src/Core/arch/AVX512/TypeCasting.h \
-  /usr/include/eigen3/Eigen/src/Core/arch/AVX512/Complex.h \
   /usr/include/eigen3/Eigen/src/Core/arch/SSE/MathFunctions.h \
-  /usr/include/eigen3/Eigen/src/Core/arch/AVX/MathFunctions.h \
-  /usr/include/eigen3/Eigen/src/Core/arch/AVX512/MathFunctions.h \
+  /usr/include/eigen3/Eigen/src/Core/arch/SSE/Complex.h \
   /usr/include/eigen3/Eigen/src/Core/arch/Default/Settings.h \
   /usr/include/eigen3/Eigen/src/Core/arch/Default/GenericPacketMathFunctions.h \
   /usr/include/eigen3/Eigen/src/Core/functors/TernaryFunctors.h \
@@ -604,10 +507,6 @@ src/CMakeFiles/cnn_lib.dir/CNN.cpp.o: ../src/CNN.cpp \
   /usr/include/eigen3/unsupported/Eigen/src/SpecialFunctions/SpecialFunctionsPacketMath.h \
   /usr/include/eigen3/unsupported/Eigen/src/SpecialFunctions/SpecialFunctionsFunctors.h \
   /usr/include/eigen3/unsupported/Eigen/src/SpecialFunctions/SpecialFunctionsArrayAPI.h \
-  /usr/include/eigen3/unsupported/Eigen/src/SpecialFunctions/arch/AVX/BesselFunctions.h \
-  /usr/include/eigen3/unsupported/Eigen/src/SpecialFunctions/arch/AVX/SpecialFunctions.h \
-  /usr/include/eigen3/unsupported/Eigen/src/SpecialFunctions/arch/AVX512/BesselFunctions.h \
-  /usr/include/eigen3/unsupported/Eigen/src/SpecialFunctions/arch/AVX512/SpecialFunctions.h \
   /usr/include/eigen3/Eigen/src/Core/util/ReenableStupidWarnings.h \
   /usr/include/eigen3/Eigen/src/Core/util/DisableStupidWarnings.h \
   /usr/include/eigen3/unsupported/Eigen/CXX11/src/util/CXX11Meta.h \
@@ -702,7 +601,6 @@ src/CMakeFiles/cnn_lib.dir/CNN.cpp.o: ../src/CNN.cpp \
   /usr/include/x86_64-linux-gnu/bits/confname.h \
   /usr/include/x86_64-linux-gnu/bits/getopt_posix.h \
   /usr/include/x86_64-linux-gnu/bits/getopt_core.h \
-  /usr/include/x86_64-linux-gnu/bits/unistd.h \
   /usr/include/x86_64-linux-gnu/bits/unistd_ext.h \
   /usr/include/linux/close_range.h \
   /usr/include/boost/config/detail/select_platform_config.hpp \
@@ -1160,7 +1058,6 @@ src/CMakeFiles/cnn_lib.dir/ConvLayer.cpp.o: ../src/ConvLayer.cpp \
   /usr/include/x86_64-linux-gnu/bits/types/__sigset_t.h \
   /usr/include/x86_64-linux-gnu/bits/types/struct_timeval.h \
   /usr/include/x86_64-linux-gnu/bits/types/struct_timespec.h \
-  /usr/include/x86_64-linux-gnu/bits/select2.h \
   /usr/include/x86_64-linux-gnu/bits/pthreadtypes.h \
   /usr/include/x86_64-linux-gnu/bits/thread-shared-types.h \
   /usr/include/x86_64-linux-gnu/bits/pthreadtypes-arch.h \
@@ -1168,9 +1065,7 @@ src/CMakeFiles/cnn_lib.dir/ConvLayer.cpp.o: ../src/ConvLayer.cpp \
   /usr/include/x86_64-linux-gnu/bits/struct_mutex.h \
   /usr/include/x86_64-linux-gnu/bits/struct_rwlock.h \
   /usr/include/alloca.h \
-  /usr/include/x86_64-linux-gnu/bits/stdlib-bsearch.h \
   /usr/include/x86_64-linux-gnu/bits/stdlib-float.h \
-  /usr/include/x86_64-linux-gnu/bits/stdlib.h \
   /usr/include/c++/11/bits/specfun.h \
   /usr/include/c++/11/bits/stl_algobase.h \
   /usr/include/c++/11/bits/functexcept.h \
@@ -1207,87 +1102,6 @@ src/CMakeFiles/cnn_lib.dir/ConvLayer.cpp.o: ../src/ConvLayer.cpp \
   /usr/lib/gcc/x86_64-linux-gnu/11/include/mm_malloc.h \
   /usr/include/c++/11/stdlib.h \
   /usr/include/c++/11/cstdlib \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/pmmintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/mwaitintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/tmmintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/smmintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/popcntintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/nmmintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/immintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/x86gprintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/ia32intrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/adxintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/bmiintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/bmi2intrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/cetintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/cldemoteintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/clflushoptintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/clwbintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/clzerointrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/enqcmdintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/fxsrintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/lzcntintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/lwpintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/movdirintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/mwaitxintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/pconfigintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/pkuintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/rdseedintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/rtmintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/serializeintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/sgxintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/tbmintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/tsxldtrkintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/uintrintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/waitpkgintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/wbnoinvdintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/xsaveintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/xsavecintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/xsaveoptintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/xsavesintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/xtestintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/hresetintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/wmmintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avxintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avxvnniintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx2intrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512fintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512erintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512pfintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512cdintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512vlintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512bwintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512dqintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512vlbwintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512vldqintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512ifmaintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512ifmavlintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512vbmiintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512vbmivlintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx5124fmapsintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx5124vnniwintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512vpopcntdqintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512vbmi2intrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512vbmi2vlintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512vnniintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512vnnivlintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512vpopcntdqvlintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512bitalgintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512vp2intersectintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512vp2intersectvlintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/shaintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/fmaintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/f16cintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/gfniintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/vaesintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/vpclmulqdqintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512bf16vlintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512bf16intrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/amxtileintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/amxint8intrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/amxbf16intrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/prfchwintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/keylockerintrin.h \
   /usr/include/c++/11/new \
   /usr/include/c++/11/bits/exception.h \
   /usr/include/c++/11/complex \
@@ -1307,7 +1121,6 @@ src/CMakeFiles/cnn_lib.dir/ConvLayer.cpp.o: ../src/ConvLayer.cpp \
   /usr/include/x86_64-linux-gnu/bits/types/__mbstate_t.h \
   /usr/include/x86_64-linux-gnu/bits/types/__FILE.h \
   /usr/include/x86_64-linux-gnu/bits/types/FILE.h \
-  /usr/include/x86_64-linux-gnu/bits/wchar2.h \
   /usr/include/c++/11/exception \
   /usr/include/c++/11/bits/exception_ptr.h \
   /usr/include/c++/11/bits/cxxabi_init_exception.h \
@@ -1371,8 +1184,6 @@ src/CMakeFiles/cnn_lib.dir/ConvLayer.cpp.o: ../src/ConvLayer.cpp \
   /usr/include/x86_64-linux-gnu/bits/types/struct_FILE.h \
   /usr/include/x86_64-linux-gnu/bits/types/cookie_io_functions_t.h \
   /usr/include/x86_64-linux-gnu/bits/stdio_lim.h \
-  /usr/include/x86_64-linux-gnu/bits/stdio.h \
-  /usr/include/x86_64-linux-gnu/bits/stdio2.h \
   /usr/include/c++/11/cerrno \
   /usr/include/errno.h \
   /usr/include/x86_64-linux-gnu/bits/errno.h \
@@ -1437,8 +1248,6 @@ src/CMakeFiles/cnn_lib.dir/ConvLayer.cpp.o: ../src/ConvLayer.cpp \
   /usr/include/c++/11/cstring \
   /usr/include/string.h \
   /usr/include/strings.h \
-  /usr/include/x86_64-linux-gnu/bits/strings_fortified.h \
-  /usr/include/x86_64-linux-gnu/bits/string_fortified.h \
   /usr/include/c++/11/climits \
   /usr/lib/gcc/x86_64-linux-gnu/11/include/limits.h \
   /usr/lib/gcc/x86_64-linux-gnu/11/include/syslimits.h \
@@ -1471,16 +1280,8 @@ src/CMakeFiles/cnn_lib.dir/ConvLayer.cpp.o: ../src/ConvLayer.cpp \
   /usr/include/eigen3/Eigen/src/Core/arch/Default/GenericPacketMathFunctionsFwd.h \
   /usr/include/eigen3/Eigen/src/Core/arch/SSE/PacketMath.h \
   /usr/include/eigen3/Eigen/src/Core/arch/SSE/TypeCasting.h \
-  /usr/include/eigen3/Eigen/src/Core/arch/SSE/Complex.h \
-  /usr/include/eigen3/Eigen/src/Core/arch/AVX/PacketMath.h \
-  /usr/include/eigen3/Eigen/src/Core/arch/AVX/TypeCasting.h \
-  /usr/include/eigen3/Eigen/src/Core/arch/AVX/Complex.h \
-  /usr/include/eigen3/Eigen/src/Core/arch/AVX512/PacketMath.h \
-  /usr/include/eigen3/Eigen/src/Core/arch/AVX512/TypeCasting.h \
-  /usr/include/eigen3/Eigen/src/Core/arch/AVX512/Complex.h \
   /usr/include/eigen3/Eigen/src/Core/arch/SSE/MathFunctions.h \
-  /usr/include/eigen3/Eigen/src/Core/arch/AVX/MathFunctions.h \
-  /usr/include/eigen3/Eigen/src/Core/arch/AVX512/MathFunctions.h \
+  /usr/include/eigen3/Eigen/src/Core/arch/SSE/Complex.h \
   /usr/include/eigen3/Eigen/src/Core/arch/Default/Settings.h \
   /usr/include/eigen3/Eigen/src/Core/arch/Default/GenericPacketMathFunctions.h \
   /usr/include/eigen3/Eigen/src/Core/functors/TernaryFunctors.h \
@@ -1665,10 +1466,6 @@ src/CMakeFiles/cnn_lib.dir/ConvLayer.cpp.o: ../src/ConvLayer.cpp \
   /usr/include/eigen3/unsupported/Eigen/src/SpecialFunctions/SpecialFunctionsPacketMath.h \
   /usr/include/eigen3/unsupported/Eigen/src/SpecialFunctions/SpecialFunctionsFunctors.h \
   /usr/include/eigen3/unsupported/Eigen/src/SpecialFunctions/SpecialFunctionsArrayAPI.h \
-  /usr/include/eigen3/unsupported/Eigen/src/SpecialFunctions/arch/AVX/BesselFunctions.h \
-  /usr/include/eigen3/unsupported/Eigen/src/SpecialFunctions/arch/AVX/SpecialFunctions.h \
-  /usr/include/eigen3/unsupported/Eigen/src/SpecialFunctions/arch/AVX512/BesselFunctions.h \
-  /usr/include/eigen3/unsupported/Eigen/src/SpecialFunctions/arch/AVX512/SpecialFunctions.h \
   /usr/include/eigen3/Eigen/src/Core/util/ReenableStupidWarnings.h \
   /usr/include/eigen3/Eigen/src/Core/util/DisableStupidWarnings.h \
   /usr/include/eigen3/unsupported/Eigen/CXX11/src/util/CXX11Meta.h \
@@ -1789,7 +1586,6 @@ src/CMakeFiles/cnn_lib.dir/ConvLayer.cpp.o: ../src/ConvLayer.cpp \
   /usr/include/x86_64-linux-gnu/bits/confname.h \
   /usr/include/x86_64-linux-gnu/bits/getopt_posix.h \
   /usr/include/x86_64-linux-gnu/bits/getopt_core.h \
-  /usr/include/x86_64-linux-gnu/bits/unistd.h \
   /usr/include/x86_64-linux-gnu/bits/unistd_ext.h \
   /usr/include/linux/close_range.h \
   /usr/include/boost/config/detail/select_platform_config.hpp \
@@ -2242,7 +2038,6 @@ src/CMakeFiles/cnn_lib.dir/ConvLayer3D.cpp.o: ../src/ConvLayer3D.cpp \
   /usr/include/x86_64-linux-gnu/bits/types/__sigset_t.h \
   /usr/include/x86_64-linux-gnu/bits/types/struct_timeval.h \
   /usr/include/x86_64-linux-gnu/bits/types/struct_timespec.h \
-  /usr/include/x86_64-linux-gnu/bits/select2.h \
   /usr/include/x86_64-linux-gnu/bits/pthreadtypes.h \
   /usr/include/x86_64-linux-gnu/bits/thread-shared-types.h \
   /usr/include/x86_64-linux-gnu/bits/pthreadtypes-arch.h \
@@ -2250,9 +2045,7 @@ src/CMakeFiles/cnn_lib.dir/ConvLayer3D.cpp.o: ../src/ConvLayer3D.cpp \
   /usr/include/x86_64-linux-gnu/bits/struct_mutex.h \
   /usr/include/x86_64-linux-gnu/bits/struct_rwlock.h \
   /usr/include/alloca.h \
-  /usr/include/x86_64-linux-gnu/bits/stdlib-bsearch.h \
   /usr/include/x86_64-linux-gnu/bits/stdlib-float.h \
-  /usr/include/x86_64-linux-gnu/bits/stdlib.h \
   /usr/include/c++/11/bits/specfun.h \
   /usr/include/c++/11/bits/stl_algobase.h \
   /usr/include/c++/11/bits/functexcept.h \
@@ -2289,87 +2082,6 @@ src/CMakeFiles/cnn_lib.dir/ConvLayer3D.cpp.o: ../src/ConvLayer3D.cpp \
   /usr/lib/gcc/x86_64-linux-gnu/11/include/mm_malloc.h \
   /usr/include/c++/11/stdlib.h \
   /usr/include/c++/11/cstdlib \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/pmmintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/mwaitintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/tmmintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/smmintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/popcntintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/nmmintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/immintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/x86gprintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/ia32intrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/adxintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/bmiintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/bmi2intrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/cetintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/cldemoteintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/clflushoptintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/clwbintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/clzerointrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/enqcmdintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/fxsrintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/lzcntintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/lwpintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/movdirintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/mwaitxintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/pconfigintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/pkuintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/rdseedintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/rtmintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/serializeintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/sgxintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/tbmintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/tsxldtrkintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/uintrintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/waitpkgintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/wbnoinvdintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/xsaveintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/xsavecintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/xsaveoptintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/xsavesintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/xtestintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/hresetintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/wmmintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avxintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avxvnniintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx2intrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512fintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512erintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512pfintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512cdintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512vlintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512bwintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512dqintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512vlbwintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512vldqintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512ifmaintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512ifmavlintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512vbmiintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512vbmivlintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx5124fmapsintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx5124vnniwintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512vpopcntdqintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512vbmi2intrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512vbmi2vlintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512vnniintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512vnnivlintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512vpopcntdqvlintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512bitalgintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512vp2intersectintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512vp2intersectvlintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/shaintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/fmaintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/f16cintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/gfniintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/vaesintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/vpclmulqdqintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512bf16vlintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512bf16intrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/amxtileintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/amxint8intrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/amxbf16intrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/prfchwintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/keylockerintrin.h \
   /usr/include/c++/11/new \
   /usr/include/c++/11/bits/exception.h \
   /usr/include/c++/11/complex \
@@ -2389,7 +2101,6 @@ src/CMakeFiles/cnn_lib.dir/ConvLayer3D.cpp.o: ../src/ConvLayer3D.cpp \
   /usr/include/x86_64-linux-gnu/bits/types/__mbstate_t.h \
   /usr/include/x86_64-linux-gnu/bits/types/__FILE.h \
   /usr/include/x86_64-linux-gnu/bits/types/FILE.h \
-  /usr/include/x86_64-linux-gnu/bits/wchar2.h \
   /usr/include/c++/11/exception \
   /usr/include/c++/11/bits/exception_ptr.h \
   /usr/include/c++/11/bits/cxxabi_init_exception.h \
@@ -2453,8 +2164,6 @@ src/CMakeFiles/cnn_lib.dir/ConvLayer3D.cpp.o: ../src/ConvLayer3D.cpp \
   /usr/include/x86_64-linux-gnu/bits/types/struct_FILE.h \
   /usr/include/x86_64-linux-gnu/bits/types/cookie_io_functions_t.h \
   /usr/include/x86_64-linux-gnu/bits/stdio_lim.h \
-  /usr/include/x86_64-linux-gnu/bits/stdio.h \
-  /usr/include/x86_64-linux-gnu/bits/stdio2.h \
   /usr/include/c++/11/cerrno \
   /usr/include/errno.h \
   /usr/include/x86_64-linux-gnu/bits/errno.h \
@@ -2519,8 +2228,6 @@ src/CMakeFiles/cnn_lib.dir/ConvLayer3D.cpp.o: ../src/ConvLayer3D.cpp \
   /usr/include/c++/11/cstring \
   /usr/include/string.h \
   /usr/include/strings.h \
-  /usr/include/x86_64-linux-gnu/bits/strings_fortified.h \
-  /usr/include/x86_64-linux-gnu/bits/string_fortified.h \
   /usr/include/c++/11/climits \
   /usr/lib/gcc/x86_64-linux-gnu/11/include/limits.h \
   /usr/lib/gcc/x86_64-linux-gnu/11/include/syslimits.h \
@@ -2553,16 +2260,8 @@ src/CMakeFiles/cnn_lib.dir/ConvLayer3D.cpp.o: ../src/ConvLayer3D.cpp \
   /usr/include/eigen3/Eigen/src/Core/arch/Default/GenericPacketMathFunctionsFwd.h \
   /usr/include/eigen3/Eigen/src/Core/arch/SSE/PacketMath.h \
   /usr/include/eigen3/Eigen/src/Core/arch/SSE/TypeCasting.h \
-  /usr/include/eigen3/Eigen/src/Core/arch/SSE/Complex.h \
-  /usr/include/eigen3/Eigen/src/Core/arch/AVX/PacketMath.h \
-  /usr/include/eigen3/Eigen/src/Core/arch/AVX/TypeCasting.h \
-  /usr/include/eigen3/Eigen/src/Core/arch/AVX/Complex.h \
-  /usr/include/eigen3/Eigen/src/Core/arch/AVX512/PacketMath.h \
-  /usr/include/eigen3/Eigen/src/Core/arch/AVX512/TypeCasting.h \
-  /usr/include/eigen3/Eigen/src/Core/arch/AVX512/Complex.h \
   /usr/include/eigen3/Eigen/src/Core/arch/SSE/MathFunctions.h \
-  /usr/include/eigen3/Eigen/src/Core/arch/AVX/MathFunctions.h \
-  /usr/include/eigen3/Eigen/src/Core/arch/AVX512/MathFunctions.h \
+  /usr/include/eigen3/Eigen/src/Core/arch/SSE/Complex.h \
   /usr/include/eigen3/Eigen/src/Core/arch/Default/Settings.h \
   /usr/include/eigen3/Eigen/src/Core/arch/Default/GenericPacketMathFunctions.h \
   /usr/include/eigen3/Eigen/src/Core/functors/TernaryFunctors.h \
@@ -2747,10 +2446,6 @@ src/CMakeFiles/cnn_lib.dir/ConvLayer3D.cpp.o: ../src/ConvLayer3D.cpp \
   /usr/include/eigen3/unsupported/Eigen/src/SpecialFunctions/SpecialFunctionsPacketMath.h \
   /usr/include/eigen3/unsupported/Eigen/src/SpecialFunctions/SpecialFunctionsFunctors.h \
   /usr/include/eigen3/unsupported/Eigen/src/SpecialFunctions/SpecialFunctionsArrayAPI.h \
-  /usr/include/eigen3/unsupported/Eigen/src/SpecialFunctions/arch/AVX/BesselFunctions.h \
-  /usr/include/eigen3/unsupported/Eigen/src/SpecialFunctions/arch/AVX/SpecialFunctions.h \
-  /usr/include/eigen3/unsupported/Eigen/src/SpecialFunctions/arch/AVX512/BesselFunctions.h \
-  /usr/include/eigen3/unsupported/Eigen/src/SpecialFunctions/arch/AVX512/SpecialFunctions.h \
   /usr/include/eigen3/Eigen/src/Core/util/ReenableStupidWarnings.h \
   /usr/include/eigen3/Eigen/src/Core/util/DisableStupidWarnings.h \
   /usr/include/eigen3/unsupported/Eigen/CXX11/src/util/CXX11Meta.h \
@@ -2871,7 +2566,6 @@ src/CMakeFiles/cnn_lib.dir/ConvLayer3D.cpp.o: ../src/ConvLayer3D.cpp \
   /usr/include/x86_64-linux-gnu/bits/confname.h \
   /usr/include/x86_64-linux-gnu/bits/getopt_posix.h \
   /usr/include/x86_64-linux-gnu/bits/getopt_core.h \
-  /usr/include/x86_64-linux-gnu/bits/unistd.h \
   /usr/include/x86_64-linux-gnu/bits/unistd_ext.h \
   /usr/include/linux/close_range.h \
   /usr/include/boost/config/detail/select_platform_config.hpp \
@@ -3325,7 +3019,6 @@ src/CMakeFiles/cnn_lib.dir/ConvLayer3DDataParallel.cpp.o: ../src/ConvLayer3DData
   /usr/include/x86_64-linux-gnu/bits/types/__sigset_t.h \
   /usr/include/x86_64-linux-gnu/bits/types/struct_timeval.h \
   /usr/include/x86_64-linux-gnu/bits/types/struct_timespec.h \
-  /usr/include/x86_64-linux-gnu/bits/select2.h \
   /usr/include/x86_64-linux-gnu/bits/pthreadtypes.h \
   /usr/include/x86_64-linux-gnu/bits/thread-shared-types.h \
   /usr/include/x86_64-linux-gnu/bits/pthreadtypes-arch.h \
@@ -3333,9 +3026,7 @@ src/CMakeFiles/cnn_lib.dir/ConvLayer3DDataParallel.cpp.o: ../src/ConvLayer3DData
   /usr/include/x86_64-linux-gnu/bits/struct_mutex.h \
   /usr/include/x86_64-linux-gnu/bits/struct_rwlock.h \
   /usr/include/alloca.h \
-  /usr/include/x86_64-linux-gnu/bits/stdlib-bsearch.h \
   /usr/include/x86_64-linux-gnu/bits/stdlib-float.h \
-  /usr/include/x86_64-linux-gnu/bits/stdlib.h \
   /usr/include/c++/11/bits/specfun.h \
   /usr/include/c++/11/bits/stl_algobase.h \
   /usr/include/c++/11/bits/functexcept.h \
@@ -3372,87 +3063,6 @@ src/CMakeFiles/cnn_lib.dir/ConvLayer3DDataParallel.cpp.o: ../src/ConvLayer3DData
   /usr/lib/gcc/x86_64-linux-gnu/11/include/mm_malloc.h \
   /usr/include/c++/11/stdlib.h \
   /usr/include/c++/11/cstdlib \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/pmmintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/mwaitintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/tmmintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/smmintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/popcntintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/nmmintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/immintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/x86gprintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/ia32intrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/adxintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/bmiintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/bmi2intrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/cetintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/cldemoteintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/clflushoptintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/clwbintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/clzerointrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/enqcmdintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/fxsrintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/lzcntintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/lwpintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/movdirintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/mwaitxintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/pconfigintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/pkuintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/rdseedintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/rtmintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/serializeintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/sgxintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/tbmintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/tsxldtrkintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/uintrintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/waitpkgintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/wbnoinvdintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/xsaveintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/xsavecintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/xsaveoptintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/xsavesintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/xtestintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/hresetintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/wmmintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avxintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avxvnniintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx2intrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512fintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512erintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512pfintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512cdintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512vlintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512bwintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512dqintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512vlbwintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512vldqintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512ifmaintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512ifmavlintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512vbmiintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512vbmivlintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx5124fmapsintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx5124vnniwintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512vpopcntdqintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512vbmi2intrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512vbmi2vlintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512vnniintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512vnnivlintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512vpopcntdqvlintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512bitalgintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512vp2intersectintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512vp2intersectvlintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/shaintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/fmaintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/f16cintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/gfniintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/vaesintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/vpclmulqdqintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512bf16vlintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512bf16intrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/amxtileintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/amxint8intrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/amxbf16intrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/prfchwintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/keylockerintrin.h \
   /usr/include/c++/11/new \
   /usr/include/c++/11/bits/exception.h \
   /usr/include/c++/11/complex \
@@ -3472,7 +3082,6 @@ src/CMakeFiles/cnn_lib.dir/ConvLayer3DDataParallel.cpp.o: ../src/ConvLayer3DData
   /usr/include/x86_64-linux-gnu/bits/types/__mbstate_t.h \
   /usr/include/x86_64-linux-gnu/bits/types/__FILE.h \
   /usr/include/x86_64-linux-gnu/bits/types/FILE.h \
-  /usr/include/x86_64-linux-gnu/bits/wchar2.h \
   /usr/include/c++/11/exception \
   /usr/include/c++/11/bits/exception_ptr.h \
   /usr/include/c++/11/bits/cxxabi_init_exception.h \
@@ -3536,8 +3145,6 @@ src/CMakeFiles/cnn_lib.dir/ConvLayer3DDataParallel.cpp.o: ../src/ConvLayer3DData
   /usr/include/x86_64-linux-gnu/bits/types/struct_FILE.h \
   /usr/include/x86_64-linux-gnu/bits/types/cookie_io_functions_t.h \
   /usr/include/x86_64-linux-gnu/bits/stdio_lim.h \
-  /usr/include/x86_64-linux-gnu/bits/stdio.h \
-  /usr/include/x86_64-linux-gnu/bits/stdio2.h \
   /usr/include/c++/11/cerrno \
   /usr/include/errno.h \
   /usr/include/x86_64-linux-gnu/bits/errno.h \
@@ -3602,8 +3209,6 @@ src/CMakeFiles/cnn_lib.dir/ConvLayer3DDataParallel.cpp.o: ../src/ConvLayer3DData
   /usr/include/c++/11/cstring \
   /usr/include/string.h \
   /usr/include/strings.h \
-  /usr/include/x86_64-linux-gnu/bits/strings_fortified.h \
-  /usr/include/x86_64-linux-gnu/bits/string_fortified.h \
   /usr/include/c++/11/climits \
   /usr/lib/gcc/x86_64-linux-gnu/11/include/limits.h \
   /usr/lib/gcc/x86_64-linux-gnu/11/include/syslimits.h \
@@ -3636,16 +3241,8 @@ src/CMakeFiles/cnn_lib.dir/ConvLayer3DDataParallel.cpp.o: ../src/ConvLayer3DData
   /usr/include/eigen3/Eigen/src/Core/arch/Default/GenericPacketMathFunctionsFwd.h \
   /usr/include/eigen3/Eigen/src/Core/arch/SSE/PacketMath.h \
   /usr/include/eigen3/Eigen/src/Core/arch/SSE/TypeCasting.h \
-  /usr/include/eigen3/Eigen/src/Core/arch/SSE/Complex.h \
-  /usr/include/eigen3/Eigen/src/Core/arch/AVX/PacketMath.h \
-  /usr/include/eigen3/Eigen/src/Core/arch/AVX/TypeCasting.h \
-  /usr/include/eigen3/Eigen/src/Core/arch/AVX/Complex.h \
-  /usr/include/eigen3/Eigen/src/Core/arch/AVX512/PacketMath.h \
-  /usr/include/eigen3/Eigen/src/Core/arch/AVX512/TypeCasting.h \
-  /usr/include/eigen3/Eigen/src/Core/arch/AVX512/Complex.h \
   /usr/include/eigen3/Eigen/src/Core/arch/SSE/MathFunctions.h \
-  /usr/include/eigen3/Eigen/src/Core/arch/AVX/MathFunctions.h \
-  /usr/include/eigen3/Eigen/src/Core/arch/AVX512/MathFunctions.h \
+  /usr/include/eigen3/Eigen/src/Core/arch/SSE/Complex.h \
   /usr/include/eigen3/Eigen/src/Core/arch/Default/Settings.h \
   /usr/include/eigen3/Eigen/src/Core/arch/Default/GenericPacketMathFunctions.h \
   /usr/include/eigen3/Eigen/src/Core/functors/TernaryFunctors.h \
@@ -3830,10 +3427,6 @@ src/CMakeFiles/cnn_lib.dir/ConvLayer3DDataParallel.cpp.o: ../src/ConvLayer3DData
   /usr/include/eigen3/unsupported/Eigen/src/SpecialFunctions/SpecialFunctionsPacketMath.h \
   /usr/include/eigen3/unsupported/Eigen/src/SpecialFunctions/SpecialFunctionsFunctors.h \
   /usr/include/eigen3/unsupported/Eigen/src/SpecialFunctions/SpecialFunctionsArrayAPI.h \
-  /usr/include/eigen3/unsupported/Eigen/src/SpecialFunctions/arch/AVX/BesselFunctions.h \
-  /usr/include/eigen3/unsupported/Eigen/src/SpecialFunctions/arch/AVX/SpecialFunctions.h \
-  /usr/include/eigen3/unsupported/Eigen/src/SpecialFunctions/arch/AVX512/BesselFunctions.h \
-  /usr/include/eigen3/unsupported/Eigen/src/SpecialFunctions/arch/AVX512/SpecialFunctions.h \
   /usr/include/eigen3/Eigen/src/Core/util/ReenableStupidWarnings.h \
   /usr/include/eigen3/Eigen/src/Core/util/DisableStupidWarnings.h \
   /usr/include/eigen3/unsupported/Eigen/CXX11/src/util/CXX11Meta.h \
@@ -3954,7 +3547,6 @@ src/CMakeFiles/cnn_lib.dir/ConvLayer3DDataParallel.cpp.o: ../src/ConvLayer3DData
   /usr/include/x86_64-linux-gnu/bits/confname.h \
   /usr/include/x86_64-linux-gnu/bits/getopt_posix.h \
   /usr/include/x86_64-linux-gnu/bits/getopt_core.h \
-  /usr/include/x86_64-linux-gnu/bits/unistd.h \
   /usr/include/x86_64-linux-gnu/bits/unistd_ext.h \
   /usr/include/linux/close_range.h \
   /usr/include/boost/config/detail/select_platform_config.hpp \
@@ -4409,7 +4001,6 @@ src/CMakeFiles/cnn_lib.dir/ConvLayerDataParallel.cpp.o: ../src/ConvLayerDataPara
   /usr/include/x86_64-linux-gnu/bits/types/__sigset_t.h \
   /usr/include/x86_64-linux-gnu/bits/types/struct_timeval.h \
   /usr/include/x86_64-linux-gnu/bits/types/struct_timespec.h \
-  /usr/include/x86_64-linux-gnu/bits/select2.h \
   /usr/include/x86_64-linux-gnu/bits/pthreadtypes.h \
   /usr/include/x86_64-linux-gnu/bits/thread-shared-types.h \
   /usr/include/x86_64-linux-gnu/bits/pthreadtypes-arch.h \
@@ -4417,9 +4008,7 @@ src/CMakeFiles/cnn_lib.dir/ConvLayerDataParallel.cpp.o: ../src/ConvLayerDataPara
   /usr/include/x86_64-linux-gnu/bits/struct_mutex.h \
   /usr/include/x86_64-linux-gnu/bits/struct_rwlock.h \
   /usr/include/alloca.h \
-  /usr/include/x86_64-linux-gnu/bits/stdlib-bsearch.h \
   /usr/include/x86_64-linux-gnu/bits/stdlib-float.h \
-  /usr/include/x86_64-linux-gnu/bits/stdlib.h \
   /usr/include/c++/11/bits/specfun.h \
   /usr/include/c++/11/bits/stl_algobase.h \
   /usr/include/c++/11/bits/functexcept.h \
@@ -4456,87 +4045,6 @@ src/CMakeFiles/cnn_lib.dir/ConvLayerDataParallel.cpp.o: ../src/ConvLayerDataPara
   /usr/lib/gcc/x86_64-linux-gnu/11/include/mm_malloc.h \
   /usr/include/c++/11/stdlib.h \
   /usr/include/c++/11/cstdlib \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/pmmintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/mwaitintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/tmmintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/smmintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/popcntintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/nmmintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/immintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/x86gprintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/ia32intrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/adxintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/bmiintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/bmi2intrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/cetintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/cldemoteintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/clflushoptintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/clwbintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/clzerointrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/enqcmdintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/fxsrintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/lzcntintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/lwpintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/movdirintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/mwaitxintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/pconfigintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/pkuintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/rdseedintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/rtmintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/serializeintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/sgxintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/tbmintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/tsxldtrkintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/uintrintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/waitpkgintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/wbnoinvdintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/xsaveintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/xsavecintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/xsaveoptintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/xsavesintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/xtestintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/hresetintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/wmmintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avxintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avxvnniintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx2intrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512fintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512erintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512pfintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512cdintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512vlintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512bwintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512dqintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512vlbwintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512vldqintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512ifmaintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512ifmavlintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512vbmiintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512vbmivlintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx5124fmapsintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx5124vnniwintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512vpopcntdqintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512vbmi2intrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512vbmi2vlintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512vnniintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512vnnivlintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512vpopcntdqvlintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512bitalgintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512vp2intersectintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512vp2intersectvlintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/shaintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/fmaintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/f16cintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/gfniintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/vaesintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/vpclmulqdqintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512bf16vlintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512bf16intrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/amxtileintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/amxint8intrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/amxbf16intrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/prfchwintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/keylockerintrin.h \
   /usr/include/c++/11/new \
   /usr/include/c++/11/bits/exception.h \
   /usr/include/c++/11/complex \
@@ -4556,7 +4064,6 @@ src/CMakeFiles/cnn_lib.dir/ConvLayerDataParallel.cpp.o: ../src/ConvLayerDataPara
   /usr/include/x86_64-linux-gnu/bits/types/__mbstate_t.h \
   /usr/include/x86_64-linux-gnu/bits/types/__FILE.h \
   /usr/include/x86_64-linux-gnu/bits/types/FILE.h \
-  /usr/include/x86_64-linux-gnu/bits/wchar2.h \
   /usr/include/c++/11/exception \
   /usr/include/c++/11/bits/exception_ptr.h \
   /usr/include/c++/11/bits/cxxabi_init_exception.h \
@@ -4620,8 +4127,6 @@ src/CMakeFiles/cnn_lib.dir/ConvLayerDataParallel.cpp.o: ../src/ConvLayerDataPara
   /usr/include/x86_64-linux-gnu/bits/types/struct_FILE.h \
   /usr/include/x86_64-linux-gnu/bits/types/cookie_io_functions_t.h \
   /usr/include/x86_64-linux-gnu/bits/stdio_lim.h \
-  /usr/include/x86_64-linux-gnu/bits/stdio.h \
-  /usr/include/x86_64-linux-gnu/bits/stdio2.h \
   /usr/include/c++/11/cerrno \
   /usr/include/errno.h \
   /usr/include/x86_64-linux-gnu/bits/errno.h \
@@ -4686,8 +4191,6 @@ src/CMakeFiles/cnn_lib.dir/ConvLayerDataParallel.cpp.o: ../src/ConvLayerDataPara
   /usr/include/c++/11/cstring \
   /usr/include/string.h \
   /usr/include/strings.h \
-  /usr/include/x86_64-linux-gnu/bits/strings_fortified.h \
-  /usr/include/x86_64-linux-gnu/bits/string_fortified.h \
   /usr/include/c++/11/climits \
   /usr/lib/gcc/x86_64-linux-gnu/11/include/limits.h \
   /usr/lib/gcc/x86_64-linux-gnu/11/include/syslimits.h \
@@ -4720,16 +4223,8 @@ src/CMakeFiles/cnn_lib.dir/ConvLayerDataParallel.cpp.o: ../src/ConvLayerDataPara
   /usr/include/eigen3/Eigen/src/Core/arch/Default/GenericPacketMathFunctionsFwd.h \
   /usr/include/eigen3/Eigen/src/Core/arch/SSE/PacketMath.h \
   /usr/include/eigen3/Eigen/src/Core/arch/SSE/TypeCasting.h \
-  /usr/include/eigen3/Eigen/src/Core/arch/SSE/Complex.h \
-  /usr/include/eigen3/Eigen/src/Core/arch/AVX/PacketMath.h \
-  /usr/include/eigen3/Eigen/src/Core/arch/AVX/TypeCasting.h \
-  /usr/include/eigen3/Eigen/src/Core/arch/AVX/Complex.h \
-  /usr/include/eigen3/Eigen/src/Core/arch/AVX512/PacketMath.h \
-  /usr/include/eigen3/Eigen/src/Core/arch/AVX512/TypeCasting.h \
-  /usr/include/eigen3/Eigen/src/Core/arch/AVX512/Complex.h \
   /usr/include/eigen3/Eigen/src/Core/arch/SSE/MathFunctions.h \
-  /usr/include/eigen3/Eigen/src/Core/arch/AVX/MathFunctions.h \
-  /usr/include/eigen3/Eigen/src/Core/arch/AVX512/MathFunctions.h \
+  /usr/include/eigen3/Eigen/src/Core/arch/SSE/Complex.h \
   /usr/include/eigen3/Eigen/src/Core/arch/Default/Settings.h \
   /usr/include/eigen3/Eigen/src/Core/arch/Default/GenericPacketMathFunctions.h \
   /usr/include/eigen3/Eigen/src/Core/functors/TernaryFunctors.h \
@@ -4914,10 +4409,6 @@ src/CMakeFiles/cnn_lib.dir/ConvLayerDataParallel.cpp.o: ../src/ConvLayerDataPara
   /usr/include/eigen3/unsupported/Eigen/src/SpecialFunctions/SpecialFunctionsPacketMath.h \
   /usr/include/eigen3/unsupported/Eigen/src/SpecialFunctions/SpecialFunctionsFunctors.h \
   /usr/include/eigen3/unsupported/Eigen/src/SpecialFunctions/SpecialFunctionsArrayAPI.h \
-  /usr/include/eigen3/unsupported/Eigen/src/SpecialFunctions/arch/AVX/BesselFunctions.h \
-  /usr/include/eigen3/unsupported/Eigen/src/SpecialFunctions/arch/AVX/SpecialFunctions.h \
-  /usr/include/eigen3/unsupported/Eigen/src/SpecialFunctions/arch/AVX512/BesselFunctions.h \
-  /usr/include/eigen3/unsupported/Eigen/src/SpecialFunctions/arch/AVX512/SpecialFunctions.h \
   /usr/include/eigen3/Eigen/src/Core/util/ReenableStupidWarnings.h \
   /usr/include/eigen3/Eigen/src/Core/util/DisableStupidWarnings.h \
   /usr/include/eigen3/unsupported/Eigen/CXX11/src/util/CXX11Meta.h \
@@ -5038,7 +4529,6 @@ src/CMakeFiles/cnn_lib.dir/ConvLayerDataParallel.cpp.o: ../src/ConvLayerDataPara
   /usr/include/x86_64-linux-gnu/bits/confname.h \
   /usr/include/x86_64-linux-gnu/bits/getopt_posix.h \
   /usr/include/x86_64-linux-gnu/bits/getopt_core.h \
-  /usr/include/x86_64-linux-gnu/bits/unistd.h \
   /usr/include/x86_64-linux-gnu/bits/unistd_ext.h \
   /usr/include/linux/close_range.h \
   /usr/include/boost/config/detail/select_platform_config.hpp \
@@ -5492,7 +4982,6 @@ src/CMakeFiles/cnn_lib.dir/DenseLayer.cpp.o: ../src/DenseLayer.cpp \
   /usr/include/x86_64-linux-gnu/bits/types/__sigset_t.h \
   /usr/include/x86_64-linux-gnu/bits/types/struct_timeval.h \
   /usr/include/x86_64-linux-gnu/bits/types/struct_timespec.h \
-  /usr/include/x86_64-linux-gnu/bits/select2.h \
   /usr/include/x86_64-linux-gnu/bits/pthreadtypes.h \
   /usr/include/x86_64-linux-gnu/bits/thread-shared-types.h \
   /usr/include/x86_64-linux-gnu/bits/pthreadtypes-arch.h \
@@ -5500,9 +4989,7 @@ src/CMakeFiles/cnn_lib.dir/DenseLayer.cpp.o: ../src/DenseLayer.cpp \
   /usr/include/x86_64-linux-gnu/bits/struct_mutex.h \
   /usr/include/x86_64-linux-gnu/bits/struct_rwlock.h \
   /usr/include/alloca.h \
-  /usr/include/x86_64-linux-gnu/bits/stdlib-bsearch.h \
   /usr/include/x86_64-linux-gnu/bits/stdlib-float.h \
-  /usr/include/x86_64-linux-gnu/bits/stdlib.h \
   /usr/include/c++/11/bits/specfun.h \
   /usr/include/c++/11/bits/stl_algobase.h \
   /usr/include/c++/11/bits/functexcept.h \
@@ -5539,87 +5026,6 @@ src/CMakeFiles/cnn_lib.dir/DenseLayer.cpp.o: ../src/DenseLayer.cpp \
   /usr/lib/gcc/x86_64-linux-gnu/11/include/mm_malloc.h \
   /usr/include/c++/11/stdlib.h \
   /usr/include/c++/11/cstdlib \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/pmmintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/mwaitintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/tmmintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/smmintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/popcntintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/nmmintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/immintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/x86gprintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/ia32intrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/adxintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/bmiintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/bmi2intrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/cetintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/cldemoteintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/clflushoptintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/clwbintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/clzerointrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/enqcmdintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/fxsrintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/lzcntintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/lwpintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/movdirintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/mwaitxintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/pconfigintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/pkuintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/rdseedintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/rtmintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/serializeintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/sgxintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/tbmintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/tsxldtrkintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/uintrintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/waitpkgintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/wbnoinvdintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/xsaveintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/xsavecintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/xsaveoptintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/xsavesintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/xtestintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/hresetintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/wmmintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avxintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avxvnniintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx2intrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512fintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512erintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512pfintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512cdintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512vlintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512bwintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512dqintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512vlbwintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512vldqintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512ifmaintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512ifmavlintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512vbmiintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512vbmivlintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx5124fmapsintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx5124vnniwintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512vpopcntdqintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512vbmi2intrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512vbmi2vlintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512vnniintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512vnnivlintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512vpopcntdqvlintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512bitalgintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512vp2intersectintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512vp2intersectvlintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/shaintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/fmaintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/f16cintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/gfniintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/vaesintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/vpclmulqdqintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512bf16vlintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512bf16intrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/amxtileintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/amxint8intrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/amxbf16intrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/prfchwintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/keylockerintrin.h \
   /usr/include/c++/11/new \
   /usr/include/c++/11/bits/exception.h \
   /usr/include/c++/11/complex \
@@ -5639,7 +5045,6 @@ src/CMakeFiles/cnn_lib.dir/DenseLayer.cpp.o: ../src/DenseLayer.cpp \
   /usr/include/x86_64-linux-gnu/bits/types/__mbstate_t.h \
   /usr/include/x86_64-linux-gnu/bits/types/__FILE.h \
   /usr/include/x86_64-linux-gnu/bits/types/FILE.h \
-  /usr/include/x86_64-linux-gnu/bits/wchar2.h \
   /usr/include/c++/11/exception \
   /usr/include/c++/11/bits/exception_ptr.h \
   /usr/include/c++/11/bits/cxxabi_init_exception.h \
@@ -5703,8 +5108,6 @@ src/CMakeFiles/cnn_lib.dir/DenseLayer.cpp.o: ../src/DenseLayer.cpp \
   /usr/include/x86_64-linux-gnu/bits/types/struct_FILE.h \
   /usr/include/x86_64-linux-gnu/bits/types/cookie_io_functions_t.h \
   /usr/include/x86_64-linux-gnu/bits/stdio_lim.h \
-  /usr/include/x86_64-linux-gnu/bits/stdio.h \
-  /usr/include/x86_64-linux-gnu/bits/stdio2.h \
   /usr/include/c++/11/cerrno \
   /usr/include/errno.h \
   /usr/include/x86_64-linux-gnu/bits/errno.h \
@@ -5769,8 +5172,6 @@ src/CMakeFiles/cnn_lib.dir/DenseLayer.cpp.o: ../src/DenseLayer.cpp \
   /usr/include/c++/11/cstring \
   /usr/include/string.h \
   /usr/include/strings.h \
-  /usr/include/x86_64-linux-gnu/bits/strings_fortified.h \
-  /usr/include/x86_64-linux-gnu/bits/string_fortified.h \
   /usr/include/c++/11/climits \
   /usr/lib/gcc/x86_64-linux-gnu/11/include/limits.h \
   /usr/lib/gcc/x86_64-linux-gnu/11/include/syslimits.h \
@@ -5803,16 +5204,8 @@ src/CMakeFiles/cnn_lib.dir/DenseLayer.cpp.o: ../src/DenseLayer.cpp \
   /usr/include/eigen3/Eigen/src/Core/arch/Default/GenericPacketMathFunctionsFwd.h \
   /usr/include/eigen3/Eigen/src/Core/arch/SSE/PacketMath.h \
   /usr/include/eigen3/Eigen/src/Core/arch/SSE/TypeCasting.h \
-  /usr/include/eigen3/Eigen/src/Core/arch/SSE/Complex.h \
-  /usr/include/eigen3/Eigen/src/Core/arch/AVX/PacketMath.h \
-  /usr/include/eigen3/Eigen/src/Core/arch/AVX/TypeCasting.h \
-  /usr/include/eigen3/Eigen/src/Core/arch/AVX/Complex.h \
-  /usr/include/eigen3/Eigen/src/Core/arch/AVX512/PacketMath.h \
-  /usr/include/eigen3/Eigen/src/Core/arch/AVX512/TypeCasting.h \
-  /usr/include/eigen3/Eigen/src/Core/arch/AVX512/Complex.h \
   /usr/include/eigen3/Eigen/src/Core/arch/SSE/MathFunctions.h \
-  /usr/include/eigen3/Eigen/src/Core/arch/AVX/MathFunctions.h \
-  /usr/include/eigen3/Eigen/src/Core/arch/AVX512/MathFunctions.h \
+  /usr/include/eigen3/Eigen/src/Core/arch/SSE/Complex.h \
   /usr/include/eigen3/Eigen/src/Core/arch/Default/Settings.h \
   /usr/include/eigen3/Eigen/src/Core/arch/Default/GenericPacketMathFunctions.h \
   /usr/include/eigen3/Eigen/src/Core/functors/TernaryFunctors.h \
@@ -5997,10 +5390,6 @@ src/CMakeFiles/cnn_lib.dir/DenseLayer.cpp.o: ../src/DenseLayer.cpp \
   /usr/include/eigen3/unsupported/Eigen/src/SpecialFunctions/SpecialFunctionsPacketMath.h \
   /usr/include/eigen3/unsupported/Eigen/src/SpecialFunctions/SpecialFunctionsFunctors.h \
   /usr/include/eigen3/unsupported/Eigen/src/SpecialFunctions/SpecialFunctionsArrayAPI.h \
-  /usr/include/eigen3/unsupported/Eigen/src/SpecialFunctions/arch/AVX/BesselFunctions.h \
-  /usr/include/eigen3/unsupported/Eigen/src/SpecialFunctions/arch/AVX/SpecialFunctions.h \
-  /usr/include/eigen3/unsupported/Eigen/src/SpecialFunctions/arch/AVX512/BesselFunctions.h \
-  /usr/include/eigen3/unsupported/Eigen/src/SpecialFunctions/arch/AVX512/SpecialFunctions.h \
   /usr/include/eigen3/Eigen/src/Core/util/ReenableStupidWarnings.h \
   /usr/include/eigen3/Eigen/src/Core/util/DisableStupidWarnings.h \
   /usr/include/eigen3/unsupported/Eigen/CXX11/src/util/CXX11Meta.h \
@@ -6121,7 +5510,6 @@ src/CMakeFiles/cnn_lib.dir/DenseLayer.cpp.o: ../src/DenseLayer.cpp \
   /usr/include/x86_64-linux-gnu/bits/confname.h \
   /usr/include/x86_64-linux-gnu/bits/getopt_posix.h \
   /usr/include/x86_64-linux-gnu/bits/getopt_core.h \
-  /usr/include/x86_64-linux-gnu/bits/unistd.h \
   /usr/include/x86_64-linux-gnu/bits/unistd_ext.h \
   /usr/include/linux/close_range.h \
   /usr/include/boost/config/detail/select_platform_config.hpp \
@@ -6575,7 +5963,6 @@ src/CMakeFiles/cnn_lib.dir/DenseLayerDataParallel.cpp.o: ../src/DenseLayerDataPa
   /usr/include/x86_64-linux-gnu/bits/types/__sigset_t.h \
   /usr/include/x86_64-linux-gnu/bits/types/struct_timeval.h \
   /usr/include/x86_64-linux-gnu/bits/types/struct_timespec.h \
-  /usr/include/x86_64-linux-gnu/bits/select2.h \
   /usr/include/x86_64-linux-gnu/bits/pthreadtypes.h \
   /usr/include/x86_64-linux-gnu/bits/thread-shared-types.h \
   /usr/include/x86_64-linux-gnu/bits/pthreadtypes-arch.h \
@@ -6583,9 +5970,7 @@ src/CMakeFiles/cnn_lib.dir/DenseLayerDataParallel.cpp.o: ../src/DenseLayerDataPa
   /usr/include/x86_64-linux-gnu/bits/struct_mutex.h \
   /usr/include/x86_64-linux-gnu/bits/struct_rwlock.h \
   /usr/include/alloca.h \
-  /usr/include/x86_64-linux-gnu/bits/stdlib-bsearch.h \
   /usr/include/x86_64-linux-gnu/bits/stdlib-float.h \
-  /usr/include/x86_64-linux-gnu/bits/stdlib.h \
   /usr/include/c++/11/bits/specfun.h \
   /usr/include/c++/11/bits/stl_algobase.h \
   /usr/include/c++/11/bits/functexcept.h \
@@ -6622,87 +6007,6 @@ src/CMakeFiles/cnn_lib.dir/DenseLayerDataParallel.cpp.o: ../src/DenseLayerDataPa
   /usr/lib/gcc/x86_64-linux-gnu/11/include/mm_malloc.h \
   /usr/include/c++/11/stdlib.h \
   /usr/include/c++/11/cstdlib \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/pmmintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/mwaitintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/tmmintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/smmintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/popcntintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/nmmintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/immintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/x86gprintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/ia32intrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/adxintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/bmiintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/bmi2intrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/cetintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/cldemoteintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/clflushoptintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/clwbintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/clzerointrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/enqcmdintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/fxsrintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/lzcntintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/lwpintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/movdirintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/mwaitxintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/pconfigintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/pkuintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/rdseedintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/rtmintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/serializeintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/sgxintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/tbmintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/tsxldtrkintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/uintrintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/waitpkgintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/wbnoinvdintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/xsaveintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/xsavecintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/xsaveoptintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/xsavesintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/xtestintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/hresetintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/wmmintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avxintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avxvnniintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx2intrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512fintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512erintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512pfintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512cdintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512vlintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512bwintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512dqintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512vlbwintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512vldqintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512ifmaintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512ifmavlintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512vbmiintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512vbmivlintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx5124fmapsintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx5124vnniwintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512vpopcntdqintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512vbmi2intrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512vbmi2vlintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512vnniintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512vnnivlintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512vpopcntdqvlintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512bitalgintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512vp2intersectintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512vp2intersectvlintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/shaintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/fmaintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/f16cintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/gfniintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/vaesintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/vpclmulqdqintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512bf16vlintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512bf16intrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/amxtileintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/amxint8intrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/amxbf16intrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/prfchwintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/keylockerintrin.h \
   /usr/include/c++/11/new \
   /usr/include/c++/11/bits/exception.h \
   /usr/include/c++/11/complex \
@@ -6722,7 +6026,6 @@ src/CMakeFiles/cnn_lib.dir/DenseLayerDataParallel.cpp.o: ../src/DenseLayerDataPa
   /usr/include/x86_64-linux-gnu/bits/types/__mbstate_t.h \
   /usr/include/x86_64-linux-gnu/bits/types/__FILE.h \
   /usr/include/x86_64-linux-gnu/bits/types/FILE.h \
-  /usr/include/x86_64-linux-gnu/bits/wchar2.h \
   /usr/include/c++/11/exception \
   /usr/include/c++/11/bits/exception_ptr.h \
   /usr/include/c++/11/bits/cxxabi_init_exception.h \
@@ -6786,8 +6089,6 @@ src/CMakeFiles/cnn_lib.dir/DenseLayerDataParallel.cpp.o: ../src/DenseLayerDataPa
   /usr/include/x86_64-linux-gnu/bits/types/struct_FILE.h \
   /usr/include/x86_64-linux-gnu/bits/types/cookie_io_functions_t.h \
   /usr/include/x86_64-linux-gnu/bits/stdio_lim.h \
-  /usr/include/x86_64-linux-gnu/bits/stdio.h \
-  /usr/include/x86_64-linux-gnu/bits/stdio2.h \
   /usr/include/c++/11/cerrno \
   /usr/include/errno.h \
   /usr/include/x86_64-linux-gnu/bits/errno.h \
@@ -6852,8 +6153,6 @@ src/CMakeFiles/cnn_lib.dir/DenseLayerDataParallel.cpp.o: ../src/DenseLayerDataPa
   /usr/include/c++/11/cstring \
   /usr/include/string.h \
   /usr/include/strings.h \
-  /usr/include/x86_64-linux-gnu/bits/strings_fortified.h \
-  /usr/include/x86_64-linux-gnu/bits/string_fortified.h \
   /usr/include/c++/11/climits \
   /usr/lib/gcc/x86_64-linux-gnu/11/include/limits.h \
   /usr/lib/gcc/x86_64-linux-gnu/11/include/syslimits.h \
@@ -6886,16 +6185,8 @@ src/CMakeFiles/cnn_lib.dir/DenseLayerDataParallel.cpp.o: ../src/DenseLayerDataPa
   /usr/include/eigen3/Eigen/src/Core/arch/Default/GenericPacketMathFunctionsFwd.h \
   /usr/include/eigen3/Eigen/src/Core/arch/SSE/PacketMath.h \
   /usr/include/eigen3/Eigen/src/Core/arch/SSE/TypeCasting.h \
-  /usr/include/eigen3/Eigen/src/Core/arch/SSE/Complex.h \
-  /usr/include/eigen3/Eigen/src/Core/arch/AVX/PacketMath.h \
-  /usr/include/eigen3/Eigen/src/Core/arch/AVX/TypeCasting.h \
-  /usr/include/eigen3/Eigen/src/Core/arch/AVX/Complex.h \
-  /usr/include/eigen3/Eigen/src/Core/arch/AVX512/PacketMath.h \
-  /usr/include/eigen3/Eigen/src/Core/arch/AVX512/TypeCasting.h \
-  /usr/include/eigen3/Eigen/src/Core/arch/AVX512/Complex.h \
   /usr/include/eigen3/Eigen/src/Core/arch/SSE/MathFunctions.h \
-  /usr/include/eigen3/Eigen/src/Core/arch/AVX/MathFunctions.h \
-  /usr/include/eigen3/Eigen/src/Core/arch/AVX512/MathFunctions.h \
+  /usr/include/eigen3/Eigen/src/Core/arch/SSE/Complex.h \
   /usr/include/eigen3/Eigen/src/Core/arch/Default/Settings.h \
   /usr/include/eigen3/Eigen/src/Core/arch/Default/GenericPacketMathFunctions.h \
   /usr/include/eigen3/Eigen/src/Core/functors/TernaryFunctors.h \
@@ -7080,10 +6371,6 @@ src/CMakeFiles/cnn_lib.dir/DenseLayerDataParallel.cpp.o: ../src/DenseLayerDataPa
   /usr/include/eigen3/unsupported/Eigen/src/SpecialFunctions/SpecialFunctionsPacketMath.h \
   /usr/include/eigen3/unsupported/Eigen/src/SpecialFunctions/SpecialFunctionsFunctors.h \
   /usr/include/eigen3/unsupported/Eigen/src/SpecialFunctions/SpecialFunctionsArrayAPI.h \
-  /usr/include/eigen3/unsupported/Eigen/src/SpecialFunctions/arch/AVX/BesselFunctions.h \
-  /usr/include/eigen3/unsupported/Eigen/src/SpecialFunctions/arch/AVX/SpecialFunctions.h \
-  /usr/include/eigen3/unsupported/Eigen/src/SpecialFunctions/arch/AVX512/BesselFunctions.h \
-  /usr/include/eigen3/unsupported/Eigen/src/SpecialFunctions/arch/AVX512/SpecialFunctions.h \
   /usr/include/eigen3/Eigen/src/Core/util/ReenableStupidWarnings.h \
   /usr/include/eigen3/Eigen/src/Core/util/DisableStupidWarnings.h \
   /usr/include/eigen3/unsupported/Eigen/CXX11/src/util/CXX11Meta.h \
@@ -7204,7 +6491,6 @@ src/CMakeFiles/cnn_lib.dir/DenseLayerDataParallel.cpp.o: ../src/DenseLayerDataPa
   /usr/include/x86_64-linux-gnu/bits/confname.h \
   /usr/include/x86_64-linux-gnu/bits/getopt_posix.h \
   /usr/include/x86_64-linux-gnu/bits/getopt_core.h \
-  /usr/include/x86_64-linux-gnu/bits/unistd.h \
   /usr/include/x86_64-linux-gnu/bits/unistd_ext.h \
   /usr/include/linux/close_range.h \
   /usr/include/boost/config/detail/select_platform_config.hpp \
@@ -7659,7 +6945,6 @@ src/CMakeFiles/cnn_lib.dir/DenseLayerModelParallel.cpp.o: ../src/DenseLayerModel
   /usr/include/x86_64-linux-gnu/bits/types/__sigset_t.h \
   /usr/include/x86_64-linux-gnu/bits/types/struct_timeval.h \
   /usr/include/x86_64-linux-gnu/bits/types/struct_timespec.h \
-  /usr/include/x86_64-linux-gnu/bits/select2.h \
   /usr/include/x86_64-linux-gnu/bits/pthreadtypes.h \
   /usr/include/x86_64-linux-gnu/bits/thread-shared-types.h \
   /usr/include/x86_64-linux-gnu/bits/pthreadtypes-arch.h \
@@ -7667,9 +6952,7 @@ src/CMakeFiles/cnn_lib.dir/DenseLayerModelParallel.cpp.o: ../src/DenseLayerModel
   /usr/include/x86_64-linux-gnu/bits/struct_mutex.h \
   /usr/include/x86_64-linux-gnu/bits/struct_rwlock.h \
   /usr/include/alloca.h \
-  /usr/include/x86_64-linux-gnu/bits/stdlib-bsearch.h \
   /usr/include/x86_64-linux-gnu/bits/stdlib-float.h \
-  /usr/include/x86_64-linux-gnu/bits/stdlib.h \
   /usr/include/c++/11/bits/specfun.h \
   /usr/include/c++/11/bits/stl_algobase.h \
   /usr/include/c++/11/bits/functexcept.h \
@@ -7706,87 +6989,6 @@ src/CMakeFiles/cnn_lib.dir/DenseLayerModelParallel.cpp.o: ../src/DenseLayerModel
   /usr/lib/gcc/x86_64-linux-gnu/11/include/mm_malloc.h \
   /usr/include/c++/11/stdlib.h \
   /usr/include/c++/11/cstdlib \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/pmmintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/mwaitintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/tmmintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/smmintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/popcntintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/nmmintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/immintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/x86gprintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/ia32intrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/adxintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/bmiintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/bmi2intrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/cetintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/cldemoteintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/clflushoptintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/clwbintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/clzerointrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/enqcmdintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/fxsrintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/lzcntintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/lwpintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/movdirintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/mwaitxintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/pconfigintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/pkuintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/rdseedintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/rtmintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/serializeintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/sgxintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/tbmintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/tsxldtrkintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/uintrintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/waitpkgintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/wbnoinvdintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/xsaveintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/xsavecintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/xsaveoptintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/xsavesintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/xtestintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/hresetintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/wmmintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avxintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avxvnniintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx2intrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512fintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512erintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512pfintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512cdintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512vlintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512bwintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512dqintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512vlbwintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512vldqintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512ifmaintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512ifmavlintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512vbmiintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512vbmivlintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx5124fmapsintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx5124vnniwintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512vpopcntdqintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512vbmi2intrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512vbmi2vlintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512vnniintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512vnnivlintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512vpopcntdqvlintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512bitalgintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512vp2intersectintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512vp2intersectvlintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/shaintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/fmaintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/f16cintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/gfniintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/vaesintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/vpclmulqdqintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512bf16vlintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512bf16intrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/amxtileintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/amxint8intrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/amxbf16intrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/prfchwintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/keylockerintrin.h \
   /usr/include/c++/11/new \
   /usr/include/c++/11/bits/exception.h \
   /usr/include/c++/11/complex \
@@ -7806,7 +7008,6 @@ src/CMakeFiles/cnn_lib.dir/DenseLayerModelParallel.cpp.o: ../src/DenseLayerModel
   /usr/include/x86_64-linux-gnu/bits/types/__mbstate_t.h \
   /usr/include/x86_64-linux-gnu/bits/types/__FILE.h \
   /usr/include/x86_64-linux-gnu/bits/types/FILE.h \
-  /usr/include/x86_64-linux-gnu/bits/wchar2.h \
   /usr/include/c++/11/exception \
   /usr/include/c++/11/bits/exception_ptr.h \
   /usr/include/c++/11/bits/cxxabi_init_exception.h \
@@ -7870,8 +7071,6 @@ src/CMakeFiles/cnn_lib.dir/DenseLayerModelParallel.cpp.o: ../src/DenseLayerModel
   /usr/include/x86_64-linux-gnu/bits/types/struct_FILE.h \
   /usr/include/x86_64-linux-gnu/bits/types/cookie_io_functions_t.h \
   /usr/include/x86_64-linux-gnu/bits/stdio_lim.h \
-  /usr/include/x86_64-linux-gnu/bits/stdio.h \
-  /usr/include/x86_64-linux-gnu/bits/stdio2.h \
   /usr/include/c++/11/cerrno \
   /usr/include/errno.h \
   /usr/include/x86_64-linux-gnu/bits/errno.h \
@@ -7936,8 +7135,6 @@ src/CMakeFiles/cnn_lib.dir/DenseLayerModelParallel.cpp.o: ../src/DenseLayerModel
   /usr/include/c++/11/cstring \
   /usr/include/string.h \
   /usr/include/strings.h \
-  /usr/include/x86_64-linux-gnu/bits/strings_fortified.h \
-  /usr/include/x86_64-linux-gnu/bits/string_fortified.h \
   /usr/include/c++/11/climits \
   /usr/lib/gcc/x86_64-linux-gnu/11/include/limits.h \
   /usr/lib/gcc/x86_64-linux-gnu/11/include/syslimits.h \
@@ -7970,16 +7167,8 @@ src/CMakeFiles/cnn_lib.dir/DenseLayerModelParallel.cpp.o: ../src/DenseLayerModel
   /usr/include/eigen3/Eigen/src/Core/arch/Default/GenericPacketMathFunctionsFwd.h \
   /usr/include/eigen3/Eigen/src/Core/arch/SSE/PacketMath.h \
   /usr/include/eigen3/Eigen/src/Core/arch/SSE/TypeCasting.h \
-  /usr/include/eigen3/Eigen/src/Core/arch/SSE/Complex.h \
-  /usr/include/eigen3/Eigen/src/Core/arch/AVX/PacketMath.h \
-  /usr/include/eigen3/Eigen/src/Core/arch/AVX/TypeCasting.h \
-  /usr/include/eigen3/Eigen/src/Core/arch/AVX/Complex.h \
-  /usr/include/eigen3/Eigen/src/Core/arch/AVX512/PacketMath.h \
-  /usr/include/eigen3/Eigen/src/Core/arch/AVX512/TypeCasting.h \
-  /usr/include/eigen3/Eigen/src/Core/arch/AVX512/Complex.h \
   /usr/include/eigen3/Eigen/src/Core/arch/SSE/MathFunctions.h \
-  /usr/include/eigen3/Eigen/src/Core/arch/AVX/MathFunctions.h \
-  /usr/include/eigen3/Eigen/src/Core/arch/AVX512/MathFunctions.h \
+  /usr/include/eigen3/Eigen/src/Core/arch/SSE/Complex.h \
   /usr/include/eigen3/Eigen/src/Core/arch/Default/Settings.h \
   /usr/include/eigen3/Eigen/src/Core/arch/Default/GenericPacketMathFunctions.h \
   /usr/include/eigen3/Eigen/src/Core/functors/TernaryFunctors.h \
@@ -8164,10 +7353,6 @@ src/CMakeFiles/cnn_lib.dir/DenseLayerModelParallel.cpp.o: ../src/DenseLayerModel
   /usr/include/eigen3/unsupported/Eigen/src/SpecialFunctions/SpecialFunctionsPacketMath.h \
   /usr/include/eigen3/unsupported/Eigen/src/SpecialFunctions/SpecialFunctionsFunctors.h \
   /usr/include/eigen3/unsupported/Eigen/src/SpecialFunctions/SpecialFunctionsArrayAPI.h \
-  /usr/include/eigen3/unsupported/Eigen/src/SpecialFunctions/arch/AVX/BesselFunctions.h \
-  /usr/include/eigen3/unsupported/Eigen/src/SpecialFunctions/arch/AVX/SpecialFunctions.h \
-  /usr/include/eigen3/unsupported/Eigen/src/SpecialFunctions/arch/AVX512/BesselFunctions.h \
-  /usr/include/eigen3/unsupported/Eigen/src/SpecialFunctions/arch/AVX512/SpecialFunctions.h \
   /usr/include/eigen3/Eigen/src/Core/util/ReenableStupidWarnings.h \
   /usr/include/eigen3/Eigen/src/Core/util/DisableStupidWarnings.h \
   /usr/include/eigen3/unsupported/Eigen/CXX11/src/util/CXX11Meta.h \
@@ -8288,7 +7473,6 @@ src/CMakeFiles/cnn_lib.dir/DenseLayerModelParallel.cpp.o: ../src/DenseLayerModel
   /usr/include/x86_64-linux-gnu/bits/confname.h \
   /usr/include/x86_64-linux-gnu/bits/getopt_posix.h \
   /usr/include/x86_64-linux-gnu/bits/getopt_core.h \
-  /usr/include/x86_64-linux-gnu/bits/unistd.h \
   /usr/include/x86_64-linux-gnu/bits/unistd_ext.h \
   /usr/include/linux/close_range.h \
   /usr/include/boost/config/detail/select_platform_config.hpp \
@@ -8715,7 +7899,6 @@ src/CMakeFiles/cnn_lib.dir/shared.cpp.o: ../src/shared.cpp \
   /usr/include/x86_64-linux-gnu/bits/types/FILE.h \
   /usr/include/x86_64-linux-gnu/bits/types/locale_t.h \
   /usr/include/x86_64-linux-gnu/bits/types/__locale_t.h \
-  /usr/include/x86_64-linux-gnu/bits/wchar2.h \
   /usr/include/c++/11/exception \
   /usr/include/c++/11/bits/exception.h \
   /usr/include/c++/11/bits/exception_ptr.h \
@@ -8821,11 +8004,8 @@ src/CMakeFiles/cnn_lib.dir/shared.cpp.o: ../src/shared.cpp \
   /usr/include/x86_64-linux-gnu/sys/select.h \
   /usr/include/x86_64-linux-gnu/bits/select.h \
   /usr/include/x86_64-linux-gnu/bits/types/sigset_t.h \
-  /usr/include/x86_64-linux-gnu/bits/select2.h \
   /usr/include/alloca.h \
-  /usr/include/x86_64-linux-gnu/bits/stdlib-bsearch.h \
   /usr/include/x86_64-linux-gnu/bits/stdlib-float.h \
-  /usr/include/x86_64-linux-gnu/bits/stdlib.h \
   /usr/include/c++/11/bits/std_abs.h \
   /usr/include/c++/11/cstdio \
   /usr/include/stdio.h \
@@ -8834,8 +8014,6 @@ src/CMakeFiles/cnn_lib.dir/shared.cpp.o: ../src/shared.cpp \
   /usr/include/x86_64-linux-gnu/bits/types/struct_FILE.h \
   /usr/include/x86_64-linux-gnu/bits/types/cookie_io_functions_t.h \
   /usr/include/x86_64-linux-gnu/bits/stdio_lim.h \
-  /usr/include/x86_64-linux-gnu/bits/stdio.h \
-  /usr/include/x86_64-linux-gnu/bits/stdio2.h \
   /usr/include/c++/11/cerrno \
   /usr/include/errno.h \
   /usr/include/x86_64-linux-gnu/bits/errno.h \
@@ -8912,7 +8090,6 @@ src/CMakeFiles/cnn_lib.dir/shared.cpp.o: ../src/shared.cpp \
   /usr/include/x86_64-linux-gnu/bits/confname.h \
   /usr/include/x86_64-linux-gnu/bits/getopt_posix.h \
   /usr/include/x86_64-linux-gnu/bits/getopt_core.h \
-  /usr/include/x86_64-linux-gnu/bits/unistd.h \
   /usr/include/x86_64-linux-gnu/bits/unistd_ext.h \
   /usr/include/linux/close_range.h
 
@@ -8928,6 +8105,8 @@ src/CMakeFiles/cnn_lib.dir/shared.cpp.o: ../src/shared.cpp \
 /usr/include/x86_64-linux-gnu/c++/11/bits/c++io.h:
 
 /usr/include/c++/11/fstream:
+
+/usr/include/boost/utility/enable_if.hpp:
 
 /usr/include/boost/serialization/detail/is_default_constructible.hpp:
 
@@ -8981,6 +8160,8 @@ src/CMakeFiles/cnn_lib.dir/shared.cpp.o: ../src/shared.cpp \
 
 /usr/include/boost/serialization/smart_cast.hpp:
 
+/usr/include/boost/preprocessor/comparison/less_equal.hpp:
+
 /usr/include/boost/serialization/singleton.hpp:
 
 /usr/include/boost/serialization/config.hpp:
@@ -8993,6 +8174,12 @@ src/CMakeFiles/cnn_lib.dir/shared.cpp.o: ../src/shared.cpp \
 
 /usr/include/boost/type_traits/extent.hpp:
 
+../include/ConvLayer3D.hpp:
+
+/usr/include/boost/core/first_scalar.hpp:
+
+/usr/include/boost/core/allocator_access.hpp:
+
 /usr/include/boost/core/default_allocator.hpp:
 
 /usr/include/boost/smart_ptr/make_shared_array.hpp:
@@ -9000,6 +8187,10 @@ src/CMakeFiles/cnn_lib.dir/shared.cpp.o: ../src/shared.cpp \
 /usr/include/boost/type_traits/detail/is_member_function_pointer_cxx_11.hpp:
 
 /usr/include/boost/type_traits/is_member_pointer.hpp:
+
+/usr/include/boost/type_traits/alignment_of.hpp:
+
+/usr/include/boost/type_traits/type_with_alignment.hpp:
 
 /usr/include/boost/move/detail/meta_utils.hpp:
 
@@ -9017,6 +8208,10 @@ src/CMakeFiles/cnn_lib.dir/shared.cpp.o: ../src/shared.cpp \
 
 /usr/include/boost/assert/source_location.hpp:
 
+../src/ConvLayerDataParallel.cpp:
+
+/usr/include/boost/throw_exception.hpp:
+
 /usr/include/boost/smart_ptr/detail/sp_counted_impl.hpp:
 
 /usr/include/boost/smart_ptr/detail/sp_typeinfo_.hpp:
@@ -9029,13 +8224,19 @@ src/CMakeFiles/cnn_lib.dir/shared.cpp.o: ../src/shared.cpp \
 
 /usr/include/boost/smart_ptr/detail/shared_count.hpp:
 
+/usr/include/boost/smart_ptr/shared_ptr.hpp:
+
 /usr/include/boost/serialization/library_version_type.hpp:
+
+/usr/include/boost/archive/detail/basic_oarchive.hpp:
 
 /usr/include/boost/archive/detail/common_oarchive.hpp:
 
 /usr/include/boost/preprocessor/comparison/less.hpp:
 
 /usr/include/boost/archive/basic_binary_oarchive.hpp:
+
+/usr/include/boost/config/abi_suffix.hpp:
 
 /usr/include/boost/type_traits/is_unbounded_array.hpp:
 
@@ -9091,13 +8292,23 @@ src/CMakeFiles/cnn_lib.dir/shared.cpp.o: ../src/shared.cpp \
 
 /usr/include/boost/serialization/array_optimization.hpp:
 
+/usr/include/boost/serialization/collection_size_type.hpp:
+
 /usr/include/boost/serialization/split_member.hpp:
+
+/usr/include/boost/serialization/detail/stack_constructor.hpp:
+
+/usr/include/boost/serialization/force_include.hpp:
 
 /usr/include/boost/type_traits/is_polymorphic.hpp:
 
 /usr/include/boost/serialization/base_object.hpp:
 
+/usr/include/boost/serialization/wrapper.hpp:
+
 /usr/include/boost/serialization/access.hpp:
+
+/usr/include/boost/type_traits/is_constructible.hpp:
 
 ../src/shared.cpp:
 
@@ -9105,7 +8316,11 @@ src/CMakeFiles/cnn_lib.dir/shared.cpp.o: ../src/shared.cpp \
 
 /usr/include/boost/type_traits/has_nothrow_copy.hpp:
 
+/usr/include/boost/type_traits/has_nothrow_constructor.hpp:
+
 /usr/include/boost/type_traits/detail/is_function_cxx_11.hpp:
+
+/usr/include/boost/type_traits/is_function.hpp:
 
 /usr/include/boost/type_traits/is_rvalue_reference.hpp:
 
@@ -9116,6 +8331,8 @@ src/CMakeFiles/cnn_lib.dir/shared.cpp.o: ../src/shared.cpp \
 /usr/include/boost/type_traits/is_reference.hpp:
 
 /usr/include/boost/type_traits/add_rvalue_reference.hpp:
+
+/usr/include/boost/type_traits/is_const.hpp:
 
 /usr/include/boost/serialization/strong_typedef.hpp:
 
@@ -9333,6 +8550,10 @@ src/CMakeFiles/cnn_lib.dir/shared.cpp.o: ../src/shared.cpp \
 
 /usr/include/boost/serialization/throw_exception.hpp:
 
+/usr/include/boost/preprocessor/repetition/enum_trailing_params.hpp:
+
+/usr/include/boost/smart_ptr/detail/operator_bool.hpp:
+
 /usr/include/boost/smart_ptr/detail/sp_noexcept.hpp:
 
 ../src/ConvLayer.cpp:
@@ -9350,6 +8571,8 @@ src/CMakeFiles/cnn_lib.dir/shared.cpp.o: ../src/shared.cpp \
 /usr/include/boost/detail/workaround.hpp:
 
 /usr/include/boost/static_assert.hpp:
+
+/usr/include/boost/integer_traits.hpp:
 
 /usr/include/boost/limits.hpp:
 
@@ -9380,8 +8603,6 @@ src/CMakeFiles/cnn_lib.dir/shared.cpp.o: ../src/shared.cpp \
 /usr/include/boost/archive/detail/basic_oserializer.hpp:
 
 /usr/include/x86_64-linux-gnu/bits/unistd_ext.h:
-
-/usr/include/x86_64-linux-gnu/bits/unistd.h:
 
 /usr/include/boost/mpl/print.hpp:
 
@@ -9415,17 +8636,23 @@ src/CMakeFiles/cnn_lib.dir/shared.cpp.o: ../src/shared.cpp \
 
 /usr/include/boost/archive/binary_oarchive.hpp:
 
+../include/Layer.hpp:
+
 /usr/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorRef.h:
 
 /usr/include/boost/mpl/aux_/preprocessor/def_params_tail.hpp:
 
 /usr/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorFixedSize.h:
 
+/usr/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/Tensor.h:
+
 /usr/include/boost/serialization/array.hpp:
 
 /usr/include/boost/core/pointer_traits.hpp:
 
 /usr/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorStorage.h:
+
+/usr/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorTrace.h:
 
 /usr/include/boost/mpl/aux_/config/msvc_typename.hpp:
 
@@ -9455,6 +8682,8 @@ src/CMakeFiles/cnn_lib.dir/shared.cpp.o: ../src/shared.cpp \
 
 /usr/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorInflation.h:
 
+/usr/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorChipping.h:
+
 /usr/include/boost/smart_ptr/detail/sp_convertible.hpp:
 
 /usr/include/boost/config/platform/linux.hpp:
@@ -9471,187 +8700,21 @@ src/CMakeFiles/cnn_lib.dir/shared.cpp.o: ../src/shared.cpp \
 
 /usr/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorConvolution.h:
 
-/usr/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorContractionGpu.h:
+../src/DenseLayerDataParallel.cpp:
 
-/usr/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorContractionBlocking.h:
+/usr/include/boost/preprocessor/array/elem.hpp:
 
-/usr/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorConcatenation.h:
+/usr/lib/gcc/x86_64-linux-gnu/11/include/mmintrin.h:
 
-/usr/include/c++/11/bits/stream_iterator.h:
+../include/DenseLayerDataParallel.hpp:
 
-/usr/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorArgMax.h:
+/usr/include/eigen3/Eigen/src/Core/util/ConfigureVectorization.h:
 
-/usr/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorReductionGpu.h:
-
-/usr/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorEvaluator.h:
-
-/usr/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorBase.h:
-
-/usr/include/boost/type_traits/is_volatile.hpp:
-
-/usr/include/boost/integer_fwd.hpp:
-
-/usr/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorGlobalFunctions.h:
-
-/usr/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorRandom.h:
-
-/usr/include/boost/archive/detail/oserializer.hpp:
-
-/usr/include/boost/mpl/tag.hpp:
-
-/usr/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorTraits.h:
-
-/usr/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorUInt128.h:
-
-/usr/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorIndexList.h:
-
-/usr/include/boost/mpl/or.hpp:
-
-/usr/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorDeviceSycl.h:
-
-../include/ConvLayer.hpp:
-
-/usr/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorDeviceGpu.h:
-
-/usr/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorDeviceThreadPool.h:
-
-/usr/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorCostModel.h:
-
-/usr/include/boost/type_traits/is_fundamental.hpp:
-
-/usr/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorFunctors.h:
-
-/usr/include/c++/11/bits/this_thread_sleep.h:
-
-/usr/include/boost/preprocessor/logical/not.hpp:
-
-/usr/include/c++/11/bits/std_thread.h:
-
-/usr/include/c++/11/thread:
-
-/usr/include/linux/close_range.h:
-
-/usr/include/c++/11/bits/stl_numeric.h:
-
-/usr/include/c++/11/numeric:
-
-/usr/include/boost/mpl/aux_/has_apply.hpp:
-
-/usr/include/c++/11/bits/random.h:
-
-/usr/include/boost/preprocessor/tuple/rem.hpp:
-
-/usr/include/c++/11/random:
-
-/usr/include/boost/mpl/void.hpp:
-
-/usr/include/eigen3/unsupported/Eigen/CXX11/src/util/MaxSizeVector.h:
-
-/usr/include/boost/preprocessor/tuple/eat.hpp:
-
-/usr/include/eigen3/unsupported/Eigen/CXX11/src/util/CXX11Workarounds.h:
-
-/usr/include/eigen3/unsupported/Eigen/CXX11/src/util/CXX11Meta.h:
-
-/usr/include/boost/serialization/version.hpp:
-
-/usr/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorContraction.h:
-
-/usr/include/eigen3/unsupported/Eigen/src/SpecialFunctions/arch/AVX512/SpecialFunctions.h:
-
-/usr/include/eigen3/unsupported/Eigen/src/SpecialFunctions/arch/AVX512/BesselFunctions.h:
-
-/usr/include/boost/integer_traits.hpp:
-
-/usr/include/eigen3/unsupported/Eigen/src/SpecialFunctions/arch/AVX/SpecialFunctions.h:
-
-/usr/include/boost/mpl/apply_wrap.hpp:
-
-/usr/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorBroadcasting.h:
-
-/usr/include/eigen3/unsupported/Eigen/src/SpecialFunctions/SpecialFunctionsArrayAPI.h:
-
-/usr/include/eigen3/unsupported/Eigen/src/SpecialFunctions/SpecialFunctionsPacketMath.h:
-
-/usr/include/eigen3/unsupported/Eigen/src/SpecialFunctions/SpecialFunctionsHalf.h:
-
-/usr/include/eigen3/unsupported/Eigen/src/SpecialFunctions/BesselFunctionsArrayAPI.h:
-
-/usr/include/eigen3/unsupported/Eigen/src/SpecialFunctions/BesselFunctionsPacketMath.h:
-
-/usr/include/eigen3/unsupported/Eigen/src/SpecialFunctions/BesselFunctionsBFloat16.h:
-
-/usr/include/eigen3/unsupported/Eigen/src/SpecialFunctions/BesselFunctionsImpl.h:
-
-/usr/include/eigen3/unsupported/Eigen/SpecialFunctions:
-
-../include/DenseLayer.hpp:
-
-/usr/include/eigen3/unsupported/Eigen/CXX11/Tensor:
-
-../include/Tensor.hpp:
-
-../include/IDataLoader.hpp:
-
-/usr/include/c++/11/bits/fs_ops.h:
-
-/usr/include/c++/11/bits/fs_dir.h:
-
-/usr/include/c++/11/bits/fs_path.h:
-
-/usr/include/c++/11/bits/fs_fwd.h:
-
-/usr/include/c++/11/filesystem:
-
-/usr/include/eigen3/Eigen/src/Eigenvalues/MatrixBaseEigenvalues.h:
-
-/usr/include/boost/archive/basic_archive.hpp:
-
-/usr/include/eigen3/Eigen/src/Eigenvalues/GeneralizedEigenSolver.h:
-
-/usr/include/eigen3/Eigen/src/Eigenvalues/ComplexEigenSolver.h:
-
-/usr/include/eigen3/Eigen/src/Eigenvalues/ComplexSchur.h:
-
-/usr/include/boost/move/utility_core.hpp:
-
-/usr/include/eigen3/Eigen/src/Eigenvalues/GeneralizedSelfAdjointEigenSolver.h:
-
-/usr/include/eigen3/Eigen/src/Eigenvalues/SelfAdjointEigenSolver.h:
-
-/usr/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorDimensions.h:
-
-/usr/include/c++/11/math.h:
-
-/usr/include/eigen3/Eigen/Eigenvalues:
-
-/usr/include/eigen3/Eigen/src/Geometry/AlignedBox.h:
-
-/usr/include/boost/preprocessor/detail/check.hpp:
-
-/usr/include/eigen3/Eigen/src/Geometry/Scaling.h:
-
-/usr/include/boost/type_traits/is_assignable.hpp:
-
-/usr/include/eigen3/Eigen/src/Geometry/AngleAxis.h:
-
-/usr/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorMacros.h:
-
-/usr/include/eigen3/Eigen/src/Geometry/Quaternion.h:
-
-/usr/include/eigen3/Eigen/src/Geometry/Rotation2D.h:
-
-/usr/include/eigen3/Eigen/src/Geometry/Homogeneous.h:
-
-/usr/include/boost/mpl/aux_/config/eti.hpp:
-
-/usr/include/eigen3/Eigen/src/Geometry/EulerAngles.h:
-
-/usr/include/eigen3/Eigen/src/Geometry/OrthoMethods.h:
-
-/usr/include/eigen3/Eigen/Geometry:
+/usr/include/c++/11/tr1/riemann_zeta.tcc:
 
 /usr/include/c++/11/tr1/legendre_function.tcc:
+
+/usr/include/x86_64-linux-gnu/bits/pthread_stack_min-dynamic.h:
 
 /usr/include/x86_64-linux-gnu/c++/11/bits/c++config.h:
 
@@ -9659,13 +8722,15 @@ src/CMakeFiles/cnn_lib.dir/shared.cpp.o: ../src/shared.cpp \
 
 /usr/include/c++/11/tr1/beta_function.tcc:
 
+/usr/include/c++/11/array:
+
+/usr/include/c++/11/bits/specfun.h:
+
+/usr/include/x86_64-linux-gnu/bits/mathcalls-narrow.h:
+
 /usr/include/c++/11/bits/postypes.h:
 
 /usr/include/x86_64-linux-gnu/bits/flt-eval-method.h:
-
-/usr/include/eigen3/Eigen/src/Eigenvalues/HessenbergDecomposition.h:
-
-/usr/include/x86_64-linux-gnu/bits/libm-simd-decl-stubs.h:
 
 /usr/include/boost/type_traits/is_complete.hpp:
 
@@ -9675,25 +8740,25 @@ src/CMakeFiles/cnn_lib.dir/shared.cpp.o: ../src/shared.cpp \
 
 /usr/include/c++/11/string_view:
 
-/usr/include/boost/serialization/collection_size_type.hpp:
+/usr/include/boost/preprocessor/comparison/not_equal.hpp:
 
-/usr/lib/gcc/x86_64-linux-gnu/11/include/rtmintrin.h:
+/usr/include/eigen3/Eigen/src/LU/Determinant.h:
 
 /usr/include/eigen3/Eigen/src/Core/products/SelfadjointRank2Update.h:
 
-/usr/include/eigen3/Eigen/src/Geometry/Umeyama.h:
+/usr/include/boost/type_traits/is_volatile.hpp:
 
-/usr/include/c++/11/sstream:
+/usr/include/boost/integer_fwd.hpp:
 
-/usr/include/eigen3/Eigen/src/Geometry/ParametrizedLine.h:
-
-/usr/include/c++/11/cstring:
+/usr/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorGlobalFunctions.h:
 
 /usr/include/c++/11/bits/quoted_string.h:
 
 /usr/include/eigen3/Eigen/src/plugins/ReshapedMethods.h:
 
-/usr/lib/gcc/x86_64-linux-gnu/11/include/immintrin.h:
+/usr/include/boost/mpl/aux_/preprocessed/gcc/apply_wrap.hpp:
+
+/usr/include/eigen3/Eigen/src/Core/Matrix.h:
 
 /usr/include/boost/type_traits/detail/yes_no_type.hpp:
 
@@ -9705,59 +8770,63 @@ src/CMakeFiles/cnn_lib.dir/shared.cpp.o: ../src/shared.cpp \
 
 /usr/include/c++/11/ratio:
 
+/usr/include/c++/11/thread:
+
+/usr/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorReductionGpu.h:
+
 /usr/include/c++/11/bits/istream.tcc:
 
 /usr/include/eigen3/Eigen/src/Core/Diagonal.h:
-
-/usr/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorPadding.h:
-
-/usr/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorForwardDeclarations.h:
-
-/usr/include/c++/11/istream:
 
 /usr/include/boost/preprocessor/facilities/empty.hpp:
 
 /usr/include/c++/11/bits/basic_ios.tcc:
 
-/usr/include/eigen3/Eigen/src/Geometry/RotationBase.h:
-
-/usr/include/c++/11/bits/codecvt.h:
-
 /usr/include/boost/preprocessor/control/iif.hpp:
 
 /usr/include/c++/11/bits/enable_special_members.h:
 
+/usr/include/c++/11/bits/locale_facets.tcc:
+
+/usr/include/x86_64-linux-gnu/bits/types/struct_tm.h:
+
+/usr/include/c++/11/bits/this_thread_sleep.h:
+
 /usr/include/x86_64-linux-gnu/c++/11/bits/ctype_inline.h:
+
+../include/LossLayer.hpp:
+
+/usr/include/c++/11/bits/streambuf_iterator.h:
+
+/usr/include/c++/11/cwctype:
+
+/usr/include/c++/11/tr1/poly_hermite.tcc:
 
 /usr/include/boost/serialization/factory.hpp:
 
 /usr/include/c++/11/bits/locale_facets.h:
 
+/usr/include/boost/serialization/version.hpp:
+
+/usr/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorContraction.h:
+
 /usr/include/c++/11/stdexcept:
 
 /usr/include/c++/11/pstl/glue_algorithm_defs.h:
-
-/usr/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorReduction.h:
-
-/usr/include/c++/11/utility:
 
 /usr/include/boost/serialization/static_warning.hpp:
 
 /usr/include/c++/11/ios:
 
-/usr/include/boost/archive/detail/register_archive.hpp:
-
-/usr/include/boost/mpl/arg.hpp:
-
-/usr/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorIntDiv.h:
-
-/usr/include/c++/11/bits/node_handle.h:
+/usr/include/x86_64-linux-gnu/bits/fp-fast.h:
 
 /usr/include/c++/11/bits/basic_string.tcc:
 
 /usr/include/eigen3/Eigen/src/Core/StableNorm.h:
 
 /usr/include/x86_64-linux-gnu/bits/mathcalls-helper-functions.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/error_t.h:
 
 /usr/include/x86_64-linux-gnu/c++/11/bits/error_constants.h:
 
@@ -9789,19 +8858,13 @@ src/CMakeFiles/cnn_lib.dir/shared.cpp.o: ../src/shared.cpp \
 
 /usr/include/c++/11/cerrno:
 
+/usr/include/x86_64-linux-gnu/bits/types/cookie_io_functions_t.h:
+
 /usr/include/x86_64-linux-gnu/c++/11/bits/messages_members.h:
 
 /usr/include/c++/11/bits/basic_ios.h:
 
 /usr/include/eigen3/Eigen/src/Core/Swap.h:
-
-/usr/include/x86_64-linux-gnu/bits/types/struct_tm.h:
-
-/usr/include/x86_64-linux-gnu/bits/stdio2.h:
-
-/usr/include/c++/11/bits/locale_facets.tcc:
-
-/usr/include/x86_64-linux-gnu/bits/stdio.h:
 
 /usr/include/stdio.h:
 
@@ -9811,53 +8874,15 @@ src/CMakeFiles/cnn_lib.dir/shared.cpp.o: ../src/shared.cpp \
 
 /usr/include/x86_64-linux-gnu/bits/wordsize.h:
 
-/usr/include/eigen3/Eigen/src/Geometry/arch/Geometry_SIMD.h:
-
-/usr/include/c++/11/cstdio:
-
 /usr/include/boost/preprocessor/logical/compl.hpp:
 
 /usr/include/eigen3/Eigen/src/Core/util/Macros.h:
 
 /usr/include/c++/11/bits/std_abs.h:
 
-/usr/include/eigen3/unsupported/Eigen/src/SpecialFunctions/BesselFunctionsFunctors.h:
-
-/usr/include/c++/11/bits/stl_heap.h:
-
-/usr/include/c++/11/cwctype:
-
-/usr/include/c++/11/pstl/glue_numeric_defs.h:
-
-/usr/include/eigen3/Eigen/src/Eigenvalues/Tridiagonalization.h:
-
-/usr/include/eigen3/Eigen/src/LU/arch/InverseSize4.h:
-
-/usr/include/x86_64-linux-gnu/bits/mathcalls-narrow.h:
-
-/usr/include/x86_64-linux-gnu/bits/stdlib-bsearch.h:
-
-/usr/include/boost/archive/detail/basic_pointer_iserializer.hpp:
-
-/usr/include/c++/11/bits/stl_bvector.h:
-
-/usr/include/x86_64-linux-gnu/bits/types/clockid_t.h:
-
-/usr/include/boost/smart_ptr/detail/spinlock_gcc_atomic.hpp:
-
-/usr/include/x86_64-linux-gnu/bits/types/struct___jmp_buf_tag.h:
-
-/usr/include/eigen3/Eigen/src/Core/util/BlasUtil.h:
-
 /usr/include/alloca.h:
 
-/usr/include/boost/type_traits/is_function.hpp:
-
-/usr/lib/gcc/x86_64-linux-gnu/11/include/avx512ifmavlintrin.h:
-
-/usr/include/boost/utility/enable_if.hpp:
-
-/usr/include/x86_64-linux-gnu/bits/select2.h:
+/usr/include/c++/11/bits/fs_path.h:
 
 /usr/include/c++/11/iostream:
 
@@ -9877,10 +8902,6 @@ src/CMakeFiles/cnn_lib.dir/shared.cpp.o: ../src/shared.cpp \
 
 /usr/include/x86_64-linux-gnu/bits/waitflags.h:
 
-/usr/include/c++/11/array:
-
-/usr/include/eigen3/Eigen/src/Core/arch/AVX512/TypeCasting.h:
-
 /usr/include/boost/type_traits/remove_pointer.hpp:
 
 /usr/include/stdlib.h:
@@ -9897,21 +8918,11 @@ src/CMakeFiles/cnn_lib.dir/shared.cpp.o: ../src/shared.cpp \
 
 /usr/include/c++/11/tr1/gamma.tcc:
 
-/usr/include/boost/serialization/extended_type_info.hpp:
-
-/usr/include/eigen3/unsupported/Eigen/src/SpecialFunctions/SpecialFunctionsFunctors.h:
-
-/usr/include/eigen3/Eigen/src/Eigenvalues/EigenSolver.h:
-
-/usr/include/x86_64-linux-gnu/gnu/stubs-64.h:
-
 /usr/include/c++/11/bits/locale_classes.h:
 
 /usr/include/eigen3/Eigen/SVD:
 
-/usr/include/x86_64-linux-gnu/bits/wchar2.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/11/include/avx512vbmi2intrin.h:
+/usr/include/x86_64-linux-gnu/bits/fp-logb.h:
 
 /usr/include/c++/11/bits/ios_base.h:
 
@@ -9921,15 +8932,13 @@ src/CMakeFiles/cnn_lib.dir/shared.cpp.o: ../src/shared.cpp \
 
 /usr/include/c++/11/cctype:
 
-/usr/lib/gcc/x86_64-linux-gnu/11/include/clwbintrin.h:
-
 /usr/include/c++/11/iomanip:
-
-/usr/lib/gcc/x86_64-linux-gnu/11/include/avxvnniintrin.h:
 
 /usr/include/boost/aligned_storage.hpp:
 
 /usr/include/eigen3/Eigen/src/Core/util/XprHelper.h:
+
+/usr/include/eigen3/Eigen/src/Core/Array.h:
 
 /usr/include/c++/11/clocale:
 
@@ -9967,8 +8976,6 @@ src/CMakeFiles/cnn_lib.dir/shared.cpp.o: ../src/shared.cpp \
 
 /usr/include/c++/11/bits/parse_numbers.h:
 
-/usr/lib/gcc/x86_64-linux-gnu/11/include/clflushoptintrin.h:
-
 /usr/include/c++/11/bits/shared_ptr_atomic.h:
 
 /usr/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorIO.h:
@@ -9980,10 +8987,6 @@ src/CMakeFiles/cnn_lib.dir/shared.cpp.o: ../src/shared.cpp \
 /usr/include/c++/11/ext/string_conversions.h:
 
 /usr/include/c++/11/exception:
-
-/usr/lib/gcc/x86_64-linux-gnu/11/include/avx512vpopcntdqvlintrin.h:
-
-/usr/include/x86_64-linux-gnu/c++/11/bits/atomic_word.h:
 
 /usr/include/boost/mpl/aux_/yes_no.hpp:
 
@@ -9997,10 +9000,6 @@ src/CMakeFiles/cnn_lib.dir/shared.cpp.o: ../src/shared.cpp \
 
 /usr/include/x86_64-linux-gnu/bits/floatn.h:
 
-/usr/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorContractionThreadPool.h:
-
-/usr/include/x86_64-linux-gnu/bits/wchar.h:
-
 /usr/include/c++/11/bits/string_view.tcc:
 
 /usr/include/c++/11/bits/hash_bytes.h:
@@ -10010,12 +9009,6 @@ src/CMakeFiles/cnn_lib.dir/shared.cpp.o: ../src/shared.cpp \
 /usr/include/c++/11/initializer_list:
 
 /usr/include/c++/11/iosfwd:
-
-../src/ConvLayerDataParallel.cpp:
-
-/usr/include/boost/throw_exception.hpp:
-
-/usr/lib/gcc/x86_64-linux-gnu/11/include/cetintrin.h:
 
 ../include/Optimizer.hpp:
 
@@ -10041,7 +9034,9 @@ src/CMakeFiles/cnn_lib.dir/shared.cpp.o: ../src/shared.cpp \
 
 /usr/include/c++/11/bits/stl_iterator_base_funcs.h:
 
-/usr/lib/gcc/x86_64-linux-gnu/11/include/fxsrintrin.h:
+/usr/include/boost/preprocessor/logical/not.hpp:
+
+/usr/include/c++/11/bits/std_thread.h:
 
 /usr/include/c++/11/ext/alloc_traits.h:
 
@@ -10052,8 +9047,6 @@ src/CMakeFiles/cnn_lib.dir/shared.cpp.o: ../src/shared.cpp \
 /usr/include/boost/operators.hpp:
 
 /usr/include/c++/11/bits/allocator.h:
-
-/usr/include/eigen3/unsupported/Eigen/src/SpecialFunctions/arch/AVX/BesselFunctions.h:
 
 /usr/include/math.h:
 
@@ -10074,10 +9067,6 @@ src/CMakeFiles/cnn_lib.dir/shared.cpp.o: ../src/shared.cpp \
 /usr/include/eigen3/unsupported/Eigen/src/SpecialFunctions/BesselFunctionsHalf.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/clock_t.h:
-
-/usr/include/eigen3/unsupported/Eigen/CXX11/src/util/EmulateArray.h:
-
-/usr/include/x86_64-linux-gnu/bits/long-double.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/__sigset_t.h:
 
@@ -10101,6 +9090,14 @@ src/CMakeFiles/cnn_lib.dir/shared.cpp.o: ../src/shared.cpp \
 
 /usr/include/c++/11/pstl/pstl_config.h:
 
+/usr/include/eigen3/Eigen/src/LU/FullPivLU.h:
+
+/usr/include/eigen3/Eigen/src/Core/arch/SSE/Complex.h:
+
+/usr/include/boost/mpl/aux_/arity.hpp:
+
+/usr/include/x86_64-linux-gnu/sys/cdefs.h:
+
 /usr/include/eigen3/Eigen/src/Core/DiagonalProduct.h:
 
 /usr/include/stdint.h:
@@ -10112,8 +9109,6 @@ src/CMakeFiles/cnn_lib.dir/shared.cpp.o: ../src/shared.cpp \
 /usr/include/endian.h:
 
 /usr/include/c++/11/bits/erase_if.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/11/include/xtestintrin.h:
 
 /usr/include/c++/11/bits/concept_check.h:
 
@@ -10135,8 +9130,6 @@ src/CMakeFiles/cnn_lib.dir/shared.cpp.o: ../src/shared.cpp \
 
 /usr/include/c++/11/bits/vector.tcc:
 
-/usr/lib/gcc/x86_64-linux-gnu/11/include/xsaveoptintrin.h:
-
 /usr/include/x86_64-linux-gnu/bits/byteswap.h:
 
 /usr/include/c++/11/bits/shared_ptr.h:
@@ -10151,10 +9144,6 @@ src/CMakeFiles/cnn_lib.dir/shared.cpp.o: ../src/shared.cpp \
 
 /usr/include/eigen3/Eigen/src/Core/ReturnByValue.h:
 
-/usr/include/eigen3/Eigen/src/Geometry/Hyperplane.h:
-
-/usr/include/features.h:
-
 /usr/include/c++/11/bits/random.tcc:
 
 /usr/include/c++/11/bits/atomic_base.h:
@@ -10163,6 +9152,10 @@ src/CMakeFiles/cnn_lib.dir/shared.cpp.o: ../src/shared.cpp \
 
 /usr/include/c++/11/ext/numeric_traits.h:
 
+/usr/include/eigen3/unsupported/Eigen/src/SpecialFunctions/BesselFunctionsArrayAPI.h:
+
+/usr/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorCostModel.h:
+
 /usr/include/boost/mpl/less_equal.hpp:
 
 /usr/include/eigen3/Eigen/Dense:
@@ -10170,12 +9163,6 @@ src/CMakeFiles/cnn_lib.dir/shared.cpp.o: ../src/shared.cpp \
 /usr/include/c++/11/bits/alloc_traits.h:
 
 /usr/include/errno.h:
-
-../include/shared.hpp:
-
-/usr/include/c++/11/memory:
-
-/usr/include/x86_64-linux-gnu/bits/string_fortified.h:
 
 ../src/ConvLayer3D.cpp:
 
@@ -10199,6 +9186,20 @@ src/CMakeFiles/cnn_lib.dir/shared.cpp.o: ../src/shared.cpp \
 
 /usr/include/c++/11/functional:
 
+/usr/include/boost/archive/detail/basic_pointer_iserializer.hpp:
+
+/usr/include/c++/11/bits/stl_bvector.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/clockid_t.h:
+
+/usr/include/boost/smart_ptr/detail/spinlock_gcc_atomic.hpp:
+
+/usr/include/x86_64-linux-gnu/bits/types/struct___jmp_buf_tag.h:
+
+/usr/include/eigen3/Eigen/src/Core/util/BlasUtil.h:
+
+/usr/include/c++/11/bits/fs_fwd.h:
+
 /usr/include/boost/mpl/aux_/numeric_cast_utils.hpp:
 
 /usr/include/boost/checked_delete.hpp:
@@ -10208,6 +9209,10 @@ src/CMakeFiles/cnn_lib.dir/shared.cpp.o: ../src/shared.cpp \
 /usr/include/x86_64-linux-gnu/bits/struct_rwlock.h:
 
 /usr/include/c++/11/streambuf:
+
+/usr/include/x86_64-linux-gnu/bits/getopt_core.h:
+
+/usr/include/c++/11/bits/functexcept.h:
 
 /usr/include/boost/mpl/arg_fwd.hpp:
 
@@ -10223,7 +9228,11 @@ src/CMakeFiles/cnn_lib.dir/shared.cpp.o: ../src/shared.cpp \
 
 /usr/include/c++/11/ostream:
 
+/usr/include/eigen3/Eigen/src/Core/VectorBlock.h:
+
 /usr/include/c++/11/bits/unique_ptr.h:
+
+/usr/include/c++/11/bits/stl_relops.h:
 
 /usr/include/boost/smart_ptr/allocate_shared_array.hpp:
 
@@ -10233,17 +9242,9 @@ src/CMakeFiles/cnn_lib.dir/shared.cpp.o: ../src/shared.cpp \
 
 /usr/include/eigen3/Eigen/src/QR/CompleteOrthogonalDecomposition.h:
 
-/usr/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorMeta.h:
-
-/usr/include/c++/11/debug/assertions.h:
-
 /usr/include/boost/serialization/item_version_type.hpp:
 
 /usr/include/c++/11/pstl/execution_defs.h:
-
-/usr/include/x86_64-linux-gnu/bits/fp-fast.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/11/include/xsavesintrin.h:
 
 /usr/include/c++/11/new:
 
@@ -10261,23 +9262,9 @@ src/CMakeFiles/cnn_lib.dir/shared.cpp.o: ../src/shared.cpp \
 
 /usr/include/c++/11/bits/stl_iterator.h:
 
-/usr/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorContractionMapper.h:
-
-/usr/include/x86_64-linux-gnu/bits/struct_mutex.h:
-
 /usr/include/x86_64-linux-gnu/asm/errno.h:
 
-/usr/include/x86_64-linux-gnu/bits/getopt_core.h:
-
-/usr/include/c++/11/bits/functexcept.h:
-
-/usr/include/x86_64-linux-gnu/bits/stdlib.h:
-
 /usr/include/x86_64-linux-gnu/bits/types/struct_timeval.h:
-
-/usr/include/boost/type_traits/type_with_alignment.hpp:
-
-/usr/lib/gcc/x86_64-linux-gnu/11/include/vpclmulqdqintrin.h:
 
 /usr/include/x86_64-linux-gnu/bits/atomic_wide_counter.h:
 
@@ -10295,37 +9282,45 @@ src/CMakeFiles/cnn_lib.dir/shared.cpp.o: ../src/shared.cpp \
 
 /usr/include/eigen3/Eigen/src/LU/PartialPivLU.h:
 
+/usr/include/c++/11/tr1/poly_laguerre.tcc:
+
 /usr/include/c++/11/cstdlib:
-
-/usr/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorDimensionList.h:
-
-/usr/include/c++/11/bit:
 
 /usr/include/c++/11/tr1/exp_integral.tcc:
 
+/usr/include/eigen3/unsupported/Eigen/src/SpecialFunctions/SpecialFunctionsBFloat16.h:
+
+/usr/include/c++/11/bits/exception_defines.h:
+
 /usr/include/x86_64-linux-gnu/c++/11/bits/os_defines.h:
+
+/usr/include/x86_64-linux-gnu/c++/11/bits/atomic_word.h:
 
 /usr/include/c++/11/pstl/glue_memory_defs.h:
 
-/usr/include/c++/11/ext/type_traits.h:
+/usr/include/eigen3/Eigen/src/Core/CwiseBinaryOp.h:
 
-/usr/lib/gcc/x86_64-linux-gnu/11/include/avx512vnnivlintrin.h:
+/usr/include/c++/11/ext/type_traits.h:
 
 /usr/include/c++/11/bits/stl_function.h:
 
 /usr/include/c++/11/bits/memoryfwd.h:
 
-/usr/include/eigen3/Eigen/src/Core/VectorBlock.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/11/include/prfchwintrin.h:
-
 /usr/include/c++/11/tuple:
+
+/usr/include/boost/mpl/void.hpp:
+
+/usr/include/eigen3/unsupported/Eigen/CXX11/src/util/MaxSizeVector.h:
 
 /usr/include/c++/11/ctime:
 
 /usr/lib/gcc/x86_64-linux-gnu/11/include/mm_malloc.h:
 
 /usr/include/x86_64-linux-gnu/bits/time64.h:
+
+/usr/include/x86_64-linux-gnu/bits/libm-simd-decl-stubs.h:
+
+/usr/include/eigen3/Eigen/src/Eigenvalues/HessenbergDecomposition.h:
 
 /usr/include/x86_64-linux-gnu/bits/types.h:
 
@@ -10349,17 +9344,15 @@ src/CMakeFiles/cnn_lib.dir/shared.cpp.o: ../src/shared.cpp \
 
 /usr/include/c++/11/backward/binders.h:
 
-/usr/include/c++/11/bits/specfun.h:
-
 /usr/include/boost/archive/detail/helper_collection.hpp:
 
 /usr/include/c++/11/tr1/special_function_util.h:
 
-/usr/lib/gcc/x86_64-linux-gnu/11/include/amxint8intrin.h:
-
 /usr/include/c++/11/bits/stl_algobase.h:
 
 /usr/lib/gcc/x86_64-linux-gnu/11/include/stdint.h:
+
+/usr/include/c++/11/cwchar:
 
 /usr/include/boost/smart_ptr/make_shared_object.hpp:
 
@@ -10369,17 +9362,11 @@ src/CMakeFiles/cnn_lib.dir/shared.cpp.o: ../src/shared.cpp \
 
 /usr/include/wchar.h:
 
-/usr/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorChipping.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/11/include/avx512bwintrin.h:
-
 /usr/include/eigen3/Eigen/src/Core/PlainObjectBase.h:
 
 /usr/include/locale.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/struct_itimerspec.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/11/include/bmiintrin.h:
 
 /usr/include/eigen3/Eigen/src/Core/IO.h:
 
@@ -10394,6 +9381,18 @@ src/CMakeFiles/cnn_lib.dir/shared.cpp.o: ../src/shared.cpp \
 /usr/include/x86_64-linux-gnu/bits/types/time_t.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/FILE.h:
+
+/usr/include/x86_64-linux-gnu/bits/wchar.h:
+
+/usr/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorContractionThreadPool.h:
+
+/usr/include/boost/core/noinit_adaptor.hpp:
+
+/usr/include/boost/type_traits/remove_const.hpp:
+
+/usr/include/boost/mpl/aux_/has_type.hpp:
+
+/usr/include/c++/11/bits/stringfwd.h:
 
 /usr/include/c++/11/system_error:
 
@@ -10411,6 +9410,10 @@ src/CMakeFiles/cnn_lib.dir/shared.cpp.o: ../src/shared.cpp \
 
 /usr/include/eigen3/Eigen/src/Cholesky/LDLT.h:
 
+/usr/include/boost/mpl/or.hpp:
+
+/usr/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorDeviceSycl.h:
+
 /usr/include/eigen3/Eigen/src/Core/Assign.h:
 
 /usr/include/x86_64-linux-gnu/bits/pthreadtypes.h:
@@ -10419,21 +9422,13 @@ src/CMakeFiles/cnn_lib.dir/shared.cpp.o: ../src/shared.cpp \
 
 /usr/include/eigen3/Eigen/src/plugins/BlockMethods.h:
 
+/usr/include/c++/11/memory:
+
+../include/shared.hpp:
+
 /usr/include/c++/11/bits/refwrap.h:
 
-/usr/include/boost/mpl/aux_/config/lambda.hpp:
-
-/usr/include/boost/type_traits/is_same.hpp:
-
-/usr/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorExpr.h:
-
-/usr/include/c++/11/ext/concurrence.h:
-
 /usr/include/x86_64-linux-gnu/c++/11/bits/gthr-default.h:
-
-/usr/include/x86_64-linux-gnu/bits/types/cookie_io_functions_t.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/11/include/avx512vlbwintrin.h:
 
 /usr/include/pthread.h:
 
@@ -10445,11 +9440,13 @@ src/CMakeFiles/cnn_lib.dir/shared.cpp.o: ../src/shared.cpp \
 
 /usr/include/c++/11/bits/basic_string.h:
 
-/usr/include/eigen3/Eigen/src/Geometry/Transform.h:
-
-/usr/include/x86_64-linux-gnu/gnu/stubs.h:
+/usr/include/c++/11/bits/shared_ptr_base.h:
 
 /usr/include/eigen3/Eigen/src/plugins/IndexedViewMethods.h:
+
+/usr/include/c++/11/utility:
+
+/usr/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorReduction.h:
 
 /usr/include/x86_64-linux-gnu/bits/mathcalls.h:
 
@@ -10467,41 +9464,17 @@ src/CMakeFiles/cnn_lib.dir/shared.cpp.o: ../src/shared.cpp \
 
 /usr/include/eigen3/Eigen/src/Core/ArrayWrapper.h:
 
-/usr/include/boost/mpl/aux_/config/has_xxx.hpp:
+../include/DenseLayer.hpp:
 
-/usr/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorBlock.h:
-
-/usr/include/c++/11/bits/stl_pair.h:
+/usr/include/eigen3/unsupported/Eigen/CXX11/Tensor:
 
 /usr/include/boost/mpl/bool.hpp:
 
 /usr/include/x86_64-linux-gnu/bits/types/__fpos64_t.h:
 
-/usr/include/c++/11/tr1/poly_hermite.tcc:
-
-/usr/include/c++/11/tr1/poly_laguerre.tcc:
-
-/usr/include/c++/11/tr1/riemann_zeta.tcc:
-
-/usr/lib/gcc/x86_64-linux-gnu/11/include/x86gprintrin.h:
-
-../include/DenseLayerDataParallel.hpp:
-
-/usr/include/eigen3/Eigen/src/Core/util/ConfigureVectorization.h:
-
-../src/DenseLayerDataParallel.cpp:
-
-/usr/include/boost/preprocessor/array/elem.hpp:
-
-/usr/lib/gcc/x86_64-linux-gnu/11/include/mmintrin.h:
-
 /usr/include/boost/mpl/aux_/nttp_decl.hpp:
 
 /usr/lib/gcc/x86_64-linux-gnu/11/include/emmintrin.h:
-
-/usr/include/x86_64-linux-gnu/bits/types/error_t.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/11/include/hresetintrin.h:
 
 /usr/include/boost/mpl/has_xxx.hpp:
 
@@ -10511,257 +9484,13 @@ src/CMakeFiles/cnn_lib.dir/shared.cpp.o: ../src/shared.cpp \
 
 /usr/include/eigen3/Eigen/src/Core/CwiseUnaryView.h:
 
-/usr/include/boost/type_traits/is_const.hpp:
-
-/usr/lib/gcc/x86_64-linux-gnu/11/include/pmmintrin.h:
-
-/usr/include/eigen3/Eigen/src/Core/CwiseBinaryOp.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/11/include/mwaitintrin.h:
-
-/usr/include/eigen3/Eigen/src/Core/Transpose.h:
-
-/usr/include/boost/config/abi_suffix.hpp:
-
-/usr/lib/gcc/x86_64-linux-gnu/11/include/tmmintrin.h:
-
-/usr/include/boost/type_traits/is_arithmetic.hpp:
-
-/usr/include/c++/11/bits/unordered_map.h:
-
-/usr/include/boost/mpl/aux_/arity.hpp:
-
-/usr/include/x86_64-linux-gnu/sys/cdefs.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/11/include/popcntintrin.h:
-
-/usr/include/boost/mpl/eval_if.hpp:
-
-/usr/include/eigen3/Eigen/src/Core/Map.h:
-
-../include/ConvLayer3D.hpp:
-
-/usr/include/boost/core/first_scalar.hpp:
-
-/usr/lib/gcc/x86_64-linux-gnu/11/include/nmmintrin.h:
-
-/usr/include/boost/type_traits/is_constructible.hpp:
-
-/usr/lib/gcc/x86_64-linux-gnu/11/include/ia32intrin.h:
-
-/usr/include/eigen3/Eigen/src/Core/MatrixBase.h:
-
-/usr/include/eigen3/Eigen/src/Core/arch/AVX512/PacketMath.h:
-
-/usr/include/boost/archive/detail/abi_suffix.hpp:
-
-/usr/include/c++/11/atomic:
-
-/usr/include/eigen3/Eigen/QR:
-
-/usr/include/eigen3/Eigen/src/Geometry/Translation.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/11/include/bmi2intrin.h:
-
-/usr/include/boost/preprocessor/repetition/enum_trailing_params.hpp:
-
-/usr/include/boost/smart_ptr/detail/operator_bool.hpp:
-
-/usr/lib/gcc/x86_64-linux-gnu/11/include/cldemoteintrin.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/11/include/clzerointrin.h:
-
-/usr/include/x86_64-linux-gnu/bits/pthread_stack_min-dynamic.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/11/include/enqcmdintrin.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/11/include/lzcntintrin.h:
-
-/usr/include/eigen3/unsupported/Eigen/src/SpecialFunctions/SpecialFunctionsBFloat16.h:
-
-/usr/include/c++/11/bits/exception_defines.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/11/include/lwpintrin.h:
-
-/usr/include/boost/core/allocator_access.hpp:
-
-/usr/lib/gcc/x86_64-linux-gnu/11/include/movdirintrin.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/11/include/pconfigintrin.h:
+/usr/include/eigen3/Eigen/src/Core/util/MKL_support.h:
 
 /usr/include/c++/11/cassert:
-
-/usr/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/Tensor.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/11/include/pkuintrin.h:
-
-/usr/include/boost/archive/detail/basic_oarchive.hpp:
-
-/usr/lib/gcc/x86_64-linux-gnu/11/include/rdseedintrin.h:
-
-/usr/include/eigen3/Eigen/src/Core/ConditionEstimator.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/11/include/serializeintrin.h:
-
-/usr/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorDeviceDefault.h:
-
-/usr/include/eigen3/Eigen/src/Core/Block.h:
-
-/usr/include/boost/type_traits/has_nothrow_constructor.hpp:
-
-/usr/lib/gcc/x86_64-linux-gnu/11/include/tbmintrin.h:
-
-/usr/include/eigen3/Eigen/src/Core/Select.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/11/include/tsxldtrkintrin.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/11/include/wbnoinvdintrin.h:
-
-/usr/include/c++/11/bits/stl_relops.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/11/include/avx512pfintrin.h:
-
-/usr/include/boost/core/noinit_adaptor.hpp:
-
-/usr/include/boost/type_traits/remove_const.hpp:
-
-/usr/include/boost/mpl/aux_/has_type.hpp:
-
-/usr/include/c++/11/bits/stringfwd.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/11/include/xsaveintrin.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/11/include/xsavecintrin.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/11/include/wmmintrin.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/11/include/avxintrin.h:
-
-/usr/include/boost/preprocessor/comparison/not_equal.hpp:
-
-/usr/include/eigen3/Eigen/src/LU/Determinant.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/11/include/avx512fintrin.h:
-
-/usr/include/boost/type_traits/alignment_of.hpp:
-
-/usr/lib/gcc/x86_64-linux-gnu/11/include/avx512cdintrin.h:
-
-/usr/include/boost/preprocessor/comparison/less_equal.hpp:
-
-/usr/lib/gcc/x86_64-linux-gnu/11/include/avx512vlintrin.h:
-
-/usr/include/c++/11/bits/locale_conv.h:
-
-/usr/include/eigen3/Eigen/src/Core/Random.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/11/include/avx512vldqintrin.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/11/include/avx512ifmaintrin.h:
-
-/usr/include/eigen3/Eigen/src/Core/arch/AVX512/MathFunctions.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/11/include/avx512vbmiintrin.h:
-
-/usr/include/boost/serialization/detail/stack_constructor.hpp:
-
-/usr/include/boost/serialization/force_include.hpp:
-
-/usr/lib/gcc/x86_64-linux-gnu/11/include/avx512vbmivlintrin.h:
-
-/usr/include/eigen3/Eigen/src/Core/ProductEvaluators.h:
-
-/usr/include/eigen3/Eigen/src/SVD/UpperBidiagonalization.h:
-
-/usr/include/boost/preprocessor/control/expr_iif.hpp:
-
-/usr/include/c++/11/bits/std_function.h:
-
-/usr/include/x86_64-linux-gnu/bits/types/timer_t.h:
-
-/usr/include/eigen3/Eigen/src/SVD/JacobiSVD.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/11/include/avx5124fmapsintrin.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/11/include/avx5124vnniwintrin.h:
-
-/usr/include/boost/smart_ptr/shared_ptr.hpp:
-
-/usr/lib/gcc/x86_64-linux-gnu/11/include/avx512vpopcntdqintrin.h:
-
-/usr/include/eigen3/Eigen/src/Core/arch/SSE/PacketMath.h:
-
-/usr/include/eigen3/Eigen/src/Core/arch/Default/GenericPacketMathFunctions.h:
-
-/usr/include/eigen3/Eigen/src/Core/MapBase.h:
-
-/usr/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorTrace.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/11/include/avx512vbmi2vlintrin.h:
-
-/usr/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorExecutor.h:
-
-/usr/include/eigen3/Eigen/src/Core/Reverse.h:
-
-../include/Layer.hpp:
-
-/usr/lib/gcc/x86_64-linux-gnu/11/include/avx512vnniintrin.h:
-
-/usr/include/eigen3/Eigen/src/LU/FullPivLU.h:
-
-/usr/include/eigen3/Eigen/src/Core/arch/SSE/Complex.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/11/include/avx512vp2intersectintrin.h:
-
-../include/LossLayer.hpp:
-
-/usr/include/c++/11/bits/streambuf_iterator.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/11/include/avx512vp2intersectvlintrin.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/11/include/shaintrin.h:
-
-/usr/include/c++/11/cwchar:
-
-/usr/lib/gcc/x86_64-linux-gnu/11/include/avx512erintrin.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/11/include/fmaintrin.h:
-
-/usr/include/boost/mpl/aux_/preprocessed/gcc/apply_wrap.hpp:
-
-/usr/include/eigen3/Eigen/src/Core/Matrix.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/11/include/f16cintrin.h:
-
-/usr/include/c++/11/bits/cxxabi_forced.h:
-
-/usr/include/c++/11/bits/algorithmfwd.h:
-
-/usr/include/eigen3/Eigen/src/Core/CwiseUnaryOp.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/11/include/gfniintrin.h:
-
-/usr/include/boost/serialization/wrapper.hpp:
-
-/usr/lib/gcc/x86_64-linux-gnu/11/include/vaesintrin.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/11/include/avx512bf16vlintrin.h:
-
-/usr/include/c++/11/bits/shared_ptr_base.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/11/include/amxtileintrin.h:
-
-/usr/include/eigen3/Eigen/src/Core/Array.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/11/include/keylockerintrin.h:
-
-/usr/include/eigen3/Eigen/src/Core/util/MKL_support.h:
 
 /usr/include/c++/11/codecvt:
 
 /usr/include/c++/11/bits/allocated_ptr.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/11/include/avx512dqintrin.h:
 
 /usr/include/assert.h:
 
@@ -10775,15 +9504,13 @@ src/CMakeFiles/cnn_lib.dir/shared.cpp.o: ../src/shared.cpp \
 
 /usr/include/c++/11/unordered_map:
 
-/usr/include/boost/core/checked_delete.hpp:
-
-/usr/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorInitializer.h:
-
-/usr/include/c++/11/bits/hashtable.h:
-
 /usr/include/boost/type_traits/is_destructible.hpp:
 
 /usr/include/c++/11/bits/hashtable_policy.h:
+
+/usr/include/boost/type_traits/is_arithmetic.hpp:
+
+/usr/include/c++/11/bits/unordered_map.h:
 
 /usr/include/c++/11/bits/stl_algo.h:
 
@@ -10793,15 +9520,13 @@ src/CMakeFiles/cnn_lib.dir/shared.cpp.o: ../src/shared.cpp \
 
 /usr/include/eigen3/Eigen/src/Core/NestByValue.h:
 
-/usr/lib/gcc/x86_64-linux-gnu/11/include/mwaitxintrin.h:
-
 /usr/include/eigen3/Eigen/src/Core/BooleanRedux.h:
 
+/usr/include/boost/archive/basic_archive.hpp:
+
+/usr/include/eigen3/Eigen/src/Eigenvalues/GeneralizedEigenSolver.h:
+
 /usr/include/strings.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/11/include/avx2intrin.h:
-
-/usr/include/x86_64-linux-gnu/bits/strings_fortified.h:
 
 /usr/include/boost/type_traits/remove_extent.hpp:
 
@@ -10831,11 +9556,11 @@ src/CMakeFiles/cnn_lib.dir/shared.cpp.o: ../src/shared.cpp \
 
 /usr/include/eigen3/Eigen/src/Core/util/Constants.h:
 
+/usr/include/eigen3/Eigen/src/Geometry/Translation.h:
+
 /usr/include/boost/mpl/placeholders.hpp:
 
 /usr/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorStriding.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/11/include/sgxintrin.h:
 
 /usr/include/eigen3/Eigen/src/Core/util/Meta.h:
 
@@ -10849,6 +9574,8 @@ src/CMakeFiles/cnn_lib.dir/shared.cpp.o: ../src/shared.cpp \
 
 /usr/include/eigen3/Eigen/src/Core/util/Memory.h:
 
+/usr/include/eigen3/Eigen/src/Eigenvalues/ComplexSchur.h:
+
 /usr/include/boost/mpl/aux_/config/preprocessor.hpp:
 
 /usr/include/x86_64-linux-gnu/bits/environments.h:
@@ -10861,10 +9588,6 @@ src/CMakeFiles/cnn_lib.dir/shared.cpp.o: ../src/shared.cpp \
 
 /usr/include/eigen3/Eigen/src/Core/SolverBase.h:
 
-/usr/include/eigen3/unsupported/Eigen/src/SpecialFunctions/SpecialFunctionsImpl.h:
-
-/usr/include/eigen3/Eigen/src/Core/NumTraits.h:
-
 /usr/include/eigen3/Eigen/src/plugins/CommonCwiseUnaryOps.h:
 
 /usr/include/eigen3/Eigen/src/Core/functors/BinaryFunctors.h:
@@ -10875,19 +9598,15 @@ src/CMakeFiles/cnn_lib.dir/shared.cpp.o: ../src/shared.cpp \
 
 /usr/include/eigen3/Eigen/src/Core/MathFunctions.h:
 
-/usr/lib/gcc/x86_64-linux-gnu/11/include/avx512bitalgintrin.h:
-
-/usr/include/eigen3/Eigen/src/Core/arch/AVX/TypeCasting.h:
-
 /usr/include/eigen3/Eigen/src/Core/MathFunctionsImpl.h:
+
+/usr/include/eigen3/Eigen/Geometry:
 
 /usr/include/eigen3/Eigen/src/Core/arch/Default/BFloat16.h:
 
 /usr/include/eigen3/Eigen/src/Core/products/TriangularSolverMatrix.h:
 
 /usr/include/eigen3/Eigen/src/Core/arch/Default/TypeCasting.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/11/include/adxintrin.h:
 
 /usr/include/eigen3/Eigen/src/Core/arch/Default/GenericPacketMathFunctionsFwd.h:
 
@@ -10897,35 +9616,27 @@ src/CMakeFiles/cnn_lib.dir/shared.cpp.o: ../src/shared.cpp \
 
 /usr/include/eigen3/Eigen/src/Core/arch/SSE/TypeCasting.h:
 
-/usr/include/eigen3/Eigen/src/Core/arch/AVX/PacketMath.h:
-
-/usr/include/eigen3/Eigen/src/Core/arch/AVX/Complex.h:
-
-/usr/include/x86_64-linux-gnu/bits/fp-logb.h:
-
-/usr/include/eigen3/Eigen/src/Core/arch/AVX512/Complex.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/11/include/smmintrin.h:
-
 /usr/include/eigen3/Eigen/src/Core/arch/SSE/MathFunctions.h:
 
 /usr/include/c++/11/ext/new_allocator.h:
 
 /usr/include/eigen3/Eigen/src/Core/Visitor.h:
 
-/usr/include/eigen3/Eigen/src/Core/arch/AVX/MathFunctions.h:
-
 /usr/include/eigen3/Eigen/src/Core/arch/Default/Half.h:
 
 /usr/include/eigen3/Eigen/src/Core/arch/Default/Settings.h:
+
+/usr/include/eigen3/Eigen/src/Core/arch/SSE/PacketMath.h:
+
+/usr/include/eigen3/Eigen/src/Core/arch/Default/GenericPacketMathFunctions.h:
+
+/usr/include/eigen3/Eigen/src/Core/MapBase.h:
 
 /usr/include/boost/preprocessor/punctuation/comma_if.hpp:
 
 /usr/include/eigen3/Eigen/src/Core/functors/UnaryFunctors.h:
 
 /usr/include/boost/type_traits/integral_constant.hpp:
-
-/usr/lib/gcc/x86_64-linux-gnu/11/include/uintrintrin.h:
 
 /usr/include/eigen3/Eigen/src/Core/functors/NullaryFunctors.h:
 
@@ -10959,6 +9670,8 @@ src/CMakeFiles/cnn_lib.dir/shared.cpp.o: ../src/shared.cpp \
 
 /usr/include/eigen3/Eigen/src/Core/DenseCoeffsBase.h:
 
+/usr/include/eigen3/Eigen/src/Core/MatrixBase.h:
+
 /usr/include/boost/mpl/aux_/config/bcc.hpp:
 
 /usr/include/eigen3/Eigen/src/plugins/MatrixCwiseUnaryOps.h:
@@ -10967,9 +9680,15 @@ src/CMakeFiles/cnn_lib.dir/shared.cpp.o: ../src/shared.cpp \
 
 /usr/include/eigen3/Eigen/src/Core/EigenBase.h:
 
+/usr/include/eigen3/unsupported/Eigen/SpecialFunctions:
+
 /usr/include/eigen3/Eigen/src/Core/CoreEvaluators.h:
 
 /usr/include/eigen3/Eigen/src/Core/ArrayBase.h:
+
+/usr/include/boost/mpl/aux_/has_apply.hpp:
+
+/usr/include/c++/11/bits/random.h:
 
 /usr/include/c++/11/bits/fstream.tcc:
 
@@ -10982,6 +9701,12 @@ src/CMakeFiles/cnn_lib.dir/shared.cpp.o: ../src/shared.cpp \
 /usr/include/eigen3/Eigen/src/Core/DenseStorage.h:
 
 /usr/include/eigen3/Eigen/src/Core/NoAlias.h:
+
+/usr/include/c++/11/bits/cxxabi_forced.h:
+
+/usr/include/c++/11/bits/algorithmfwd.h:
+
+/usr/include/eigen3/Eigen/src/Core/CwiseUnaryOp.h:
 
 /usr/include/boost/mpl/aux_/preprocessed/gcc/full_lambda.hpp:
 
@@ -10997,21 +9722,45 @@ src/CMakeFiles/cnn_lib.dir/shared.cpp.o: ../src/shared.cpp \
 
 /usr/include/eigen3/Eigen/src/Core/Dot.h:
 
-/usr/include/x86_64-linux-gnu/sys/single_threaded.h:
+/usr/include/eigen3/Eigen/Eigenvalues:
 
-/usr/lib/gcc/x86_64-linux-gnu/11/include/waitpkgintrin.h:
+/usr/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorDimensions.h:
+
+/usr/include/c++/11/math.h:
+
+/usr/include/boost/mpl/eval_if.hpp:
+
+/usr/include/eigen3/Eigen/src/Core/Map.h:
+
+/usr/include/eigen3/Eigen/src/Core/ConditionEstimator.h:
+
+/usr/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorBase.h:
+
+/usr/include/x86_64-linux-gnu/sys/single_threaded.h:
 
 /usr/include/eigen3/Eigen/src/Core/Ref.h:
 
+/usr/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorDeviceDefault.h:
+
+/usr/include/eigen3/Eigen/src/Core/Block.h:
+
+/usr/include/x86_64-linux-gnu/gnu/stubs.h:
+
+/usr/include/eigen3/Eigen/src/Geometry/Transform.h:
+
 /usr/include/eigen3/Eigen/src/Core/Reshaped.h:
 
-/usr/include/x86_64-linux-gnu/bits/stdio_lim.h:
+/usr/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorEvaluator.h:
 
-/usr/lib/gcc/x86_64-linux-gnu/11/include/amxbf16intrin.h:
+/usr/include/eigen3/Eigen/src/Core/Transpose.h:
+
+/usr/include/x86_64-linux-gnu/bits/stdio_lim.h:
 
 /usr/include/eigen3/Eigen/src/Core/Fuzzy.h:
 
 /usr/include/eigen3/Eigen/src/Core/GeneralProduct.h:
+
+/usr/include/eigen3/unsupported/Eigen/src/SpecialFunctions/SpecialFunctionsPacketMath.h:
 
 /usr/include/boost/mpl/bind.hpp:
 
@@ -11026,6 +9775,32 @@ src/CMakeFiles/cnn_lib.dir/shared.cpp.o: ../src/shared.cpp \
 /usr/include/boost/mpl/int_fwd.hpp:
 
 /usr/include/eigen3/Eigen/src/Core/SelfAdjointView.h:
+
+/usr/include/boost/archive/detail/abi_suffix.hpp:
+
+/usr/include/c++/11/atomic:
+
+/usr/include/eigen3/Eigen/QR:
+
+/usr/include/boost/type_traits/is_fundamental.hpp:
+
+/usr/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorFunctors.h:
+
+/usr/include/c++/11/bits/stream_iterator.h:
+
+/usr/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorArgMax.h:
+
+/usr/include/eigen3/Eigen/src/Core/ProductEvaluators.h:
+
+/usr/include/eigen3/Eigen/src/SVD/UpperBidiagonalization.h:
+
+/usr/include/boost/preprocessor/control/expr_iif.hpp:
+
+/usr/include/c++/11/bits/std_function.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/timer_t.h:
+
+/usr/include/eigen3/Eigen/src/SVD/JacobiSVD.h:
 
 /usr/include/eigen3/Eigen/src/Core/products/GeneralMatrixMatrix.h:
 
@@ -11053,13 +9828,25 @@ src/CMakeFiles/cnn_lib.dir/shared.cpp.o: ../src/shared.cpp \
 
 /usr/include/eigen3/Eigen/src/Core/products/TriangularSolverVector.h:
 
+/usr/include/eigen3/Eigen/src/Geometry/Rotation2D.h:
+
 /usr/include/boost/preprocessor/logical/and.hpp:
 
 /usr/include/eigen3/Eigen/src/Core/CoreIterators.h:
 
+/usr/include/c++/11/numeric:
+
+/usr/include/eigen3/Eigen/src/Core/Select.h:
+
 /usr/include/boost/preprocessor/repetition/enum_params.hpp:
 
 /usr/include/eigen3/Eigen/src/Core/VectorwiseOp.h:
+
+/usr/include/eigen3/Eigen/src/LU/arch/InverseSize4.h:
+
+/usr/include/c++/11/pstl/glue_numeric_defs.h:
+
+/usr/include/eigen3/Eigen/src/Eigenvalues/Tridiagonalization.h:
 
 /usr/include/x86_64-linux-gnu/bits/timex.h:
 
@@ -11067,11 +9854,25 @@ src/CMakeFiles/cnn_lib.dir/shared.cpp.o: ../src/shared.cpp \
 
 /usr/include/eigen3/Eigen/src/Core/PartialReduxEvaluator.h:
 
+/usr/include/c++/11/bits/locale_conv.h:
+
+/usr/include/eigen3/Eigen/src/Core/Random.h:
+
 /usr/include/boost/move/detail/meta_utils_core.hpp:
 
-/usr/lib/gcc/x86_64-linux-gnu/11/include/avx512bf16intrin.h:
-
 /usr/include/eigen3/Eigen/src/Core/Replicate.h:
+
+/usr/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorExecutor.h:
+
+/usr/include/eigen3/Eigen/src/Core/Reverse.h:
+
+/usr/include/boost/mpl/aux_/config/lambda.hpp:
+
+/usr/include/boost/type_traits/is_same.hpp:
+
+/usr/include/c++/11/ext/concurrence.h:
+
+/usr/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorExpr.h:
 
 /usr/include/eigen3/Eigen/src/Core/util/ReenableStupidWarnings.h:
 
@@ -11093,6 +9894,8 @@ src/CMakeFiles/cnn_lib.dir/shared.cpp.o: ../src/shared.cpp \
 
 /usr/include/eigen3/Eigen/src/Householder/Householder.h:
 
+/usr/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorRandom.h:
+
 /usr/include/eigen3/Eigen/src/Core/functors/TernaryFunctors.h:
 
 /usr/include/eigen3/Eigen/src/Householder/BlockHouseholder.h:
@@ -11110,3 +9913,173 @@ src/CMakeFiles/cnn_lib.dir/shared.cpp.o: ../src/shared.cpp \
 /usr/include/eigen3/Eigen/src/plugins/ArrayCwiseBinaryOps.h:
 
 /usr/include/eigen3/Eigen/src/SVD/BDCSVD.h:
+
+/usr/include/eigen3/Eigen/src/Geometry/OrthoMethods.h:
+
+/usr/include/boost/mpl/aux_/config/eti.hpp:
+
+/usr/include/eigen3/Eigen/src/Geometry/EulerAngles.h:
+
+/usr/include/eigen3/Eigen/src/Geometry/Homogeneous.h:
+
+/usr/include/c++/11/bits/codecvt.h:
+
+/usr/include/eigen3/Eigen/src/Geometry/RotationBase.h:
+
+/usr/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorMacros.h:
+
+/usr/include/eigen3/Eigen/src/Geometry/Quaternion.h:
+
+/usr/include/boost/type_traits/is_assignable.hpp:
+
+/usr/include/eigen3/Eigen/src/Geometry/AngleAxis.h:
+
+/usr/include/boost/preprocessor/detail/check.hpp:
+
+/usr/include/eigen3/Eigen/src/Geometry/Scaling.h:
+
+/usr/include/features.h:
+
+/usr/include/eigen3/Eigen/src/Geometry/Hyperplane.h:
+
+/usr/include/c++/11/cstring:
+
+/usr/include/eigen3/Eigen/src/Geometry/ParametrizedLine.h:
+
+/usr/include/eigen3/Eigen/src/Geometry/AlignedBox.h:
+
+/usr/include/c++/11/sstream:
+
+/usr/include/eigen3/Eigen/src/Geometry/Umeyama.h:
+
+/usr/include/c++/11/cstdio:
+
+/usr/include/eigen3/Eigen/src/Geometry/arch/Geometry_SIMD.h:
+
+/usr/include/eigen3/Eigen/src/Eigenvalues/ComplexEigenSolver.h:
+
+/usr/include/eigen3/Eigen/src/Eigenvalues/SelfAdjointEigenSolver.h:
+
+/usr/include/boost/move/utility_core.hpp:
+
+/usr/include/eigen3/Eigen/src/Eigenvalues/GeneralizedSelfAdjointEigenSolver.h:
+
+/usr/include/eigen3/Eigen/src/Eigenvalues/MatrixBaseEigenvalues.h:
+
+/usr/include/eigen3/unsupported/Eigen/src/SpecialFunctions/BesselFunctionsImpl.h:
+
+/usr/include/c++/11/filesystem:
+
+/usr/include/c++/11/bits/fs_dir.h:
+
+/usr/include/c++/11/bits/fs_ops.h:
+
+../include/IDataLoader.hpp:
+
+../include/Tensor.hpp:
+
+/usr/include/eigen3/unsupported/Eigen/src/SpecialFunctions/BesselFunctionsBFloat16.h:
+
+/usr/include/eigen3/unsupported/Eigen/src/SpecialFunctions/BesselFunctionsPacketMath.h:
+
+/usr/include/c++/11/bits/stl_heap.h:
+
+/usr/include/eigen3/unsupported/Eigen/src/SpecialFunctions/BesselFunctionsFunctors.h:
+
+/usr/include/eigen3/Eigen/src/Core/NumTraits.h:
+
+/usr/include/eigen3/unsupported/Eigen/src/SpecialFunctions/SpecialFunctionsImpl.h:
+
+/usr/include/eigen3/unsupported/Eigen/src/SpecialFunctions/SpecialFunctionsHalf.h:
+
+/usr/include/boost/serialization/extended_type_info.hpp:
+
+/usr/include/x86_64-linux-gnu/gnu/stubs-64.h:
+
+/usr/include/eigen3/Eigen/src/Eigenvalues/EigenSolver.h:
+
+/usr/include/eigen3/unsupported/Eigen/src/SpecialFunctions/SpecialFunctionsFunctors.h:
+
+/usr/include/boost/mpl/apply_wrap.hpp:
+
+/usr/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorBroadcasting.h:
+
+/usr/include/eigen3/unsupported/Eigen/src/SpecialFunctions/SpecialFunctionsArrayAPI.h:
+
+/usr/include/eigen3/unsupported/Eigen/CXX11/src/util/CXX11Meta.h:
+
+/usr/include/x86_64-linux-gnu/bits/long-double.h:
+
+/usr/include/eigen3/unsupported/Eigen/CXX11/src/util/EmulateArray.h:
+
+/usr/include/boost/preprocessor/tuple/eat.hpp:
+
+/usr/include/eigen3/unsupported/Eigen/CXX11/src/util/CXX11Workarounds.h:
+
+/usr/include/boost/preprocessor/tuple/rem.hpp:
+
+/usr/include/c++/11/random:
+
+/usr/include/linux/close_range.h:
+
+/usr/include/c++/11/bits/stl_numeric.h:
+
+/usr/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorPadding.h:
+
+/usr/include/c++/11/istream:
+
+/usr/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorForwardDeclarations.h:
+
+/usr/include/c++/11/debug/assertions.h:
+
+/usr/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorMeta.h:
+
+/usr/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorDeviceThreadPool.h:
+
+../include/ConvLayer.hpp:
+
+/usr/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorDeviceGpu.h:
+
+/usr/include/c++/11/bit:
+
+/usr/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorDimensionList.h:
+
+/usr/include/boost/core/checked_delete.hpp:
+
+/usr/include/c++/11/bits/hashtable.h:
+
+/usr/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorInitializer.h:
+
+/usr/include/boost/archive/detail/oserializer.hpp:
+
+/usr/include/boost/mpl/tag.hpp:
+
+/usr/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorTraits.h:
+
+/usr/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorIndexList.h:
+
+/usr/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorUInt128.h:
+
+/usr/include/boost/archive/detail/register_archive.hpp:
+
+/usr/include/boost/mpl/arg.hpp:
+
+/usr/include/c++/11/bits/node_handle.h:
+
+/usr/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorIntDiv.h:
+
+/usr/include/boost/mpl/aux_/config/has_xxx.hpp:
+
+/usr/include/c++/11/bits/stl_pair.h:
+
+/usr/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorBlock.h:
+
+/usr/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorConcatenation.h:
+
+/usr/include/x86_64-linux-gnu/bits/struct_mutex.h:
+
+/usr/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorContractionMapper.h:
+
+/usr/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorContractionBlocking.h:
+
+/usr/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorContractionGpu.h:

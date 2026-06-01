@@ -21,4 +21,18 @@
 #include "BatchNorm3DLayer.hpp"
 #include "ConvLayerDataParallel.hpp"
 #include "DenseLayerDataParallel.hpp"
+#include "DenseLayerDataParallel.hpp"
 #include "DenseLayerModelParallel.hpp"
+
+// ConvNeXt Dense Components
+#include "LayerNorm3DLayer.hpp"
+#include "DepthwiseConvLayer3D.hpp"
+#include "PatchifyStem3D.hpp"
+#include "DenseDownsample3D.hpp"
+#include "ConvNeXtBlock3D.hpp"
+
+// ConvNeXt Sparse Components
+#include "LayerNorm3DSparse.hpp"
+#include "PatchifyStem3DSparse.hpp"
+#include "SparseDownsample3D.hpp"
+#include "ConvNeXtBlock3DSparse.hpp"

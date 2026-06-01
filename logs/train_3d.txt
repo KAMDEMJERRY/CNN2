@@ -1,24 +1,56 @@
 
-2026-04-22 01:22:55==================================================
-Epoch   1/100 | Loss: 0.4665 | Acc: 61.92% | Time: 33552ms | Val Loss: 0.3296 | Val Acc: 72.32% | Improved ✓ [ckpt: ./models/3d_best.bin]
-Epoch   2/100 | Loss: 0.1669 | Acc: 81.17% | Time: 33535ms | Val Loss: 0.1571 | Val Acc: 88.39% | Improved ✓ [ckpt: ./models/3d_best.bin]
-Epoch   3/100 | Loss: 0.1507 | Acc: 84.50% | Time: 35968ms | Val Loss: 0.2481 | Val Acc: 81.25%
-Epoch   4/100 | Loss: 0.1002 | Acc: 88.25% | Time: 33801ms | Val Loss: 0.3000 | Val Acc: 73.21%
-Epoch   5/100 | Loss: 0.0798 | Acc: 89.00% | Time: 37449ms | Val Loss: 0.1695 | Val Acc: 82.14%
-Epoch   6/100 | Loss: 0.0730 | Acc: 90.17% | Time: 34512ms | Val Loss: 0.2895 | Val Acc: 82.14%
-Epoch   7/100 | Loss: 0.0601 | Acc: 91.83% | Time: 33877ms | Val Loss: 0.3050 | Val Acc: 81.25%
-Epoch   8/100 | Loss: 0.0402 | Acc: 94.00% | Time: 32625ms | Val Loss: 0.2880 | Val Acc: 80.36%
-Epoch   9/100 | Loss: 0.0466 | Acc: 92.58% | Time: 32190ms | Val Loss: 0.2661 | Val Acc: 83.93%
-Epoch  10/100 | Loss: 0.0354 | Acc: 94.92% | Time: 31906ms | Val Loss: 0.1866 | Val Acc: 84.82%
-Epoch  11/100 | Loss: 0.0295 | Acc: 96.75% | Time: 31974ms | Val Loss: 0.1724 | Val Acc: 84.82%
-Epoch  12/100 | Loss: 0.0301 | Acc: 95.75% | Time: 33635ms | Val Loss: 0.2302 | Val Acc: 81.25%
-Epoch  13/100 | Loss: 0.0358 | Acc: 95.42% | Time: 32410ms | Val Loss: 0.2465 | Val Acc: 83.93%
-Epoch  14/100 | Loss: 0.0246 | Acc: 95.83% | Time: 32515ms | Val Loss: 0.1795 | Val Acc: 84.82%
-Epoch  15/100 | Loss: 0.0337 | Acc: 95.00% | Time: 32733ms | Val Loss: 0.2329 | Val Acc: 82.14%
-Epoch  16/100 | Loss: 0.0433 | Acc: 95.08% | Time: 34948ms | Val Loss: 0.2624 | Val Acc: 75.89%
-Epoch  17/100 | Loss: 0.0374 | Acc: 94.33% | Time: 32629ms | Val Loss: 0.2745 | Val Acc: 83.04%
-Epoch  18/100 | Loss: 0.0364 | Acc: 95.08% | Time: 33357ms | Val Loss: 0.1704 | Val Acc: 82.14%
-Epoch  19/100 | Loss: 0.0397 | Acc: 93.33% | Time: 35265ms | Val Loss: 0.2830 | Val Acc: 83.93%
-Epoch  20/100 | Loss: 0.0341 | Acc: 94.50% | Time: 32970ms | Val Loss: 0.2796 | Val Acc: 83.04%
-Epoch  21/100 | Loss: 0.0333 | Acc: 95.75% | Time: 33217ms | Val Loss: 0.2056 | Val Acc: 87.50%
-Epoch  22/100 | Loss: 0.0230 | Acc: 95.50% | Time: 32736ms | Val Loss: 0.2165 | Val Acc: 83.93%
+2026-04-22 02:20:35==================================================
+Epoch   1/100 | Loss: 0.9306 | Acc: 40.90% | Time: 27934ms | Val Loss: 1.0644 | Val Acc: 39.16% | Improved ✓ [ckpt: ./models/3d_best.bin]
+Epoch   2/100 | Loss: 0.4508 | Acc: 60.90% | Time: 27681ms | Val Loss: 1.1984 | Val Acc: 28.83%
+Epoch   3/100 | Loss: 0.2894 | Acc: 72.05% | Time: 27795ms | Val Loss: 1.1013 | Val Acc: 40.94%
+Epoch   4/100 | Loss: 0.2208 | Acc: 80.06% | Time: 30009ms | Val Loss: 1.0733 | Val Acc: 42.73%
+Epoch   5/100 | Loss: 0.1904 | Acc: 82.05% | Time: 27521ms | Val Loss: 1.1440 | Val Acc: 42.09%
+Epoch   6/100 | Loss: 0.1818 | Acc: 82.88% | Time: 26697ms | Val Loss: 1.2293 | Val Acc: 37.12%
+Epoch   7/100 | Loss: 0.1250 | Acc: 87.79% | Time: 28793ms | Val Loss: 1.0552 | Val Acc: 39.16% | Improved ✓ [ckpt: ./models/3d_best.bin]
+Epoch   8/100 | Loss: 0.1238 | Acc: 86.51% | Time: 27673ms | Val Loss: 1.4426 | Val Acc: 43.88%
+Epoch   9/100 | Loss: 0.1011 | Acc: 88.62% | Time: 27343ms | Val Loss: 1.0197 | Val Acc: 42.98% | Improved ✓ [ckpt: ./models/3d_best.bin]
+Epoch  10/100 | Loss: 0.0861 | Acc: 90.74% | Time: 26645ms | Val Loss: 1.4454 | Val Acc: 40.94%
+Epoch  11/100 | Loss: 0.0998 | Acc: 90.45% | Time: 26848ms | Val Loss: 1.2187 | Val Acc: 38.90%
+Epoch  12/100 | Loss: 0.0863 | Acc: 91.79% | Time: 26908ms | Val Loss: 1.0977 | Val Acc: 47.70%
+Epoch  13/100 | Loss: 0.0774 | Acc: 91.41% | Time: 26168ms | Val Loss: 1.1791 | Val Acc: 41.58%
+Epoch  14/100 | Loss: 0.0722 | Acc: 90.74% | Time: 26351ms | Val Loss: 1.1706 | Val Acc: 49.49%
+Epoch  15/100 | Loss: 0.0622 | Acc: 93.24% | Time: 27510ms | Val Loss: 1.4675 | Val Acc: 41.20%
+Epoch  16/100 | Loss: 0.0942 | Acc: 91.25% | Time: 27520ms | Val Loss: 1.3654 | Val Acc: 48.34%
+Epoch  17/100 | Loss: 0.0750 | Acc: 93.04% | Time: 26424ms | Val Loss: 1.2199 | Val Acc: 45.41%
+Epoch  18/100 | Loss: 0.0638 | Acc: 92.95% | Time: 26424ms | Val Loss: 1.3650 | Val Acc: 42.73%
+Epoch  19/100 | Loss: 0.0680 | Acc: 91.79% | Time: 27176ms | Val Loss: 1.0879 | Val Acc: 43.62%
+Epoch  20/100 | Loss: 0.0843 | Acc: 91.25% | Time: 26069ms | Val Loss: 1.4163 | Val Acc: 40.31%
+Epoch  21/100 | Loss: 0.0590 | Acc: 93.72% | Time: 26138ms | Val Loss: 1.2026 | Val Acc: 41.58%
+Epoch  22/100 | Loss: 0.0550 | Acc: 93.53% | Time: 27003ms | Val Loss: 1.3278 | Val Acc: 40.31%
+Epoch  23/100 | Loss: 0.0680 | Acc: 93.56% | Time: 26340ms | Val Loss: 1.2392 | Val Acc: 42.98%
+Epoch  24/100 | Loss: 0.0655 | Acc: 94.52% | Time: 27575ms | Val Loss: 1.0423 | Val Acc: 45.41%
+Epoch  25/100 | Loss: 0.0414 | Acc: 95.67% | Time: 27533ms | Val Loss: 1.2439 | Val Acc: 42.98%
+Epoch  26/100 | Loss: 0.0458 | Acc: 95.96% | Time: 26424ms | Val Loss: 1.3242 | Val Acc: 40.94%
+Epoch  27/100 | Loss: 0.0384 | Acc: 96.44% | Time: 26964ms | Val Loss: 1.2737 | Val Acc: 39.67%
+Epoch  28/100 | Loss: 0.0292 | Acc: 96.25% | Time: 25862ms | Val Loss: 1.4573 | Val Acc: 34.95%
+Epoch  29/100 | Loss: 0.0317 | Acc: 96.03% | Time: 25919ms | Val Loss: 1.4168 | Val Acc: 35.97%
+
+2026-04-22 18:03:57==================================================
+Epoch   1/100 | Loss: 1.2638 | Acc: 42.12% | Time: 28651ms | Val Loss: 1.1741 | Val Acc: 34.18% | Improved ✓ [ckpt: ./models/3d_best.bin]
+Epoch   2/100 | Loss: 0.4718 | Acc: 62.76% | Time: 29153ms | Val Loss: 0.9911 | Val Acc: 41.84% | Improved ✓ [ckpt: ./models/3d_best.bin]
+Epoch   3/100 | Loss: 0.3266 | Acc: 70.19% | Time: 27848ms | Val Loss: 0.8750 | Val Acc: 38.27% | Improved ✓ [ckpt: ./models/3d_best.bin]
+Epoch   4/100 | Loss: 0.2787 | Acc: 73.85% | Time: 29498ms | Val Loss: 1.0366 | Val Acc: 49.49%
+Epoch   5/100 | Loss: 0.1982 | Acc: 80.54% | Time: 28532ms | Val Loss: 1.2472 | Val Acc: 41.58%
+Epoch   6/100 | Loss: 0.1865 | Acc: 79.94% | Time: 28696ms | Val Loss: 1.0654 | Val Acc: 40.05%
+Epoch   7/100 | Loss: 0.1564 | Acc: 84.42% | Time: 28828ms | Val Loss: 1.0545 | Val Acc: 44.77%
+Epoch   8/100 | Loss: 0.1291 | Acc: 86.83% | Time: 27967ms | Val Loss: 1.0343 | Val Acc: 46.30%
+Epoch   9/100 | Loss: 0.1151 | Acc: 88.53% | Time: 27948ms | Val Loss: 1.0237 | Val Acc: 47.83%
+Epoch  10/100 | Loss: 0.1235 | Acc: 88.49% | Time: 27985ms | Val Loss: 1.1526 | Val Acc: 45.03%
+Epoch  11/100 | Loss: 0.1037 | Acc: 88.24% | Time: 29133ms | Val Loss: 1.0000 | Val Acc: 51.28%
+Epoch  12/100 | Loss: 0.0951 | Acc: 90.38% | Time: 29373ms | Val Loss: 1.0261 | Val Acc: 40.05%
+Epoch  13/100 | Loss: 0.0758 | Acc: 92.28% | Time: 27669ms | Val Loss: 1.0993 | Val Acc: 54.85%
+Epoch  14/100 | Loss: 0.0674 | Acc: 93.14% | Time: 27707ms | Val Loss: 1.0998 | Val Acc: 38.90%
+Epoch  15/100 | Loss: 0.0821 | Acc: 91.99% | Time: 28922ms | Val Loss: 1.0401 | Val Acc: 46.81%
+Epoch  16/100 | Loss: 0.0769 | Acc: 91.60% | Time: 29182ms | Val Loss: 1.2956 | Val Acc: 40.31%
+Epoch  17/100 | Loss: 0.0806 | Acc: 91.19% | Time: 27935ms | Val Loss: 1.2574 | Val Acc: 49.23%
+Epoch  18/100 | Loss: 0.0847 | Acc: 91.31% | Time: 28071ms | Val Loss: 1.1346 | Val Acc: 37.37%
+Epoch  19/100 | Loss: 0.0729 | Acc: 92.31% | Time: 29015ms | Val Loss: 1.2164 | Val Acc: 39.67%
+Epoch  20/100 | Loss: 0.0654 | Acc: 92.88% | Time: 28033ms | Val Loss: 1.2916 | Val Acc: 45.66%
+Epoch  21/100 | Loss: 0.0689 | Acc: 91.60% | Time: 29101ms | Val Loss: 0.9422 | Val Acc: 44.52%
+Epoch  22/100 | Loss: 0.0741 | Acc: 92.95% | Time: 29495ms | Val Loss: 1.0969 | Val Acc: 48.60%
+Epoch  23/100 | Loss: 0.0634 | Acc: 92.79% | Time: 28137ms | Val Loss: 1.0300 | Val Acc: 50.38%

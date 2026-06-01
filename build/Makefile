@@ -386,6 +386,32 @@ test_serialization/fast:
 	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_serialization.dir/build.make test/CMakeFiles/test_serialization.dir/build
 .PHONY : test_serialization/fast
 
+#=============================================================================
+# Target rules for targets named test_ConvNeXtDense
+
+# Build rule for target.
+test_ConvNeXtDense: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test_ConvNeXtDense
+.PHONY : test_ConvNeXtDense
+
+# fast build rule for target.
+test_ConvNeXtDense/fast:
+	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_ConvNeXtDense.dir/build.make test/CMakeFiles/test_ConvNeXtDense.dir/build
+.PHONY : test_ConvNeXtDense/fast
+
+#=============================================================================
+# Target rules for targets named test_ConvNeXtSparse
+
+# Build rule for target.
+test_ConvNeXtSparse: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test_ConvNeXtSparse
+.PHONY : test_ConvNeXtSparse
+
+# fast build rule for target.
+test_ConvNeXtSparse/fast:
+	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_ConvNeXtSparse.dir/build.make test/CMakeFiles/test_ConvNeXtSparse.dir/build
+.PHONY : test_ConvNeXtSparse/fast
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -405,6 +431,8 @@ help:
 	@echo "... test_Augmentation3D"
 	@echo "... test_CNN"
 	@echo "... test_ConvLayer"
+	@echo "... test_ConvNeXtDense"
+	@echo "... test_ConvNeXtSparse"
 	@echo "... test_DenseLayer"
 	@echo "... test_DenseLayerModelParallel"
 	@echo "... test_Dimensions"

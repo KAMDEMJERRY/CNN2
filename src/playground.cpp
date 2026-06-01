@@ -4,16 +4,16 @@
 #include <iostream>
 using namespace std;
 
-#define BATCH_SIZE  64
+#define BATCH_SIZE  15
 #define Dout 256
 
-void benchmarkDenseSequential(){
+void benchmarkDenseSequential() {
     int batch_size = BATCH_SIZE;
     int n = 28, c = 3;
     Tensor input(batch_size, c, n, n, n);
     input.setRandom();
-    DenseLayer denselayer(n*n*n*c, Dout); // dimension d'entrée 64, dimension de sortie 128
-    
+    DenseLayer denselayer(n * n * n * c, Dout); // dimension d'entrée 64, dimension de sortie 128
+
     auto times_baseline = BenchmarkTimer::measure([&]() {
         Tensor out = denselayer.forward(input);
         Tensor grad = Tensor(out);
@@ -24,6 +24,7 @@ void benchmarkDenseSequential(){
 
     auto stats_baseline = BenchmarkTimer::compute_stats(times_baseline, batch_size);
     BenchmarkTimer::print_stats("CNN2 DenseBaseline", stats_baseline);
+    BenchmarkTimer::save_csv("./logs/parallelisation/dense_bench.csv", "DenseBaseline" , 1, stats_baseline);
 }
 
 void benchmarkDenseDataParallel(int n_threads) {
@@ -31,7 +32,7 @@ void benchmarkDenseDataParallel(int n_threads) {
     int batch_size = BATCH_SIZE;
     int n = 28, c = 3;
     Tensor input(batch_size, c, n, n, n); // batch de 16, dimension d'entrée 64
-    DenseLayerDataParallel layer(n*n*n*c, Dout, n_threads); // dimension d'entrée 64, dimension de sortie 128
+    DenseLayerDataParallel layer(n * n * n * c, Dout, n_threads); // dimension d'entrée 64, dimension de sortie 128
     input.setRandom(); // remplir d'inputs aléatoires
     auto times = BenchmarkTimer::measure([&]() {
         Tensor out = layer.forward(input);
@@ -44,6 +45,7 @@ void benchmarkDenseDataParallel(int n_threads) {
     auto stats = BenchmarkTimer::compute_stats(times, batch_size);
 
     BenchmarkTimer::print_stats("CNN2 DenseDataParallel", stats);
+    BenchmarkTimer::save_csv("./logs/parallelisation/dense_data_parallel_bench.csv", stats);
 }
 
 void benchmarkDenseModelParallel(int n_threads) {
@@ -51,7 +53,7 @@ void benchmarkDenseModelParallel(int n_threads) {
     int batch_size = BATCH_SIZE;
     int n = 28, c = 3;
     Tensor input(batch_size, c, n, n, n);
-    DenseLayerModelParallel layer(n*n*n*c, Dout, n_threads);
+    DenseLayerModelParallel layer(n * n * n * c, Dout, n_threads);
     input.setRandom();
 
     auto times = BenchmarkTimer::measure([&]() {
@@ -64,17 +66,18 @@ void benchmarkDenseModelParallel(int n_threads) {
 
     auto stats = BenchmarkTimer::compute_stats(times, batch_size);
     BenchmarkTimer::print_stats("CNN2 DenseModelParallel", stats);
+    BenchmarkTimer::save_csv("./logs/parallelisation/dense_model_parallel_bench.csv", stats);
 }
 
-int main(int argc, char*argv[]){
-    
-    std::vector<int> n_threads = {2, 4, 8};
-    
+int main(int argc, char* argv[]) {
+
+    std::vector<int> n_threads = { 2, 4, 8 };
+
     cout << "\n=== Sequential ===" << endl;
     benchmarkDenseSequential();
-    
-    for(int i = 0; i < 3; i++){
-        cout << "\n=== running on ("<< n_threads[i] << ") threads ===" << endl;
+
+    for (int i = 0; i < 3; i++) {
+        cout << "\n=== running on (" << n_threads[i] << ") threads ===" << endl;
 
         cout << "\n=== Data Parallelism ===" << endl;
         benchmarkDenseDataParallel(n_threads[i]);
@@ -85,3 +88,6 @@ int main(int argc, char*argv[]){
 
     return 0;
 }
+
+
+

@@ -1,0 +1,48 @@
+
+2026-04-22 02:46:38==================================================
+Epoch   1/150 | Loss: 0.4946 | Acc: 37.47% | Time: 39990ms | Val Loss: 0.5118 | Val Acc: 40.05% | Improved ✓ [ckpt: ./models/sparse_best.bin]
+Epoch   2/150 | Loss: 0.4758 | Acc: 41.35% | Time: 38578ms | Val Loss: 0.4957 | Val Acc: 40.94% | Improved ✓ [ckpt: ./models/sparse_best.bin]
+Epoch   3/150 | Loss: 0.4727 | Acc: 41.76% | Time: 38292ms | Val Loss: 0.5017 | Val Acc: 40.94%
+Epoch   4/150 | Loss: 0.4653 | Acc: 35.51% | Time: 39361ms | Val Loss: 0.4957 | Val Acc: 40.94%
+Epoch   5/150 | Loss: 0.4541 | Acc: 40.45% | Time: 39231ms | Val Loss: 0.4808 | Val Acc: 44.26% | Improved ✓ [ckpt: ./models/sparse_best.bin]
+Epoch   6/150 | Loss: 0.4564 | Acc: 39.42% | Time: 40391ms | Val Loss: 0.4964 | Val Acc: 46.56%
+Epoch   7/150 | Loss: 0.4620 | Acc: 38.62% | Time: 41728ms | Val Loss: 0.5029 | Val Acc: 48.98%
+Epoch   8/150 | Loss: 0.4568 | Acc: 42.31% | Time: 39441ms | Val Loss: 0.4782 | Val Acc: 41.84% | Improved ✓ [ckpt: ./models/sparse_best.bin]
+Epoch   9/150 | Loss: 0.4529 | Acc: 37.40% | Time: 39323ms | Val Loss: 0.4785 | Val Acc: 40.69%
+Epoch  10/150 | Loss: 0.4513 | Acc: 43.78% | Time: 40281ms | Val Loss: 0.4787 | Val Acc: 46.56%
+Epoch  11/150 | Loss: 0.4517 | Acc: 39.65% | Time: 40095ms | Val Loss: 0.4965 | Val Acc: 48.09%
+Epoch  12/150 | Loss: 0.4513 | Acc: 45.03% | Time: 38092ms | Val Loss: 0.5007 | Val Acc: 46.30%
+Epoch  13/150 | Loss: 0.4534 | Acc: 46.31% | Time: 38731ms | Val Loss: 0.4721 | Val Acc: 48.09% | Improved ✓ [ckpt: ./models/sparse_best.bin]
+Epoch  14/150 | Loss: 0.4449 | Acc: 42.82% | Time: 38765ms | Val Loss: 0.4939 | Val Acc: 39.80%
+Epoch  15/150 | Loss: 0.4461 | Acc: 45.10% | Time: 38763ms | Val Loss: 0.4697 | Val Acc: 41.58% | Improved ✓ [ckpt: ./models/sparse_best.bin]
+Epoch  16/150 | Loss: 0.4544 | Acc: 38.37% | Time: 38941ms | Val Loss: 0.4752 | Val Acc: 45.15%
+Epoch  17/150 | Loss: 0.4476 | Acc: 40.83% | Time: 39872ms | Val Loss: 0.5119 | Val Acc: 48.09%
+Epoch  18/150 | Loss: 0.4433 | Acc: 42.15% | Time: 41180ms | Val Loss: 0.5061 | Val Acc: 44.52%
+Epoch  19/150 | Loss: 0.4507 | Acc: 41.09% | Time: 41362ms | Val Loss: 0.4923 | Val Acc: 47.83%
+Epoch  20/150 | Loss: 0.4483 | Acc: 44.94% | Time: 44821ms | Val Loss: 0.4736 | Val Acc: 43.37%
+Epoch  21/150 | Loss: 0.4507 | Acc: 39.36% | Time: 43843ms | Val Loss: 0.4891 | Val Acc: 43.37%
+Epoch  22/150 | Loss: 0.4442 | Acc: 40.80% | Time: 42674ms | Val Loss: 0.4753 | Val Acc: 45.41%
+Epoch  23/150 | Loss: 0.4471 | Acc: 42.69% | Time: 53042ms | Val Loss: 0.4700 | Val Acc: 47.19%
+Epoch  24/150 | Loss: 0.4477 | Acc: 40.99% | Time: 42905ms | Val Loss: 0.4725 | Val Acc: 40.69%
+Epoch  25/150 | Loss: 0.4365 | Acc: 46.51% | Time: 41300ms | Val Loss: 0.4856 | Val Acc: 50.13%
+Epoch  26/150 | Loss: 0.4545 | Acc: 44.71% | Time: 41216ms | Val Loss: 0.4625 | Val Acc: 46.56% | Improved ✓ [ckpt: ./models/sparse_best.bin]
+Epoch  27/150 | Loss: 0.4393 | Acc: 41.96% | Time: 41331ms | Val Loss: 0.4663 | Val Acc: 44.52%
+Epoch  28/150 | Loss: 0.4399 | Acc: 46.31% | Time: 40782ms | Val Loss: 0.4897 | Val Acc: 47.19%
+Epoch  29/150 | Loss: 0.4466 | Acc: 42.24% | Time: 41206ms | Val Loss: 0.4727 | Val Acc: 46.56%
+Epoch  30/150 | Loss: 0.4410 | Acc: 42.92% | Time: 41186ms | Val Loss: 0.4637 | Val Acc: 43.88%
+Epoch  31/150 | Loss: 0.4449 | Acc: 45.61% | Time: 41607ms | Val Loss: 0.4733 | Val Acc: 51.66%
+Epoch  32/150 | Loss: 0.4252 | Acc: 44.71% | Time: 40975ms | Val Loss: 0.5050 | Val Acc: 50.13%
+Epoch  33/150 | Loss: 0.4344 | Acc: 41.92% | Time: 41033ms | Val Loss: 0.4726 | Val Acc: 47.19%
+Epoch  34/150 | Loss: 0.4402 | Acc: 43.94% | Time: 40095ms | Val Loss: 0.4743 | Val Acc: 54.34%
+Epoch  35/150 | Loss: 0.4351 | Acc: 44.87% | Time: 41008ms | Val Loss: 0.4772 | Val Acc: 51.02%
+Epoch  36/150 | Loss: 0.4269 | Acc: 43.24% | Time: 41513ms | Val Loss: 0.4673 | Val Acc: 46.30%
+Epoch  37/150 | Loss: 0.4444 | Acc: 46.28% | Time: 41579ms | Val Loss: 0.4932 | Val Acc: 46.05%
+Epoch  38/150 | Loss: 0.4290 | Acc: 46.79% | Time: 39877ms | Val Loss: 0.4651 | Val Acc: 46.94%
+Epoch  39/150 | Loss: 0.4348 | Acc: 48.27% | Time: 40738ms | Val Loss: 0.4828 | Val Acc: 42.47%
+Epoch  40/150 | Loss: 0.4346 | Acc: 43.97% | Time: 41393ms | Val Loss: 0.4868 | Val Acc: 47.45%
+Epoch  41/150 | Loss: 0.4300 | Acc: 49.58% | Time: 40958ms | Val Loss: 0.4857 | Val Acc: 46.30%
+Epoch  42/150 | Loss: 0.4367 | Acc: 44.78% | Time: 40835ms | Val Loss: 0.4979 | Val Acc: 46.56%
+Epoch  43/150 | Loss: 0.4312 | Acc: 44.71% | Time: 40346ms | Val Loss: 0.4764 | Val Acc: 51.02%
+Epoch  44/150 | Loss: 0.4288 | Acc: 45.22% | Time: 40763ms | Val Loss: 0.4817 | Val Acc: 46.56%
+Epoch  45/150 | Loss: 0.4392 | Acc: 41.57% | Time: 40609ms | Val Loss: 0.4672 | Val Acc: 46.56%
+Epoch  46/150 | Loss: 0.4351 | Acc: 46.79% | Time: 40582ms | Val Loss: 0.4778 | Val Acc: 47.45%

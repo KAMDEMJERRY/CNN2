@@ -217,7 +217,7 @@ class TrainingMonitor:
         if not os.path.exists(output_dir):
             os.makedirs(output_dir)
     
-    def generate_static_plots(self):
+    def generate_static_plots(self, output_file=None):
         """Génère des graphiques statiques à partir du dernier entraînement"""
         if not self.logger.load_last_training():
             print("Impossible de charger les données d'entraînement")
@@ -275,10 +275,17 @@ class TrainingMonitor:
         plt.tight_layout()
         
         # Sauvegarder
-        timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
-        output_file = os.path.join(self.output_dir, f'training_plot_{timestamp}.png')
-        plt.savefig(output_file, dpi=300, bbox_inches='tight')
-        print(f"Graphique sauvegardé: {output_file}")
+        if output_file:
+            out_path = output_file
+            out_dir = os.path.dirname(out_path)
+            if out_dir and not os.path.exists(out_dir):
+                os.makedirs(out_dir, exist_ok=True)
+        else:
+            timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
+            out_path = os.path.join(self.output_dir, f'training_plot_{timestamp}.png')
+
+        plt.savefig(out_path, dpi=300, bbox_inches='tight')
+        print(f"Graphique sauvegardé: {out_path}")
         
         plt.show()
         return True
@@ -325,7 +332,7 @@ class TrainingMonitor:
         print("="*60)
 
 
-def main(logfilepath="./logs/training_log.txt", mode="live", refresh_interval=5):
+def main(logfilepath="./logs/training_log.txt", mode="live", refresh_interval=5, out_path=None):
     # Configuration
     LOG_FILE = logfilepath
     MODE = mode  # Options: "live", "static", "summary"
@@ -341,12 +348,17 @@ def main(logfilepath="./logs/training_log.txt", mode="live", refresh_interval=5)
             plotter.start()
         except KeyboardInterrupt:
             print("\nArrêt demandé par l'utilisateur")
-            plotter.save_final_plot('final_training_plot.png')
+            # Use provided out file if available
+            if out_path:
+                plotter.save_final_plot(out_path)
+            else:
+                plotter.save_final_plot('final_training_plot.png')
     
     elif MODE == "static":
         # Mode statique - génère un graphique final
         monitor = TrainingMonitor(LOG_FILE)
-        monitor.generate_static_plots()
+        # If out_path provided, pass it to generator
+        monitor.generate_static_plots(output_file=out_path)
         monitor.print_summary()
     
     elif MODE == "summary":
@@ -365,6 +377,8 @@ if __name__ == "__main__":
                         help='Mode d\'exécution: live, static, ou summary')
     parser.add_argument('--refresh', type=int, default=5,
                         help='Intervalle de rafraîchissement en secondes pour le mode live')
+    parser.add_argument('-o', '--out', default=None,
+                        help='Chemin du fichier de sortie pour le plot (png).')
 
     args = parser.parse_args()
-    main(args.logfile, mode=args.mode, refresh_interval=args.refresh)
+    main(args.logfile, mode=args.mode, refresh_interval=args.refresh, out_path=args.out)
