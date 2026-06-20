@@ -1,0 +1,4 @@
+
+2026-06-03 21:55:26==================================================
+Epoch   1/150 | Loss: 0.7848 | Acc: 45.90% | Time: 126066ms | Val Loss: 0.6676 | Val Acc: 38.65% | Improved ✓ [ckpt: ./models/3d_convnext_sparse_FractureMNIST3D.bin]
+Epoch   2/150 | Loss: 0.8482 | Acc: 45.90% | Time: 120163ms | Val Loss: 0.7336 | Val Acc: 38.65%

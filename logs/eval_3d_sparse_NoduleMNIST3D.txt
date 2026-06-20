@@ -1,0 +1,17 @@
+Test  | Loss: 0.0521 | Acc: 91.48% | Time: 11877ms
+
+── Matrice de confusion ─────────────────────────────
+                Benign Malignant
+      Benign       445        17
+   Malignant        34        30
+
+── Métriques par classe ─────────────────────────────
+             Precision    Recall        F1   Support
+      Benign     0.929     0.963     0.946       462
+   Malignant     0.638     0.469     0.541        64
+
+   Macro F1 : 0.743
+─────────────────────────────────────────────────────
+
+
+Durée totale : 102m 28s

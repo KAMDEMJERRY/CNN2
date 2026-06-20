@@ -254,10 +254,37 @@ private:
 };
 
 
+class Scheduler {
+public:
+    virtual float getLR(int epoch) const = 0;
+    virtual void apply(Optimizer& optimizer, int epoch) const = 0;  
+};
+
+class CosineDecay : public Scheduler {
+public:
+    CosineDecay(float initial_lr = 0.001f, int epochs = 100, float min_lr = 0.0f)
+        : initial_lr_(initial_lr), epochs_(epochs), min_lr_(min_lr) {}
+
+    float getLR(int epoch) const {
+        if (epoch >= epochs_) return min_lr_;
+        float progress = static_cast<float>(epoch) / epochs_;
+        return min_lr_ + (initial_lr_ - min_lr_) * (1.0f + std::cos(M_PI * progress)) / 2.0f;
+    }
+
+    void apply(Optimizer& optimizer, int epoch) const {
+        optimizer.setLearningRate(getLR(epoch));
+    }
+
+private:
+    float initial_lr_;
+    int   epochs_;
+    float min_lr_;
+};
+
 // =============================================================================
 // Scheduler : Step Decay
 // =============================================================================
-class StepDecay {
+class StepDecay : public Scheduler {
 public:
     StepDecay(float initial_lr = 0.001f, float drop_rate = 0.5f, int epochs_per_drop = 5)
         : initial_lr_(initial_lr), drop_rate_(drop_rate), epochs_per_drop_(epochs_per_drop) {}

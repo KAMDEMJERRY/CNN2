@@ -2,7 +2,7 @@
 #  3d, sparse, attn, sparse_attn
 arch=("2d" "3d" "sparse" "attn" "sparse_attn" "convnext_dense" "convnext_sparse")
 skipTrain="--skip-train"
-idx=5 # 0: 2d, 1: 3d, 2: sparse, 3: attn, 4: sparse_attn, 5: convnext_dense, 6: convnext_sparse
+idx=$1 # 0: 2d, 1: 3d, 2: sparse, 3: attn, 4: sparse_attn, 5: convnext_dense, 6: convnext_sparse
 
 # Définir la variable
 pipeline=${arch[$idx]}

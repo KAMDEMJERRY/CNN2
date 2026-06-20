@@ -1,19 +1,19 @@
-Test  | Loss: 1.0819 | Acc: 39.17% | Time: 2605ms
+Test  | Loss: 0.6480 | Acc: 38.33% | Time: 3017ms
 
 ── Matrice de confusion ─────────────────────────────
             No fractureFracture T1Fracture T2
- No fracture        41        26        23
- Fracture T1        45        31        28
- Fracture T2        10        25        11
+ No fracture        31        44        15
+ Fracture T1        27        47        30
+ Fracture T2        14        16        16
 
 ── Métriques par classe ─────────────────────────────
              Precision    Recall        F1   Support
- No fracture     0.427     0.456     0.441        90
- Fracture T1     0.378     0.298     0.333       104
- Fracture T2     0.177     0.239     0.204        46
+ No fracture     0.431     0.344     0.383        90
+ Fracture T1     0.439     0.452     0.445       104
+ Fracture T2     0.262     0.348     0.299        46
 
-   Macro F1 : 0.326
+   Macro F1 : 0.376
 ─────────────────────────────────────────────────────
 
 
-Durée totale : 11m 27s
+Durée totale : 26m 59s

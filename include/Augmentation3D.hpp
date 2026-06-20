@@ -32,7 +32,7 @@ struct AugmentConfig {
     float flip_prob_w    = 0.5f;  // probabilité de flip selon l'axe largeur
 
     // --- Rotation axiale (autour de l'axe D) ---
-    float rotate_prob    = 0.5f;  // probabilité d'appliquer une rotation
+    float rotate_prob    = 0.3f;  // probabilité d'appliquer une rotation
     // La rotation est choisie parmi {90°, 180°, 270°} si activée
 
     // --- Bruit gaussien ---
@@ -44,6 +44,11 @@ struct AugmentConfig {
     float scale_prob     = 0.5f;  // probabilité de scaler les intensités
     float scale_min      = 0.90f; // facteur min
     float scale_max      = 1.10f; // facteur max
+
+    // -- zoom
+    float zoom_prob = 0.3f;
+    float zoom_min = 0.85f; // zoom out léger (fracture plus petite)
+    float zoom_max = 1.15f; // zoom in léger (fracture plus grande)
 };
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -96,6 +101,9 @@ public:
                 cfg_.scale_min, cfg_.scale_max)(rng);
             out = scaleIntensity(out, scale);
         }
+
+        // 5. zoom
+        if (bernoulli(rng, cfg_.zoom_prob)){}
 
         return out;
     }

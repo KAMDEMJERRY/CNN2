@@ -13,7 +13,7 @@ class SoftmaxCrossEntropyLayer;
 class Optimizer;
 class IDataLoader;   // ← interface commune DataLoader / DataLoader3D
 class Tensor;
-
+class Scheduler;
 // =============================================================================
 // Métriques d'une epoch
 // =============================================================================
@@ -68,6 +68,7 @@ public:
     void addLayer(std::shared_ptr<Layer> layer);
     void setLossLayer(std::shared_ptr<LossLayer> loss);
     void setOptimizer(std::shared_ptr<Optimizer> opt);
+    void setScheduler(std::shared_ptr<Scheduler> scheduler);
 
     // --- Accesseurs ---
     Layer* getLayer(int idx) const;
@@ -130,6 +131,7 @@ private:
     std::vector<std::shared_ptr<Layer>> layers_;
     std::shared_ptr<LossLayer>          loss_layer_;
     std::shared_ptr<Optimizer>          optimizer_;
+    std::shared_ptr<Scheduler> scheduler_;
 
     SoftmaxCrossEntropyLayer* findSoftmaxCELayer() const;
 

@@ -20,6 +20,7 @@
 void CNN::addLayer(std::shared_ptr<Layer> layer) { layers_.push_back(std::move(layer)); }
 void CNN::setLossLayer(std::shared_ptr<LossLayer> loss) { loss_layer_ = std::move(loss); }
 void CNN::setOptimizer(std::shared_ptr<Optimizer> opt) { optimizer_ = std::move(opt); }
+void CNN::setScheduler(std::shared_ptr<Scheduler> scheduler) { scheduler_ = std::move(scheduler); }
 
 // =============================================================================
 // Accesseurs
@@ -64,6 +65,10 @@ void CNN::fit(IDataLoader& dataloader, int epochs, int /*batch_size*/) {
     for (int epoch = 0; epoch < epochs; ++epoch) {
         EpochMetrics m = runEpoch(dataloader, /*train=*/true);
         printEpochStats(epoch, epochs, m);
+        
+        if(scheduler_){
+            scheduler_->apply(*optimizer_, epoch);
+        }
     }
 }
 
@@ -81,6 +86,10 @@ void CNN::fitWithValidation(IDataLoader& train_loader, IDataLoader& val_loader,
 
         printEpochStats(epoch, epochs, train_m, &val_m);
         logEpochStats(epoch, epochs, train_m, &val_m, "./logs/training_log.txt", improved);
+        
+        if(scheduler_){
+            scheduler_->apply(*optimizer_, epoch);
+        }
     }
 }
 
@@ -136,6 +145,10 @@ void CNN::fitWithValidation(IDataLoader& train_loader, IDataLoader& val_loader,
             }
             break;
         }
+
+        if(scheduler_){
+            scheduler_->apply(*optimizer_, epoch);
+        }
     }
 }
 
@@ -149,6 +162,10 @@ void CNN::fit(const Tensor& inputs, const Tensor& targets, int epochs, int batch
     for (int epoch = 0; epoch < epochs; ++epoch) {
         EpochMetrics m = runEpoch(inputs, targets, batch_size, /*train=*/true);
         printEpochStats(epoch, epochs, m);
+        
+        if(scheduler_){
+            scheduler_->apply(*optimizer_, epoch);
+        }
     }
 }
 

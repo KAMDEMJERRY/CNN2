@@ -17,10 +17,10 @@
 // =============================================================================
 
 // --- 2D ---
-#define MNIST_TEST_PATH    "../dataset/mnist_img/trainingSet/trainingSet/" 
-#define MNIST_TRAIN_PATH    "../dataset/mnist_img/trainingSample/trainingSample/"
-#define BLOODCELLS_TRAIN_PATH "../dataset/bloodcell/images/TRAIN/"
-#define BLOODCELLS_TEST_PATH  "../dataset/bloodcell/images/TEST/"
+// #define MNIST_TEST_PATH    "../dataset/mnist_img/trainingSet/trainingSet/" 
+// #define MNIST_TRAIN_PATH    "../dataset/mnist_img/trainingSample/trainingSample/"
+// #define BLOODCELLS_TRAIN_PATH "../dataset/bloodcell/images/TRAIN/"
+// #define BLOODCELLS_TEST_PATH  "../dataset/bloodcell/images/TEST/"
 
 static constexpr bool  USE_BLOODCELLS = false;
 static constexpr int   IMAGE_SIZE_2D = 28;
@@ -29,11 +29,14 @@ static constexpr int   EPOCHS_2D = 50;
 static constexpr float LR_2D = 0.0001f;
 
 // --- 3D dense ---
-#define FRACTURE_PATH "../dataset/fracturemnist3d" 
+// #define FRACTURE_PATH "../dataset/fracturemnist3d" 
+// #define NODULE_PATH "../dataset/nodulemnist3d"
+// #define VESSEL_PATH "../dataset/vesselmnist3d"
+// #define ADRENAL_PATH "../dataset/adrenalmnist3d"
 
 static constexpr int   BATCH_SIZE_3D = 16;
-static constexpr int   EPOCHS_3D = 100;
-static constexpr float LR_3D = 0.0003f;
+static constexpr int   EPOCHS_3D = 150;
+static constexpr float LR_3D = 3e-4f;
 static constexpr int   VOL_SIZE = 28;
 
 // --- 3D sparse ---
@@ -46,6 +49,9 @@ static constexpr float LR_SPARSE = 0.0003f;
 static constexpr int   ATTN_WIN_LARGE = 7;
 static constexpr int   ATTN_WIN_SMALL = 4;
 static constexpr int   ATTN_HEADS = 4;
+
+// -- Scheduler ---
+static constexpr bool schedule = true;
 
 inline CNN buildModel2D(int num_classes) {
     CNN model;
@@ -67,6 +73,10 @@ inline CNN buildModel2D(int num_classes) {
     model.addLayer(std::make_shared<DenseLayer>(128, num_classes));
     model.setLossLayer(std::make_shared<SoftmaxCrossEntropyLayer>());
     model.setOptimizer(std::make_shared<Adam>(LR_2D));
+    if(schedule){
+    model.setScheduler(std::make_shared<CosineDecay>());
+    std::cout << "\n===> shcheduler set" << std::endl;
+    }
     return model;
 }
 
@@ -91,6 +101,11 @@ inline CNN buildModel3D(int num_classes) {
     model.setLossLayer(std::make_shared<SoftmaxCrossEntropyLayer>(weights, gamma));
     
     model.setOptimizer(std::make_shared<Adam>(LR_3D));
+    if(schedule){
+    model.setScheduler(std::make_shared<CosineDecay>());
+    std::cout << "\n===> shcheduler set" << std::endl;
+    }
+
     return model;
 }
 
@@ -122,6 +137,11 @@ inline CNN buildModel3DSparse(int num_classes) {
     model.setLossLayer(std::make_shared<SoftmaxCrossEntropyLayer>(weights, gamma));
 
     model.setOptimizer(std::make_shared<Adam>(LR_SPARSE));
+    if(schedule){
+        model.setScheduler(std::make_shared<CosineDecay>());
+        std::cout << "\n===> shcheduler set" << std::endl;
+    }
+
     return model;
 }
 
@@ -158,6 +178,11 @@ inline CNN buildModel3DAttn(int num_classes) {
     model.setLossLayer(std::make_shared<SoftmaxCrossEntropyLayer>(weights, gamma));
 
     model.setOptimizer(std::make_shared<Adam>(LR_3D));
+    if(schedule){
+        model.setScheduler(std::make_shared<CosineDecay>());
+        std::cout << "\n===> shcheduler set" << std::endl;
+    }
+
     return model;
 }
 
@@ -198,15 +223,33 @@ inline CNN buildModel3DSparseAttn(int num_classes) {
         std::make_shared<SoftmaxCrossEntropyLayer>(weights, gamma));
 
     model.setOptimizer(std::make_shared<Adam>(LR_SPARSE));
+    if(schedule){
+        model.setScheduler(std::make_shared<CosineDecay>());
+        std::cout << "\n===> shcheduler set" << std::endl;
+    }
+
     return model;
 }
 
+
 inline CNN buildConvNeXt3DDense(int num_classes) {
     CNN model;
-    model.addLayer(std::make_shared<PatchifyStem3D>(1, 32, 4));
-    model.addLayer(std::make_shared<ConvNeXtBlock3D>(32, 7));
+   
+    // Stem : 28³ → 14³, 1 canal → 32
+    model.addLayer(std::make_shared<PatchifyStem3D>(1, 32, 2));
+
+    // Stage 1 : 14³, kernel 3
+    model.addLayer(std::make_shared<ConvNeXtBlock3D>(32, 3));
+    model.addLayer(std::make_shared<ConvNeXtBlock3D>(32, 3));
+
+    // Downsample : 14³ → 7³, 32 → 64
     model.addLayer(std::make_shared<DenseDownsample3D>(32, 64));
+
+    // Stage 2 : 7³, kernel 3
     model.addLayer(std::make_shared<ConvNeXtBlock3D>(64, 3));
+    model.addLayer(std::make_shared<ConvNeXtBlock3D>(64, 3));
+
+    // Tête de classification
     model.addLayer(std::make_shared<GlobalAvgPool3DLayer>());
     model.addLayer(std::make_shared<DenseLayer>(64, num_classes));
     
@@ -214,16 +257,21 @@ inline CNN buildConvNeXt3DDense(int num_classes) {
     int gamma = 2;
     model.setLossLayer(std::make_shared<SoftmaxCrossEntropyLayer>(weights, gamma));
     
-    model.setOptimizer(std::make_shared<Adam>(1e-4f));
+    model.setOptimizer(std::make_shared<Adam>(LR_3D));
+    if(schedule){
+        model.setScheduler(std::make_shared<CosineDecay>());
+        std::cout << "\n===> shcheduler set" << std::endl;
+    }
+
     return model;
 }
 
 inline CNN buildConvNeXt3DSparse(int num_classes) {
     CNN model;
-    model.addLayer(std::make_shared<PatchifyStem3DSparse>(1, 32, 4, SPARSE_THRESHOLD));
+    model.addLayer(std::make_shared<PatchifyStem3DSparse>(1, 32, 2, SPARSE_THRESHOLD));
     model.addLayer(std::make_shared<ConvNeXtBlock3DSparse>(32, 7, 1e-6f, 0.0f));
     model.addLayer(std::make_shared<SparseDownsample3D>(32, 64, 0.0f));
-    model.addLayer(std::make_shared<ConvNeXtBlock3DSparse>(64, 3, 1e-6f, 0.0f));
+    model.addLayer(std::make_shared<ConvNeXtBlock3DSparse>(64, 7, 1e-6f, 0.0f));
     model.addLayer(std::make_shared<GlobalAvgPool3DLayer>());
     model.addLayer(std::make_shared<DenseLayer>(64, num_classes));
     
@@ -231,6 +279,10 @@ inline CNN buildConvNeXt3DSparse(int num_classes) {
     int gamma = 2; // Focal loss
     model.setLossLayer(std::make_shared<SoftmaxCrossEntropyLayer>(weights, gamma));
     
-    model.setOptimizer(std::make_shared<Adam>(1e-4f));
+    model.setOptimizer(std::make_shared<Adam>(LR_SPARSE));
+    if(schedule){
+      model.setScheduler(std::make_shared<CosineDecay>());
+      std::cout << "\n===> shcheduler set" << std::endl;
+    }
     return model;
 }

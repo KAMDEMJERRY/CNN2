@@ -1,0 +1,3 @@
+
+2026-06-04 18:45:11==================================================
+Epoch   1/150 | Loss: 0.3455 | Acc: 65.47% | Time: 35810ms | Val Loss: 0.2507 | Val Acc: 72.61% | Improved ✓ [ckpt: ./models/3d_dense_NoduleMNIST3D.bin]
