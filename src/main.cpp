@@ -26,9 +26,12 @@ static std::chrono::high_resolution_clock::time_point START_TIME;
 
 // Pour les pipelines 3D - sélectionnez votre dataset ici
 // const DatasetManager::DatasetType3D ACTIVE_DATASET_3D = DatasetManager::FRACTURE_3D;
-const DatasetManager::DatasetType3D ACTIVE_DATASET_3D = DatasetManager::NODULE_3D;
+const DatasetManager::DatasetType3D ACTIVE_DATASET_3D = DatasetManager::FRACTURE_3D_64;
+// const DatasetManager::DatasetType3D ACTIVE_DATASET_3D = DatasetManager::NODULE_3D;
 // const DatasetManager::DatasetType3D ACTIVE_DATASET_3D = DatasetManager::VESSEL_3D;
 // const DatasetManager::DatasetType3D ACTIVE_DATASET_3D = DatasetManager::ADRENAL_3D;
+// const DatasetManager::DatasetType3D ACTIVE_DATASET_3D = DatasetManager::ADRENAL_3D_64;
+// const DatasetManager::DatasetType3D ACTIVE_DATASET_3D = DatasetManager::MEDMNIST_3D;
 
 // Pour les pipelines 2D - sélectionnez votre dataset ici
 const DatasetManager::DatasetType2D ACTIVE_DATASET_2D = DatasetManager::MNIST_2D;

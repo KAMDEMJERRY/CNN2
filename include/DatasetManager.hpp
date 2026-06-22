@@ -9,6 +9,8 @@
 #define NODULE_PATH "../dataset/nodulemnist3d"
 #define VESSEL_PATH "../dataset/vesselmnist3d"
 #define ADRENAL_PATH "../dataset/adrenalmnist3d"
+#define ADRENAL_64_PATH "../dataset/adrenalmnist3d_64"
+#define FRACTURE_64_PATH "../dataset/fracturemnist3d_64"
 
 // Chemins datasets 2D
 #define MNIST_TEST_PATH    "../dataset/mnist_img/trainingSet/trainingSet/" 
@@ -23,7 +25,9 @@ public:
         FRACTURE_3D,
         NODULE_3D,
         VESSEL_3D,
-        ADRENAL_3D
+        ADRENAL_3D,
+        ADRENAL_3D_64,
+        FRACTURE_3D_64,
     };
     
     // Types de datasets 2D
@@ -83,7 +87,17 @@ public:
                 return Info("AdrenalMNIST3D", ADRENAL_PATH,
                            {"Normal", "Adenoma", "Metastasis", "Pheochromocytoma"},
                            4, 1, 3, 28);
-                
+
+            case ADRENAL_3D_64:
+                return Info("AdrenalMNIST3D_64", ADRENAL_64_PATH,
+                           {"Normal", "Adenoma", "Metastasis", "Pheochromocytoma"},
+                           4, 1, 3, 64);
+
+            case FRACTURE_3D_64:
+                return Info("FractureMNIST3D_64", FRACTURE_64_PATH,
+                           {"No fracture", "Fracture T1", "Fracture T2"},
+                           3, 1, 3, 64);
+
             default:
                 throw std::runtime_error("Unknown 3D dataset type");
         }
@@ -109,7 +123,7 @@ public:
     
     // ============== Méthodes utilitaires ==============
     static std::vector<DatasetType3D> getAllDatasets3D() {
-        return {FRACTURE_3D, NODULE_3D, VESSEL_3D, ADRENAL_3D};
+        return {FRACTURE_3D, NODULE_3D, VESSEL_3D, ADRENAL_3D, ADRENAL_3D_64, FRACTURE_3D_64};
     }
     
     static std::vector<DatasetType2D> getAllDatasets2D() {
@@ -122,6 +136,8 @@ public:
             case NODULE_3D:   return "NoduleMNIST3D";
             case VESSEL_3D:   return "VesselMNIST3D";
             case ADRENAL_3D:  return "AdrenalMNIST3D";
+            case ADRENAL_3D_64: return "AdrenalMNIST3D_64";
+            case FRACTURE_3D_64: return "FractureMNIST3D_64";
             default: return "Unknown";
         }
     }
